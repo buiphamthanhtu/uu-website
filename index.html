@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ÚÙ Creative Studio - The design studio that provides design solutions for startups and enterprises of all sizes and create cool Vietnamese merchandises">
+  <meta name="color-scheme" content="dark">
+  <title>ÚÙ Creative Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="index.html" aria-label="ÚÙ Creative Studio - Home">
+      <img src="assets/logo.png"
+           onerror="this.onerror=null;this.src='https://radio-soft-proxy.figma.site/_assets/v11/ea1d5f807dfa39191148aeaef177b5158534cac4.png'"
+           alt="ÚÙ Creative Studio">
+    </a>
+    <nav class="site-header__nav" aria-label="Main">
+      <a class="btn btn--neutral" href="index.html">Home</a>
+      <a class="btn btn--neutral" href="blog.html">blog</a>
+      <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
+    </nav>
+    <a class="btn btn--brand desktop-contact" href="mailto:tu@uucreative.co">contact us</a>
+    <button class="btn btn--brand menu-toggle" aria-label="Open menu" aria-expanded="false" data-menu-open>☰</button>
+  </header>
+
+  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+    <button class="btn btn--brand menu-overlay__close" aria-label="Close menu" data-menu-close>✕</button>
+    <a class="btn btn--neutral" href="index.html">Home</a>
+    <a class="btn btn--neutral" href="blog.html">blog</a>
+    <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
+    <a class="btn btn--brand" href="mailto:tu@uucreative.co">contact us</a>
+  </div>
+
+  <main class="page-body">
+
+    <!-- Section - Introduction -->
+    <section class="section intro-grid">
+      <div class="intro-col">
+        <div class="card card--hello">
+          <div>
+            <p class="eyebrow">Welcome to úù studio</p>
+            <h1>may the inspiration be with you</h1>
+          </div>
+          <a class="btn btn--neutral" href="mailto:tu@uucreative.co">Contact us now</a>
+        </div>
+        <a class="card card--store" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">
+          <h2>úù store</h2>
+          <div class="store-row">
+            <p>Only available in vietnam</p>
+            <span class="btn btn--neutral">show now</span>
+          </div>
+        </a>
+      </div>
+      <div class="intro-col">
+        <div class="card card--services">
+          <h2>services</h2>
+          <div class="tags">
+            <span class="tag">Product design</span>
+            <span class="tag">research</span>
+            <span class="tag">Brand visual</span>
+          </div>
+        </div>
+        <div class="card card--ceo">
+          <h2>our ceo*</h2>
+          <img class="ceo-photo"
+               src="assets/tieutam.png"
+               onerror="this.onerror=null;this.src='https://radio-soft-proxy.figma.site/_assets/v11/a1c0c65ce128e29b32ef1c69eb113a6a55bb1fa6.png'"
+               alt="Tieu tam the cat">
+          <p class="ceo-caption">*chef entertainment officer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section - About us -->
+    <section class="section about">
+      <h2>About us</h2>
+      <p>We're a versatile studio equipped to handle the diverse needs of startups and enterprises, delivering everything from branding to digital experiences. Beyond client work, we also enjoy designing and offering cool merchandise rooted in Vietnamese culture.</p>
+    </section>
+
+    <!-- Section - Project / blogs -->
+    <section class="section project-grid">
+      <a class="card card--blogs" href="blog.html">
+        <div>
+          <h2>Our blogs</h2>
+          <p>The diary of practical dreamer designers. Confuse? But it’s true, being practical is key to understanding what a dream is.</p>
+        </div>
+      </a>
+      <a class="article-cover" href="blog-giao-tiep-1.html">
+        <img src="assets/cover-1.png"
+             onerror="this.onerror=null;this.src='https://radio-soft-proxy.figma.site/_assets/v11/356dc2b504b01ef444c60c7fb5cc227da47a352f.png'"
+             alt="Bài viết: giao tiếp — hồi 1">
+      </a>
+      <a class="article-cover" href="blog-giao-tiep-2.html">
+        <img src="assets/cover-2.png"
+             onerror="this.onerror=null;this.src='https://radio-soft-proxy.figma.site/_assets/v11/6ad00c557e7e84e24bd25a996bf11451c2028c15.png'"
+             alt="Bài viết: giao tiếp — hồi 2">
+      </a>
+      <a class="article-cover" href="blog-giao-tiep-3.html">
+        <img src="assets/cover-3.png"
+             onerror="this.onerror=null;this.src='https://radio-soft-proxy.figma.site/_assets/v11/fe71c362182c922397310f27858754f3668ef33f.png'"
+             alt="Bài viết: giao tiếp — hồi 3">
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 ÚÙ CREATIVE LTD. A private limited company incorporated in Viet Nam under enterprise code 0318657950.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
