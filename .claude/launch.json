@@ -3,7 +3,12 @@
   "configurations": [
     {
       "name": "uu-website",
-      "url": "http://localhost:8931"
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-c",
+        "import os, sys; sys.path = [p for p in sys.path if p]; os.chdir('/private/tmp/claude-501/-Users-tubui-Downloads-uu-website/8f4786b5-e217-49aa-99ed-131468583572/scratchpad/site'); import http.server, socketserver; socketserver.TCPServer.allow_reuse_address = True; socketserver.TCPServer(('127.0.0.1', 8931), http.server.SimpleHTTPRequestHandler).serve_forever()"
+      ],
+      "port": 8931
     }
   ]
 }

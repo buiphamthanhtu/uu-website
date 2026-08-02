@@ -1,0 +1,59 @@
+media:
+  input: assets
+  output: assets
+
+content:
+  - name: posts
+    label: Bài viết
+    type: collection
+    path: posts
+    view:
+      fields: [episode, title, date]
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Tiêu đề
+        type: string
+        required: true
+        default: "“giao tiếp”"
+      - name: series
+        label: Series (dòng nhỏ phía trên tiêu đề)
+        type: string
+        default: "hơi thở designer, thức thứ nhất"
+      - name: episode
+        label: Hồi (dòng nhỏ phía dưới tiêu đề)
+        type: string
+        required: true
+        description: "Ví dụ: hồi 4"
+      - name: date
+        label: Ngày đăng
+        type: date
+        required: true
+        description: "Bài mới nhất tự lên đầu trang chủ và trang blog"
+      - name: description
+        label: Mô tả SEO
+        type: string
+        description: "Hiện trên Google và khi share link"
+      - name: cover
+        label: Ảnh cover
+        type: image
+        required: true
+        description: "Tỷ lệ 588×399 (desktop) — hiện trên trang chủ, blog và related"
+      - name: cover_alt
+        label: Chú thích ảnh cover
+        type: string
+      - name: next_note
+        label: Ghi chú cuối bài
+        type: string
+        description: "Ví dụ: Hẹn bạn hồi 5 nói về... (bỏ trống nếu không cần)"
+      - name: draft
+        label: Bản nháp (chưa đăng)
+        type: boolean
+        default: false
+      - name: body
+        label: Nội dung
+        type: rich-text
+        description: "Ảnh chèn cỡ: thêm |400 vào cuối mô tả ảnh (cỡ: 200/400/500/600/800/full)"
