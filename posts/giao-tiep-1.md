@@ -1,7 +1,7 @@
 ---
 title: “Giao Tiếp”
 series: Hơi thở designer, thức thứ nhất
-episode: hồi 1
+episode: Hồi 1
 date: 2024-10-01
 description: "Hơi thở designer, thức thứ nhất: Giao tiếp — Hồi 1 | ÚÙ Creative Studio"
 cover: assets/cover-1.png
