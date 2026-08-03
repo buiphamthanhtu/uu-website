@@ -79,10 +79,22 @@ def render_body(md_text):
     return html
 
 
+def cap(s):
+    return s[:1].upper() + s[1:] if s else s
+
+
 def cover_link(post, indent="        "):
+    # Overlay hover: "Giao tiếp - Hồi 1" + dòng series
+    plain_title = post["title"].strip("“”\"'")
+    label = f'{cap(plain_title)} - {cap(post["episode"])}'
+    series = cap(post.get("series", ""))
     return (
         f'{indent}<a class="article-cover" href="{post["url"]}">\n'
         f'{indent}  <img src="{post["cover"]}" alt="{post.get("cover_alt", "")}">\n'
+        f'{indent}  <span class="article-cover__overlay">\n'
+        f"{indent}    <strong>{label}</strong>\n"
+        f"{indent}    <span>{series}</span>\n"
+        f"{indent}  </span>\n"
         f"{indent}</a>"
     )
 
