@@ -3,9 +3,9 @@ title: “Giao tiếp”
 series: Hơi thở designer, thức thứ nhất
 episode: Hồi 2
 date: 2024-10-15
-description: "Hơi thở designer, thức thứ nhất: giao tiếp — hồi 2 | ÚÙ Creative Studio"
+description: "Hơi thở designer, thức thứ nhất: Giao tiếp — Hồi 2 | ÚÙ Creative Studio"
 cover: assets/cover-2.png
-cover_alt: Giao tiếp — hồi 2
+cover_alt: Giao tiếp — Hồi 2
 next_note: Hồi 3 sắp ra...
 draft: false
 ---
