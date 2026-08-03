@@ -24,6 +24,7 @@ POSTS = ROOT / "posts"
 TEMPLATES = ROOT / "templates"
 
 FIG_SIZES = {"200", "400", "500", "600", "800", "full"}
+BASE_URL = "https://uucreative.co"
 
 
 def parse_post(path):
@@ -132,6 +133,8 @@ def main():
         html = (
             post_tpl.replace("{{DESCRIPTION}}", description)
             .replace("{{TITLE_TAG}}", title_tag)
+            .replace("{{PAGE_URL}}", f"{BASE_URL}/{post['url']}")
+            .replace("{{OG_IMAGE}}", f"{BASE_URL}/{post['cover']}")
             .replace("{{SERIES}}", series)
             .replace("{{TITLE}}", post["title"])
             .replace("{{EPISODE}}", post["episode"])
