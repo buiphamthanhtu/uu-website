@@ -166,6 +166,23 @@ def main():
         sys.exit("LỖI: index.html thiếu marker <!-- build:covers -->")
     index_path.write_text(new_index, encoding="utf-8")
     print("  ✓ index.html (covers)")
+
+    # Sitemap cho Google Search Console
+    latest_date = str(posts[0]["date"])
+    urls = [("", latest_date), ("blog.html", latest_date)] + [
+        (p["url"], str(p["date"])) for p in posts
+    ]
+    entries = "\n".join(
+        f"  <url><loc>{BASE_URL}/{path}</loc><lastmod>{date}</lastmod></url>"
+        for path, date in urls
+    )
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n</urlset>\n",
+        encoding="utf-8",
+    )
+    print("  ✓ sitemap.xml")
     print(f"Xong! {len(posts)} bài.")
 
 
