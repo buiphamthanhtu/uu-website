@@ -1,0 +1,15 @@
+import{j as n}from"./iframe-EkKnofS_.js";import{useMDXComponents as r}from"./index-B75LKoEL.js";import{M as s,C as i,a as h,S as o}from"./blocks-BLnrhJ-D.js";import{D as a}from"./DocHeader-5e4C0x_g.js";import{S as l,P as t}from"./Badge.stories-eyOBEQpE.js";import"./preload-helper-Dp1pzeXC.js";import"./Badge-BH7q476X.js";import"./layout-Xzi5pJ9U.js";function d(c){const e={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...r(),...c.components};return n.jsxs(n.Fragment,{children:[n.jsx(s,{of:l}),`
+`,n.jsx(e.h1,{id:"badge",children:"Badge"}),`
+`,n.jsx(a,{spec:"6.14",variants:"4",status:"chốt"}),`
+`,n.jsx(i,{of:t}),`
+`,n.jsx(h,{of:t}),`
+`,n.jsxs(e.p,{children:["Nhãn trạng thái dạng viên thuốc, ",n.jsx(e.strong,{children:"không bấm được"}),": HORIZONTAL · cao 24 (",n.jsx(e.code,{children:"size-6"}),") · padding ngang 4 (",n.jsx(e.code,{children:"gap-1"}),") · HUG theo chữ · radius ",n.jsx(e.code,{children:"rounded-circle"})," · chữ ",n.jsx(e.code,{children:"title-sm"})," (13/20, 600), một dòng."]}),`
+`,n.jsxs(e.table,{children:[n.jsx(e.thead,{children:n.jsxs(e.tr,{children:[n.jsx(e.th,{children:"Tone"}),n.jsx(e.th,{children:"Nền"}),n.jsx(e.th,{children:"Chữ"})]})}),n.jsxs(e.tbody,{children:[n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Neutral"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-inverted"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-primary-inverted"})})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Success"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-positive"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-positive"})})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Warning"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-warning"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-warning"})})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Error"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-negative"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-negative"})})]})]})]}),`
+`,n.jsxs(e.p,{children:["Cùng quy tắc với Toast: ",n.jsx(e.code,{children:"background-{status}"})," chỉ đi với ",n.jsx(e.code,{children:"object-on-{status}"}),". Không có state (không hover, pressed, disabled)."]}),`
+`,n.jsx(e.h2,{id:"khi-nào-dùng",children:"Khi nào dùng"}),`
+`,n.jsxs(e.p,{children:["Gắn nhãn trạng thái cho một dòng, một thẻ (Đã giao, Sắp hết hạn). Cần chấm màu + chữ trên nền thường → ",n.jsx(e.strong,{children:"StatusIndicator"}),". Cần số báo có mới → ",n.jsx(e.strong,{children:"NotificationBadge"}),". Cần bấm để lọc → chưa có (Chip chưa chốt)."]}),`
+`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`<Badge tone="success">Đã giao</Badge>
+`})}),`
+`,n.jsx(e.h2,{id:"chưa-chốt",children:"Chưa chốt"}),`
+`,n.jsxs(e.p,{children:["Kích thước khác 24 · icon trước chữ · tone theo brand (",n.jsx(e.code,{children:"interactive"}),")."]}),`
+`,n.jsx(o,{includePrimary:!1})]})}function v(c={}){const{wrapper:e}={...r(),...c.components};return e?n.jsx(e,{...c,children:n.jsx(d,{...c})}):d(c)}export{v as default};

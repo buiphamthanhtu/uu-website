@@ -310,7 +310,7 @@ Trong `tokens.json` thêm một khoá cạnh `semantic.color.uu`, rồi `npm run
 | Token | Giá trị thật | Dùng cho |
 |---|---|---|
 | `font-family-body` | **font hệ thống của thiết bị** | Toàn bộ UI chức năng |
-| `font-family-display` | `Playwrite US Trad` | Chỉ style `display-*` |
+| `font-family-display` | `Bungee` | Chỉ style `display-*` |
 
 > **`font-family-body` là font hệ thống của thiết bị, không phải một font của UU DS.**
 > Bản thiết kế cần một tên font có thật để render nên thường ghi `SF Pro` — vốn là font hệ thống của iOS. Ngoài đời, app dùng font hệ thống của chính thiết bị: SF Pro trên iOS, Roboto hoặc bộ font riêng của hãng trên Android (Samsung, Xiaomi, Oppo đều thay, và người dùng còn tự đổi được).
@@ -325,6 +325,8 @@ Trong CSS token giữ đúng tên `--font-family-body`, chỉ giá trị là sta
 ```
 
 Đây là mô hình lai phổ biến: font hệ thống cho toàn bộ thành phần chức năng (nút, ô nhập, nhãn), font thương hiệu chỉ dành cho vai trò display. UU DS đã chia đúng ranh giới đó — `display-*` là bốn style duy nhất dùng `font-family-display`.
+
+> **Bungee chỉ có một độ đậm (Regular).** Text style `display-*` gắn weight `bold`, nhưng font không có bản Bold nên bản vẽ hiện Regular. Trên web đặt `font-synthesis: none` cho `display-*` để trình duyệt **không** tự làm đậm giả — chữ ra đúng như bản vẽ. Tải font từ Google Fonts (`family=Bungee`); không self-host bản sửa.
 
 **Ba hệ quả khi build**
 
@@ -373,10 +375,10 @@ Mode `Active` làm chữ đậm thêm đúng 1 bậc, không đổi màu, không
 
 | Style | Family | Size | Line height | Weight | Letter spacing |
 |---|---|---|---|---|---|
-| `display-lg` | Playwrite US Trad | 48 | 60 | bold | 0 |
-| `display-base` | Playwrite US Trad | 40 | 52 | bold | 0 |
-| `display-sm` | Playwrite US Trad | 33 | 40 | bold | 0 |
-| `display-xs` | Playwrite US Trad | 28 | 36 | bold | 0 |
+| `display-lg` | Bungee | 48 | 60 | bold | 0 |
+| `display-base` | Bungee | 40 | 52 | bold | 0 |
+| `display-sm` | Bungee | 33 | 40 | bold | 0 |
+| `display-xs` | Bungee | 28 | 36 | bold | 0 |
 | `heading-lg` | hệ thống | 28 | 36 | semibold | 0 |
 | `heading-base` | hệ thống | 23 | 32 | semibold | 0 |
 | `heading-sm` | hệ thống | 19 | 28 | semibold | 0 |
@@ -539,6 +541,15 @@ quy tắc ghép cặp — giữ nguyên. Không có primitive mới: mọi giá 
 | `switch/handle-icon` | `--switch-handle-icon` | 16 (`size-4`) | **12** (`size-3`) |
 | `tab/padding` | `--tab-padding` | 12 (`gap-3`) | **8** (`gap-2`) |
 | `chip/border-width` | `--chip-border-width` | 2 (`2px`) | **1** (`1px`) |
+| `table/row-height` | `--table-row-height` | 56 (`size-14`) | **40** (`size-10`) |
+| `table/header-height` | `--table-header-height` | 48 (`size-12`) | **32** (`size-8`) |
+| `table/cell-padding-x` | `--table-cell-padding-x` | 16 (`gap-4`) | **12** (`gap-3`) |
+| `card/padding` | `--card-padding` | 16 (`gap-4`) | **12** (`gap-3`) |
+| `sidenav/width` | `--sidenav-width` | 288 (`size-72`) | **240** (`size-60`) |
+
+**Collection `sidenav`** (riêng, không thuộc `density`): mode `Expanded` · `Collapsed`, một biến
+BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.SideNavSection`. Web: prop
+`collapsed` của `SideNav` (`data-collapsed`). Không phải biến kích thước nên không có CSS var.
 
 ---
 
@@ -550,6 +561,7 @@ quy tắc ghép cặp — giữ nguyên. Không có primitive mới: mọi giá 
 |---|---|---|
 | `TextButtonAccent` | 90 | 6.1 |
 | `TextButtonNeutral` | 90 | 6.1 |
+| `TextButtonDanger` | 45 | 6.1 |
 | `IconButtonAccent` | 90 | 6.2 |
 | `IconButtonNeutral` | 90 | 6.2 |
 | `ToggleButton` | 48 | 6.7 |
@@ -570,24 +582,33 @@ quy tắc ghép cặp — giữ nguyên. Không có primitive mới: mọi giá 
 | `SegmentedControl` | 1 (+ `.Segment item` 8) | 6.13 |
 | `NavigationBar` | 1 | 6.5 |
 | `BottomBar` | 10 (+ `base/FooterItem` 2) | 6.22 |
+| `TablePagination` | 1 (+ `.PageItem` 3) | 6.24 |
+| `Breadcrumb` | 1 (+ `.BreadcrumbItem` 3) | 6.25 |
+| `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | 6.27 |
 | `Tab` | 2 | 6.20 |
 | `Pagination` | 3 | 6.10b |
 | `Toast` | 4 | 6.6 |
 | `Badge` | 4 | 6.14 |
 | `StatusIndicator` | 8 | 6.15 |
 | `NotificationBadge` | 2 | 6.16 |
-| Bottom sheet (`.base/sheet`) | 1 | 6.8 |
+| `Tooltip` | 4 | 6.30 |
+| `TableHeaderCell` | 8 | 6.23 |
+| `TableCell` | 15 | 6.23 |
+| `KPICard` | 3 | 6.26 |
+| `CardSheet` (tấm bottom sheet) | 2 | 6.8 |
 | Bottom sheet (`Sheet` — template màn hình) | 1 | 6.8 |
 | Dialog (`.base/dialog`) | 1 | 6.10 |
 | Dialog (`Dialog` — template màn hình) | 1 | 6.10 |
+| `SideSheet` | 2 | 6.28 |
+| `Popover` | 1 | 6.29 |
 | `ResultScreen` (template màn) | 1 | 6.19 |
 | `ErrorScreen` (template màn) | 1 | 6.19 |
 
-Chưa có: Action group.
+Chưa có: Action group; `CardDialog`; màn rỗng / màn mục (Empty, Section screen); thông báo đẩy (PushNotification); `StatusIndicator` kiểu Highlight; mục đặc biệt giữa `BottomBar`.
 
-Chuỗi chữ trên component là **property**, không phải node phải chọn vào sửa: `Error message` (TextInput · TextArea · OTPInput · DateInput · Dropdown), `Word counter` (TextArea), `Input value` (ô OTP), `Text` (DateInput · Dropdown), `Label` (CheckboxInput · RadioInput · `base/prefix` · Chip), `Count` (NotificationBadge), `Content` (Toast). Bên code đó là prop (`errorMessage`, `label`…).
+Chuỗi chữ trên component là **property**, không phải node phải chọn vào sửa: `Error message` (TextInput · TextArea · OTPInput · DateInput · Dropdown), `Word counter` (TextArea), `Input value` (ô OTP), `Text` (DateInput · Dropdown), `Label` (CheckboxInput · RadioInput · `base/prefix` · Chip), `Count` (NotificationBadge), `Content` (Toast, TableCell), `Label` / `Value` (KPICard), `Title` (SideSheet, Popover), `Text` (Tooltip). Bên code đó là prop (`errorMessage`, `label`…).
 
-Component nội bộ, không dùng trực tiếp — chỉ xuất hiện bên trong component ở trên: `.label`, `.suffix`, `base/prefix` (Type Icon/Label), `base/suffix` (18×18, Type=Icon), `.Segment item`, `.MenuItem`, `base/FooterItem` (mục của `BottomBar`, 2 variant), `.base/input-default` và `.base/input-masked` (ô của OTP, 7 variant mỗi bộ), `.Mini App Control`, `.loading`, `Icon`, `🔒Base/Slick`.
+Component nội bộ, không dùng trực tiếp — chỉ xuất hiện bên trong component ở trên: `.label`, `.suffix`, `base/prefix` (Type Icon/Label), `base/suffix` (18×18, Type=Icon), `.Segment item`, `.MenuItem`, `base/FooterItem` (mục của `BottomBar`, 2 variant), `.PageItem` (ô số trang của `TablePagination`), `.BreadcrumbItem`, `.SideNavItem`, `.SideNavSection`, `.base/input-default` và `.base/input-masked` (ô của OTP, 7 variant mỗi bộ), `.Mini App Control`, `.loading`, `Icon`, `🔒Base/Slick`.
 
 `Sheet` (mục 6.8) và `Dialog` (mục 6.10) là template màn hình, không phải component sản phẩm — chúng nhúng một Device element.
 
@@ -642,7 +663,7 @@ State layer là **toàn bộ** hiệu ứng của hover và pressed. Không đ�
 
 ### 6.1 Text button
 
-**Hai bộ riêng biệt**: `Text button - Accent` và `Text button - Neutral`. Cùng cấu trúc, khác bảng màu.
+**Ba bộ riêng biệt**: `TextButtonAccent`, `TextButtonNeutral` và `TextButtonDanger` (cuối mục). Cùng cấu trúc, khác bảng màu.
 
 **Props**
 
@@ -707,6 +728,31 @@ Icon suffix (instance `base/suffix`): **24×24 cho Large và Base, 16×16 cho Sm
 | `Pressed` | + state layer, bậc pressed (mục 6.0). Font-weight giữ nguyên |
 | `Disabled` | không có state layer. Solid → bg `background-disabled`; Outline → border `border-muted` (Inverted: `border-muted-inverted`); mọi type → text `object-disabled` |
 | `Loading` | không có state layer. Container giữ nguyên; spinner `.loading` (18×18, gradient sweep) đứng **trước** label, khe 8. Label **vẫn hiện** |
+
+#### `TextButtonDanger`
+
+Nút cho hành động **phá huỷ, không hoàn tác được**: xoá tài khoản, huỷ đơn, gỡ thiết bị. **45 variant**:
+cùng trục `Type` × `Size` × `State` như `TextButtonAccent` nhưng **chỉ có `Inverted=False`**. Hình học,
+padding, density, state layer, Loading và Disabled **y hệt `TextButtonAccent`**; khác duy nhất là họ màu
+`interactive` đổi sang **`negative`**.
+
+| Type | Nền | Viền 2px | Chữ · icon · spinner | State layer (hover / pressed) |
+|---|---|---|---|---|
+| `Solid` | `background-negative` | — | `object-on-negative` | `object-on-negative` · 20 / 40 |
+| `Outline` | — | `border-negative` | `object-negative` | `object-negative` · 5 / 10 |
+| `Ghost` | — | — | `object-negative` | `object-negative` · 5 / 10 |
+| *mọi Type* · Disabled | như `TextButtonAccent` Disabled (`background-disabled` / `border-muted` / `object-disabled`) | | | — |
+
+**Không có `Inverted=True`** — chưa có nút phá huỷ trên nền tối; cần thì dừng và hỏi.
+
+Chọn giữa ba bộ: hành động chính của màn → `Accent`; hành động phụ, trung tính → `Neutral`; hành động
+**không lấy lại được** → `Danger`. Đừng dùng `Danger` chỉ vì nút "trông nguy hiểm" (đăng xuất, bỏ qua)
+— những việc đó làm lại được nên vẫn là `Neutral`.
+
+**Mức nhấn trong một màn**: một nút `Solid` (Accent hoặc Danger) mỗi màn. Hành động lặp lại theo dòng hoặc
+theo thẻ (bảng, danh sách) **không bao giờ `Solid`** — dùng `Ghost` Small hoặc gom vào menu "⋯"
+(`IconButtonNeutral` Ghost Small mở `Menu`). Hành động phá huỷ theo dòng nằm trong menu "⋯" và xác nhận bằng
+`Dialog` có `TextButtonDanger` Solid.
 
 ### 6.2 Icon button
 
@@ -1218,9 +1264,9 @@ Khớp đúng quy tắc mục 6.0, không ngoại lệ. `Disabled` không có st
 
 ### 6.8 Bottom sheet
 
-Hai component tách vai rõ ràng: `.base/sheet` là bản thân tấm sheet, `Sheet` là màn hình hoàn chỉnh có scrim.
+Hai component tách vai rõ ràng: `CardSheet` là bản thân tấm sheet, `Sheet` là màn hình hoàn chỉnh có scrim. (`CardSheet` thay `.base/sheet` cũ; `.base/sheet` còn trong file bản vẽ chỉ để tham chiếu, đừng dùng mới.)
 
-#### `.base/sheet` — tấm sheet
+#### `CardSheet` — tấm sheet
 
 **Props**
 
@@ -1229,30 +1275,27 @@ Hai component tách vai rõ ràng: `.base/sheet` là bản thân tấm sheet, `S
 | `Header` | TEXT | `"Header"` |
 | `Slot` | SLOT | trống, không stretch child |
 | `CTA` | BOOLEAN | `true` — hiện/ẩn **toàn bộ** nhóm nút |
-| `Back` | BOOLEAN | `false` — hiện nút **quay lại** ở mép trái header |
+| `Navigation` | VARIANT | **`Close`** · `Back` — **2 variant** |
 
 **Back và Close loại trừ nhau.** Sheet gốc có nút đóng bên phải, không có back. Sheet **con**
 (mở ra từ một sheet trước đó — chọn tỉnh rồi tới chọn huyện, xem điều khoản rồi tới xác
-nhận) bật `Back=true`: nút quay lại xuất hiện bên trái **và nút đóng biến mất**. Không bao
+nhận) dùng `Navigation=Back`: nút quay lại xuất hiện bên trái **và không có nút đóng**. Không bao
 giờ hiện cả hai. Back đưa về sheet cha; muốn đóng cả chuỗi thì về sheet gốc rồi bấm đóng —
 đó là chủ đích, để người dùng không mất dấu đang ở tầng nào.
 
-> **Nút đóng và nút quay lại loại trừ nhau.** Sheet có **hoặc** nút đóng bên phải **hoặc**
-> nút quay lại bên trái, không bao giờ cả hai. Trong code dùng **một** prop
-> `navigation: 'close' | 'back'` (hoặc `back: boolean` tự ẩn close), đừng expose hai boolean
-> rời rồi để màn tự phối. Trong file thiết kế nên mô hình bằng một variant
-> `Navigation=Close/Back` thay vì hai boolean.
+> **Nút đóng và nút quay lại loại trừ nhau** — bản vẽ bảo đảm bằng variant `Navigation`. Code: truyền
+> `onBack` là `Navigation=Back` (nút quay lại bên trái, không có nút đóng); không truyền là `Navigation=Close`.
 
-Nút phụ và hướng xếp **không** có prop ở cấp `.base/sheet`. Chọn vào instance `Button group` bên trong để đổi `Secondary button` và `Layout` — đó là prop của component set ở mục 6.9.
+Nút phụ và hướng xếp **không** có prop ở cấp `CardSheet`. Chọn vào instance `Button group` bên trong để đổi `Secondary button` và `Layout` — đó là prop của component set ở mục 6.9.
 
 **Cấu trúc**
 
 ```
-.base/sheet        VERTICAL · gap 0 · FIXED × HUG · radius 24 (rounded-2xl, cả 4 góc) · background-surface · clip
+CardSheet          VERTICAL · gap 0 · FIXED × HUG · radius 24 (rounded-2xl, cả 4 góc) · background-surface · clip
 ├─ Header          HORIZONTAL · padding 16/16/0/16 · gap 16 · FILL × HUG · h48 · căn giữa theo trục phụ
-│  ├─ Back         IconButtonNeutral / Outline / Small (32) · icon chevron-left 16 · visible ← prop Back (mặc định ẩn)
+│  ├─ Back         IconButtonNeutral / Outline / Small (32) · icon chevron-left 16 · chỉ ở Navigation=Back
 │  ├─ Title        "Header" · heading-base · object-primary · FILL
-│  └─ Close        IconButtonNeutral / Outline / Small (32) · icon xmark 16 · object-primary · ẨN khi Back=true
+│  └─ Close        IconButtonNeutral / Outline / Small (32) · icon xmark 16 · object-primary · chỉ ở Navigation=Close
 └─ Body            VERTICAL · padding 12/16/16/16 · gap 12 · FILL × HUG
    ├─ Slot         FILL × HUG — chỗ đặt nội dung tuỳ ý
    └─ Button group instance của component set ở mục 6.9 · Layout=Horizontal · FILL × HUG
@@ -1274,16 +1317,16 @@ Khi bật `Secondary button` trên instance, hai nút chia đôi hàng, mỗi b�
 | Lớp | Giá trị |
 |---|---|
 | Scrim | `overlay` (đen 10%) + `BACKGROUND_BLUR 16` |
-| Wrapper | padding `0/12` → sheet thụt vào 12px mỗi bên |
-| Sheet | instance `.base/sheet`, FILL |
+| Wrapper | padding `0/12/12/12` → sheet thụt vào 12px mỗi bên **và nổi cách đáy 12** |
+| Sheet | instance `CardSheet` (`Navigation=Close`), FILL |
 | Đáy | instance `IOS Home indicator` (Transparent=True) |
 
 > `Sheet` là **template màn hình, không phải component sản phẩm** — nó chứa `IOS Home indicator` thuộc nhóm Device elements. Dùng nó để dựng mockup; khi code thì dựng lại phần scrim + wrapper theo bảng trên và bỏ home indicator, vì OS tự vẽ.
 >
 > `Sheet` expose đúng **một** prop: `Footer` (INSTANCE_SWAP, mặc định `IOS Home indicator /
 > Theme=Default, Transparent=True`) để đổi phần đáy sang Device element khác khi dựng mockup
-> Android. `Header`, `Slot`, `CTA`
-> nằm ở instance `.base/sheet`; `Secondary button` và `Layout` nằm sâu hơn một cấp nữa, ở
+> Android. `Header`, `Slot`, `CTA`, `Navigation`
+> nằm ở instance `CardSheet`; `Secondary button` và `Layout` nằm sâu hơn một cấp nữa, ở
 > instance `Button group`. Khi code bỏ hẳn `Footer`, OS tự vẽ.
 
 ### 6.9 ButtonGroup
@@ -1695,6 +1738,181 @@ Icon đổi `outline` → `fill` khi chọn, đúng luật §6.11.
 **Chưa có**: `Hover` / `Pressed` / `Disabled` của mục; vị trí thanh trên màn (cách đáy, lề
 ngang, safe area); bóng hay viền cho vỏ khi nền màn cũng là `background-surface`; nhãn dài
 quá bề rộng mục; quá 5 mục.
+
+### 6.23 Bảng (`TableHeaderCell` · `TableCell`)
+
+Bảng dữ liệu cho màn **desktop / dashboard** (density `Compact`). Bản vẽ chỉ có **ô**; hàng và bảng là
+ghép ô: hàng = các ô cùng chiều cao xếp ngang, bảng = hàng tiêu đề + các hàng dữ liệu. Không có
+component `Table` riêng trong bản vẽ — bên code `Table` / `TableRow` chỉ là khung `<table>` ngữ nghĩa
+bọc các ô, không thêm hình học.
+
+**Props `TableHeaderCell`**: `Label` (TEXT) · `Sort` (`Off` · `Unsorted` · `Ascending` · `Descending`) ×
+`Align` (`Left` · `Right`). **8 variant.**
+
+| Phần | Giá trị |
+|---|---|
+| Ô | HORIZONTAL · cao `table/header-height` (48 · Compact 32) · padding ngang `table/cell-padding-x` (16 · 12) · gap **4** · viền **dưới** 1px `border-muted` |
+| Nhãn | `title-sm` · `object-secondary`; **`object-primary`** khi `Ascending` / `Descending` |
+| Icon sắp xếp | 16 · `Ascending` `arrow-up` · `Descending` `arrow-down` (`object-primary`) · `Unsorted` `sort-vertical` `object-secondary` (cột sắp được, chưa sắp) · `Off` không icon (cột không sắp được) |
+| `Align=Right` | icon đứng **trước** nhãn, cả hai dồn phải — dùng cho cột **số** |
+
+**Props `TableCell`**: `Content` (TEXT) · `TextButton` · `IconButton` (BOOLEAN, ô `Actions`) · `Type`
+(`Text` · `Number` · `Secondary` · `Actions` · `Checkbox`) × `State` (`Default` · `Hover` · `Selected`). **15 variant.**
+
+| Phần | Giá trị |
+|---|---|
+| Ô | HORIZONTAL · cao `table/row-height` (56 · Compact 40) · padding ngang `table/cell-padding-x` · gap **8** · viền dưới 1px `border-muted` |
+| `Text` | `Content` `body` `object-primary` |
+| `Secondary` | `caption` `object-secondary` — cột phụ (mã, ngày tạo, ghi chú) |
+| `Number` | `body` căn **phải**, `font-variant-numeric: tabular-nums` |
+| `Actions` | `TextButtonAccent` **Ghost Small** (`Action`, bật/tắt bằng `TextButton`) + `IconButtonNeutral` **Ghost Small** (`More`, mở `Menu`; bật/tắt bằng `IconButton`) |
+| `Checkbox` | `Checkbox` (§6.12) — chọn hàng · ô rộng 64 |
+| `Hover` | state layer `object-primary` · `opacity-5` phủ cả ô |
+| `Selected` | nền **`background-interactive-muted`** |
+
+**Quy tắc**
+- Hàng hover / chọn là trạng thái của **cả hàng**: mọi ô trong hàng cùng `State`.
+- Cột số căn phải cả tiêu đề lẫn ô (`Align=Right` + `Type=Number`).
+- Hành động theo dòng **không bao giờ `Solid`** (§6.1 *Mức nhấn*). Hai hành động trở lên → giữ một
+  `Ghost` Small cho hành động hay dùng nhất, phần còn lại vào menu "⋯".
+- Bảng **không** có viền ngoài và không kẻ dọc; chỉ kẻ ngang (viền dưới mỗi ô).
+
+**Chưa có**: cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột,
+hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba.
+
+### 6.24 Phân trang bảng (`TablePagination` · `.PageItem`)
+
+Thanh dưới bảng: chọn số dòng mỗi trang và chuyển trang. Khác `Pagination` (§6.19, chấm chỉ báo
+carousel trên app) — `TablePagination` có **số trang bấm được**.
+
+**Props `.PageItem`** (nội bộ): `Page` (TEXT) · `State` (`Default` · `Hover` · `Selected`). **3 variant.**
+**`TablePagination`**: `Rows per page` (BOOLEAN — hiện/ẩn cụm chọn số dòng bên trái). 1 variant.
+
+| Phần | Giá trị |
+|---|---|
+| Thanh | HORIZONTAL · `space-between` · padding dọc **8** · FILL |
+| Trái | `caption` `object-secondary` "Hiển thị" · `Dropdown` (rộng 88) · `caption` "trên 120 dòng" |
+| Phải | gap **4** · `IconButtonNeutral` Ghost Small `chevron-left` · các `.PageItem` · `IconButtonNeutral` Ghost Small `chevron-right` |
+| `.PageItem` | min `control/height-small` vuông · padding ngang `control/padding-x-small` · radius `rounded-circle` · `body` |
+| `Default` | chữ `object-secondary` |
+| `Hover` | state layer `object-primary` · `opacity-5` (pressed `opacity-10`, như `IconButtonNeutral` Ghost) |
+| `Selected` | viền **2px `border-interactive`** · chữ `object-primary` · `aria-current="page"` |
+
+Nút lùi ở trang đầu / tiến ở trang cuối là **Disabled**.
+
+**Chưa có**: rút gọn khi nhiều trang (ô "…"); ô nhập số trang để nhảy; phân trang không biết tổng số dòng.
+
+### 6.25 Breadcrumb (`Breadcrumb` · `.BreadcrumbItem`)
+
+Đường dẫn vị trí trong cây trang (desktop). **Props `.BreadcrumbItem`**: `Label` (TEXT) · `Current` (`False` · `True`)
+× `State` (`Default` · `Hover`) — mục `Current=True` không có `Hover`. **3 variant.** `Breadcrumb`: 1 variant.
+
+| Phần | Giá trị |
+|---|---|
+| Thanh | HORIZONTAL · gap **4** · căn giữa dọc |
+| Mục | padding ngang **4** · radius `radius-sm` · `body` `object-secondary` · là link |
+| `Hover` | state layer `object-primary` · `opacity-5` |
+| `Current=True` | `object-primary` · không phải link · `aria-current="page"` |
+| Ngăn cách | "/" `body` `object-disabled`, `aria-hidden` |
+
+Mục cuối luôn là trang hiện tại. Không dùng Breadcrumb thay `NavigationBar` trên app.
+
+**Chưa có**: rút gọn khi đường dẫn dài (mục "…" mở menu); icon trước mục đầu.
+
+### 6.26 Thẻ chỉ số (`KPICard`)
+
+Thẻ một con số chính trên dashboard. **Props**: `Label` · `Value` (TEXT) · `Trend` (`Up` · `Down` · `[No trend]`). **3 variant.**
+
+| Phần | Giá trị |
+|---|---|
+| Thẻ | VERTICAL · padding `card/padding` (16 · Compact 12) · gap **4** · radius `radius-lg` · nền `background-surface` · viền 1px `border-muted` · FILL |
+| `Label` | `caption` `object-secondary` |
+| `Value` | `heading-base` `object-primary` · `tabular-nums` |
+| `Delta` | HORIZONTAL gap **4** · icon 16 + `caption` |
+| `Trend=Up` | `arrow-trend-up` + chữ **`object-positive`** |
+| `Trend=Down` | `arrow-trend-down` + chữ **`object-negative`** |
+| `Trend=[No trend]` | không có `Delta` |
+
+Màu `Delta` theo **chiều số**, không theo tốt / xấu: chi phí tăng vẫn là `Up` xanh. Nếu cần "tăng là
+xấu" → dừng và hỏi, chưa có variant.
+
+**Chưa có**: biểu đồ nhỏ (sparkline) trong thẻ; thẻ bấm được.
+
+### 6.27 Điều hướng bên (`SideNav` · `.SideNavItem` · `.SideNavSection`)
+
+Thanh điều hướng dọc của web app / portal. Tương đương `BottomBar` trên app.
+
+**Props `SideNav`**: `Listing` (SLOT) · `Collapsed` (`False` · `True`) — **2 variant**. Nhãn còn điều
+khiển bằng collection biến **`sidenav`** (mode `Expanded` · `Collapsed`, biến BOOLEAN `sidenav/expanded`).
+**Props `.SideNavItem`**: `Label` (TEXT) · `Chevron` (BOOLEAN) · `Level` (`1` · `2`) × `State`
+(`Default` · `Hover` · `Active`) × `Collapsed` (`False` · `True`; chỉ `Level=1` có `True`) — **9 variant**.
+`.SideNavSection`: `Title` (TEXT), 1 variant.
+
+| Phần | Giá trị |
+|---|---|
+| Thanh | VERTICAL · padding **12** · gap **4** · rộng `sidenav/width` (288 · Compact 240) · viền **phải** 1px `border-muted` · nền `background-surface` |
+| `Collapsed=True` | rộng **73** · mục vuông 48 · ẩn nhãn, chevron và tiêu đề nhóm · nhãn chuyển thành `Tooltip` (§6.30) · mục `Level=2` ẩn |
+| Mục | HORIZONTAL · padding ngang `control/padding-x-small` · gap **8** · min-height `control/height-base` · radius `radius-sm` · icon `control/icon-base` · nhãn `body` |
+| `Level=2` | mục con: không icon, thay bằng khoảng thụt 24 (bằng icon) → nhãn thẳng hàng nhãn cấp 1 |
+| `Chevron` | `chevron-down` 16 `object-secondary` cuối mục cấp 1 có mục con |
+| `State=Default` | icon `outline` `object-secondary` · nhãn `object-primary` |
+| `State=Hover` | state layer `object-primary` · `opacity-5` (pressed `opacity-10`) |
+| `State=Active` | nền **`background-interactive-muted`** · icon **`fill`** `object-interactive` · nhãn `object-primary` · `aria-current="page"` |
+| Tiêu đề nhóm | padding 16 / 12 / 4 / 12 · `title-xs` `object-secondary` IN HOA |
+
+Mục đang chọn thuộc họ `interactive` như `BottomBar` / `Tab`. Một mục `Active` mỗi lúc.
+
+**Chưa có**: chevron xoay khi mở nhóm (bản vẽ chỉ có `chevron-down`), cấp 3, badge trên mục, khu tài khoản cuối thanh, nút thu/mở trong thanh.
+
+### 6.28 Side sheet (`SideSheet`)
+
+Tấm trượt từ mép phải màn desktop để xem / sửa chi tiết mà không rời trang. **Props**: `Type`
+(`Standard` · `Modal`) · `Title` (TEXT) · `Footer` (BOOLEAN). **2 variant.**
+
+| Phần | Giá trị |
+|---|---|
+| Tấm | VERTICAL · rộng **384** (`size-96`) · cao FILL màn · nền `background-surface` |
+| `Standard` | viền **trái** 1px `border-muted` · nằm cạnh nội dung, không scrim |
+| `Modal` | `elevation-high` · radius `radius-lg` ở **hai góc trái** · có scrim như `Sheet` |
+| Header | padding `card/padding` · `Title` `heading-sm` + `IconButtonNeutral` Ghost Small `xmark` |
+| Body | padding ngang `card/padding` · gap **12** · cuộn khi dài |
+| Footer | padding `card/padding` · `TextButtonNeutral` **Outline Base** + `TextButtonAccent` **Solid Base**, dồn phải |
+
+Trên app dùng `Sheet` (§6.8), không dùng `SideSheet`.
+
+**Chưa có**: rộng khác 384, side sheet bên trái, kéo đổi bề rộng.
+
+### 6.29 Popover (`Popover`)
+
+Khung nổi neo vào một phần tử, chứa nội dung có thể tương tác (form ngắn, xác nhận nhỏ). **Props**:
+`Content` (SLOT) · `Title` (TEXT) · `Header` · `Footer` (BOOLEAN). 1 variant.
+
+| Phần | Giá trị |
+|---|---|
+| Khung | VERTICAL · rộng **320** (`size-80`) · padding `card/padding` · gap **12** · radius `radius-lg` · nền `background-surface` · `elevation-medium` |
+| Header | `Title` `title-base` + `IconButtonNeutral` Ghost Small `xmark` |
+| Footer | dồn phải · `TextButtonNeutral` **Ghost Small** + `TextButtonAccent` **Solid Small** |
+
+Khác `Tooltip`: Popover mở bằng **bấm**, có nút, đóng bằng nút đóng / Esc / bấm ra ngoài; Tooltip
+mở bằng hover / focus, chỉ có chữ. Khác `Menu`: Menu là danh sách lựa chọn.
+
+**Chưa có**: mũi tên chỉ vào phần tử neo; tự lật hướng khi sát mép (code tự xử lý, bản vẽ chưa vẽ).
+
+### 6.30 Tooltip (`Tooltip`)
+
+Nhãn ngắn giải thích một phần tử khi hover hoặc focus — thường là `IconButton` không chữ hay mục
+`SideNav` thu gọn. **Props**: `Text` (TEXT) · `Placement` (`Top` · `Bottom` · `Left` · `Right`). **4 variant.**
+
+| Phần | Giá trị |
+|---|---|
+| Bong bóng | padding **4 / 8** · radius `radius-sm` · nền **`background-inverted`** · max-width **240** (`size-60`) |
+| Chữ | `caption` **`object-primary-inverted`** |
+| Mũi tên | 8 × 4, cùng màu nền, giữa cạnh hướng về phần tử |
+
+Chỉ chữ thuần, không link / nút bên trong (cần thì dùng `Popover`). Hiện khi hover **và** focus bàn
+phím; phần tử được gắn `aria-describedby`. Không dùng trên màn chạm — không có hover.
+
+**Chưa có**: độ trễ hiện / ẩn chuẩn; tooltip nhiều dòng có tiêu đề.
 
 ## 7. Device elements — không thuộc design system
 

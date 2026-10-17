@@ -29,7 +29,7 @@
 
 ## Code tham chiếu (repo)
 
-- `src/components/*` React + CSS thuần, tên trùng spec: TextButtonAccent, TextButtonNeutral, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, BaseSheet, BottomSheet, BaseDialog, Dialog, Spinner.
+- `src/components/*` React + CSS thuần, tên trùng spec: TextButtonAccent, TextButtonNeutral, TextButtonDanger, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, Tooltip, CardSheet, BottomSheet, BaseDialog, Dialog, SideSheet, Popover, Table, TableRow, TableHeaderCell, TableCell, TablePagination, KPICard, Breadcrumb, SideNav, SideNavItem, SideNavSection, Spinner.
 - `src/icons/Icon.tsx` + `src/icons/svg/<name>[-fill].svg` (100 tên công khai × outline/fill, viewBox 0 0 18 18, currentColor).
 - Package npm `uu-ds` (exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`). Zalo Mini App (ZMP, React) dùng thẳng package này.
 - Flutter: `packages/flutter/uu_ds_flutter` — `tokens.g.dart` sinh từ tokens.json, widget `UuTextButton`, `UuTextInput`, `UuIcon`… cùng prop với bản web.

@@ -313,7 +313,7 @@
   /* Font hệ thống của thiết bị. SF Pro là font hệ thống của iOS, không phải font của UU DS — đừng nhúng. */
   --font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                       "Noto Sans", system-ui, sans-serif;
-  --font-family-display: "Playwrite US Trad", Georgia, serif;
+  --font-family-display: "Bungee", Impact, sans-serif;
   --font-size-3xs: 0.5rem;
   --font-size-2xs: 0.5625rem;
   --font-size-xs: 0.6875rem;
@@ -477,6 +477,11 @@
   --switch-handle-icon: var(--size-4);
   --tab-padding: var(--gap-3);
   --chip-border-width: 2px;
+  --table-row-height: var(--size-14);
+  --table-header-height: var(--size-12);
+  --table-cell-padding-x: var(--gap-4);
+  --card-padding: var(--gap-4);
+  --sidenav-width: var(--size-72);
 }
 [data-density="compact"] {
   --text-heading-lg-font-size: var(--font-size-xl);
@@ -525,6 +530,11 @@
   --switch-handle-icon: var(--size-3);
   --tab-padding: var(--gap-2);
   --chip-border-width: 1px;
+  --table-row-height: var(--size-10);
+  --table-header-height: var(--size-8);
+  --table-cell-padding-x: var(--gap-3);
+  --card-padding: var(--gap-3);
+  --sidenav-width: var(--size-60);
 }
 /* Mode chữ Active (Toggle bật, Segment đang chọn): label đậm hơn một bậc — Touch 700 · Compact 600.
    Khai báo lại tại phần tử Active để var() lấy bậc weight đã dịch của mode đó. */
@@ -535,6 +545,7 @@
 /* ---- text styles ---- */
 .text-display-lg {
   font-family: var(--font-family-display);
+  font-synthesis: none; /* Bungee chỉ có Regular — không làm đậm giả */
   font-size: var(--font-size-5xl);
   line-height: var(--font-height-5xl);
   font-weight: var(--font-weight-bold);
@@ -542,6 +553,7 @@
 }
 .text-display-base {
   font-family: var(--font-family-display);
+  font-synthesis: none;
   font-size: var(--font-size-4xl);
   line-height: var(--font-height-4xl);
   font-weight: var(--font-weight-bold);
@@ -549,6 +561,7 @@
 }
 .text-display-sm {
   font-family: var(--font-family-display);
+  font-synthesis: none;
   font-size: var(--font-size-3xl);
   line-height: var(--font-height-3xl);
   font-weight: var(--font-weight-bold);
@@ -556,6 +569,7 @@
 }
 .text-display-xs {
   font-family: var(--font-family-display);
+  font-synthesis: none;
   font-size: var(--font-size-2xl);
   line-height: var(--font-height-2xl);
   font-weight: var(--font-weight-bold);

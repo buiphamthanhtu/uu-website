@@ -25,6 +25,18 @@
    "fill": true,
    "public": true
   },
+  "arrow-trend-down": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "arrow-trend-up": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
   "arrow-up": {
    "category": "arrows",
    "outline": true,
@@ -38,12 +50,6 @@
    "public": true
   },
   "bag-shopping": {
-   "category": "shopping",
-   "outline": true,
-   "fill": true,
-   "public": true
-  },
-  "barcode": {
    "category": "shopping",
    "outline": true,
    "fill": true,
@@ -231,12 +237,6 @@
   },
   "eye-slash": {
    "category": "ui-layout",
-   "outline": true,
-   "fill": true,
-   "public": true
-  },
-  "face-smile": {
-   "category": "emoji",
    "outline": true,
    "fill": true,
    "public": true
@@ -487,6 +487,12 @@
    "fill": true,
    "public": true
   },
+  "sort-vertical": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
   "sparkle": {
    "category": "editing",
    "outline": true,
@@ -506,12 +512,6 @@
    "public": true
   },
   "tag": {
-   "category": "bookmarks-favorites",
-   "outline": true,
-   "fill": true,
-   "public": true
-  },
-  "tags": {
    "category": "bookmarks-favorites",
    "outline": true,
    "fill": true,
