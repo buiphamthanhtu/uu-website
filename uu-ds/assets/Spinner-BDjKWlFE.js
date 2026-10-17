@@ -1,0 +1,6 @@
+import{j as n}from"./iframe-B79aK45l.js";import{useMDXComponents as c}from"./index-Cb9q3bXr.js";import{M as t,C as s}from"./blocks-VAgSek84.js";import{D as d}from"./DocHeader-zJ2NFdah.js";import{S as i,L as a}from"./Spinner.stories-DpyGhK8A.js";import"./preload-helper-Dp1pzeXC.js";import"./layout-DfDgT8VD.js";function r(o){const e={code:"code",h1:"h1",p:"p",...c(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{of:i}),`
+`,n.jsxs(e.h1,{id:"spinner-loading",children:["Spinner (",n.jsx(e.code,{children:".loading"}),")"]}),`
+`,n.jsx(d,{spec:"6.12",status:"nội bộ"}),`
+`,n.jsx(s,{of:a}),`
+`,n.jsxs(e.p,{children:["Quay 360°, màu kế thừa từ text color của nút (",n.jsx(e.code,{children:"currentColor"}),"). Trong code vẽ bằng ",n.jsx(e.code,{children:"conic-gradient"})," + mask vòng (Flutter: ",n.jsx(e.code,{children:"SweepGradient"})," + ",n.jsx(e.code,{children:"drawArc"}),"), không có chấm 2×2 của bản vẽ. Tôn trọng ",n.jsx(e.code,{children:"prefers-reduced-motion"})," (quay chậm lại)."]}),`
+`,n.jsxs(e.p,{children:[n.jsx(e.code,{children:'role="status"'}),", ",n.jsx(e.code,{children:'aria-label="Đang xử lý"'}),"."]})]})}function f(o={}){const{wrapper:e}={...c(),...o.components};return e?n.jsx(e,{...o,children:n.jsx(r,{...o})}):r(o)}export{f as default};

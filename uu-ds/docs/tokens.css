@@ -1,0 +1,752 @@
+/* UU DS design tokens */
+/* Đơn vị (web): size / gap / radius / font-size / line-height xuất rem (1rem = 16px ở cỡ chữ mặc định)
+   để giao diện co theo cỡ chữ người dùng chọn trong trình duyệt. Giữ px: size-px (nét 1px), rounded-circle,
+   bóng đổ, độ dày viền. App (Flutter) dùng cùng giá trị ở dạng logical px — xem tokens.json. */
+/* UU DS — một brand mode mặc định. Thêm brand mới bằng một khối [data-theme="<tên>"] ghi đè token thương hiệu. */
+
+:root {
+  /* ---- primitive: color ---- */
+  --color-neutral-05: #FAFAFA;
+  --color-neutral-10: #F5F5F5;
+  --color-neutral-20: #E5E5E5;
+  --color-neutral-30: #D4D4D4;
+  --color-neutral-40: #A3A3A3;
+  --color-neutral-50: #737373;
+  --color-neutral-60: #525252;
+  --color-neutral-70: #404040;
+  --color-neutral-80: #262626;
+  --color-neutral-90: #171717;
+  --color-neutral-95: #0A0A0A;
+  --color-slate-05: #F8FAFC;
+  --color-slate-10: #F1F5F9;
+  --color-slate-20: #E2E8F0;
+  --color-slate-30: #CBD5E1;
+  --color-slate-40: #94A3B8;
+  --color-slate-50: #64748B;
+  --color-slate-60: #475569;
+  --color-slate-70: #334155;
+  --color-slate-80: #1E293B;
+  --color-slate-90: #0F172A;
+  --color-slate-95: #020617;
+  --color-red-05: #FEF2F2;
+  --color-red-10: #FEE2E2;
+  --color-red-20: #FECACA;
+  --color-red-30: #FCA5A5;
+  --color-red-40: #F87171;
+  --color-red-50: #EF4444;
+  --color-red-60: #DC2626;
+  --color-red-70: #B91C1C;
+  --color-red-80: #991B1B;
+  --color-red-90: #7F1D1D;
+  --color-red-95: #450A0A;
+  --color-orange-05: #FFF7ED;
+  --color-orange-10: #FFEDD5;
+  --color-orange-20: #FED7AA;
+  --color-orange-30: #FDBA74;
+  --color-orange-40: #FB923C;
+  --color-orange-50: #F97316;
+  --color-orange-60: #EA580C;
+  --color-orange-70: #C2410C;
+  --color-orange-80: #9A3412;
+  --color-orange-90: #7C2D12;
+  --color-orange-95: #431407;
+  --color-amber-05: #FFFBEB;
+  --color-amber-10: #FEF3C7;
+  --color-amber-20: #FDE68A;
+  --color-amber-30: #FCD34D;
+  --color-amber-40: #FBBF24;
+  --color-amber-50: #F59E0B;
+  --color-amber-60: #D97706;
+  --color-amber-70: #B45309;
+  --color-amber-80: #92400E;
+  --color-amber-90: #78350F;
+  --color-amber-95: #451A03;
+  --color-yellow-05: #FEFCE8;
+  --color-yellow-10: #FEF9C3;
+  --color-yellow-20: #FEF08A;
+  --color-yellow-30: #FDE047;
+  --color-yellow-40: #FACC15;
+  --color-yellow-50: #EAB308;
+  --color-yellow-60: #CA8A04;
+  --color-yellow-70: #A16207;
+  --color-yellow-80: #854D0E;
+  --color-yellow-90: #713F12;
+  --color-yellow-95: #422006;
+  --color-lime-05: #F7FEE7;
+  --color-lime-10: #ECFCCB;
+  --color-lime-20: #D9F99D;
+  --color-lime-30: #BEF264;
+  --color-lime-40: #A3E635;
+  --color-lime-50: #84CC16;
+  --color-lime-60: #65A30D;
+  --color-lime-70: #4D7C0F;
+  --color-lime-80: #3F6212;
+  --color-lime-90: #365314;
+  --color-lime-95: #1A2E05;
+  --color-green-05: #F0FDF4;
+  --color-green-10: #DCFCE7;
+  --color-green-20: #BBF7D0;
+  --color-green-30: #86EFAC;
+  --color-green-40: #4ADE80;
+  --color-green-50: #22C55E;
+  --color-green-60: #16A34A;
+  --color-green-70: #15803D;
+  --color-green-80: #166534;
+  --color-green-90: #14532D;
+  --color-green-95: #052E16;
+  --color-emerald-05: #ECFDF5;
+  --color-emerald-10: #D1FAE5;
+  --color-emerald-20: #A7F3D0;
+  --color-emerald-30: #6EE7B7;
+  --color-emerald-40: #34D399;
+  --color-emerald-50: #10B981;
+  --color-emerald-60: #059669;
+  --color-emerald-70: #047857;
+  --color-emerald-80: #065F46;
+  --color-emerald-90: #064E3B;
+  --color-emerald-95: #022C22;
+  --color-teal-05: #F0FDFA;
+  --color-teal-10: #CCFBF1;
+  --color-teal-20: #99F6E4;
+  --color-teal-30: #5EEAD4;
+  --color-teal-40: #2DD4BF;
+  --color-teal-50: #14B8A6;
+  --color-teal-60: #0D9488;
+  --color-teal-70: #0F766E;
+  --color-teal-80: #115E59;
+  --color-teal-90: #134E4A;
+  --color-teal-95: #042F2E;
+  --color-cyan-05: #ECFEFF;
+  --color-cyan-10: #CFFAFE;
+  --color-cyan-20: #A5F3FC;
+  --color-cyan-30: #67E8F9;
+  --color-cyan-40: #22D3EE;
+  --color-cyan-50: #06B6D4;
+  --color-cyan-60: #0891B2;
+  --color-cyan-70: #0E7490;
+  --color-cyan-80: #155E75;
+  --color-cyan-90: #164E63;
+  --color-cyan-95: #083344;
+  --color-sky-05: #F0F9FF;
+  --color-sky-10: #E0F2FE;
+  --color-sky-20: #BAE6FD;
+  --color-sky-30: #7DD3FC;
+  --color-sky-40: #38BDF8;
+  --color-sky-50: #0EA5E9;
+  --color-sky-60: #0284C7;
+  --color-sky-70: #0369A1;
+  --color-sky-80: #075985;
+  --color-sky-90: #0C4A6E;
+  --color-sky-95: #082F49;
+  --color-blue-05: #EFF6FF;
+  --color-blue-10: #DBEAFE;
+  --color-blue-20: #BFDBFE;
+  --color-blue-30: #93C5FD;
+  --color-blue-40: #60A5FA;
+  --color-blue-50: #3B82F6;
+  --color-blue-60: #2563EB;
+  --color-blue-70: #1D4ED8;
+  --color-blue-80: #1E40AF;
+  --color-blue-90: #1E3A8A;
+  --color-blue-95: #172554;
+  --color-indigo-05: #EEF2FF;
+  --color-indigo-10: #E0E7FF;
+  --color-indigo-20: #C7D2FE;
+  --color-indigo-30: #A5B4FC;
+  --color-indigo-40: #818CF8;
+  --color-indigo-50: #6366F1;
+  --color-indigo-60: #4F46E5;
+  --color-indigo-70: #4338CA;
+  --color-indigo-80: #3730A3;
+  --color-indigo-90: #312E81;
+  --color-indigo-95: #1E1B4B;
+  --color-violet-05: #F5F3FF;
+  --color-violet-10: #EDE9FE;
+  --color-violet-20: #DDD6FE;
+  --color-violet-30: #C4B5FD;
+  --color-violet-40: #A78BFA;
+  --color-violet-50: #8B5CF6;
+  --color-violet-60: #7C3AED;
+  --color-violet-70: #6D28D9;
+  --color-violet-80: #5B21B6;
+  --color-violet-90: #4C1D95;
+  --color-violet-95: #2E1065;
+  --color-purple-05: #FAF5FF;
+  --color-purple-10: #F3E8FF;
+  --color-purple-20: #E9D5FF;
+  --color-purple-30: #D8B4FE;
+  --color-purple-40: #C084FC;
+  --color-purple-50: #A855F7;
+  --color-purple-60: #9333EA;
+  --color-purple-70: #7E22CE;
+  --color-purple-80: #6B21A8;
+  --color-purple-90: #581C87;
+  --color-purple-95: #3B0764;
+  --color-fuchsia-05: #FDF4FF;
+  --color-fuchsia-10: #FAE8FF;
+  --color-fuchsia-20: #F5D0FE;
+  --color-fuchsia-30: #F0ABFC;
+  --color-fuchsia-40: #E879F9;
+  --color-fuchsia-50: #D946EF;
+  --color-fuchsia-60: #C026D3;
+  --color-fuchsia-70: #A21CAF;
+  --color-fuchsia-80: #86198F;
+  --color-fuchsia-90: #701A75;
+  --color-fuchsia-95: #4A044E;
+  --color-pink-05: #FDF2F8;
+  --color-pink-10: #FCE7F3;
+  --color-pink-20: #FBCFE8;
+  --color-pink-30: #F9A8D4;
+  --color-pink-40: #F472B6;
+  --color-pink-50: #EC4899;
+  --color-pink-60: #DB2777;
+  --color-pink-70: #BE185D;
+  --color-pink-80: #9D174D;
+  --color-pink-90: #831843;
+  --color-pink-95: #500724;
+  --color-rose-05: #FFF1F2;
+  --color-rose-10: #FFE4E6;
+  --color-rose-20: #FECDD3;
+  --color-rose-30: #FDA4AF;
+  --color-rose-40: #FB7185;
+  --color-rose-50: #F43F5E;
+  --color-rose-60: #E11D48;
+  --color-rose-70: #BE123C;
+  --color-rose-80: #9F1239;
+  --color-rose-90: #881337;
+  --color-rose-95: #4C0519;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* ---- primitive: size (N * 4px) ---- */
+  --size-0: 0rem;
+  --size-px: 1px;
+  --size-0-5: 0.125rem;
+  --size-1: 0.25rem;
+  --size-1-5: 0.375rem;
+  --size-2: 0.5rem;
+  --size-2-5: 0.625rem;
+  --size-3: 0.75rem;
+  --size-3-5: 0.875rem;
+  --size-4: 1rem;
+  --size-5: 1.25rem;
+  --size-6: 1.5rem;
+  --size-7: 1.75rem;
+  --size-8: 2rem;
+  --size-9: 2.25rem;
+  --size-10: 2.5rem;
+  --size-11: 2.75rem;
+  --size-12: 3rem;
+  --size-14: 3.5rem;
+  --size-16: 4rem;
+  --size-20: 5rem;
+  --size-24: 6rem;
+  --size-28: 7rem;
+  --size-32: 8rem;
+  --size-36: 9rem;
+  --size-40: 10rem;
+  --size-44: 11rem;
+  --size-48: 12rem;
+  --size-52: 13rem;
+  --size-56: 14rem;
+  --size-60: 15rem;
+  --size-64: 16rem;
+  --size-72: 18rem;
+  --size-80: 20rem;
+  --size-96: 24rem;
+
+  /* ---- spacing ---- */
+  --gap-0: 0rem;
+  --gap-0-5: 0.125rem;
+  --gap-1: 0.25rem;
+  --gap-1-5: 0.375rem;
+  --gap-2: 0.5rem;
+  --gap-2-5: 0.625rem;
+  --gap-3: 0.75rem;
+  --gap-3-5: 0.875rem;
+  --gap-4: 1rem;
+  --gap-5: 1.25rem;
+  --gap-6: 1.5rem;
+  --gap-7: 1.75rem;
+  --gap-8: 2rem;
+  --gap-9: 2.25rem;
+  --gap-10: 2.5rem;
+  --gap-11: 2.75rem;
+  --gap-12: 3rem;
+  --gap-14: 3.5rem;
+  --gap-16: 4rem;
+
+  /* ---- radius ---- */
+  --radius-none: 0rem;
+  --radius-sm: 0.5rem;
+  --radius-base: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --rounded-2xl: 1.5rem;
+  --rounded-3xl: 1.75rem;
+  --rounded-4xl: 2rem;
+  --rounded-circle: 9999px;
+
+  /* ---- opacity ---- */
+  --opacity-0: 0.0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.1;
+  --opacity-15: 0.15;
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-35: 0.35;
+  --opacity-40: 0.4;
+  --opacity-45: 0.45;
+  --opacity-50: 0.5;
+  --opacity-55: 0.55;
+  --opacity-60: 0.6;
+  --opacity-65: 0.65;
+  --opacity-70: 0.7;
+  --opacity-75: 0.75;
+  --opacity-80: 0.8;
+  --opacity-85: 0.85;
+  --opacity-90: 0.9;
+  --opacity-95: 0.95;
+
+  /* ---- typography ---- */
+  /* Font hệ thống của thiết bị. SF Pro là font hệ thống của iOS, không phải font của UU DS — đừng nhúng. */
+  --font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                      "Noto Sans", system-ui, sans-serif;
+  --font-family-display: "Playwrite US Trad", Georgia, serif;
+  --font-size-3xs: 0.5rem;
+  --font-size-2xs: 0.5625rem;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1875rem;
+  --font-size-xl: 1.4375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.0625rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-height-2xs: 0.5rem;
+  --font-height-xs: 1rem;
+  --font-height-sm: 1.25rem;
+  --font-height-base: 1.5rem;
+  --font-height-lg: 1.75rem;
+  --font-height-xl: 2rem;
+  --font-height-2xl: 2.25rem;
+  --font-height-3xl: 2.5rem;
+  --font-height-4xl: 3.25rem;
+  --font-height-5xl: 3.75rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---- elevation ---- */
+  --elevation-low: 0px 2px 8px rgba(0, 0, 0, 0.10);
+  --elevation-medium: 0px 4px 12px rgba(0, 0, 0, 0.10);
+  --elevation-high: 0px 8px 24px rgba(0, 0, 0, 0.10);
+
+  /* ---- semantic: brand mode mặc định ---- */
+  --background-surface: var(--color-white);
+  --background-muted: var(--color-slate-05);
+  --background-subtle: var(--color-slate-10);
+  --background-emphasized: var(--color-slate-20);
+  --background-inverted: var(--color-black);
+  --background-disabled: var(--color-slate-20);
+  --background-interactive: var(--color-indigo-60);
+  --background-interactive-muted: var(--color-indigo-05);
+  --background-accent: var(--color-blue-60);
+  --background-accent-muted: var(--color-blue-05);
+  --background-accent-subtle: var(--color-blue-10);
+  --background-accent-medium: var(--color-blue-20);
+  --background-accent-emphasized: var(--color-blue-40);
+  --background-positive: var(--color-green-70);
+  --background-positive-muted: var(--color-green-10);
+  --background-negative: var(--color-red-60);
+  --background-negative-muted: var(--color-red-10);
+  --background-attention: var(--color-red-50);
+  --background-attention-muted: var(--color-red-10);
+  --background-warning: var(--color-yellow-30);
+  --background-warning-muted: var(--color-yellow-10);
+  --object-primary: var(--color-black);
+  --object-primary-inverted: var(--color-white);
+  --object-secondary: var(--color-slate-50);
+  --object-disabled: var(--color-slate-40);
+  --object-on-light: var(--color-black);
+  --object-on-dark: var(--color-white);
+  --object-interactive: var(--color-indigo-60);
+  --object-interactive-muted: var(--color-indigo-50);
+  --object-interactive-inverted: var(--color-indigo-30);
+  --object-on-interactive: var(--color-white);
+  --object-accent: var(--color-blue-60);
+  --object-accent-muted: var(--color-blue-30);
+  --object-accent-inverted: var(--color-blue-30);
+  --object-on-accent: var(--color-white);
+  --object-positive: var(--color-green-70);
+  --object-on-positive: var(--color-white);
+  --object-negative: var(--color-red-60);
+  --object-on-negative: var(--color-white);
+  --object-attention: var(--color-red-50);
+  --object-on-attention: var(--color-white);
+  --object-warning: var(--color-yellow-50); /* 1.92:1 trên trắng — chỉ dùng cho chấm/icon đi kèm chữ */
+  --object-on-warning: var(--color-black);
+  --border: var(--color-slate-30);
+  --border-muted: var(--color-slate-20);
+  --border-emphasized: var(--color-slate-50);
+  /* Thang viền theo MÀU THƯƠNG HIỆU, song song với thang xám ở trên.
+     Thang xám (border / -muted / -emphasized) KHÔNG đổi theo brand. */
+  --border-subtle: var(--color-blue-20);
+  --border-medium: var(--color-blue-30);
+  --border-inverted: var(--color-slate-60);
+  --border-muted-inverted: var(--color-slate-70);
+  --border-interactive: var(--color-indigo-50);
+  --border-interactive-inverted: var(--color-indigo-70);
+  --border-highlight: var(--color-white);
+  --border-negative: var(--color-red-60); /* viền ô nhập ở state Error */
+
+  /* ---- semantic: alpha tokens ---- */
+  /* Alpha lives on the token itself, not on a separate primitive. */
+  --overlay: color-mix(in srgb, var(--color-black) 10%, transparent);
+  --overlay-strong: color-mix(in srgb, var(--color-black) 45%, transparent);
+  --background-transparent: color-mix(in srgb, var(--color-white) 0%, transparent);
+}
+
+
+/* Typography mode "Active": weights shift up one step.
+   Used ONLY for the selected state of Toggle button (Active=True) and of a
+   Segment item (Pressed=True) inside SegmentedControl — NOT for :hover or :active.
+   Apply on the element that is turned on / selected. */
+[data-typography="active"], .uu-is-active {
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 800;
+}
+
+/* ---- density (spec §4.1) ----
+   Touch = mặc định, đúng kích thước gốc (app mobile, mini app). Compact = desktop / dashboard: bật bằng
+   data-density="compact" trên <html> hoặc một vùng. Độc lập với brand. Chỉ đổi kích thước và độ đậm chữ
+   label; màu, state layer, gap giữa các khối, icon giữ nguyên. Component đọc các biến này, không đọc
+   thẳng size-* / font-size-* cho phần có density. */
+:root, [data-density="touch"] {
+  --text-heading-lg-font-size: var(--font-size-2xl);
+  --text-heading-lg-line-height: var(--font-height-2xl);
+  --text-heading-base-font-size: var(--font-size-xl);
+  --text-heading-base-line-height: var(--font-height-xl);
+  --text-heading-sm-font-size: var(--font-size-lg);
+  --text-heading-sm-line-height: var(--font-height-lg);
+  --text-title-base-font-size: var(--font-size-base);
+  --text-title-base-line-height: var(--font-height-base);
+  --text-title-sm-font-size: var(--font-size-sm);
+  --text-title-sm-line-height: var(--font-height-sm);
+  --text-title-xs-font-size: var(--font-size-xs);
+  --text-title-xs-line-height: var(--font-height-xs);
+  --text-body-font-size: var(--font-size-base);
+  --text-body-line-height: var(--font-height-base);
+  --text-label-font-size: var(--font-size-base);
+  --text-label-line-height: var(--font-height-base);
+  --text-label-font-weight: var(--font-weight-semibold);
+  --text-caption-font-size: var(--font-size-sm);
+  --text-caption-line-height: var(--font-height-sm);
+  --control-height-large: var(--size-14);
+  --control-padding-x-large: var(--gap-6);
+  --control-padding-y-large: var(--gap-2);
+  --control-icon-large: var(--size-6);
+  --control-height-base: var(--size-12);
+  --control-padding-x-base: var(--gap-4);
+  --control-padding-y-base: var(--gap-2);
+  --control-icon-base: var(--size-6);
+  --control-height-small: var(--size-8);
+  --control-padding-x-small: var(--gap-3);
+  --control-padding-y-small: var(--gap-1);
+  --control-icon-small: var(--size-4);
+  --field-height: var(--size-12);
+  --field-padding-x: var(--gap-3);
+  --field-radius: var(--radius-lg);
+  --field-icon: var(--size-6);
+  --field-otp-min-width: var(--size-9);
+  --selection-size: var(--size-8);
+  --selection-radius: var(--radius-base);
+  --selection-check: var(--size-5);
+  --selection-radio-dot: var(--size-5);
+  --selection-label-offset: var(--gap-1);
+  --switch-width: var(--size-14);
+  --switch-height: var(--size-8);
+  --switch-padding: var(--gap-2);
+  --switch-handle-off: var(--size-4);
+  --switch-handle-on: var(--size-7);
+  --switch-handle-icon: var(--size-4);
+  --tab-padding: var(--gap-3);
+  --chip-border-width: 2px;
+}
+[data-density="compact"] {
+  --text-heading-lg-font-size: var(--font-size-xl);
+  --text-heading-lg-line-height: var(--font-height-xl);
+  --text-heading-base-font-size: var(--font-size-lg);
+  --text-heading-base-line-height: var(--font-height-lg);
+  --text-heading-sm-font-size: var(--font-size-base);
+  --text-heading-sm-line-height: var(--font-height-base);
+  --text-title-base-font-size: var(--font-size-sm);
+  --text-title-base-line-height: var(--font-height-sm);
+  --text-title-sm-font-size: var(--font-size-xs);
+  --text-title-sm-line-height: var(--font-height-xs);
+  --text-body-font-size: var(--font-size-sm);
+  --text-body-line-height: var(--font-height-sm);
+  --text-label-font-size: var(--font-size-sm);
+  --text-label-line-height: var(--font-height-sm);
+  --text-label-font-weight: var(--font-weight-medium);
+  --text-caption-font-size: var(--font-size-xs);
+  --text-caption-line-height: var(--font-height-xs);
+  --control-height-large: var(--size-10);
+  --control-padding-x-large: var(--gap-4);
+  --control-padding-y-large: var(--gap-1);
+  --control-icon-large: var(--size-4);
+  --control-height-base: var(--size-8);
+  --control-padding-x-base: var(--gap-3);
+  --control-padding-y-base: var(--gap-1);
+  --control-icon-base: var(--size-4);
+  --control-height-small: var(--size-6);
+  --control-padding-x-small: var(--gap-2);
+  --control-padding-y-small: var(--gap-0-5);
+  --field-height: var(--size-8);
+  --field-padding-x: var(--gap-2);
+  --field-radius: var(--radius-sm);
+  --field-icon: var(--size-4);
+  --field-otp-min-width: var(--size-7);
+  --selection-size: var(--size-6);
+  --selection-radius: var(--radius-sm);
+  --selection-check: var(--size-4);
+  --selection-radio-dot: var(--size-3);
+  --selection-label-offset: var(--gap-0-5);
+  --switch-width: var(--size-10);
+  --switch-height: var(--size-6);
+  --switch-padding: var(--gap-1-5);
+  --switch-handle-off: var(--size-3);
+  --switch-handle-on: var(--size-5);
+  --switch-handle-icon: var(--size-3);
+  --tab-padding: var(--gap-2);
+  --chip-border-width: 1px;
+}
+/* Mode chữ Active (Toggle bật, Segment đang chọn): label đậm hơn một bậc — Touch 700 · Compact 600.
+   Khai báo lại tại phần tử Active để var() lấy bậc weight đã dịch của mode đó. */
+[data-typography="active"], .uu-is-active { --text-label-font-weight: var(--font-weight-semibold); }
+[data-density="compact"] [data-typography="active"], [data-density="compact"] .uu-is-active,
+[data-density="compact"][data-typography="active"], [data-density="compact"].uu-is-active { --text-label-font-weight: var(--font-weight-medium); }
+
+/* ---- text styles ---- */
+.text-display-lg {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-5xl);
+  line-height: var(--font-height-5xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+.text-display-base {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-4xl);
+  line-height: var(--font-height-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+.text-display-sm {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-3xl);
+  line-height: var(--font-height-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+.text-display-xs {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  line-height: var(--font-height-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+}
+.text-heading-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--text-heading-lg-font-size);
+  line-height: var(--text-heading-lg-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-heading-base {
+  font-family: var(--font-family-body);
+  font-size: var(--text-heading-base-font-size);
+  line-height: var(--text-heading-base-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-heading-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--text-heading-sm-font-size);
+  line-height: var(--text-heading-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-title-base {
+  font-family: var(--font-family-body);
+  font-size: var(--text-title-base-font-size);
+  line-height: var(--text-title-base-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-title-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--text-title-sm-font-size);
+  line-height: var(--text-title-sm-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-title-xs {
+  font-family: var(--font-family-body);
+  font-size: var(--text-title-xs-font-size);
+  line-height: var(--text-title-xs-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.text-body {
+  font-family: var(--font-family-body);
+  font-size: var(--text-body-font-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+}
+.text-label {
+  font-family: var(--font-family-body);
+  font-size: var(--text-label-font-size);
+  line-height: var(--text-label-line-height);
+  font-weight: var(--text-label-font-weight);
+  letter-spacing: 0;
+}
+.text-caption {
+  font-family: var(--font-family-body);
+  font-size: var(--text-caption-font-size);
+  line-height: var(--text-caption-line-height);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+}
+
+/* Paragraph spacing (Figma paragraphSpacing): khoảng cách giữa hai đoạn liền nhau trong cùng khối chữ.
+   body / label 16 (font-height-xs) · caption 8 (font-height-2xs). Style khác = 0. */
+:where(.text-body, .text-label) > p + p { margin-block-start: var(--font-height-xs); }
+:where(.text-caption) > p + p { margin-block-start: var(--font-height-2xs); }
+
+
+/* =========================================================================
+   STATE LAYER — cơ chế hover/pressed của UU DS.
+   Hover/Pressed KHÔNG đổi background, color, hay font-weight. Chúng chỉ phủ
+   một lớp full-bleed màu = màu content của variant (currentColor).
+   ========================================================================= */
+
+.uu-interactive { position: relative; isolation: isolate; }
+.uu-interactive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+/* Nền đặc / tối: Solid Accent, Solid Neutral, mọi Inverted=True của Neutral,
+   và Toggle button khi Active=True */
+.uu-on-dark:hover::after   { opacity: var(--opacity-20); }
+.uu-on-dark:active::after  { opacity: var(--opacity-40); }
+
+/* Nền sáng / trong suốt: Outline, Ghost, mọi Solid Inverted=True,
+   và Toggle button khi Active=False */
+.uu-on-light:hover::after  { opacity: var(--opacity-5); }
+.uu-on-light:active::after { opacity: var(--opacity-10); }
+
+/* Disabled và Loading không có state layer */
+.uu-interactive[disabled]::after,
+.uu-interactive[aria-disabled="true"]::after,
+.uu-interactive[data-state="loading"]::after { opacity: 0; }
+
+/* --- Button sizing (mục 6.1 / 6.2) --- */
+.uu-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--gap-2);
+  border-radius: var(--rounded-circle);
+  font-family: var(--font-family-body);
+  font-size: var(--text-label-font-size);
+  line-height: var(--text-label-line-height);
+  font-weight: var(--text-label-font-weight);
+  border: 0 solid transparent;
+  cursor: pointer;
+}
+.uu-btn--lg   { min-height: var(--control-height-large); min-width: var(--control-height-large); padding: var(--control-padding-y-large) var(--control-padding-x-large); }
+.uu-btn--base { min-height: var(--control-height-base); min-width: var(--control-height-base); padding: var(--control-padding-y-base) var(--control-padding-x-base); }
+.uu-btn--sm   { min-height: var(--control-height-small); min-width: var(--control-height-small); padding: var(--control-padding-y-small) var(--control-padding-x-small); }
+.uu-btn--outline { border-width: 2px; }
+
+.uu-iconbtn--lg   { width: var(--control-height-large); height: var(--control-height-large); padding: 0; }
+.uu-iconbtn--base { width: var(--control-height-base); height: var(--control-height-base); padding: 0; }
+.uu-iconbtn--sm   { width: var(--control-height-small); height: var(--control-height-small); padding: 0; }
+/* icon: --control-icon-large / -base / -small (Touch 24 / 24 / 16 · Compact 16) */
+
+/* --- Toggle button (mục 6.7) --- */
+/* Active=True: đổi nền, đổi icon sang biến thể fill, và chữ đậm thêm 1 bậc
+   qua typography mode "Active". Không border, không shadow.
+   Hug width — đừng hardcode width. Với font hệ thống, bề rộng chữ còn khác
+   nhau giữa iOS, Roboto và các bộ font OEM của Android. */
+.uu-toggle { background: var(--background-surface); color: var(--object-primary); }
+.uu-toggle[aria-pressed="true"] {
+  background: var(--background-interactive);
+  color: var(--object-on-interactive);
+}
+/* Chữ đậm thêm một bậc khi bật: thêm class .uu-is-active (mode chữ Active, xem khối density). */
+
+/* --- Field (mục 6.3 / 6.4) --- */
+.uu-field {
+  display: flex; align-items: center; gap: var(--gap-2);
+  height: var(--field-height); padding: 0 var(--field-padding-x);
+  border-radius: var(--field-radius);
+  background: var(--background-surface);
+  border: 1px solid var(--border-muted);
+}
+.uu-field:focus-within { border-color: var(--border-emphasized); }
+.uu-field[data-disabled] { background: var(--background-disabled); }
+
+/* --- Ô "chọn": Dropdown (mục 6.4) và DateInput (mục 6.3c) --- */
+/* Gợi ý rỗng: body 400 object-secondary. Giá trị đã chọn: label 600 object-primary.
+   Icon mép phải luôn object-secondary (chevron-down 16 · calendar-days 24) — không phải
+   object-interactive, không bọc thành Icon button. Text FILL để icon bám mép phải. */
+.uu-field__hint,
+.uu-field__value { flex: 1 1 0; min-width: 1px;
+                    font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-field__hint  { color: var(--object-secondary); font-weight: var(--font-weight-normal); }
+.uu-field__value { color: var(--object-primary);   font-weight: var(--text-label-font-weight); }
+.uu-field__icon  { flex: 0 0 auto; color: var(--object-secondary); }
+
+/* --- Segmented control (mục 6.13) --- */
+/* Vỏ: background-emphasized, radius 16, padding 4, gap 2.
+   Item chọn: nền surface, radius 12, elevation-low, chữ 700 qua mode Active.
+   Item thường: trong suốt, chữ object-secondary 600. Item HUG — đừng chia đều. */
+.uu-segmented { display: inline-flex; align-items: center; gap: var(--gap-0-5);
+                 padding: var(--gap-1); border-radius: var(--radius-lg);
+                 background: var(--background-emphasized); }
+.uu-segment   { display: inline-flex; align-items: center; justify-content: center; gap: var(--gap-2);
+                 min-width: var(--size-10); min-height: var(--size-10); padding: var(--gap-1) var(--gap-3);
+                 border-radius: 0; background: transparent; color: var(--object-secondary);
+                 font-family: var(--font-family-body); font-size: var(--text-label-font-size);
+                 line-height: var(--text-label-line-height); font-weight: var(--text-label-font-weight); }
+.uu-segment[aria-selected="true"] { background: var(--background-surface); color: var(--object-primary);
+                 border-radius: var(--radius-base); box-shadow: var(--elevation-low); }
+/* Item chọn thêm class .uu-is-active để chữ đậm thêm một bậc (mode chữ Active). */
+
+/* --- Checkbox / Radio (mục 6.3f / 6.3d) --- */
+.uu-checkbox { width: var(--selection-size); height: var(--selection-size); border-radius: var(--selection-radius);
+                background: var(--background-surface); border: 2px solid var(--border-muted);
+                display: inline-flex; align-items: center; justify-content: center; }
+.uu-checkbox[aria-checked="true"] { background: var(--background-interactive); border: 0;
+                color: var(--object-on-interactive); } /* icon `check` fill 20 dùng currentColor */
+.uu-radio    { width: var(--selection-size); height: var(--selection-size); border-radius: var(--rounded-circle);
+                background: var(--background-surface); border: 2px solid var(--border);
+                display: inline-flex; align-items: center; justify-content: center; }
+.uu-radio[aria-checked="true"] { border-color: var(--border-interactive); color: var(--object-interactive); }
+.uu-radio[aria-checked="true"]::before { content: ""; width: var(--selection-radio-dot); height: var(--selection-radio-dot);
+                border-radius: inherit; background: currentColor; }
+/* State layer: ô/vòng TRỐNG đi bậc nền sáng 5/10; ô ĐÃ CHỌN đi bậc nền đặc
+   20/40 — Checkbox dùng object-on-interactive, Radio dùng object-interactive. */

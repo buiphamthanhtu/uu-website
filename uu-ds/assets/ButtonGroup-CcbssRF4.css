@@ -1,0 +1,1 @@
+.uu-btngroup{display:flex;gap:var(--gap-3);width:100%}.uu-btngroup--horizontal{flex-direction:row}.uu-btngroup--vertical{flex-direction:column}.uu-btngroup>.uu-btn{flex:1 1 0;min-width:var(--size-14)}

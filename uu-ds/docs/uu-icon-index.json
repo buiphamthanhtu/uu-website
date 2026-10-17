@@ -1,0 +1,605 @@
+{
+ "_doc": "Bộ UU icon — bản công khai, 100 tên. name → category và style có sẵn (outline / fill). Tên gần giống KHÔNG phải cùng icon. Không có ở đây → dừng và hỏi.",
+ "icons": {
+  "arrow-down": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "arrow-left": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "arrow-right": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "arrow-rotate-clockwise": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "arrow-up": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "asterisk": {
+   "category": "security",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "bag-shopping": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "barcode": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "bell": {
+   "category": "time",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "bookmark": {
+   "category": "bookmarks-favorites",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "bullet-list": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "calendar": {
+   "category": "time",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "calendar-days": {
+   "category": "time",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "camera": {
+   "category": "photography-video",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "cart-shopping": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "chat-bubble": {
+   "category": "communication",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "check": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "chevron-down": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "chevron-left": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "chevron-right": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "chevron-up": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-check": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-info": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-minus": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-plus": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-question": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-user": {
+   "category": "users",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "circle-xmark": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "clock": {
+   "category": "time",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "coins": {
+   "category": "business-finance",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "copy": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "credit-card": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "dots": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "dots-vertical": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "download": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "envelope": {
+   "category": "communication",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "external-link": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "eye": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "eye-slash": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "face-smile": {
+   "category": "emoji",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "file": {
+   "category": "files",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "filter": {
+   "category": "filtering-sorting",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "folder": {
+   "category": "files",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "gear": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "gift": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "globe": {
+   "category": "business-finance",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "grid": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "grid-2": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "heart": {
+   "category": "bookmarks-favorites",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "house": {
+   "category": "home-buildings",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "image": {
+   "category": "editing",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "laptop": {
+   "category": "technology-devices",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "layers-2": {
+   "category": "design-development",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "layers-3": {
+   "category": "design-development",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "link": {
+   "category": "editing",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "list-checkbox": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "list-todo": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "loader-2": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "location": {
+   "category": "maps-location",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "lock": {
+   "category": "security",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "magnifier": {
+   "category": "filtering-sorting",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "map": {
+   "category": "maps-location",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "map-pin": {
+   "category": "maps-location",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "menu-bars": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "microphone": {
+   "category": "sound-music",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "minus": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "mobile": {
+   "category": "technology-devices",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "moon": {
+   "category": "weather",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "palette": {
+   "category": "design-development",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "paper-plane": {
+   "category": "communication",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "paperclip": {
+   "category": "communication",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "pen": {
+   "category": "communication",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "phone": {
+   "category": "technology-devices",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "plus": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "pointer": {
+   "category": "maps-location",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "qrcode": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "receipt": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "robot": {
+   "category": "technology-devices",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "share-right": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "shield-check": {
+   "category": "security",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "sliders": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "sparkle": {
+   "category": "editing",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "star": {
+   "category": "bookmarks-favorites",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "sun": {
+   "category": "weather",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "tag": {
+   "category": "bookmarks-favorites",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "tags": {
+   "category": "bookmarks-favorites",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "text": {
+   "category": "editing",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "texture": {
+   "category": "design-development",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "thumbs-up": {
+   "category": "emoji",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "ticket": {
+   "category": "sport",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "trash": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "triangle-warning": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "truck": {
+   "category": "shopping",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "upload": {
+   "category": "arrows",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "user": {
+   "category": "users",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "users": {
+   "category": "users",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "video": {
+   "category": "editing",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "wallet": {
+   "category": "business-finance",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "wifi": {
+   "category": "technology-devices",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "xmark": {
+   "category": "ui-layout",
+   "outline": true,
+   "fill": true,
+   "public": true
+  }
+ }
+}

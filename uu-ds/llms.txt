@@ -1,0 +1,36 @@
+# UU Design System (UU DS)
+
+> Design system UU DS. Token 2 tầng (primitive → semantic), brand mode đổi bằng `<html data-theme="…">` (một brand: interactive = indigo, accent = blue, trung tính = slate), hover/pressed qua state layer, 30 component đã chốt, bộ UU icon 100 tên công khai, style guide nội dung tiếng Việt. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+
+Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
+
+## Bắt buộc đọc trước khi viết code
+
+- [Spec đầy đủ](/docs/design-system.md): mục 0 (luật), 1–3 (token, màu, typography), 4 (spacing/radius/elevation), 5 (danh sách component — ngoài danh sách là chưa chốt), 6.0 (state layer), 6.x (từng component).
+- [tokens.css](/docs/tokens.css): CSS custom properties, brand mode, recipe state layer `.uu-interactive .uu-on-dark .uu-on-light`, text style `.text-*`.
+
+## Khi cần
+
+- [tokens.json](/docs/tokens.json): DTCG-style, có `$resolved` — sinh sang iOS/Android/Style Dictionary.
+- [tailwind.js](/docs/tailwind.js): theme Tailwind trỏ về CSS var — chỉ khi project dùng Tailwind.
+- [icons.md](/docs/icons.md): luật UU icon (một component Icon(name, variant, size), SVG currentColor, fill = trạng thái bật, không có trong index → hỏi), cách thêm icon.
+- [uu-icon-index.json](/docs/uu-icon-index.json): 100 tên icon công khai → category và kiểu có sẵn (outline / fill).
+
+
+
+## Sáu ràng buộc
+
+1. Không hardcode màu; chỉ token semantic `--background-*` `--object-*` `--border-*`; cấm `--color-*` trong component.
+2. Brand là một lớp token (20 token, spec 2.5), đổi bằng `data-theme`; component không biết brand; `accent` (blue) ≠ `interactive` (indigo).
+3. Hover/Pressed = state layer `::after` currentColor, opacity 5/10 nền sáng · 20/40 nền tối; không đổi nền/chữ/weight; Disabled và Loading không có.
+4. Chỉ thang có sẵn: gap bước 4px, radius-*, 11 bậc font size, line-height tuyệt đối (web: rem, app: px), density Touch / Compact (`data-density="compact"`, spec §4.1), font hệ thống (không nhúng SF Pro).
+5. Chỉ build component ở mục 5 của spec; thiếu → hỏi, làm tạm phải ghi rõ. Chưa chốt: Action group, tìm nhanh / chọn nhiều trong Menu, Hover/Pressed/Disabled của Tab.
+6. Icon chỉ UU icon qua Icon(name, variant, size); tên tra ở uu-icon-index.json.
+
+## Code tham chiếu (repo)
+
+- `src/components/*` React + CSS thuần, tên trùng spec: TextButtonAccent, TextButtonNeutral, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, BaseSheet, BottomSheet, BaseDialog, Dialog, Spinner.
+- `src/icons/Icon.tsx` + `src/icons/svg/<name>[-fill].svg` (100 tên công khai × outline/fill, viewBox 0 0 18 18, currentColor).
+- Package npm `uu-ds` (exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`). Zalo Mini App (ZMP, React) dùng thẳng package này.
+- Flutter: `packages/flutter/uu_ds_flutter` — `tokens.g.dart` sinh từ tokens.json, widget `UuTextButton`, `UuTextInput`, `UuIcon`… cùng prop với bản web.
+- `AGENTS.md` ở gốc repo.
