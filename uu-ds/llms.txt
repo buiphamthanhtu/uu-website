@@ -1,6 +1,6 @@
 # UU Design System (UU DS)
 
-> Design system UU DS. Token 2 tầng (primitive → semantic), brand mode đổi bằng `<html data-theme="…">` (một brand: interactive = indigo, accent = blue, trung tính = slate), hover/pressed qua state layer, 30 component đã chốt, bộ UU icon 100 tên công khai, style guide nội dung tiếng Việt. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+> Design system UU DS. Token 2 tầng (primitive → semantic), brand mode đổi bằng `<html data-theme="…">` (một brand: interactive = indigo, accent = blue, trung tính = slate), hover/pressed qua state layer, 30 component đã chốt, bộ UU icon 100 tên công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
 
 Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
 
