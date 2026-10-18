@@ -1,6 +1,6 @@
 # UU Design System (UU DS)
 
-> Design system UU DS. Token 2 tầng (primitive → semantic), brand mode đổi bằng `<html data-theme="…">` (một brand: interactive = indigo, accent = blue, trung tính = slate), hover/pressed qua state layer, 30 component đã chốt, bộ UU icon 100 tên công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+> Design system UU DS. Token 2 tầng (primitive → semantic), hai brand mode — Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 50 component đã chốt, bộ UU icon 100 tên công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
 
 Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
 
@@ -21,7 +21,7 @@
 ## Sáu ràng buộc
 
 1. Không hardcode màu; chỉ token semantic `--background-*` `--object-*` `--border-*`; cấm `--color-*` trong component.
-2. Brand là một lớp token (20 token, spec 2.5), đổi bằng `data-theme`; component không biết brand; `accent` (blue) ≠ `interactive` (indigo).
+2. Brand là một lớp token (21 token, spec 2.5), đổi bằng `data-theme` (`default` · `uu`, đặt trên `<html>` hoặc một vùng); component không biết brand; `accent` ≠ `interactive`.
 3. Hover/Pressed = state layer `::after` currentColor, opacity 5/10 nền sáng · 20/40 nền tối; không đổi nền/chữ/weight; Disabled và Loading không có.
 4. Chỉ thang có sẵn: gap bước 4px, radius-*, 11 bậc font size, line-height tuyệt đối (web: rem, app: px), density Touch / Compact (`data-density="compact"`, spec §4.1), font hệ thống (không nhúng SF Pro).
 5. Chỉ build component ở mục 5 của spec; thiếu → hỏi, làm tạm phải ghi rõ. Chưa chốt: Action group, tìm nhanh / chọn nhiều trong Menu, Hover/Pressed/Disabled của Tab.
