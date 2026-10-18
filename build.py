@@ -33,11 +33,13 @@ def parse_post(path):
     if not m:
         sys.exit(f"LỖI: {path.name} thiếu front-matter (--- ... ---)")
     meta = yaml.safe_load(m.group(1))
+    meta["slug"] = path.stem
+    meta["url"] = f"blog-{path.stem}.html"
+    if meta.get("draft"):
+        return meta, m.group(2)  # bản nháp chưa cần đủ trường, portal cho lưu dở
     for field in ("title", "episode", "date", "cover"):
         if field not in meta:
             sys.exit(f"LỖI: {path.name} thiếu trường '{field}'")
-    meta["slug"] = path.stem
-    meta["url"] = f"blog-{path.stem}.html"
     return meta, m.group(2)
 
 

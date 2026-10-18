@@ -21,11 +21,17 @@ download-assets.sh       Script tải hình từ trang Figma Sites cũ (đã ch�
 
 ## Viết bài mới
 
-**Cách 1 — Pages CMS (khuyên dùng):** vào https://app.pagescms.org, đăng nhập
-GitHub, chọn repo này → "Bài viết" → Add entry → viết → Save. GitHub Actions
-tự build và đăng bài trong ~1 phút.
+**Cách 1 — Portal (khuyên dùng):** vào https://uucreative.co/admin/, đăng nhập
+Google → "Viết bài mới" → soạn theo khối → "Đăng bài". GitHub Actions tự build và
+đăng bài trong ~1 phút. Cài đặt một lần: `worker/HUONG-DAN.md`.
+Portal = `admin/` (trang tĩnh) + `worker/blog-api.js` (Cloudflare Worker giữ GitHub token,
+chỉ cho ghi `posts/*.md` và `assets/uploads/*`).
 
 **Cách 2 — tay:** tạo `posts/ten-bai.md` (copy front-matter từ bài cũ), push lên.
+
+Giao diện dùng UU Design System: `css/uu-tokens.css` (token gốc, chép từ UU DS),
+`css/uu-brand-studio.css` (brand mode cam ÚÙ), `css/uu-components.css`, `css/site.css`.
+Icon lấy từ `assets/icons.svg` — chỉ gồm icon công khai của UU icon.
 
 **Quy ước trong Markdown:**
 

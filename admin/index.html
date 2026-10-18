@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="uu-studio" data-density="compact">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Quản lý blog · ÚÙ Creative Studio</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/uu-tokens.css">
+  <link rel="stylesheet" href="../css/uu-brand-studio.css">
+  <link rel="stylesheet" href="../css/uu-components.css">
+  <link rel="stylesheet" href="admin.css?v=2">
+</head>
+<body>
+  <p class="demo-banner text-caption" id="demoBanner" hidden>Chế độ thử: đọc bài thật nhưng <strong>không lưu</strong> gì lên website. Điền <code>API_BASE</code> trong admin/config.js để dùng thật.</p>
+
+  <!-- Đăng nhập -->
+  <div class="login" id="screenLogin" hidden>
+    <div class="login__card">
+      <img src="../assets/logo.png" alt="">
+      <h1 class="text-heading-lg">Quản lý blog ÚÙ</h1>
+      <p class="text-body">Đăng nhập bằng tài khoản Google của studio để viết và đăng bài lên uucreative.co.</p>
+      <button class="uu-btn uu-btn--lg uu-interactive tb-neutral-outline" id="loginBtn">
+        <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#circle-user"/></svg> Đăng nhập bằng Google
+      </button>
+      <p class="uu-error" id="loginError" role="alert" hidden></p>
+      <p class="text-caption">Chỉ tài khoản đã được cấp quyền mới vào được.</p>
+    </div>
+  </div>
+
+  <!-- Ứng dụng -->
+  <div class="app" id="screenApp" hidden>
+    <nav class="uu-sidenav" aria-label="Portal">
+      <div class="nav-brand">
+        <img src="../assets/logo.png" alt="">
+        <strong class="text-title-base">Blog ÚÙ</strong>
+      </div>
+      <p class="uu-sidenav__section text-title-xs">Nội dung</p>
+      <a class="uu-navitem uu-interactive" href="#/" aria-current="page"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file-fill"/></svg>Bài viết</a>
+      <p class="uu-sidenav__section text-title-xs">Website</p>
+      <a class="uu-navitem uu-interactive" href="https://uucreative.co" target="_blank" rel="noopener"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg>Xem uucreative.co</a>
+      <span class="nav-spacer"></span>
+      <span class="account text-caption"><svg class="uu-icon uu-icon--16" aria-hidden="true"><use href="../assets/icons.svg#circle-user"/></svg><span id="accountEmail"></span></span>
+      <button class="uu-btn uu-btn--sm uu-interactive tb-neutral-ghost" id="logoutBtn">Đăng xuất</button>
+    </nav>
+    <main class="app__main" id="main"></main>
+  </div>
+
+  <!-- Menu thao tác theo dòng (Menu Panel §6.21) -->
+  <div class="uu-menu floating-menu" id="rowMenu" role="menu" hidden></div>
+
+  <!-- Dialog (§6.10) -->
+  <div class="uu-scrim uu-scrim--dialog" id="dialog" hidden>
+    <div class="uu-panel" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <div class="uu-panel__header uu-panel__header--end">
+        <button class="uu-btn uu-iconbtn uu-iconbtn--sm uu-interactive tb-neutral-outline" aria-label="Đóng" data-dialog="cancel"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#xmark"/></svg></button>
+      </div>
+      <div class="uu-panel__body">
+        <h2 class="text-heading-sm" id="dialogTitle"></h2>
+        <p class="text-body" id="dialogText"></p>
+        <div class="uu-btngroup">
+          <button class="uu-btn uu-btn--lg uu-interactive tb-accent-outline" data-dialog="cancel" id="dialogCancel">Huỷ</button>
+          <button class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" data-dialog="ok" id="dialogOk">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast (§6.6) -->
+  <div class="toast-host" id="toast" hidden>
+    <div class="uu-toast" role="status" id="toastBox">
+      <span class="uu-toast__content text-body" id="toastText"></span>
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-solid-inv" id="toastAction" target="_blank" rel="noopener" hidden></a>
+      <button class="uu-btn uu-iconbtn uu-iconbtn--base uu-interactive tb-neutral-ghost-inv" aria-label="Đóng thông báo" id="toastClose"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#xmark"/></svg></button>
+    </div>
+  </div>
+
+  <input type="file" id="filePicker" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+  <script src="config.js"></script>
+  <script src="admin.js?v=3"></script>
+</body>
+</html>
