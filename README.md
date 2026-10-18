@@ -7,14 +7,16 @@ Clone từ file Figma "Website", không cần Figma để chỉnh sửa nữa.
 ```
 posts/                   ★ NGUỒN bài viết (Markdown) — sửa/thêm bài Ở ĐÂY
 templates/               Template HTML cho trang bài viết + trang blog
-build.py                 Script build: posts/*.md → blog-*.html, blog.html, index.html
-.pages.yml               Cấu hình Pages CMS (giao diện viết bài trên web)
+build.py                 Script build: posts/*.md → blog-*.html, blog.html, index.html, sitemap, llms.txt
+admin/                   Portal viết bài (uucreative.co/admin/), đăng nhập Google
+worker/                  Cloudflare Worker của portal + hướng dẫn cài đặt
 .github/workflows/       GitHub Actions: tự build khi posts/ thay đổi
 index.html               Trang chủ (phần covers do build.py tự cập nhật)
 blog.html                Danh sách bài viết (file sinh tự động — ĐỪNG sửa tay)
-blog-giao-tiep-*.html    Trang bài viết (file sinh tự động — ĐỪNG sửa tay)
-css/style.css            Toàn bộ style + design tokens
-js/main.js               Menu mobile
+blog-*.html              Trang bài viết (file sinh tự động — ĐỪNG sửa tay)
+css/                     UU DS: uu-tokens · uu-brand-studio · uu-components · site
+js/main.js               Menu mobile (bottom sheet)
+uu-ds/                   Storybook UU Design System (deploy từ project UU DS, đừng sửa tay)
 assets/                  Hình ảnh
 download-assets.sh       Script tải hình từ trang Figma Sites cũ (đã chạy xong)
 ```
