@@ -582,7 +582,7 @@ BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.Side
 | `SegmentedControl` | 1 (+ `.Segment item` 8) | 6.13 |
 | `NavigationBar` | 1 | 6.5 |
 | `BottomBar` | 10 (+ `base/FooterItem` 2) | 6.22 |
-| `TablePagination` | 1 (+ `.PageItem` 3) | 6.24 |
+| `TablePagination` | 1 (+ `.PageItem` 4) | 6.24 |
 | `Breadcrumb` | 1 (+ `.BreadcrumbItem` 3) | 6.25 |
 | `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | 6.27 |
 | `Tab` | 2 | 6.20 |
@@ -592,7 +592,7 @@ BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.Side
 | `StatusIndicator` | 8 | 6.15 |
 | `NotificationBadge` | 2 | 6.16 |
 | `Tooltip` | 4 | 6.30 |
-| `TableHeaderCell` | 8 | 6.23 |
+| `TableHeaderCell` | 20 | 6.23 |
 | `TableCell` | 15 | 6.23 |
 | `KPICard` | 3 | 6.26 |
 | `CardSheet` (tấm bottom sheet) | 2 | 6.8 |
@@ -1264,7 +1264,7 @@ Khớp đúng quy tắc mục 6.0, không ngoại lệ. `Disabled` không có st
 
 ### 6.8 Bottom sheet
 
-Hai component tách vai rõ ràng: `CardSheet` là bản thân tấm sheet, `Sheet` là màn hình hoàn chỉnh có scrim. (`CardSheet` thay `.base/sheet` cũ; `.base/sheet` còn trong file bản vẽ chỉ để tham chiếu, đừng dùng mới.)
+Hai component tách vai rõ ràng: `CardSheet` là bản thân tấm sheet, `Sheet` là màn hình hoàn chỉnh có scrim. (`CardSheet` thay `.base/sheet` cũ — đã gỡ khỏi file bản vẽ.)
 
 #### `CardSheet` — tấm sheet
 
@@ -1384,7 +1384,7 @@ Header của Dialog chỉ chứa nút đóng, căn phải (`primaryAxisAlignItem
 
 **Đối chiếu prop giữa hai component** (khác nhau, dễ nhớ sai):
 
-| Chức năng | `.base/sheet` | `.base/dialog` |
+| Chức năng | `CardSheet` | `.base/dialog` |
 |---|---|---|
 | Nội dung | `Slot` | `Slot` |
 | Tiêu đề | `Header` (TEXT) | — |
@@ -1670,7 +1670,7 @@ component nội bộ `.MenuItem`. Đây là **panel option bung ra của
 | Platform | Hình học |
 |---|---|
 | `Panel` | V · gap **4** · padding **12** · `FIXED × HUG` · radius **24** (`rounded-2xl`) · nền `background-surface` · **`elevation-low`** |
-| `Sheet` | dùng lại nguyên template `Sheet` (6.8): `.base/sheet` `Header="Menu"`, `CTA=false`, `Back=false`, scrim `overlay` + blur 16 |
+| `Sheet` | dùng lại nguyên template `Sheet` (6.8): `CardSheet` `Header="Menu"`, `CTA=false`, `Navigation=Close`, scrim `overlay` + blur 16 |
 
 **Props `.MenuItem`**: `Selected` (False/True) · `State` (Default/Hover/Pressed/`[No state]`) ·
 `Disabled` (False/True) · `Prefix` (BOOLEAN — icon 24 trước chữ) · `Option` (TEXT). **8 variant.**
@@ -1747,7 +1747,7 @@ component `Table` riêng trong bản vẽ — bên code `Table` / `TableRow` ch�
 bọc các ô, không thêm hình học.
 
 **Props `TableHeaderCell`**: `Label` (TEXT) · `Sort` (`Off` · `Unsorted` · `Ascending` · `Descending`) ×
-`Align` (`Left` · `Right`). **8 variant.**
+`Align` (`Left` · `Right`) × `State` (`Default` · `Hover` · `Pressed` — chỉ cột sắp được, `Sort≠Off`). **20 variant.**
 
 | Phần | Giá trị |
 |---|---|
@@ -1755,6 +1755,7 @@ bọc các ô, không thêm hình học.
 | Nhãn | `title-sm` · `object-secondary`; **`object-primary`** khi `Ascending` / `Descending` |
 | Icon sắp xếp | 16 · `Ascending` `arrow-up` · `Descending` `arrow-down` (`object-primary`) · `Unsorted` `sort-vertical` `object-secondary` (cột sắp được, chưa sắp) · `Off` không icon (cột không sắp được) |
 | `Align=Right` | icon đứng **trước** nhãn, cả hai dồn phải — dùng cho cột **số** |
+| `Hover` / `Pressed` | state layer `object-primary` · `opacity-5` / `opacity-10` phủ cả ô — cột sắp được là thứ bấm được (§6.0). `Sort=Off` không có state |
 
 **Props `TableCell`**: `Content` (TEXT) · `TextButton` · `IconButton` (BOOLEAN, ô `Actions`) · `Type`
 (`Text` · `Number` · `Secondary` · `Actions` · `Checkbox`) × `State` (`Default` · `Hover` · `Selected`). **15 variant.**
@@ -1785,7 +1786,7 @@ hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — mà
 Thanh dưới bảng: chọn số dòng mỗi trang và chuyển trang. Khác `Pagination` (§6.19, chấm chỉ báo
 carousel trên app) — `TablePagination` có **số trang bấm được**.
 
-**Props `.PageItem`** (nội bộ): `Page` (TEXT) · `State` (`Default` · `Hover` · `Selected`). **3 variant.**
+**Props `.PageItem`** (nội bộ): `Page` (TEXT) · `State` (`Default` · `Hover` · `Selected` · `Ellipsis`). **4 variant.**
 **`TablePagination`**: `Rows per page` (BOOLEAN — hiện/ẩn cụm chọn số dòng bên trái). 1 variant.
 
 | Phần | Giá trị |
@@ -1797,10 +1798,16 @@ carousel trên app) — `TablePagination` có **số trang bấm được**.
 | `Default` | chữ `object-secondary` |
 | `Hover` | state layer `object-primary` · `opacity-5` (pressed `opacity-10`, như `IconButtonNeutral` Ghost) |
 | `Selected` | viền **2px `border-interactive`** · chữ `object-primary` · `aria-current="page"` |
+| `Ellipsis` | "…" `object-secondary` · không bấm được, không state layer · `aria-hidden` |
 
 Nút lùi ở trang đầu / tiến ở trang cuối là **Disabled**.
 
-**Chưa có**: rút gọn khi nhiều trang (ô "…"); ô nhập số trang để nhảy; phân trang không biết tổng số dòng.
+**Rút gọn**: tới **7 trang** thì hiện đủ. Quá 7: luôn giữ trang đầu, trang cuối, trang đang chọn ± 1; khoảng
+trống giữa chúng thành **một** ô `Ellipsis`. Khoảng trống chỉ có **một** trang thì hiện số trang đó thay vì "…"
+(không bao giờ "…" thay cho đúng một số). Ví dụ 20 trang, đang ở 10: `1 … 9 10 11 … 20`; đang ở 2:
+`1 2 3 … 20`.
+
+**Chưa có**: ô nhập số trang để nhảy; phân trang không biết tổng số dòng.
 
 ### 6.25 Breadcrumb (`Breadcrumb` · `.BreadcrumbItem`)
 
@@ -1876,7 +1883,7 @@ Tấm trượt từ mép phải màn desktop để xem / sửa chi tiết mà kh
 | `Modal` | `elevation-high` · radius `radius-lg` ở **hai góc trái** · có scrim như `Sheet` |
 | Header | padding `card/padding` · `Title` `heading-sm` + `IconButtonNeutral` Ghost Small `xmark` |
 | Body | padding ngang `card/padding` · gap **12** · cuộn khi dài |
-| Footer | padding `card/padding` · `TextButtonNeutral` **Outline Base** + `TextButtonAccent` **Solid Base**, dồn phải |
+| Footer | padding `card/padding` · gap **12** (`gap-3`, như `ButtonGroup`) · `TextButtonNeutral` **Outline Base** + `TextButtonAccent` **Solid Base**, dồn phải |
 
 Trên app dùng `Sheet` (§6.8), không dùng `SideSheet`.
 
@@ -1891,7 +1898,7 @@ Khung nổi neo vào một phần tử, chứa nội dung có thể tương tác
 |---|---|
 | Khung | VERTICAL · rộng **320** (`size-80`) · padding `card/padding` · gap **12** · radius `radius-lg` · nền `background-surface` · `elevation-medium` |
 | Header | `Title` `title-base` + `IconButtonNeutral` Ghost Small `xmark` |
-| Footer | dồn phải · `TextButtonNeutral` **Ghost Small** + `TextButtonAccent` **Solid Small** |
+| Footer | dồn phải · gap **8** (`gap-2`, nút Small) · `TextButtonNeutral` **Ghost Small** + `TextButtonAccent` **Solid Small** |
 
 Khác `Tooltip`: Popover mở bằng **bấm**, có nút, đóng bằng nút đóng / Esc / bấm ra ngoài; Tooltip
 mở bằng hover / focus, chỉ có chữ. Khác `Menu`: Menu là danh sách lựa chọn.
@@ -1910,7 +1917,13 @@ Nhãn ngắn giải thích một phần tử khi hover hoặc focus — thườn
 | Mũi tên | 8 × 4, cùng màu nền, giữa cạnh hướng về phần tử |
 
 Chỉ chữ thuần, không link / nút bên trong (cần thì dùng `Popover`). Hiện khi hover **và** focus bàn
-phím; phần tử được gắn `aria-describedby`. Không dùng trên màn chạm — không có hover.
+phím. Không dùng trên màn chạm — không có hover.
+
+**Tooltip là mô tả hay là tên** (code, không phải variant bản vẽ): mặc định tooltip **mô tả thêm** cho
+phần tử đã có tên → gắn `aria-describedby`. Khi phần tử **chỉ có icon** và tooltip chính là tên của nó
+(mục `SideNav` thu gọn, `IconButton` không `label`) → gắn `aria-labelledby` để screen reader đọc tên đúng
+một lần. Web: prop `relation: 'description' | 'label'`; Flutter: `UuTooltip(isLabel: true)`. `IconButton`
+đã có `label` thì tooltip vẫn là `description`.
 
 **Chưa có**: độ trễ hiện / ẩn chuẩn; tooltip nhiều dòng có tiêu đề.
 
