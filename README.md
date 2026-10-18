@@ -14,7 +14,7 @@ worker/                  Cloudflare Worker của portal + hướng dẫn cài đ
 index.html               Trang chủ (phần covers do build.py tự cập nhật)
 blog.html                Danh sách bài viết (file sinh tự động — ĐỪNG sửa tay)
 blog-*.html              Trang bài viết (file sinh tự động — ĐỪNG sửa tay)
-css/                     UU DS: uu-tokens · uu-brand-studio · uu-components · site
+css/                     UU DS: uu-tokens (chép từ UU DS, brand `uu`) · uu-components · site
 js/main.js               Menu mobile (bottom sheet)
 uu-ds/                   Storybook UU Design System (deploy từ project UU DS, đừng sửa tay)
 assets/                  Hình ảnh
@@ -38,7 +38,7 @@ Markdown), JSON-LD `BlogPosting` trên từng bài. Trường `seo_title` + `des
 build ra trang mới, workflow báo IndexNow (Bing) bằng khoá trong file `<32 ký tự hex>.txt` ở gốc.
 
 Giao diện dùng UU Design System: `css/uu-tokens.css` (token gốc, chép từ UU DS),
-`css/uu-brand-studio.css` (brand mode cam ÚÙ), `css/uu-components.css`, `css/site.css`.
+brand mode `uu` chính thức của UU DS (cam + vàng, `<html data-theme="uu">`), `css/uu-components.css`, `css/site.css`.
 Icon lấy từ `assets/icons.svg` — chỉ gồm icon công khai của UU icon.
 
 **Quy ước trong Markdown:**

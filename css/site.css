@@ -1,4 +1,4 @@
-/* Bố cục website ÚÙ — ghép layout từ token UU DS (uu-tokens.css + uu-brand-studio.css).
+/* Bố cục website ÚÙ — ghép layout từ token UU DS (uu-tokens.css, brand mode `uu` bật bằng <html data-theme="uu">).
    Trang nền tối: page = background-inverted, control đặt thẳng lên nền dùng variant Inverted=True.
    Không hex, không --color-*: màu chỉ đi qua token semantic. */
 
