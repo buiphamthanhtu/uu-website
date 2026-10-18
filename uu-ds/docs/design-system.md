@@ -298,6 +298,8 @@ Nền nút `background-interactive` là **orange-50** (chủ DS chốt 2026-10-1
 `object-on-interactive` là **đen** (7.49). Đây là lý do `object-on-interactive` nằm trong nhóm token thương hiệu;
 vàng đậm amber-40 chỉ làm nền (`background-accent-emphasized`, chữ đen 12.58), chữ vàng dùng amber-70.
 
+Đổi brand cho **một vùng**: đặt `data-theme` lên khung chứa vùng đó — `data-theme="uu"` hoặc `data-theme="default"` (khối Default cũng được khai bằng `[data-theme="default"]` để vùng con quay về Default khi cả trang đang ở UU).
+
 Figma: collection `color`, mode `Default` · `UU`. tokens.json: `semantic.color.default` · `semantic.color.uu`.
 Flutter: `UuBrand.defaultBrand` · `UuBrand.uu` (`default` là từ khoá của Dart).
 

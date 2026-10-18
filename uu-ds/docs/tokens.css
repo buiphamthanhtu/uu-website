@@ -411,6 +411,31 @@
   --background-transparent: color-mix(in srgb, var(--color-white) 0%, transparent);
 }
 
+/* ---- brand mode Default, khai lại cho vùng con: <div data-theme="default"> bên trong trang đang ở brand khác ---- */
+[data-theme="default"] {
+  --background-muted: var(--color-slate-05);
+  --background-subtle: var(--color-slate-10);
+  --background-emphasized: var(--color-slate-20);
+  --background-interactive: var(--color-indigo-60);
+  --background-interactive-muted: var(--color-indigo-05);
+  --background-accent: var(--color-blue-60);
+  --background-accent-muted: var(--color-blue-05);
+  --background-accent-subtle: var(--color-blue-10);
+  --background-accent-medium: var(--color-blue-20);
+  --background-accent-emphasized: var(--color-blue-40);
+  --object-interactive: var(--color-indigo-60);
+  --object-interactive-muted: var(--color-indigo-50);
+  --object-interactive-inverted: var(--color-indigo-30);
+  --object-on-interactive: var(--color-white);
+  --object-accent: var(--color-blue-60);
+  --object-accent-muted: var(--color-blue-30);
+  --object-accent-inverted: var(--color-blue-30);
+  --border-interactive: var(--color-indigo-50);
+  --border-interactive-inverted: var(--color-indigo-70);
+  --border-subtle: var(--color-blue-20);
+  --border-medium: var(--color-blue-30);
+}
+
 /* ---- brand mode UU (spec 2.5): cam + vàng theo nhận diện Ú Ù — chỉ 21 token thương hiệu ----
    Nền nút orange-50 (chủ DS chốt 2026-10-18): chữ trắng chỉ 2.80 → chữ trên nút ĐEN (7.49) qua object-on-interactive.
    Chữ / link màu cam vẫn orange-70 (5.18 trên trắng); orange-50 trên trắng chỉ 2.80. */
