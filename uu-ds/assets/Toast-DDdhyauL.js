@@ -1,0 +1,16 @@
+import{j as n}from"./iframe-gn_pzB68.js";import{useMDXComponents as d}from"./index-CrYLlzxl.js";import{M as i,C as c,a as o,S as h}from"./blocks-C259Y4_u.js";import{D as l}from"./DocHeader-ChFWaY5-.js";import{S as a,P as r}from"./Toast.stories-BuoPZ4CK.js";import"./preload-helper-Dp1pzeXC.js";import"./layout-whGn3D85.js";function s(t){const e={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...d(),...t.components};return n.jsxs(n.Fragment,{children:[n.jsx(i,{of:a}),`
+`,n.jsx(e.h1,{id:"toast",children:"Toast"}),`
+`,n.jsx(l,{spec:"6.6",variants:"4",status:"chốt"}),`
+`,n.jsx(c,{of:r}),`
+`,n.jsx(o,{of:r}),`
+`,n.jsxs(e.p,{children:[n.jsx(e.code,{children:"428 × 64"})," · HORIZONTAL · padding 8/16 · gap 12 · radius 12 · ",n.jsx(e.code,{children:"elevation-medium"}),"."]}),`
+`,n.jsx(e.pre,{children:n.jsx(e.code,{children:`[ Content — FILL · body 400 ] [ TextButtonNeutral Solid Base ] [ IconButtonNeutral Ghost 48 (xmark) ]
+`})}),`
+`,n.jsxs(e.table,{children:[n.jsx(e.thead,{children:n.jsxs(e.tr,{children:[n.jsx(e.th,{children:"Type"}),n.jsx(e.th,{children:"Background"}),n.jsx(e.th,{children:"Content"}),n.jsx(e.th,{children:"Nút Action & đóng"})]})}),n.jsxs(e.tbody,{children:[n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Neutral"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-inverted"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-primary-inverted"})}),n.jsx(e.td,{children:"Inverted=True"})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Negative"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-negative"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-negative"})}),n.jsx(e.td,{children:"Inverted=True"})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Positive"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-positive"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-positive"})}),n.jsx(e.td,{children:"Inverted=True"})]}),n.jsxs(e.tr,{children:[n.jsx(e.td,{children:"Warning"}),n.jsx(e.td,{children:n.jsx(e.code,{children:"background-warning"})}),n.jsx(e.td,{children:n.jsx(e.code,{children:"object-on-warning"})}),n.jsx(e.td,{children:n.jsx(e.strong,{children:"Inverted=False"})})]})]})]}),`
+`,n.jsxs(e.p,{children:["Quy tắc: ",n.jsx(e.strong,{children:"độ sáng của nền quyết định cả ba phần tử cùng lúc."})," Warning nền vàng sáng nên content, nút Action và nút đóng đều lật sang tối. Thêm type mới thì áp đúng quy tắc này, không ngoại lệ."]}),`
+`,n.jsx(e.p,{children:"Contrast đã đo: Neutral 21.00 · Negative 4.83 · Positive 5.02 · Warning 15.93 — đạt AA cả bốn."}),`
+`,n.jsx(e.h2,{id:"khi-nào-dùng",children:"Khi nào dùng"}),`
+`,n.jsx(e.p,{children:"Kết quả của một hành động vừa xong, không cần người dùng quyết định. Lỗi nhập liệu báo tại ô, không Toast. Cần quyết định → Dialog."}),`
+`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-tsx",children:`<Toast type="positive" action={{ label: 'Xem', onClick: view }} onClose={dismiss}>Thanh toán thành công</Toast>
+`})}),`
+`,n.jsx(h,{includePrimary:!1})]})}function b(t={}){const{wrapper:e}={...d(),...t.components};return e?n.jsx(e,{...t,children:n.jsx(s,{...t})}):s(t)}export{b as default};

@@ -2,7 +2,8 @@
 /* Đơn vị (web): size / gap / radius / font-size / line-height xuất rem (1rem = 16px ở cỡ chữ mặc định)
    để giao diện co theo cỡ chữ người dùng chọn trong trình duyệt. Giữ px: size-px (nét 1px), rounded-circle,
    bóng đổ, độ dày viền. App (Flutter) dùng cùng giá trị ở dạng logical px — xem tokens.json. */
-/* UU DS — một brand mode mặc định. Thêm brand mới bằng một khối [data-theme="<tên>"] ghi đè token thương hiệu. */
+/* UU DS — hai brand mode: Default (:root) và UU ([data-theme="uu"], cam + vàng theo nhận diện Ú Ù). Brand khác: thêm một khối
+   [data-theme="<tên>"] ghi đè đúng 21 token thương hiệu (spec 2.5). */
 
 :root {
   /* ---- primitive: color ---- */
@@ -345,7 +346,7 @@
   --elevation-medium: 0px 4px 12px rgba(0, 0, 0, 0.10);
   --elevation-high: 0px 8px 24px rgba(0, 0, 0, 0.10);
 
-  /* ---- semantic: brand mode mặc định ---- */
+  /* ---- semantic: brand mode Default ---- */
   --background-surface: var(--color-white);
   --background-muted: var(--color-slate-05);
   --background-subtle: var(--color-slate-10);
@@ -408,6 +409,33 @@
   --overlay: color-mix(in srgb, var(--color-black) 10%, transparent);
   --overlay-strong: color-mix(in srgb, var(--color-black) 45%, transparent);
   --background-transparent: color-mix(in srgb, var(--color-white) 0%, transparent);
+}
+
+/* ---- brand mode UU (spec 2.5): cam + vàng theo nhận diện Ú Ù — chỉ 21 token thương hiệu ----
+   Nền nút orange-50 (chủ DS chốt 2026-10-18): chữ trắng chỉ 2.80 → chữ trên nút ĐEN (7.49) qua object-on-interactive.
+   Chữ / link màu cam vẫn orange-70 (5.18 trên trắng); orange-50 trên trắng chỉ 2.80. */
+[data-theme="uu"] {
+  --background-muted: var(--color-neutral-05);
+  --background-subtle: var(--color-neutral-10);
+  --background-emphasized: var(--color-neutral-20);
+  --background-interactive: var(--color-orange-50);
+  --object-on-interactive: var(--color-black);
+  --background-interactive-muted: var(--color-orange-05);
+  --background-accent: var(--color-amber-70);
+  --background-accent-muted: var(--color-amber-05);
+  --background-accent-subtle: var(--color-amber-10);
+  --background-accent-medium: var(--color-amber-20);
+  --background-accent-emphasized: var(--color-amber-40);
+  --object-interactive: var(--color-orange-70);
+  --object-interactive-muted: var(--color-orange-60);
+  --object-interactive-inverted: var(--color-orange-40);
+  --object-accent: var(--color-amber-70);
+  --object-accent-muted: var(--color-amber-30);
+  --object-accent-inverted: var(--color-amber-30);
+  --border-interactive: var(--color-orange-60);
+  --border-interactive-inverted: var(--color-orange-80);
+  --border-subtle: var(--color-amber-20);
+  --border-medium: var(--color-amber-30);
 }
 
 

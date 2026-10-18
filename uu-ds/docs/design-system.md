@@ -233,7 +233,19 @@ Các cặp màu dưới đây đã đo theo WCAG 2.x. Ngưỡng: **4.5** cho ch�
 | `object-warning` (`yellow-50`) trên nền sáng | **1.92** — không đạt, chỉ làm chấm/icon kèm chữ |
 | Toast: Neutral 21.00 · Negative 4.83 · Positive 5.02 · Warning 15.93 | đạt cả 4 |
 
-Bảy dòng đầu phụ thuộc màu thương hiệu. **Đổi màu UU thì đo lại bảy dòng đó** trước khi chốt: nếu màu mới rơi dưới 4.5 với trắng, chữ nút `Ghost`/`Outline` và chữ trong nút `Solid` sẽ dưới chuẩn cho chữ thường. Khi đó đừng "chữa" bằng viền hay đổ bóng — chọn bậc đậm hơn trên ramp, hoặc đẩy chữ nút lên ngưỡng chữ lớn (≥18.66px, weight 700), là một thay đổi thang chữ cần chốt riêng.
+Bảy dòng đầu phụ thuộc màu thương hiệu — số ở trên là brand **Default**. Brand **UU** (2.5) đã đo:
+
+| Cặp (brand UU) | Tỷ lệ |
+|---|---|
+| `object-interactive` (orange-70) trên `background-surface` · chữ **đen** trên `background-interactive` (orange-50) | 5.18 · 7.49 |
+| núm trắng của `Switch` trên `background-interactive` (orange-50) | **2.80** — dưới 3:1 cho thành phần đồ hoạ; núm vẫn có dấu check `object-interactive` nên trạng thái bật không chỉ dựa vào màu |
+| `object-interactive` trên `background-interactive-muted` (orange-05) · trên `background-accent-subtle` (amber-10) | 4.88 · 4.65 |
+| `object-accent` (amber-70) trên `background-surface` · chữ trắng trên `background-accent` | 5.02 · 5.02 |
+| `border-interactive` (orange-60) trên `background-surface` · trên `background-interactive-muted` | 3.56 · 3.35 (ngưỡng 3:1) |
+| `object-secondary` trên `background-muted` · `background-subtle` (neutral-05 / 10) | 4.56 · **4.36** |
+| `object-interactive-inverted` (orange-40) trên `background-inverted` | 9.28 |
+
+**Đổi màu một brand thì đo lại các dòng phụ thuộc màu thương hiệu** trước khi chốt: nếu màu mới rơi dưới 4.5 với trắng, chữ nút `Ghost`/`Outline` và chữ trong nút `Solid` sẽ dưới chuẩn cho chữ thường. Khi đó đừng "chữa" bằng viền hay đổ bóng — chọn bậc đậm hơn trên ramp, hoặc đẩy chữ nút lên ngưỡng chữ lớn (≥18.66px, weight 700), là một thay đổi thang chữ cần chốt riêng.
 
 `attention` (red-50) chỉ đạt **3.76** với trắng: đủ 3:1 cho chấm, icon và ranh giới, nhưng **dưới 4.5** cho chữ thường — số 11px trong `NotificationBadge` `Count` không đạt AA. **Đã chấp nhận có chủ ý** (chốt 2026-09-24): giữ red-50 cho tông badge; đừng tự "sửa" bằng cách đổi màu hay đổi chữ đen. `object-attention` chỉ dùng cho chấm / icon, không cho chữ đứng một mình.
 
@@ -272,15 +284,31 @@ Hệ quả cho code: **đừng tạo primitive màu có sẵn alpha**, và **đ�
 
 ### 2.5 Brand mode
 
-UU DS hiện có **một** brand mode, đặt ở `:root`. Cơ chế brand mode vẫn giữ nguyên để thêm brand về sau mà không đụng component: mỗi brand là một khối ghi đè **đúng nhóm token thương hiệu** dưới đây, bật bằng `<html data-theme="<tên-brand>">`.
+UU DS có **hai** brand mode. Mỗi brand là một khối ghi đè **đúng nhóm token thương hiệu** dưới đây; component
+không biết mình đang ở brand nào.
 
-Nhóm token thương hiệu — 20 token:
+| Brand mode | Bật bằng | `interactive` | `accent` | Nền / viền trung tính | Dùng cho |
+|---|---|---|---|---|---|
+| **Default** | mặc định (`:root`) | indigo | blue | slate | sản phẩm dựng trên UU DS chưa có nhận diện riêng |
+| **UU** | `<html data-theme="uu">` | **orange** — nền nút orange-50 + chữ **đen**; chữ / link orange-70; viền orange-60 | **amber** (vàng) | neutral (ấm, không ngả xanh) | sản phẩm và website mang nhận diện Ú Ù |
+
+Brand UU lấy theo nhận diện Ú Ù (cam + vàng của logo, website uucreative.co). Cam logo gốc chỉ đạt 3.28 trên
+trắng nên **không** dùng làm chữ: chữ / link `object-interactive` là orange-70 (5.18), viền tương tác orange-60 (3.56, đủ 3:1).
+Nền nút `background-interactive` là **orange-50** (chủ DS chốt 2026-10-18) — chữ trắng trên đó chỉ 2.80, nên ở brand UU
+`object-on-interactive` là **đen** (7.49). Đây là lý do `object-on-interactive` nằm trong nhóm token thương hiệu;
+vàng đậm amber-40 chỉ làm nền (`background-accent-emphasized`, chữ đen 12.58), chữ vàng dùng amber-70.
+
+Figma: collection `color`, mode `Default` · `UU`. tokens.json: `semantic.color.default` · `semantic.color.uu`.
+Flutter: `UuBrand.defaultBrand` · `UuBrand.uu` (`default` là từ khoá của Dart).
+
+Nhóm token thương hiệu — 21 token:
 
 ```
 background-muted / -subtle / -emphasized     nền trung tính của trang (hiện: slate-05 / 10 / 20)
 background-interactive / -interactive-muted
 background-accent / -muted / -subtle / -medium / -emphasized
 object-interactive / -muted / -inverted
+object-on-interactive                         chữ / icon trên nền interactive (Default trắng · UU đen)
 object-accent / -muted / -inverted
 border-interactive / -interactive-inverted
 border-subtle / border-medium
@@ -299,7 +327,7 @@ Thêm một brand:
 }
 ```
 
-Trong `tokens.json` thêm một khoá cạnh `semantic.color.uu`, rồi `npm run tokens:dart` để bản Flutter có thêm giá trị `UuBrand`.
+Trong `tokens.json` thêm một khoá cạnh `semantic.color.default` / `semantic.color.uu`, rồi `npm run tokens:dart` để bản Flutter có thêm giá trị `UuBrand`.
 
 ---
 
@@ -547,9 +575,24 @@ quy tắc ghép cặp — giữ nguyên. Không có primitive mới: mọi giá 
 | `card/padding` | `--card-padding` | 16 (`gap-4`) | **12** (`gap-3`) |
 | `sidenav/width` | `--sidenav-width` | 288 (`size-72`) | **240** (`size-60`) |
 
-**Collection `sidenav`** (riêng, không thuộc `density`): mode `Expanded` · `Collapsed`, một biến
-BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.SideNavSection`. Web: prop
-`collapsed` của `SideNav` (`data-collapsed`). Không phải biến kích thước nên không có CSS var.
+### 4.2 Layout — `Expanded` · `Collapsed`
+
+Collection biến **`layout`**, 2 mode: **`Expanded`** (mặc định) và **`Collapsed`** — khung đang ở dạng
+đầy đủ hay **thu gọn chỉ còn icon**. Là trục của **cả màn hoặc một vùng**, ngang hàng `color` và `density`,
+không thuộc riêng component nào. Chỉ đổi **hiển thị**, không đổi kích thước (bề rộng vẫn ở `density`,
+vd. `sidenav/width`).
+
+| Biến (BOOLEAN) | Expanded | Collapsed | Gắn vào |
+|---|---|---|---|
+| `layout/show-label` | true | false | nhãn đi kèm icon: `.SideNavItem`; về sau `FooterItem`, `FooterItemSpecial` |
+| `layout/show-section-title` | true | false | tiêu đề nhóm: `.SideNavSection`, `.MenuSection` |
+| `layout/show-nested` | true | false | mục cấp 2: `.SideNavItem` `Level=2` |
+
+Đặt tên theo **vai trò**, không theo component — component mới cần ẩn nhãn khi thu gọn thì gắn vào
+biến có sẵn, không tạo collection mới. Web: `data-layout="collapsed"` trên khung chứa (như `data-density`);
+prop `collapsed` của `SideNav` là cách viết tắt cho đúng vùng thanh bên. Flutter:
+`UuTheme(layout: UuLayout.collapsed)` / prop `collapsed`. `BottomBar` vẫn giữ variant `Compact` vì hình học đổi
+(cao 64 → 48).
 
 ---
 
@@ -569,10 +612,10 @@ BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.Side
 | `TextInput` | 9 | 6.3 |
 | `TextArea` | 9 | 6.3e |
 | `OTPInput` | 14 | 6.3b |
-| `SearchInput` | 7 | 6.3g |
+| `SearchInput` | 8 | 6.3g |
 | `DateInput` | 8 | 6.3c |
 | `Dropdown` | 8 | 6.4 |
-| `Menu` | 2 (+ `.MenuItem` 8) | 6.21 |
+| `Menu` | 2 (+ `.MenuItem` 16 · `.MenuSection` · `.MenuDivider`) | 6.21 |
 | `Checkbox` | 15 | 6.3f |
 | `CheckboxInput` | 1 | 6.3f |
 | `Radio` | 10 | 6.3d |
@@ -581,15 +624,18 @@ BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.Side
 | `Chip` | 16 | 6.18 |
 | `SegmentedControl` | 1 (+ `.Segment item` 8) | 6.13 |
 | `NavigationBar` | 1 | 6.5 |
-| `BottomBar` | 10 (+ `base/FooterItem` 2) | 6.22 |
+| `BottomBar` | 10 (+ `base/FooterItem` 2 · `base/FooterItemSpecial` 4) | 6.22 |
 | `TablePagination` | 1 (+ `.PageItem` 4) | 6.24 |
 | `Breadcrumb` | 1 (+ `.BreadcrumbItem` 3) | 6.25 |
 | `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | 6.27 |
-| `Tab` | 2 | 6.20 |
+| `Tab` | 5 | 6.20 |
+| `TabBar` | 2 | 6.20 |
 | `Pagination` | 3 | 6.10b |
 | `Toast` | 4 | 6.6 |
 | `Badge` | 4 | 6.14 |
-| `StatusIndicator` | 8 | 6.15 |
+| `StatusIndicator` | 10 | 6.15 |
+| `CardPushNotification` | 1 | 6.31 |
+| `[Screen]PushNotification` (template màn) | 1 | 6.31 |
 | `NotificationBadge` | 2 | 6.16 |
 | `Tooltip` | 4 | 6.30 |
 | `TableHeaderCell` | 20 | 6.23 |
@@ -597,18 +643,21 @@ BOOLEAN `sidenav/expanded` gắn vào hiển thị nhãn `.SideNavItem` / `.Side
 | `KPICard` | 3 | 6.26 |
 | `CardSheet` (tấm bottom sheet) | 2 | 6.8 |
 | Bottom sheet (`Sheet` — template màn hình) | 1 | 6.8 |
-| Dialog (`.base/dialog`) | 1 | 6.10 |
+| `CardDialog` (tấm dialog) | 2 | 6.10 |
 | Dialog (`Dialog` — template màn hình) | 1 | 6.10 |
 | `SideSheet` | 2 | 6.28 |
 | `Popover` | 1 | 6.29 |
 | `ResultScreen` (template màn) | 1 | 6.19 |
 | `ErrorScreen` (template màn) | 1 | 6.19 |
+| `EmptyScreen` (template màn) | 1 | 6.19 |
+| `EmptySection` (khối nhúng) | 1 | 6.19 |
+| `ErrorSection` (khối nhúng) | 1 | 6.19 |
 
-Chưa có: Action group; `CardDialog`; màn rỗng / màn mục (Empty, Section screen); thông báo đẩy (PushNotification); `StatusIndicator` kiểu Highlight; mục đặc biệt giữa `BottomBar`.
+Chưa có: hàng danh sách `ListItem` (đang đề xuất); các mục *Chưa có* ghi ở cuối từng §6.x.
 
-Chuỗi chữ trên component là **property**, không phải node phải chọn vào sửa: `Error message` (TextInput · TextArea · OTPInput · DateInput · Dropdown), `Word counter` (TextArea), `Input value` (ô OTP), `Text` (DateInput · Dropdown), `Label` (CheckboxInput · RadioInput · `base/prefix` · Chip), `Count` (NotificationBadge), `Content` (Toast, TableCell), `Label` / `Value` (KPICard), `Title` (SideSheet, Popover), `Text` (Tooltip). Bên code đó là prop (`errorMessage`, `label`…).
+Chuỗi chữ trên component là **property**, không phải node phải chọn vào sửa: `Error message` (TextInput · TextArea · OTPInput · DateInput · Dropdown), `Word counter` (TextArea), `Input value` (ô OTP), `Text` (DateInput · Dropdown), `Label` (CheckboxInput · RadioInput · `base/prefix` · Chip), `Count` (NotificationBadge), `Content` (Toast, TableCell), `Label` / `Value` (KPICard), `Title` (SideSheet, Popover, `.MenuSection`, `EmptyScreen` / `EmptySection` / `ErrorSection` / `ErrorScreen`), `Description` (các màn / khối rỗng và lỗi), `Title` · `Content` (`CardPushNotification`), `Text` (Tooltip). Bên code đó là prop (`errorMessage`, `label`…).
 
-Component nội bộ, không dùng trực tiếp — chỉ xuất hiện bên trong component ở trên: `.label`, `.suffix`, `base/prefix` (Type Icon/Label), `base/suffix` (18×18, Type=Icon), `.Segment item`, `.MenuItem`, `base/FooterItem` (mục của `BottomBar`, 2 variant), `.PageItem` (ô số trang của `TablePagination`), `.BreadcrumbItem`, `.SideNavItem`, `.SideNavSection`, `.base/input-default` và `.base/input-masked` (ô của OTP, 7 variant mỗi bộ), `.Mini App Control`, `.loading`, `Icon`, `🔒Base/Slick`.
+Component nội bộ, không dùng trực tiếp — chỉ xuất hiện bên trong component ở trên: `.label`, `.suffix`, `base/prefix` (Type Icon/Label), `base/suffix` (18×18, Type=Icon), `.Segment item`, `.MenuItem`, `.MenuSection`, `.MenuDivider`, `base/FooterItem` (mục của `BottomBar`, 2 variant), `base/FooterItemSpecial` (nút hành động rời của `BottomBar`, 4 variant), `.PageItem` (ô số trang của `TablePagination`), `.BreadcrumbItem`, `.SideNavItem`, `.SideNavSection`, `.base/input-default` và `.base/input-masked` (ô của OTP, 7 variant mỗi bộ), `.Mini App Control`, `.loading`, `Icon`, `🔒Base/Slick`.
 
 `Sheet` (mục 6.8) và `Dialog` (mục 6.10) là template màn hình, không phải component sản phẩm — chúng nhúng một Device element.
 
@@ -1094,8 +1143,8 @@ TRÊN** (`items-start`), text wrapper đệm trên 4, chữ `body` `object-prima
 với Text input (6.3): root VERTICAL gap 4, `.label` tuỳ chọn, Field cao **48** radius **16**
 (`radius-lg`), viền 1px, padding ngang 12 (`gap-3`), gap 8 (`gap-2`), chữ `body` 400.
 
-**Props**: `Value` (Empty/Filled) · `State` (Default/Hover/Focus/Typing/`[No state]`) · `Disabled`
-(False/True) · `Label` (BOOLEAN) · `Placeholder` · `Input`. **7 variant**. **Không có `Error`** —
+**Props**: `Value` (Empty/Filled) · `State` (Default/Hover/Focus/Typing/**Loading**/`[No state]`) · `Disabled`
+(False/True) · `Label` · **`Cancel`** (BOOLEAN) · `Placeholder` · `Input`. **8 variant**. **Không có `Error`** —
 ô tìm kiếm không báo lỗi định dạng; không kết quả là chuyện của màn kết quả, không phải của ô.
 
 Hai thứ tách nó khỏi Text input:
@@ -1120,8 +1169,19 @@ placeholder mới xuống `object-disabled`.
 > 16px dưới ngưỡng chạm tối thiểu trên điện thoại. (2) Icon `magnifier` khi `Disabled`
 > xuống **`object-disabled`**, cùng luật với `calendar-days` của DateInput.
 
-Chưa có: trạng thái đang tải kết quả, panel gợi ý / lịch sử tìm kiếm bung ra dưới ô,
-nút "Huỷ" cạnh ô khi focus, cỡ nhỏ.
+**Đang tải** (`Value=Filled`, `State=Loading`): `.loading` **16** thay chỗ nút xoá; viền như Typing.
+
+**Nút Huỷ** (`Cancel=true`, mobile): Field nằm trong hàng HORIZONTAL gap 8, `TextButtonNeutral` **Ghost Small**
+"Huỷ" bên phải, Field co lại. Bấm Huỷ: xoá chữ, bỏ focus, đóng panel. Chỉ dùng ở màn tìm kiếm riêng.
+
+**Panel gợi ý / lịch sử** là **`Menu` `Platform=Panel`** (§6.21) neo dưới ô, cách 4, cùng bề rộng ô:
+- Nhóm **Tìm gần đây**: `.MenuSection` "Tìm gần đây" + `TextButtonNeutral` Ghost Small "Xoá" bên phải; hàng
+  `.MenuItem` `Prefix=true` icon **`clock`**.
+- Nhóm **Gợi ý**: `.MenuSection` "Gợi ý"; hàng icon **`magnifier`**; phần trùng từ khoá in **600**.
+- Ô rỗng + focus → chỉ lịch sử; đang gõ → gợi ý (và `State=Loading` trong lúc chờ). Không có gì → không mở panel.
+- Mobile toàn màn: panel thành danh sách phủ dưới ô (không bo, không bóng), không phải `Sheet`.
+
+Chưa có: cỡ nhỏ; xoá từng mục lịch sử.
 
 ### 6.4 Dropdown
 
@@ -1350,13 +1410,14 @@ Gồm hai component, cùng mô hình như Bottom sheet:
 
 | Component | Là gì |
 |---|---|
-| `.base/dialog` | Chỉ tấm panel |
+| `CardDialog` | Chỉ tấm panel — **2 variant** `Banner=False` · `Banner=True` (thay `.base/dialog` cũ, đã gỡ) |
 | `Dialog` | **Template màn hình** 390 × 844 — scrim + panel + home indicator |
 
-**Props của `.base/dialog`**
+**Props của `CardDialog`**
 
 | Prop | Kiểu | Mặc định |
 |---|---|---|
+| `Banner` | VARIANT | **`False`** · `True` |
 | `Slot` | SLOT | rỗng, không stretch child |
 | `Close button` | BOOLEAN | `true` |
 | `Button group` | BOOLEAN | `true` |
@@ -1364,13 +1425,28 @@ Gồm hai component, cùng mô hình như Bottom sheet:
 **Panel**: `384` rộng khi đứng riêng · radius `24` (`rounded-2xl`) cả bốn góc · nền `background-surface` · VERTICAL · FIXED × HUG · gap 0
 
 ```
-.base/dialog         V · g0 · r24 · background-surface
+CardDialog · Banner=False   V · g0 · r24 · background-surface
 ├─ Header            H · p 16/16/0/16 · g16 · FILL × HUG · căn PHẢI
 │  └─ Close          Icon button - Neutral / Outline / Small (32) · border 2px · xmark 16
 └─ Body              V · p 12/16/16/16 · g12 · FILL × HUG
    ├─ Slot           FILL × HUG
    └─ Button group   instance · Layout=Horizontal · Secondary button=false
 ```
+
+**`Banner=True`** — dialog có ảnh (giới thiệu tính năng, quà, khuyến mãi). Ảnh là **nội dung**, cần `alt`.
+
+```
+CardDialog · Banner=True    V · g0 · r24 · background-surface · 384 × HUG
+├─ Header            384 × 216 · không padding
+│  ├─ Image          384 × 216 (**16:9 — tỉ lệ duy nhất**) · FILL · panel cắt theo bo 24 ở hai góc trên
+│  └─ Close          ABSOLUTE · cách phải 16 · cách trên 16 · IconButtonNeutral / **Solid** / Small (32)
+└─ Body              V · p **16** bốn phía · g12
+   ├─ Slot
+   └─ Button group
+```
+
+Nút đóng đè lên ảnh dùng **Solid** (nền `background-inverted`) để đọc được trên mọi ảnh — nút viền sẽ chìm.
+`Close button=false` chỉ ẩn nút, ảnh vẫn còn. Tỉ lệ khác 16:9 là sai spec.
 
 **Khác Bottom sheet ở hai điểm** — đừng lẫn:
 
@@ -1384,7 +1460,7 @@ Header của Dialog chỉ chứa nút đóng, căn phải (`primaryAxisAlignItem
 
 **Đối chiếu prop giữa hai component** (khác nhau, dễ nhớ sai):
 
-| Chức năng | `CardSheet` | `.base/dialog` |
+| Chức năng | `CardSheet` | `CardDialog` |
 |---|---|---|
 | Nội dung | `Slot` | `Slot` |
 | Tiêu đề | `Header` (TEXT) | — |
@@ -1395,7 +1471,7 @@ Header của Dialog chỉ chứa nút đóng, căn phải (`primaryAxisAlignItem
 
 **Lớp scrim** giống Bottom sheet: fill `overlay` (đen 10%, alpha nằm trong token) + `BACKGROUND_BLUR 16`, panel thụt `gap-3` (12) mỗi bên → rộng 366 trên khung 390. Đừng nhân thêm opacity lên fill.
 
-`Dialog` chứa `IOS Home indicator` nên cũng là template màn hình. Build code thì dựng theo `.base/dialog` và tự làm scrim.
+`Dialog` chứa `IOS Home indicator` nên cũng là template màn hình. Build code thì dựng theo `CardDialog` và tự làm scrim.
 
 ### 6.10b Pagination
 
@@ -1510,7 +1586,7 @@ Cùng quy tắc với Toast: `background-{status}` chỉ đi với `object-on-{s
 
 ### 6.15 Status indicator (`StatusIndicator`)
 
-Chấm màu + chữ trạng thái. Hai prop: **`Tone`** = `Neutral` · `Success` · `Warning` · `Error`; **`Container`** = `None` · `Filled` (8 variant).
+Chấm màu + chữ trạng thái. Hai prop: **`Tone`** = `Neutral` · `Success` · `Warning` · `Error` · **`Highlight`**; **`Container`** = `None` · `Filled` (**10 variant**).
 
 Cấu trúc: HORIZONTAL · gap **6** (`gap-1-5`) · `Dot` (ellipse **8×8**, `size-2`) · chữ **`title-sm`** 600.
 
@@ -1518,6 +1594,11 @@ Cấu trúc: HORIZONTAL · gap **6** (`gap-1-5`) · `Dot` (ellipse **8×8**, `si
 |---|---|---|---|---|
 | `None` | cao 20, không padding, không radius | — | `object-{tone}` (Neutral: `object-secondary`) | `object-primary` |
 | `Filled` | cao 24 · padding 2/8 (`gap-0-5`/`gap-2`) · radius `rounded-circle` | Neutral `background-inverted`, còn lại `background-{tone}` | `object-on-{tone}` (Neutral: `object-on-dark`) | `object-on-{tone}` (Neutral: `object-on-dark`) |
+
+**`Highlight`** không phải status mà là **"mục này đáng chú ý"** (Mới, Nổi bật, Đề xuất) — dùng họ **`accent`**,
+nên đổi theo brand: `Container=None` chấm `object-accent` + chữ `object-primary`; `Filled` nền `background-accent`,
+chấm + chữ `object-on-accent`. Đừng dùng `Highlight` để báo lỗi (đó là `Error`) hay "có mới chưa xem" (đó là
+`NotificationBadge`, họ `attention`). `Badge` **không** có Highlight.
 
 Lưu ý `object-warning` là `yellow-50` (1.92 trên trắng): ở `Container=None` nó chỉ là chấm, chữ vẫn `object-primary` — đúng nguyên tắc "một tín hiệu cho một trạng thái" có chữ đi kèm. Không có state; không phải control.
 
@@ -1600,11 +1681,17 @@ chọn bỏ nền (như `Outline` Disabled), chip đã chọn giữ nền (như 
 > nền chip đã chọn: nó là `slate-20`, trùng y hệt `background-disabled` — chip đã chọn sẽ nhìn như chip tắt.
 
 **`Type=Dropdown`** thêm `chevron-down` 16 `object-secondary` ở cuối; hiện giá trị đang chọn, bấm
-vào mới bung danh sách. Panel bung ra là phần màn tự dựng, chưa chốt.
+vào mới bung danh sách.
+
+**Panel bung ra** là **`Menu`** (§6.21): mobile `Platform=Sheet`, desktop `Platform=Panel` neo dưới chip cách 4,
+rộng tối thiểu 240. Trong lúc mở: chip ở `Selected=True`, chevron đổi **`chevron-up`**.
+- Lọc **một** giá trị → `.MenuItem` `Type=Single`; chọn xong đóng ngay, nhãn chip thành giá trị đã chọn.
+- Lọc **nhiều** → `Type=Multiple` + footer "Bỏ chọn" / "Áp dụng"; nhãn chip "{Tên} · n" (vd. "Khu vực · 2").
+- Chưa chọn gì: nhãn là tên bộ lọc, chip `Selected=False`.
 
 Chưa có: icon đứng trước chữ, cỡ khác 32, chip có nút xoá (input chip).
 
-### 6.19 Template màn (`ResultScreen` · `ErrorScreen`)
+### 6.19 Template màn (`ResultScreen` · `ErrorScreen` · `EmptyScreen` · `EmptySection` · `ErrorSection`)
 
 Hai template màn. Cùng họ với `Sheet` (6.8) và
 `Dialog` (6.10) — là **bố cục màn để tham chiếu**, không phải component để import: khung **390 × 844**,
@@ -1615,9 +1702,32 @@ Hai template màn. Cùng họ với `Sheet` (6.8) và
 |---|---|---|
 | `ResultScreen` | Việc đã xong, người dùng phải sang chỗ khác | `ButtonGroup` dọc — nút chính trên, lối đi phụ dưới |
 | `ErrorScreen` | Lỗi chặn cả chức năng cốt lõi, không tự khắc phục được | **Một** nút duy nhất: thử lại |
+| `EmptyScreen` | Cả màn chưa có dữ liệu | **Một** nút hành động (tạo mới, khám phá), ẩn được bằng `Action` |
 
-`NavigationBar` ở cả hai để `Back action=false` — việc đã xong hoặc hệ thống đang hỏng thì không có
-chỗ để quay lại. `Mini app=false` để template dùng được ngoài môi trường mini app.
+**Khối nhúng** (không phải cả màn — đặt trong một vùng của màn, kể cả thân bảng):
+
+| Component | Khi nào | Nút |
+|---|---|---|
+| `EmptySection` | Một khối trong màn chưa có dữ liệu (danh sách rỗng, bảng rỗng) | Một nút, ẩn được bằng `Action` |
+| `ErrorSection` | Lỗi chỉ ở một khối, phần còn lại của màn vẫn dùng được | Một nút thử lại |
+
+```
+EmptySection · ErrorSection   V · p 12 · g12 · căn giữa · 390 × HUG
+├─ Content wrapper            V · g12 · FILL · căn giữa
+│  ├─ Image                   128 tròn · nền background-accent-muted + ảnh minh hoạ
+│  ├─ Title                   heading-sm (nhỏ hơn màn) · object-primary · căn giữa
+│  └─ Description             body · object-primary · căn giữa
+└─ ButtonGroup                một nút · HUG
+```
+
+Prop chung: `Title`, `Description` (TEXT); `EmptyScreen` / `EmptySection` thêm `Action` (BOOLEAN). Ảnh minh hoạ
+của **mọi** màn / khối rỗng và lỗi là ô **tròn 128** nền `background-accent-muted` (ResultScreen giữ ô vuông
+không nền — ảnh do màn quyết). Ảnh là nội dung → `alt`.
+
+Chọn đúng: lỗi cả màn → `ErrorScreen`; lỗi một khối → `ErrorSection`; lỗi sửa được ngay → `Dialog` / `Toast`.
+
+`NavigationBar` của `ResultScreen` và `ErrorScreen` để `Back action=false` — việc đã xong hoặc hệ thống đang hỏng thì không có
+chỗ để quay lại. `EmptyScreen` **có** nút back (`Back action=true`) — màn rỗng vẫn là một màn bình thường. `Mini app=false` để template dùng được ngoài môi trường mini app.
 
 > `ErrorScreen` chỉ có **một** nút là cố ý. Còn việc gì khác người dùng làm được ngay thì lỗi đó
 > không chặn chức năng cốt lõi — nó thuộc nhánh `Dialog` hoặc `Toast`, không phải màn lỗi toàn trang.
@@ -1627,7 +1737,7 @@ chỗ để quay lại. `Mini app=false` để template dùng được ngoài m�
 Mục chuyển
 giữa các **vùng nội dung khác nhau**, không phải để lọc một danh sách.
 
-**Props**: `State` (VARIANT: `Default` · `Active`) · `Tab` (TEXT, nhãn). **2 variant.**
+**Props**: `State` (VARIANT: `Default` · `Active` · `Hover` · `Pressed` · `Disabled`) · `Tab` (TEXT, nhãn). **5 variant.**
 
 **Hình học**: auto-layout **VERTICAL**, padding **12** cả bốn phía, gap 12, `HUG × HUG` →
 cao **48**, rộng theo chữ. Không vỏ, không nền, không viền, không vạch nền chạy suốt.
@@ -1636,6 +1746,8 @@ cao **48**, rộng theo chữ. Không vỏ, không nền, không viền, không 
 |---|---|---|
 | `Default` | `title-base` 16/24 **600** · `object-secondary` | — |
 | `Active` | `title-base` 16/24 600 · **`object-interactive`** | LINE **32 × 4**, `stroke-cap` ROUND, `border-interactive` |
+| `Hover` / `Pressed` | `object-secondary` | — · state layer `object-primary` `opacity-5` / `opacity-10` phủ cả ô tab, radius `radius-sm` |
+| `Disabled` | **`object-disabled`** | — · không state layer |
 
 Gạch chỉ báo là một `LINE` **tuyệt đối** (`layoutPositioning: ABSOLUTE`), constraints
 `CENTER / MAX`, đặt tại `y = 48` với `strokeAlign: CENTER` — tức tâm nằm đúng mép đáy, nửa
@@ -1643,11 +1755,20 @@ trên nằm trong, nửa dưới thò ra 2px (`clipsContent: false`). Bề rộn
 giãn theo nhãn: tab rộng 121 vẫn để gạch 32. Trên web dựng bằng
 một khối `32 × 4` `rounded-circle`, `position: absolute; left: 50%; bottom: -2px`.
 
-**Hàng tab chưa là component.** Bản web có `TabBar` xếp các `Tab` HORIZONTAL, **gap 0**, cụm
-canh giữa, không nền, không vạch — và ghi rõ là phần tự chế.
 
-**Chưa có**: `Hover` / `Pressed` / `Disabled`; cách xử khi tổng bề rộng tràn khổ 390 (cuộn
-ngang hay rút chữ); quy định cho hàng tab.
+Hover / Pressed chỉ có ở tab **không Active** — tab đang chọn bấm lại không làm gì.
+
+**`TabBar`** — hàng tab. **Props**: `Layout` (`Fixed` · `Scrollable`). **2 variant.**
+
+| Layout | Khi nào | Hình học |
+|---|---|---|
+| `Fixed` | 2–4 tab, nhãn ngắn | FILL bề ngang, các `Tab` **FILL chia đều** |
+| `Scrollable` | ≥ 5 tab hoặc nhãn dài | `Tab` HUG, **cuộn ngang**, padding trái 16 (`gap-4`), cắt mép phải; tab Active tự cuộn vào tầm nhìn |
+
+Cả hai: HORIZONTAL · gap 0 · không nền · **viền dưới 1px `border-muted` chạy suốt**; gạch Active (4px) đè lên
+viền. Web: `role="tablist"`, mũi tên trái/phải chuyển tab.
+
+**Chưa có**: tab có icon / badge; `TabBar` trên nền tối.
 
 > **Chữ và gạch cùng họ `interactive`.** Chữ `Active` dùng `object-interactive`, gạch dùng
 > `border-interactive` — hai phần cùng đổi theo brand và giữ quan hệ chữ đậm hơn gạch một bậc
@@ -1672,8 +1793,11 @@ component nội bộ `.MenuItem`. Đây là **panel option bung ra của
 | `Panel` | V · gap **4** · padding **12** · `FIXED × HUG` · radius **24** (`rounded-2xl`) · nền `background-surface` · **`elevation-low`** |
 | `Sheet` | dùng lại nguyên template `Sheet` (6.8): `CardSheet` `Header="Menu"`, `CTA=false`, `Navigation=Close`, scrim `overlay` + blur 16 |
 
-**Props `.MenuItem`**: `Selected` (False/True) · `State` (Default/Hover/Pressed/`[No state]`) ·
-`Disabled` (False/True) · `Prefix` (BOOLEAN — icon 24 trước chữ) · `Option` (TEXT). **8 variant.**
+**Props `Menu`** (thêm): `Search` (BOOLEAN — ô `SearchInput` không nhãn ở đầu panel) · `Footer` (BOOLEAN — "Bỏ chọn" +
+"Áp dụng", dùng với `Type=Multiple`).
+
+**Props `.MenuItem`**: `Type` (`Single` · `Multiple`) · `Selected` (False/True) · `State` (Default/Hover/Pressed/`[No state]`) ·
+`Disabled` (False/True) · `Prefix` (BOOLEAN — icon 24 trước chữ, chỉ `Single`) · `Option` (TEXT). **16 variant.**
 
 **Hàng option**: HORIZONTAL · gap **12** · padding **8** · radius **12** · `FILL × HUG` → cao
 **40**. Chữ style `body` 16/24.
@@ -1697,8 +1821,26 @@ lên khi thiếu chỗ, chiều cao tối đa, hay đóng khi bấm ra ngoài. B
 thường, `width: 100%` của khung chứa (nên bằng bề ngang ô `Dropdown`); màn tự đặt chỗ. Master
 vẽ 214 chỉ là khổ mẫu.
 
-**Chưa có**: ô tìm nhanh trong panel; chọn nhiều (hàng mới có dấu check, chưa có `Checkbox`);
-tiêu đề nhóm và vạch ngăn giữa các cụm option.
+Bảng trên là **`Type=Single`**. **`Type=Multiple`** (chọn nhiều):
+
+| | Giá trị |
+|---|---|
+| Đầu hàng | **`Checkbox`** (§6.3f) thay icon `Prefix`; `Checked` theo `Selected`, `Disabled` theo hàng |
+| Nền khi chọn | **không** tint — trạng thái nằm ở ô checkbox |
+| Chữ | `object-primary` (Disabled: `object-disabled`) |
+| State layer | `object-primary` 5 / 10 phủ cả hàng |
+| Cao | 48 ở Touch (checkbox 32 + padding 8) · 40 ở Compact |
+
+Menu `Multiple` **không đóng** khi chọn; bật `Footer`: `TextButtonNeutral` Ghost Small "Bỏ chọn" + `TextButtonAccent`
+Solid Small "Áp dụng" (màn có thể ghi "Áp dụng (n)"), dồn phải, gap 8.
+
+**Tìm nhanh** (`Search=true`): `SearchInput` không nhãn ở đầu panel, **dính trên** khi cuộn; lọc option theo từ
+khoá. Không còn option nào → một dòng `body` `object-secondary` "Không tìm thấy “{từ khoá}”". Dùng khi > 8 option.
+
+**`.MenuSection`** — tiêu đề nhóm: padding 8/8/4/8, `title-xs` `object-secondary` IN HOA, prop `Title`.
+**`.MenuDivider`** — vạch ngăn giữa cụm: 1px `border-muted`, margin dọc 4. Nhóm đầu không cần vạch phía trên.
+
+**Chưa có**: option có mô tả hai dòng; chọn nhiều kiểu "chọn tất cả".
 
 ### 6.22 Bottom bar (`BottomBar` · `base/FooterItem`)
 
@@ -1734,6 +1876,22 @@ thẳng mép phải icon, đỉnh badge cao hơn đỉnh icon **4px**. Chỉ có
 
 Mục đang chọn thuộc họ **`interactive`** (thứ bấm được), giống `Tab` — không dùng `accent`.
 Icon đổi `outline` → `fill` khi chọn, đúng luật §6.11.
+
+**Nút hành động riêng** — `base/FooterItemSpecial`, bật bằng BOOLEAN **`Action`** của `BottomBar` (variant giữ 10).
+Một viên thuốc **rời**, bên phải vỏ cách 8, cho **một hành động chính** (Quét mã, Tạo đơn) — không phải đích
+điều hướng, không có trạng thái Active.
+
+| `base/FooterItemSpecial` | Giá trị |
+|---|---|
+| Props | `Type` (`Subtle` · `Emphasized`) × `Compact` (False · True) · `Label` (TEXT) — **4 variant** |
+| `Compact=False` | **64 × 64** · padding 6/16 · icon 24 + nhãn `title-xs` |
+| `Compact=True` | **48 × 48** · padding 12 · chỉ icon |
+| `Subtle` | nền `background-surface` · icon + nhãn `object-interactive` · state layer 5 / 10 |
+| `Emphasized` | nền **`background-interactive`** · `object-on-interactive` · state layer 20 / 40 |
+| Radius | `rounded-circle` |
+
+Có nút hành động thì `Compact=True` tối đa **4 mục** (5 mục + nút vượt khổ 390). Mặc định `Emphasized`;
+`Subtle` khi màn đã có một nút Solid khác.
 
 **Chưa có**: `Hover` / `Pressed` / `Disabled` của mục; vị trí thanh trên màn (cách đáy, lề
 ngang, safe area); bóng hay viền cho vỏ khi nền màn cũng là `background-surface`; nhãn dài
@@ -1850,7 +2008,7 @@ xấu" → dừng và hỏi, chưa có variant.
 Thanh điều hướng dọc của web app / portal. Tương đương `BottomBar` trên app.
 
 **Props `SideNav`**: `Listing` (SLOT) · `Collapsed` (`False` · `True`) — **2 variant**. Nhãn còn điều
-khiển bằng collection biến **`sidenav`** (mode `Expanded` · `Collapsed`, biến BOOLEAN `sidenav/expanded`).
+khiển bằng collection **`layout`** (§4.2): nhãn ← `layout/show-label`, tiêu đề nhóm ← `layout/show-section-title`, mục cấp 2 ← `layout/show-nested`.
 **Props `.SideNavItem`**: `Label` (TEXT) · `Chevron` (BOOLEAN) · `Level` (`1` · `2`) × `State`
 (`Default` · `Hover` · `Active`) × `Collapsed` (`False` · `True`; chỉ `Level=1` có `True`) — **9 variant**.
 `.SideNavSection`: `Title` (TEXT), 1 variant.
@@ -1926,6 +2084,29 @@ một lần. Web: prop `relation: 'description' | 'label'`; Flutter: `UuTooltip(
 đã có `label` thì tooltip vẫn là `description`.
 
 **Chưa có**: độ trễ hiện / ẩn chuẩn; tooltip nhiều dòng có tiêu đề.
+
+### 6.31 Thông báo đẩy trong app (`CardPushNotification`)
+
+Thẻ trượt xuống từ đỉnh màn, báo **chuyện từ bên ngoài** (đơn đổi trạng thái, có quà mới, tin nhắn). Mô phỏng
+dáng push của hệ điều hành nhưng do **app** vẽ — push thật của iOS/Android do hệ điều hành vẽ, không thuộc DS.
+**Props**: `Title` · `Content` (TEXT) · `Image` (BOOLEAN). 1 variant.
+
+```
+CardPushNotification   H · g8 · p 8/16/8/8 · radius-lg · background-surface · elevation-medium · căn TRÊN
+├─ Image               48 (size-12) · radius-sm · ảnh nguồn (logo đối tác, ảnh sản phẩm) — ẩn được
+└─ Text                V · g2 (gap-0-5) · FILL
+   ├─ Title            body · 600 · object-primary · tối đa 2 dòng
+   └─ Content          body · object-primary · tối đa 2 dòng
+```
+
+Không có type, không có nút: **bấm cả thẻ** để mở; **vuốt lên** để đóng; tự ẩn sau **5 giây** (dừng đếm khi đang
+chạm / hover). Một thẻ mỗi lúc — thẻ mới thay thẻ cũ. Template `[Screen]PushNotification`: thẻ cách đỉnh safe area
+8, lề 12 hai bên. Web: `role="status"`, `aria-live="polite"`.
+
+**Khác `Toast` (§6.6)**: Toast báo **kết quả việc người dùng vừa làm**, ở đáy, có `Type`. Push báo chuyện từ
+bên ngoài, ở đỉnh, không type.
+
+**Chưa có**: nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop.
 
 ## 7. Device elements — không thuộc design system
 
