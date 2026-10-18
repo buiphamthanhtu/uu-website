@@ -1,9 +1,10 @@
 ---
 title: “Giao tiếp”
+seo_title: "Designer giao tiếp chi tiết thế nào: handoff và Master flow trên Figma"
 series: Hơi thở designer, thức thứ nhất
 episode: Hồi 2
 date: 2024-10-15
-description: "Hơi thở designer, thức thứ nhất: Giao tiếp — Hồi 2 | ÚÙ Creative Studio"
+description: "Độ hiểu giảm theo không gian, thời gian và con người. Hồi 2 chỉ cách tăng độ chi tiết khi giao tiếp: Sandbox, file handoff cho Engineer, Master flow trên Figma."
 cover: assets/cover-2.png
 cover_alt: Giao tiếp — Hồi 2
 next_note: Hồi 3 sắp ra...

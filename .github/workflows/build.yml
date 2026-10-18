@@ -7,6 +7,7 @@ on:
       - "posts/**"
       - "templates/**"
       - "build.py"
+      - "uu-ds/**"   # Storybook UU DS deploy vào đây → cập nhật sitemap và llms.txt
   workflow_dispatch:
 
 permissions:
@@ -27,9 +28,27 @@ jobs:
       - run: python build.py
 
       - name: Commit các trang đã build
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A -- 'blog*.html' index.html sitemap.xml
-          git diff --cached --quiet || git commit -m "Build blog từ posts/ [bot]"
-          git push
+          git add -A -- 'blog*.html' index.html sitemap.xml llms.txt llms-full.txt
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Build blog từ posts/ [bot]"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Báo Bing (và các công cụ dùng IndexNow) có trang mới/đổi — ChatGPT tra web dựa nhiều vào chỉ mục Bing.
+      # Khoá IndexNow là công khai theo thiết kế: file <khoá>.txt ở gốc site để chứng minh quyền sở hữu domain.
+      - name: Báo IndexNow
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          sleep 90   # chờ GitHub Pages đăng bản mới trước khi bot ghé
+          KEY=$(ls *.txt | grep -E '^[0-9a-f]{32}\.txt$' | head -1 | sed 's/\.txt$//')
+          URLS=$(python -c "import re,json;print(json.dumps(re.findall(r'<loc>(.*?)</loc>', open('sitemap.xml').read())))")
+          curl -sS -o /dev/null -w "IndexNow: HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"uucreative.co\",\"key\":\"$KEY\",\"keyLocation\":\"https://uucreative.co/$KEY.txt\",\"urlList\":$URLS}"

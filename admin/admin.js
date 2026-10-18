@@ -167,12 +167,17 @@
   }
 
   const yamlString = (s) => `"${String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+  const META_ORDER = ["title", "seo_title", "series", "episode", "date", "description", "cover", "cover_alt", "next_note"];
   function toFrontMatter(meta) {
     const lines = ["---"];
-    for (const k of ["title", "series", "episode", "date", "description", "cover", "cover_alt", "next_note"]) {
+    // Trường lạ (thêm tay hoặc bởi công cụ khác) được giữ lại phía sau, không bị xoá khi lưu
+    const extra = Object.keys(meta).filter((k) => !META_ORDER.includes(k) && k !== "draft");
+    for (const k of [...META_ORDER, ...extra]) {
       const v = meta[k];
       if (v === undefined || v === null || String(v).trim() === "") continue;
-      lines.push(k === "date" ? `date: ${v}` : `${k}: ${yamlString(String(v).trim())}`);
+      if (k === "date") lines.push(`date: ${v}`);
+      else if (typeof v === "boolean" || typeof v === "number") lines.push(`${k}: ${v}`);
+      else lines.push(`${k}: ${yamlString(String(v).trim())}`);
     }
     lines.push(`draft: ${meta.draft ? "true" : "false"}`, "---");
     return lines.join("\n") + "\n";
@@ -648,6 +653,9 @@
             <datalist id="seriesList">${seriesList.map((s) => `<option value="${esc(s)}">`).join("")}</datalist>
             ${fieldHtml({ id: "fEpisode", label: "Hồi", value: m.episode, placeholder: "Ví dụ: Hồi 4", error: ed.errors.episode })}
             ${fieldHtml({ id: "fDate", label: "Ngày đăng", type: "date", value: m.date, hint: "Để trống thì lấy ngày bấm Đăng bài." })}
+            ${fieldHtml({ id: "fSeo", label: "Tiêu đề trên Google", value: m.seo_title, suffix: "Không bắt buộc", maxlength: 70,
+              placeholder: "Nói rõ bài về gì, ví dụ: Giao tiếp với đồng nghiệp cho Product Designer",
+              hint: "Hiện trên Google và khi AI trích bài. Để trống thì dùng tiêu đề + hồi." })}
             <div class="uu-fieldset">
               <label class="uu-label" for="fDesc">Mô tả trên Google</label>
               <div class="uu-field uu-field--area">
@@ -746,6 +754,7 @@
     if (val("fTitle") !== undefined) m.title = val("fTitle");
     m.series = val("fSeries") ?? m.series;
     m.episode = val("fEpisode") ?? m.episode;
+    m.seo_title = val("fSeo") ?? m.seo_title;
     m.date = val("fDate") ?? m.date;
     m.description = val("fDesc") ?? m.description;
     m.next_note = val("fNext") ?? m.next_note;

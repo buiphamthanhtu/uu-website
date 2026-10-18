@@ -29,6 +29,12 @@ chỉ cho ghi `posts/*.md` và `assets/uploads/*`).
 
 **Cách 2 — tay:** tạo `posts/ten-bai.md` (copy front-matter từ bài cũ), push lên.
 
+**Cho Google và AI tìm thấy** (build.py tự sinh, đừng sửa tay): `sitemap.xml`, `llms.txt`
+(mục lục cho AI theo llmstxt.org, gồm blog + tài liệu UU DS), `llms-full.txt` (toàn văn blog dạng
+Markdown), JSON-LD `BlogPosting` trên từng bài. Trường `seo_title` + `description` trong front-matter
+(ô "Tiêu đề / Mô tả trên Google" trong portal) quyết định bài hiện thế nào trên Google. Mỗi lần bot
+build ra trang mới, workflow báo IndexNow (Bing) bằng khoá trong file `<32 ký tự hex>.txt` ở gốc.
+
 Giao diện dùng UU Design System: `css/uu-tokens.css` (token gốc, chép từ UU DS),
 `css/uu-brand-studio.css` (brand mode cam ÚÙ), `css/uu-components.css`, `css/site.css`.
 Icon lấy từ `assets/icons.svg` — chỉ gồm icon công khai của UU icon.

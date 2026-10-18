@@ -1,9 +1,10 @@
 ---
 title: “Giao Tiếp”
+seo_title: "Giao tiếp là gì với Product Designer: mã hoá, giải mã và truyền tải"
 series: Hơi thở designer, thức thứ nhất
 episode: Hồi 1
 date: 2024-10-01
-description: "Hơi thở designer, thức thứ nhất: Giao tiếp — Hồi 1 | ÚÙ Creative Studio"
+description: "Giao tiếp không chỉ là nói chuyện. Hồi 1 giải thích giao tiếp là mã hoá và giải mã thông tin, cùng 4 yếu tố truyền tải: phương tiện, tính chất, kênh và tổ chức."
 cover: assets/cover-1.png
 cover_alt: Giao tiếp — Hồi 1
 draft: false

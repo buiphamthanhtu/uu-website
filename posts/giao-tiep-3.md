@@ -1,9 +1,10 @@
 ---
 title: “Giao tiếp”
+seo_title: "Product Designer giao tiếp với sếp: vòng tròn giao tiếp, PPP và 5W1H"
 series: Hơi thở designer, thức thứ nhất
 episode: Hồi 3
 date: 2024-11-01
-description: "Hơi thở designer, thức thứ nhất: Giao tiếp — Hồi 3 | ÚÙ Creative Studio"
+description: "Product designer cần giao tiếp với ai và như thế nào? Hồi 3 vẽ ba vòng tròn giao tiếp, cách làm việc với sếp qua PPP report, 5W1H và mẹo họp 1:1 hằng tháng."
 cover: assets/cover-3.png
 cover_alt: Giao tiếp — Hồi 3
 next_note: Hẹn bạn hồi 4 nói về cách giao tiếp với các Đồng nghiệp nhé...
