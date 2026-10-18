@@ -1,0 +1,207 @@
+/* UU DS — component recipe cho web, dựng từ uu-tokens.css theo spec §6.
+   Quy tắc: chỉ token semantic (background-* / object-* / border-*) + thang gap/size/radius;
+   không hex, không --color-*. Hover/Pressed đi qua state layer (§6.0). */
+
+/* ---------- Icon (§6.11) — SVG currentColor, hộp 16 / 24 ---------- */
+.uu-icon { flex: none; width: var(--size-6); height: var(--size-6); fill: currentColor; }
+.uu-icon--16 { width: var(--size-4); height: var(--size-4); }
+.uu-btn--lg .uu-icon { width: var(--control-icon-large); height: var(--control-icon-large); }
+.uu-btn--base .uu-icon, .uu-iconbtn--base .uu-icon { width: var(--control-icon-base); height: var(--control-icon-base); }
+.uu-btn--sm .uu-icon, .uu-iconbtn--sm .uu-icon { width: var(--control-icon-small); height: var(--control-icon-small); }
+.uu-iconbtn--lg .uu-icon { width: var(--control-icon-large); height: var(--control-icon-large); }
+
+/* ---------- TextButton / IconButton (§6.1, §6.2) ---------- */
+.uu-btn { text-decoration: none; white-space: nowrap; background: transparent; }
+.uu-iconbtn { display: inline-flex; align-items: center; justify-content: center; }
+.uu-btn:focus-visible { outline: 2px solid var(--border-interactive); outline-offset: 2px; }
+
+.tb-accent-solid      { background: var(--background-interactive); color: var(--object-on-interactive); }
+.tb-accent-solid-inv  { background: var(--background-surface); color: var(--object-interactive); }
+.tb-accent-outline    { box-shadow: inset 0 0 0 2px var(--border-interactive); color: var(--object-interactive); }
+.tb-accent-outline-inv{ box-shadow: inset 0 0 0 2px var(--border-interactive-inverted); color: var(--object-interactive-inverted); }
+.tb-accent-ghost      { color: var(--object-interactive); }
+.tb-accent-ghost-inv  { color: var(--object-interactive-inverted); }
+.tb-neutral-solid     { background: var(--background-inverted); color: var(--object-primary-inverted); }
+.tb-neutral-solid-inv { background: var(--background-surface); color: var(--object-primary); }
+.tb-neutral-outline   { box-shadow: inset 0 0 0 2px var(--border); color: var(--object-primary); }
+.tb-neutral-outline-inv { box-shadow: inset 0 0 0 2px var(--border-inverted); color: var(--object-primary-inverted); }
+.tb-neutral-ghost     { color: var(--object-primary); }
+.tb-neutral-ghost-inv { color: var(--object-primary-inverted); }
+.tb-danger-solid      { background: var(--background-negative); color: var(--object-on-negative); }
+.tb-danger-outline    { box-shadow: inset 0 0 0 2px var(--border-negative); color: var(--object-negative); }
+.tb-danger-ghost      { color: var(--object-negative); }
+
+/* state layer: content sáng trên nền tối → 20/40; content tối trên nền sáng → 5/10 */
+:is(.tb-accent-solid, .tb-neutral-solid, .tb-danger-solid,
+    .tb-accent-outline-inv, .tb-accent-ghost-inv, .tb-neutral-outline-inv, .tb-neutral-ghost-inv):hover::after { opacity: var(--opacity-20); }
+:is(.tb-accent-solid, .tb-neutral-solid, .tb-danger-solid,
+    .tb-accent-outline-inv, .tb-accent-ghost-inv, .tb-neutral-outline-inv, .tb-neutral-ghost-inv):active::after { opacity: var(--opacity-40); }
+:is(.tb-accent-solid-inv, .tb-accent-outline, .tb-accent-ghost, .tb-neutral-solid-inv,
+    .tb-neutral-outline, .tb-neutral-ghost, .tb-danger-outline, .tb-danger-ghost):hover::after { opacity: var(--opacity-5); }
+:is(.tb-accent-solid-inv, .tb-accent-outline, .tb-accent-ghost, .tb-neutral-solid-inv,
+    .tb-neutral-outline, .tb-neutral-ghost, .tb-danger-outline, .tb-danger-ghost):active::after { opacity: var(--opacity-10); }
+
+.uu-btn[disabled] { cursor: default; color: var(--object-disabled); }
+.uu-btn[disabled]:is(.tb-accent-solid, .tb-neutral-solid, .tb-danger-solid) { background: var(--background-disabled); }
+.uu-btn[disabled]:is(.tb-accent-outline, .tb-neutral-outline, .tb-danger-outline) { box-shadow: inset 0 0 0 2px var(--border-muted); }
+
+/* ButtonGroup (§6.9): ngang — phụ trái, chính phải, chia đều */
+.uu-btngroup { display: flex; gap: var(--gap-3); }
+.uu-btngroup > * { flex: 1 1 0; }
+
+/* ---------- Field shell: label + field + lỗi (§6.3, 6.3e, 6.3g, 6.4, 6.3c) ---------- */
+.uu-fieldset { display: flex; flex-direction: column; gap: var(--gap-1); min-width: 0; }
+.uu-label { display: flex; align-items: center; gap: var(--gap-1); min-height: var(--text-label-line-height);
+            font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); color: var(--object-primary); }
+.uu-label__suffix { font-size: var(--text-caption-font-size); line-height: var(--text-caption-line-height); color: var(--object-secondary); }
+.uu-field { position: relative; isolation: isolate; cursor: text; }
+.uu-field::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+                   background: var(--object-secondary); opacity: 0; transition: opacity 120ms ease; }
+.uu-field:hover:not(:focus-within)::after { opacity: var(--opacity-5); }
+.uu-field input, .uu-field textarea {
+  flex: 1 1 0; min-width: 1px; border: 0; outline: 0; background: transparent; padding: 0; resize: none;
+  font-family: var(--font-family-body); font-size: var(--text-body-font-size); line-height: var(--text-body-line-height);
+  color: var(--object-primary); caret-color: var(--object-accent);
+}
+.uu-field input::placeholder, .uu-field textarea::placeholder { color: var(--object-secondary); }
+.uu-field--select { cursor: pointer; }
+.uu-field--area { height: auto; min-height: var(--size-28); flex-direction: column; align-items: stretch;
+                  padding: var(--gap-3) var(--field-padding-x); gap: var(--gap-2); }
+.uu-field--area textarea { flex: 1 1 auto; }
+.uu-field__counter { align-self: stretch; text-align: right; font-size: var(--text-caption-font-size);
+                     line-height: var(--text-caption-line-height); color: var(--object-secondary); }
+.uu-field .uu-icon { color: var(--object-secondary); width: var(--field-icon); height: var(--field-icon); }
+.uu-field .uu-icon--16 { width: var(--size-4); height: var(--size-4); }
+.uu-field__clear { display: inline-flex; align-items: center; justify-content: center; width: var(--size-8); height: var(--size-8);
+                   margin-right: calc(-1 * var(--gap-2)); border: 0; background: transparent; color: var(--object-secondary);
+                   border-radius: var(--rounded-circle); cursor: pointer; }
+
+/* ---------- Chip (§6.18) — hình học của TextButtonNeutral Small ---------- */
+.uu-chip { display: inline-flex; align-items: center; gap: var(--gap-2); border: 0; cursor: pointer;
+           min-height: var(--control-height-small); min-width: var(--control-height-small);
+           padding: var(--control-padding-y-small) var(--control-padding-x-small);
+           border-radius: var(--rounded-circle); background: transparent;
+           box-shadow: inset 0 0 0 var(--chip-border-width) var(--border); color: var(--object-primary);
+           font-family: var(--font-family-body); font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-chip[aria-pressed="true"] { background: var(--background-interactive-muted); box-shadow: inset 0 0 0 var(--chip-border-width) var(--border-interactive); }
+.uu-chip:hover::after { opacity: var(--opacity-5); }
+.uu-chip:active::after { opacity: var(--opacity-10); }
+
+/* ---------- Badge (§6.14) · StatusIndicator (§6.15) ---------- */
+.uu-badge { display: inline-flex; align-items: center; height: var(--size-6); padding: 0 var(--gap-1); white-space: nowrap;
+            border-radius: var(--rounded-circle); font-size: var(--text-title-sm-font-size); line-height: var(--text-title-sm-line-height);
+            font-weight: var(--font-weight-semibold); }
+.uu-badge--neutral { background: var(--background-inverted); color: var(--object-primary-inverted); }
+.uu-badge--success { background: var(--background-positive); color: var(--object-on-positive); }
+.uu-badge--warning { background: var(--background-warning); color: var(--object-on-warning); }
+
+.uu-status { display: inline-flex; align-items: center; gap: var(--gap-1-5); height: var(--size-5); white-space: nowrap;
+             font-size: var(--text-title-sm-font-size); line-height: var(--text-title-sm-line-height);
+             font-weight: var(--font-weight-semibold); color: var(--object-primary); }
+.uu-status::before { content: ""; width: var(--size-2); height: var(--size-2); border-radius: var(--rounded-circle); background: currentColor; }
+.uu-status--success::before { background: var(--object-positive); }
+.uu-status--warning::before { background: var(--object-warning); }
+.uu-status--neutral::before { background: var(--object-secondary); }
+
+/* ---------- Tab (§6.20) ---------- */
+.uu-tab { position: relative; display: inline-flex; padding: var(--tab-padding); border: 0; background: transparent; cursor: pointer;
+          font-family: var(--font-family-body); font-size: var(--text-title-base-font-size); line-height: var(--text-title-base-line-height);
+          font-weight: var(--font-weight-semibold); color: var(--object-secondary); text-decoration: none; }
+.uu-tab[aria-selected="true"] { color: var(--object-interactive); }
+.uu-tab[aria-selected="true"]::before { content: ""; position: absolute; left: 50%; bottom: -2px; width: var(--size-8); height: var(--size-1);
+          transform: translateX(-50%); border-radius: var(--rounded-circle); background: var(--border-interactive); }
+
+/* ---------- SegmentedControl (§6.13) — bổ sung recipe trong tokens.css ---------- */
+.uu-segment { position: relative; isolation: isolate; border: 0; cursor: pointer; border-radius: var(--radius-base); white-space: nowrap; }
+.uu-segment::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+                     background: var(--object-primary); opacity: 0; transition: opacity 120ms ease; }
+.uu-segment .uu-icon { width: var(--control-icon-base); height: var(--control-icon-base); }
+.uu-segment:hover::after { opacity: var(--opacity-5); }
+.uu-segment:active::after { opacity: var(--opacity-10); }
+
+/* ---------- Menu (§6.21) ---------- */
+.uu-menu { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-3);
+           border-radius: var(--rounded-2xl); background: var(--background-surface); box-shadow: var(--elevation-low); }
+/* Platform=Sheet: danh sách nằm thẳng trong CardSheet, không có panel riêng */
+.uu-menu--flat { padding: 0; box-shadow: none; }
+.uu-menuitem { display: flex; align-items: center; gap: var(--gap-3); padding: var(--gap-2); border-radius: var(--radius-base);
+               color: var(--object-primary); text-decoration: none; cursor: pointer; border: 0; background: transparent; text-align: left;
+               font-family: var(--font-family-body); font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-menuitem .uu-icon { color: var(--object-secondary); }
+.uu-menuitem[aria-current="page"] { background: var(--background-accent-subtle); color: var(--object-interactive); }
+.uu-menuitem[aria-current="page"] .uu-icon { color: var(--object-accent); }
+.uu-menuitem:hover::after { opacity: var(--opacity-5); }
+.uu-menuitem:active::after { opacity: var(--opacity-10); }
+.uu-menuitem::after { background: var(--object-primary); }
+.uu-menuitem[aria-current="page"]::after { background: var(--background-interactive); }
+.uu-menuitem .uu-menuitem__check { margin-left: auto; color: var(--object-interactive); }
+
+/* ---------- Scrim + CardSheet (§6.8) + Dialog (§6.10) ---------- */
+.uu-scrim { position: fixed; inset: 0; z-index: 100; display: flex; padding: var(--gap-3);
+            background: var(--overlay); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.uu-scrim--sheet { align-items: flex-end; padding-top: 0; }
+.uu-scrim--dialog { align-items: center; justify-content: center; }
+.uu-panel { width: 100%; border-radius: var(--rounded-2xl); background: var(--background-surface); color: var(--object-primary); overflow: hidden; }
+.uu-scrim--dialog .uu-panel { max-width: var(--size-96); }
+.uu-panel__header { display: flex; align-items: center; gap: var(--gap-4); min-height: var(--size-12); padding: var(--gap-4) var(--gap-4) 0; }
+.uu-panel__header--end { justify-content: flex-end; }
+.uu-panel__title { flex: 1; }
+.uu-panel__body { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-3) var(--gap-4) var(--gap-4); }
+
+/* ---------- Toast (§6.6) ---------- */
+.uu-toast { display: flex; align-items: center; gap: var(--gap-3); min-height: var(--size-16); padding: var(--gap-2) var(--gap-4);
+            border-radius: var(--radius-base); box-shadow: var(--elevation-medium); }
+.uu-toast--neutral { background: var(--background-inverted); color: var(--object-primary-inverted); }
+.uu-toast--positive { background: var(--background-positive); color: var(--object-on-positive); }
+.uu-toast__content { flex: 1; }
+
+/* ---------- SideNav (§6.27) ---------- */
+.uu-sidenav { display: flex; flex-direction: column; gap: var(--gap-1); width: var(--sidenav-width); padding: var(--gap-3);
+              border-right: 1px solid var(--border-muted); background: var(--background-surface); flex: none; }
+.uu-sidenav__section { padding: var(--gap-4) var(--gap-3) var(--gap-1); text-transform: uppercase; color: var(--object-secondary); }
+.uu-navitem { display: flex; align-items: center; gap: var(--gap-2); min-height: var(--control-height-base);
+              padding: 0 var(--control-padding-x-small); border-radius: var(--radius-sm); text-decoration: none; cursor: pointer;
+              color: var(--object-primary); font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-navitem .uu-icon { width: var(--control-icon-base); height: var(--control-icon-base); color: var(--object-secondary); }
+.uu-navitem[aria-current="page"] { background: var(--background-interactive-muted); }
+.uu-navitem[aria-current="page"] .uu-icon { color: var(--object-interactive); }
+.uu-navitem::after { background: var(--object-primary); }
+.uu-navitem:hover::after { opacity: var(--opacity-5); }
+.uu-navitem:active::after { opacity: var(--opacity-10); }
+
+/* ---------- Breadcrumb (§6.25) ---------- */
+.uu-breadcrumb { display: flex; align-items: center; gap: var(--gap-1);
+                 font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-crumb { padding: 0 var(--gap-1); border-radius: var(--radius-sm); color: var(--object-secondary); text-decoration: none; }
+.uu-crumb::after { background: var(--object-primary); }
+.uu-crumb:hover::after { opacity: var(--opacity-5); }
+.uu-crumb[aria-current="page"] { color: var(--object-primary); }
+.uu-crumb-sep { color: var(--object-disabled); }
+
+/* ---------- KPICard (§6.26) ---------- */
+.uu-kpi { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--card-padding); flex: 1 1 0;
+          border-radius: var(--radius-lg); background: var(--background-surface); border: 1px solid var(--border-muted); }
+.uu-kpi__label { color: var(--object-secondary); }
+.uu-kpi__value { font-variant-numeric: tabular-nums; }
+
+/* ---------- Table (§6.23) ---------- */
+.uu-table { width: 100%; border-collapse: collapse; }
+.uu-th { height: var(--table-header-height); padding: 0 var(--table-cell-padding-x); text-align: left; white-space: nowrap;
+         border-bottom: 1px solid var(--border-muted); color: var(--object-secondary);
+         font-size: var(--text-title-sm-font-size); line-height: var(--text-title-sm-line-height); font-weight: var(--font-weight-semibold); }
+.uu-th__inner { display: inline-flex; align-items: center; gap: var(--gap-1); }
+.uu-td { position: relative; height: var(--table-row-height); padding: 0 var(--table-cell-padding-x);
+         border-bottom: 1px solid var(--border-muted); color: var(--object-primary);
+         font-size: var(--text-body-font-size); line-height: var(--text-body-line-height); }
+.uu-td::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--object-primary); opacity: 0; }
+.uu-table tbody tr:hover .uu-td::after { opacity: var(--opacity-5); }
+.uu-td--secondary { color: var(--object-secondary); font-size: var(--text-caption-font-size); line-height: var(--text-caption-line-height); white-space: nowrap; }
+.uu-td--actions { width: 1%; white-space: nowrap; text-align: right; }
+.uu-td__actions { display: inline-flex; align-items: center; gap: var(--gap-1); position: relative; z-index: 1; }
+
+/* ---------- SideSheet Standard (§6.28) ---------- */
+.uu-sidesheet { display: flex; flex-direction: column; width: var(--size-96); flex: none;
+                border-left: 1px solid var(--border-muted); background: var(--background-surface); }
+.uu-sidesheet__header { display: flex; align-items: center; gap: var(--gap-2); padding: var(--card-padding); }
+.uu-sidesheet__title { flex: 1; }
+.uu-sidesheet__body { display: flex; flex-direction: column; gap: var(--gap-3); padding: 0 var(--card-padding) var(--card-padding); overflow: auto; }

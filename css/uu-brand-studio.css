@@ -1,0 +1,37 @@
+/* ĐỀ XUẤT — brand mode "uu-studio" cho website ÚÙ Creative Studio (cam + vàng như logo).
+   Chưa có trong UU DS: cần chủ design system duyệt trước khi đưa vào tokens.css.
+   Chỉ ghi đè đúng 20 token thương hiệu (spec 2.5); component không biết mình đang ở brand nào.
+
+   Contrast đã đo (WCAG 2.x, trên trắng):
+   - interactive orange-70 #C2410C: 5.18 (đạt 4.5). Cam logo #FF500D chỉ 3.28, orange-60 3.56 → không dùng cho chữ/nút.
+   - accent amber-70 #B45309: 5.02. accent-emphasized amber-40 #FBBF24 (≈ vàng ÚÙ store) chỉ làm nền, chữ đen 12.58.
+   - border-interactive orange-60: 3.56 (đạt ngưỡng ranh giới 3:1).
+   - object-interactive-inverted orange-40 trên đen: 9.28. */
+[data-theme="uu-studio"] {
+  --background-muted: var(--color-neutral-05);
+  --background-subtle: var(--color-neutral-10);
+  --background-emphasized: var(--color-neutral-20);
+
+  --background-interactive: var(--color-orange-70);
+  --background-interactive-muted: var(--color-orange-05);
+
+  --background-accent: var(--color-amber-70);
+  --background-accent-muted: var(--color-amber-05);
+  --background-accent-subtle: var(--color-amber-10);
+  --background-accent-medium: var(--color-amber-20);
+  --background-accent-emphasized: var(--color-amber-40);
+
+  --object-interactive: var(--color-orange-70);
+  --object-interactive-muted: var(--color-orange-60);
+  --object-interactive-inverted: var(--color-orange-40);
+
+  --object-accent: var(--color-amber-70);
+  --object-accent-muted: var(--color-amber-30);
+  --object-accent-inverted: var(--color-amber-30);
+
+  --border-interactive: var(--color-orange-60);
+  --border-interactive-inverted: var(--color-orange-80);
+
+  --border-subtle: var(--color-amber-20);
+  --border-medium: var(--color-amber-30);
+}

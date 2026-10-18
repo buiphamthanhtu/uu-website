@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="uu-studio">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,41 +18,38 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/uu-tokens.css">
+  <link rel="stylesheet" href="css/uu-brand-studio.css">
+  <link rel="stylesheet" href="css/uu-components.css">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
   <header class="site-header">
-    <a class="site-header__logo" href="index.html" aria-label="ÚÙ Creative Studio - Home">
+    <a class="site-header__logo" href="index.html" aria-label="ÚÙ Creative Studio - Trang chủ">
       <img src="assets/logo.png" alt="ÚÙ Creative Studio">
     </a>
-    <nav class="site-header__nav" aria-label="Main">
-      <a class="btn btn--neutral" href="index.html">Home</a>
-      <a class="btn btn--neutral" href="blog.html">blog</a>
-      <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
+    <nav class="site-header__nav" aria-label="Chính">
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="index.html">Home</a>
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="blog.html">Blog</a>
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
     </nav>
-    <a class="btn btn--brand desktop-contact" href="mailto:tu@uucreative.co">contact us</a>
-    <button class="btn btn--brand menu-toggle" aria-label="Open menu" aria-expanded="false" data-menu-open>☰</button>
+    <a class="uu-btn uu-btn--base uu-interactive tb-accent-solid u-upper site-header__contact" href="mailto:tu@uucreative.co">Contact us</a>
+    <button class="uu-btn uu-iconbtn uu-iconbtn--base uu-interactive tb-neutral-ghost-inv site-header__menu" aria-label="Mở menu" aria-expanded="false" aria-controls="menuSheet" data-menu-open>
+      <svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#menu-bars"/></svg>
+    </button>
   </header>
-
-  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
-    <button class="btn btn--brand menu-overlay__close" aria-label="Close menu" data-menu-close>✕</button>
-    <a class="btn btn--neutral" href="index.html">Home</a>
-    <a class="btn btn--neutral" href="blog.html">blog</a>
-    <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
-    <a class="btn btn--brand" href="mailto:tu@uucreative.co">contact us</a>
-  </div>
 
   <main class="page-body">
 
     <div class="article-title">
-      <p class="eyebrow-line">Hơi thở designer, thức thứ nhất</p>
-      <h1>“Giao Tiếp”</h1>
-      <p class="eyebrow-line">Hồi 1</p>
+      <p class="series text-heading-sm u-upper">Hơi thở designer, thức thứ nhất</p>
+      <h1 class="text-display-base u-upper">“Giao Tiếp”</h1>
+      <p class="text-heading-sm u-upper">Hồi 1</p>
     </div>
 
-    <article class="article-content">
+    <article class="article-content text-body">
 <p>Bài viết dành cho những bạn designer đang cảm thấy làm việc cứ hay bị trục trặc trong việc nói chuyện với mọi người...</p>
 <h2>Giao tiếp là gì?</h2>
 <figure><img class="fig-400" src="assets/a1-img1.png" alt="Minh họa: giao tiếp"></figure>
@@ -106,20 +103,20 @@
     </article>
 
     <section class="related">
-      <h2>Related article</h2>
+      <h2 class="text-display-base u-upper">Related article</h2>
       <div class="blog-grid">
-        <a class="article-cover" href="blog-giao-tiep-3.html">
+        <a class="cover" href="blog-giao-tiep-3.html">
           <img src="assets/cover-3.png" alt="Giao tiếp — Hồi 3">
-          <span class="article-cover__overlay">
-            <strong>Giao tiếp - Hồi 3</strong>
-            <span>Hơi thở designer, thức thứ nhất</span>
+          <span class="cover__overlay">
+            <strong class="text-heading-sm">Giao tiếp - Hồi 3</strong>
+            <span class="text-caption">Hơi thở designer, thức thứ nhất</span>
           </span>
         </a>
-        <a class="article-cover" href="blog-giao-tiep-2.html">
+        <a class="cover" href="blog-giao-tiep-2.html">
           <img src="assets/cover-2.png" alt="Giao tiếp — Hồi 2">
-          <span class="article-cover__overlay">
-            <strong>Giao tiếp - Hồi 2</strong>
-            <span>Hơi thở designer, thức thứ nhất</span>
+          <span class="cover__overlay">
+            <strong class="text-heading-sm">Giao tiếp - Hồi 2</strong>
+            <span class="text-caption">Hơi thở designer, thức thứ nhất</span>
           </span>
         </a>
       </div>
@@ -128,8 +125,29 @@
   </main>
 
   <footer class="site-footer">
-    <p>© 2024 ÚÙ CREATIVE LTD. A private limited company incorporated in Viet Nam under enterprise code 0318657950.</p>
+    <p class="text-caption">© 2024 ÚÙ CREATIVE LTD. A private limited company incorporated in Viet Nam under enterprise code 0318657950.</p>
   </footer>
+
+  <div class="uu-scrim uu-scrim--sheet" id="menuSheet" hidden>
+    <div class="uu-panel" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
+      <div class="uu-panel__header">
+        <h2 class="uu-panel__title text-heading-base" id="menuTitle">Menu</h2>
+        <button class="uu-btn uu-iconbtn uu-iconbtn--sm uu-interactive tb-neutral-outline" aria-label="Đóng menu" data-menu-close>
+          <svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#xmark"/></svg>
+        </button>
+      </div>
+      <div class="uu-panel__body">
+        <nav class="uu-menu uu-menu--flat" aria-label="Menu">
+          <a class="uu-menuitem uu-interactive" href="index.html"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#house"/></svg>Home</a>
+          <a class="uu-menuitem uu-interactive" href="blog.html" aria-current="page"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#file-fill"/></svg>Blog<svg class="uu-icon uu-icon--16 uu-menuitem__check" aria-hidden="true"><use href="assets/icons.svg#check-fill"/></svg></a>
+          <a class="uu-menuitem uu-interactive" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#bag-shopping"/></svg>Shop</a>
+        </nav>
+        <div class="uu-btngroup">
+          <a class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" href="mailto:tu@uucreative.co"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg>Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

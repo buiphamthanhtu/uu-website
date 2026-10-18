@@ -1,28 +1,26 @@
-// Mobile menu overlay (clone của trang /menu trong Figma)
+// Menu mobile = Menu Platform=Sheet của UU DS (bottom sheet + scrim)
 (function () {
-  var menu = document.getElementById('menu');
+  var sheet = document.getElementById('menuSheet');
   var openBtn = document.querySelector('[data-menu-open]');
   var closeBtn = document.querySelector('[data-menu-close]');
-  if (!menu || !openBtn || !closeBtn) return;
+  if (!sheet || !openBtn || !closeBtn) return;
 
   function open() {
-    menu.classList.add('is-open');
+    sheet.hidden = false;
     openBtn.setAttribute('aria-expanded', 'true');
     closeBtn.focus();
   }
   function close() {
-    menu.classList.remove('is-open');
+    if (sheet.hidden) return;
+    sheet.hidden = true;
     openBtn.setAttribute('aria-expanded', 'false');
     openBtn.focus();
   }
 
   openBtn.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
-  });
-  // Đóng menu khi chọn một link
-  menu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', close);
-  });
+  // Chạm vào nền mờ ngoài tấm sheet thì đóng
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
 })();

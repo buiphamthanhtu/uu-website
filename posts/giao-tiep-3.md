@@ -45,36 +45,28 @@ Vòng tròn càng xa bạn thì mức độ hiểu cũng càng ít dần. Vậy 
 
 ## Sếp (Design lead/director)
 
-**Độ ảnh hưởng với bạn**
-
-Cao
-
-**Mối quan tâm của họ**
-
-- Hiệu suất của nhóm
-- Sự phát triển của các thành viên
-- Đồng nhất mục tiêu chung của nhóm
-- Tiến độ công việc
-- Drama trong nhóm
-
-**Điểm đau của họ**
-
-- Không biết các rào cản của bạn
-- Không nắm được tiến độ của bạn
-
-**Mục tiêu giao tiếp của bạn**
-
-- Tìm kiếm phản hồi
-- Báo...cáo, giải quyết trở ngại
-- Thuyết phục
-- Ra quyết định
-- Đảm bảo sự đồng thuận
-- Tìm kiếm sự định hướng
-
-**Phương pháp giao tiếp với họ**
-
-- Chat / Nói chuyện
-- Họp 1:1
+<div class="info-table">
+<div class="row">
+<strong>Độ ảnh hưởng với bạn</strong>
+<p>Cao</p>
+</div>
+<div class="row">
+<strong>Mối quan tâm của họ</strong>
+<ul><li>Hiệu suất của nhóm</li><li>Sự phát triển của các thành viên</li><li>Đồng nhất mục tiêu chung của nhóm</li><li>Tiến độ công việc</li><li>Drama trong nhóm</li></ul>
+</div>
+<div class="row">
+<strong>Điểm đau của họ</strong>
+<ul><li>Không biết các rào cản của bạn</li><li>Không nắm được tiến độ của bạn</li></ul>
+</div>
+<div class="row">
+<strong>Mục tiêu giao tiếp của bạn</strong>
+<ul><li>Tìm kiếm phản hồi</li><li>Báo...cáo, giải quyết trở ngại</li><li>Thuyết phục</li><li>Ra quyết định</li><li>Đảm bảo sự đồng thuận</li><li>Tìm kiếm sự định hướng</li></ul>
+</div>
+<div class="row">
+<strong>Phương pháp giao tiếp với họ</strong>
+<ul><li>Chat / Nói chuyện</li><li>Họp 1:1</li></ul>
+</div>
+</div>
 
 Sếp là một người đóng vai trò quản lý, dẫn đường và bảo vệ bạn trước những căng thẳng không cần thiết từ bên ngoài và từ bên trên. Để một người sếp có thể làm 3 việc đó cho bạn, thì bạn phải giúp họ hiểu được tình hình của bạn như thế nào một cách rõ ràng nhất.
 

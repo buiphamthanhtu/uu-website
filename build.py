@@ -90,11 +90,11 @@ def cover_link(post, indent="        "):
     label = f'{cap(plain_title)} - {cap(post["episode"])}'
     series = cap(post.get("series", ""))
     return (
-        f'{indent}<a class="article-cover" href="{post["url"]}">\n'
+        f'{indent}<a class="cover" href="{post["url"]}">\n'
         f'{indent}  <img src="{post["cover"]}" alt="{post.get("cover_alt", "")}">\n'
-        f'{indent}  <span class="article-cover__overlay">\n'
-        f"{indent}    <strong>{label}</strong>\n"
-        f"{indent}    <span>{series}</span>\n"
+        f'{indent}  <span class="cover__overlay">\n'
+        f'{indent}    <strong class="text-heading-sm">{label}</strong>\n'
+        f'{indent}    <span class="text-caption">{series}</span>\n'
         f"{indent}  </span>\n"
         f"{indent}</a>"
     )
@@ -145,8 +145,15 @@ def main():
         out.write_text(html, encoding="utf-8")
         print(f"  ✓ {out.name}")
 
+    # Gỡ trang của bài đã chuyển về nháp hoặc đã xoá khỏi posts/
+    published = {p["url"] for p in posts}
+    for stale in ROOT.glob("blog-*.html"):
+        if stale.name not in published:
+            stale.unlink()
+            print(f"  ✗ gỡ {stale.name} (không còn bài đăng tương ứng)")
+
     # Trang danh sách blog
-    covers = "\n".join(cover_link(p, indent="      ") for p in posts)
+    covers ="\n".join(cover_link(p, indent="      ") for p in posts)
     (ROOT / "blog.html").write_text(
         blog_tpl.replace("{{COVERS}}", covers), encoding="utf-8"
     )
@@ -157,8 +164,8 @@ def main():
     index_html = index_path.read_text(encoding="utf-8")
     latest = "\n".join(cover_link(p, indent="      ") for p in posts[:3])
     new_index, n = re.subn(
-        r"(<!-- build:covers -->\n).*?(\n\s*<!-- /build:covers -->)",
-        lambda m: m.group(1) + latest + m.group(2),
+        r"(<!-- build:covers -->).*?([ \t]*<!-- /build:covers -->)",
+        lambda m: m.group(1) + "\n" + latest + "\n" + m.group(2),
         index_html,
         flags=re.DOTALL,
     )

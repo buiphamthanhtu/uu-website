@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="uu-studio">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,41 +18,38 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/uu-tokens.css">
+  <link rel="stylesheet" href="css/uu-brand-studio.css">
+  <link rel="stylesheet" href="css/uu-components.css">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
   <header class="site-header">
-    <a class="site-header__logo" href="index.html" aria-label="ÚÙ Creative Studio - Home">
+    <a class="site-header__logo" href="index.html" aria-label="ÚÙ Creative Studio - Trang chủ">
       <img src="assets/logo.png" alt="ÚÙ Creative Studio">
     </a>
-    <nav class="site-header__nav" aria-label="Main">
-      <a class="btn btn--neutral" href="index.html">Home</a>
-      <a class="btn btn--neutral" href="blog.html">blog</a>
-      <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
+    <nav class="site-header__nav" aria-label="Chính">
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="index.html">Home</a>
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="blog.html">Blog</a>
+      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost-inv u-upper" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
     </nav>
-    <a class="btn btn--brand desktop-contact" href="mailto:tu@uucreative.co">contact us</a>
-    <button class="btn btn--brand menu-toggle" aria-label="Open menu" aria-expanded="false" data-menu-open>☰</button>
+    <a class="uu-btn uu-btn--base uu-interactive tb-accent-solid u-upper site-header__contact" href="mailto:tu@uucreative.co">Contact us</a>
+    <button class="uu-btn uu-iconbtn uu-iconbtn--base uu-interactive tb-neutral-ghost-inv site-header__menu" aria-label="Mở menu" aria-expanded="false" aria-controls="menuSheet" data-menu-open>
+      <svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#menu-bars"/></svg>
+    </button>
   </header>
-
-  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
-    <button class="btn btn--brand menu-overlay__close" aria-label="Close menu" data-menu-close>✕</button>
-    <a class="btn btn--neutral" href="index.html">Home</a>
-    <a class="btn btn--neutral" href="blog.html">blog</a>
-    <a class="btn btn--neutral" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener">Shop</a>
-    <a class="btn btn--brand" href="mailto:tu@uucreative.co">contact us</a>
-  </div>
 
   <main class="page-body">
 
     <div class="article-title">
-      <p class="eyebrow-line">Hơi thở designer, thức thứ nhất</p>
-      <h1>“Giao tiếp”</h1>
-      <p class="eyebrow-line">Hồi 3</p>
+      <p class="series text-heading-sm u-upper">Hơi thở designer, thức thứ nhất</p>
+      <h1 class="text-display-base u-upper">“Giao tiếp”</h1>
+      <p class="text-heading-sm u-upper">Hồi 3</p>
     </div>
 
-    <article class="article-content">
+    <article class="article-content text-body">
 <p>Bài viết dành cho những bạn designer đang cảm thấy làm việc cứ hay bị trục trặc trong việc nói chuyện với mọi người...và dành cho những ai đang làm sếp.</p>
 <h2>giao tiếp với ai? và như thế nào?</h2>
 <figure><img class="fig-800" src="assets/a3-img1.png" alt="Sơ đồ các vòng tròn giao tiếp của Product designer"></figure>
@@ -83,35 +80,29 @@
 </ul>
 <p>Vòng tròn càng xa bạn thì mức độ hiểu cũng càng ít dần. Vậy để họ hiểu mình, thì trước hết mình cũng nên hiểu họ.</p>
 <h2>Sếp (Design lead/director)</h2>
-<p><strong>Độ ảnh hưởng với bạn</strong></p>
+<div class="info-table">
+<div class="row">
+<strong>Độ ảnh hưởng với bạn</strong>
 <p>Cao</p>
-<p><strong>Mối quan tâm của họ</strong></p>
-<ul>
-<li>Hiệu suất của nhóm</li>
-<li>Sự phát triển của các thành viên</li>
-<li>Đồng nhất mục tiêu chung của nhóm</li>
-<li>Tiến độ công việc</li>
-<li>Drama trong nhóm</li>
-</ul>
-<p><strong>Điểm đau của họ</strong></p>
-<ul>
-<li>Không biết các rào cản của bạn</li>
-<li>Không nắm được tiến độ của bạn</li>
-</ul>
-<p><strong>Mục tiêu giao tiếp của bạn</strong></p>
-<ul>
-<li>Tìm kiếm phản hồi</li>
-<li>Báo...cáo, giải quyết trở ngại</li>
-<li>Thuyết phục</li>
-<li>Ra quyết định</li>
-<li>Đảm bảo sự đồng thuận</li>
-<li>Tìm kiếm sự định hướng</li>
-</ul>
-<p><strong>Phương pháp giao tiếp với họ</strong></p>
-<ul>
-<li>Chat / Nói chuyện</li>
-<li>Họp 1:1</li>
-</ul>
+</div>
+<div class="row">
+<strong>Mối quan tâm của họ</strong>
+<ul><li>Hiệu suất của nhóm</li><li>Sự phát triển của các thành viên</li><li>Đồng nhất mục tiêu chung của nhóm</li><li>Tiến độ công việc</li><li>Drama trong nhóm</li></ul>
+</div>
+<div class="row">
+<strong>Điểm đau của họ</strong>
+<ul><li>Không biết các rào cản của bạn</li><li>Không nắm được tiến độ của bạn</li></ul>
+</div>
+<div class="row">
+<strong>Mục tiêu giao tiếp của bạn</strong>
+<ul><li>Tìm kiếm phản hồi</li><li>Báo...cáo, giải quyết trở ngại</li><li>Thuyết phục</li><li>Ra quyết định</li><li>Đảm bảo sự đồng thuận</li><li>Tìm kiếm sự định hướng</li></ul>
+</div>
+<div class="row">
+<strong>Phương pháp giao tiếp với họ</strong>
+<ul><li>Chat / Nói chuyện</li><li>Họp 1:1</li></ul>
+</div>
+</div>
+
 <p>Sếp là một người đóng vai trò quản lý, dẫn đường và bảo vệ bạn trước những căng thẳng không cần thiết từ bên ngoài và từ bên trên. Để một người sếp có thể làm 3 việc đó cho bạn, thì bạn phải giúp họ hiểu được tình hình của bạn như thế nào một cách rõ ràng nhất.</p>
 <p>Là một người sếp tốt, họ sẽ quan tâm đến sự phát triển của bạn. Nhưng điểm đau cũng như điểm mù của họ là không thấy những rào cản, những khó khăn của bạn, nếu như bạn không chủ động nói. Bởi lẽ đơn giản là vì họ đã từng trải qua những việc đó và giờ với họ đó là một chuyện bình thường, họ quên mất đó là những khó khăn rào cản lúc còn là junior...hoặc họ đang tập trung vào những vấn đề to hơn để đối mặt và không để ý đến những vấn đề nhỏ hơn, bạn phải nhắc để họ nhận ra vấn đề dù nhỏ hay lớn vẫn là vấn đề cần họ giúp.</p>
 <p>Là một người sếp giỏi, họ sẽ phải là người đi giải quyết vấn đề của bạn, để bạn chỉ tập trung vào đúng một việc...đó là làm design, họ sẽ chủ động tổ chức các buổi 1:1 hằng tháng để tâm sự nhỏ to với bạn, để hiểu bạn hơn. Chứ không phải bảo bạn lo làm giấy tờ xin budget với kế toán, hay bảo bạn bị overload thì tự đi bàn luận về workload với team Product cho việc planning làm việc, hay kêu bạn viết JD và kế hoạch tuyển dụng nhân sự, hay để bạn nắm hết mọi context của sản phẩm và họ thì không nắm rõ gì hết...những việc đó là việc của một người sếp không biết cách làm leader mà chỉ biết làm boss.</p>
@@ -151,20 +142,20 @@
     </article>
 
     <section class="related">
-      <h2>Related article</h2>
+      <h2 class="text-display-base u-upper">Related article</h2>
       <div class="blog-grid">
-        <a class="article-cover" href="blog-giao-tiep-2.html">
+        <a class="cover" href="blog-giao-tiep-2.html">
           <img src="assets/cover-2.png" alt="Giao tiếp — Hồi 2">
-          <span class="article-cover__overlay">
-            <strong>Giao tiếp - Hồi 2</strong>
-            <span>Hơi thở designer, thức thứ nhất</span>
+          <span class="cover__overlay">
+            <strong class="text-heading-sm">Giao tiếp - Hồi 2</strong>
+            <span class="text-caption">Hơi thở designer, thức thứ nhất</span>
           </span>
         </a>
-        <a class="article-cover" href="blog-giao-tiep-1.html">
+        <a class="cover" href="blog-giao-tiep-1.html">
           <img src="assets/cover-1.png" alt="Giao tiếp — Hồi 1">
-          <span class="article-cover__overlay">
-            <strong>Giao Tiếp - Hồi 1</strong>
-            <span>Hơi thở designer, thức thứ nhất</span>
+          <span class="cover__overlay">
+            <strong class="text-heading-sm">Giao Tiếp - Hồi 1</strong>
+            <span class="text-caption">Hơi thở designer, thức thứ nhất</span>
           </span>
         </a>
       </div>
@@ -173,8 +164,29 @@
   </main>
 
   <footer class="site-footer">
-    <p>© 2024 ÚÙ CREATIVE LTD. A private limited company incorporated in Viet Nam under enterprise code 0318657950.</p>
+    <p class="text-caption">© 2024 ÚÙ CREATIVE LTD. A private limited company incorporated in Viet Nam under enterprise code 0318657950.</p>
   </footer>
+
+  <div class="uu-scrim uu-scrim--sheet" id="menuSheet" hidden>
+    <div class="uu-panel" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
+      <div class="uu-panel__header">
+        <h2 class="uu-panel__title text-heading-base" id="menuTitle">Menu</h2>
+        <button class="uu-btn uu-iconbtn uu-iconbtn--sm uu-interactive tb-neutral-outline" aria-label="Đóng menu" data-menu-close>
+          <svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#xmark"/></svg>
+        </button>
+      </div>
+      <div class="uu-panel__body">
+        <nav class="uu-menu uu-menu--flat" aria-label="Menu">
+          <a class="uu-menuitem uu-interactive" href="index.html"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#house"/></svg>Home</a>
+          <a class="uu-menuitem uu-interactive" href="blog.html" aria-current="page"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#file-fill"/></svg>Blog<svg class="uu-icon uu-icon--16 uu-menuitem__check" aria-hidden="true"><use href="assets/icons.svg#check-fill"/></svg></a>
+          <a class="uu-menuitem uu-interactive" href="https://www.instagram.com/uucreative" target="_blank" rel="noopener"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#bag-shopping"/></svg>Shop</a>
+        </nav>
+        <div class="uu-btngroup">
+          <a class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" href="mailto:tu@uucreative.co"><svg class="uu-icon" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg>Contact us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
