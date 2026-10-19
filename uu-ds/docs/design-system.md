@@ -253,7 +253,7 @@ Bảy dòng đầu phụ thuộc màu thương hiệu — số ở trên là bra
 
 Đừng để màu là **tín hiệu duy nhất** ở chỗ quan trọng — kèm chữ hoặc icon để người khó phân biệt màu vẫn hiểu.
 
-### 2.4 Token có alpha
+### 2.4 Token có alpha · blur
 
 Ba token không trỏ thẳng vào một primitive mà **cộng thêm alpha ngay tại tầng semantic** (color alias + phần trăm alpha).
 
@@ -281,6 +281,32 @@ Trong CSS map thẳng bằng `color-mix`, giữ nguyên quan hệ dẫn xuất:
 ```
 
 Hệ quả cho code: **đừng tạo primitive màu có sẵn alpha**, và **đừng nhân thêm opacity lên fill** — alpha đã nằm trong token. Cần một màu mờ thì compose từ primitive đặc cộng một bậc `opacity/*`. Trong `tokens.json` các token này có thêm trường `$alpha`.
+
+#### Blur (hiệu ứng nhoè nền)
+
+Hai tầng như màu: **thang primitive** (Figma `core/blur/*`) → **token theo vai trò** (Figma collection `effect`,
+1 mode, không đổi theo brand / density). Đơn vị **px** ở cả web lẫn app — độ nhoè không co theo cỡ chữ.
+Component **chỉ đọc token vai trò**, không đọc thẳng `--blur-*`, không gõ `blur(16px)`.
+
+| Primitive | `blur-0` | `blur-sm` | `blur-base` | `blur-lg` |
+|---|---|---|---|---|
+| Giá trị | 0 | 4 | 8 | **16** — bậc cao nhất bản thiết kế dùng |
+
+| Token vai trò | Trỏ vào | Dùng cho |
+|---|---|---|
+| `overlay-blur` | `blur-lg` (16) | nhoè **đều** nền phía sau bottom sheet / dialog / side sheet Modal — luôn đi cặp màu `overlay` |
+| `surface-blur-start` | `blur-0` | thanh kính mờ, blur **dần**: mép phía nội dung |
+| `surface-blur-end` | `blur-lg` (16) | thanh kính mờ, blur dần: mép sát cạnh màn |
+
+**Thanh kính mờ** (header, bottom bar mờ khi nội dung cuộn qua) là lựa chọn của từng sản phẩm, **không** phải
+thuộc tính của `NavigationBar` / `BottomBar` — component không tự bật. Hai hướng dùng chung một cặp token:
+header mạnh nhất ở **mép trên**, nhạt về 0 ở mép dưới; bottom bar ngược lại. Figma: effect style
+`surface-blur/top` · `surface-blur/bottom` (Background blur kiểu *Progressive*); web: class `.uu-surface-blur--top` ·
+`.uu-surface-blur--bottom` trong `tokens.css`; Flutter: `UuEffect.surfaceBlurStart/End`. Nền phía sau tấm nổi:
+effect style `overlay-blur` (đã gắn vào template `Sheet`, `Dialog`), web `backdrop-filter: blur(var(--overlay-blur))`.
+
+Cần mức nhoè lớn hơn 16 → thêm bậc vào thang (vd. `blur-xl`), không đổi giá trị các bậc cũ; cần vai trò mới →
+thêm token vào `effect`, đặt tên theo vai trò.
 
 ### 2.5 Brand mode
 
@@ -1378,7 +1404,7 @@ Khi bật `Secondary button` trên instance, hai nút chia đôi hàng, mỗi b�
 
 | Lớp | Giá trị |
 |---|---|
-| Scrim | `overlay` (đen 10%) + `BACKGROUND_BLUR 16` |
+| Scrim | `overlay` (đen 10%) + `overlay-blur` (16, effect style `overlay-blur`) |
 | Wrapper | padding `0/12/12/12` → sheet thụt vào 12px mỗi bên **và nổi cách đáy 12** |
 | Sheet | instance `CardSheet` (`Navigation=Close`), FILL |
 | Đáy | instance `IOS Home indicator` (Transparent=True) |
@@ -1471,7 +1497,7 @@ Header của Dialog chỉ chứa nút đóng, căn phải (`primaryAxisAlignItem
 | Nút quay lại (sheet con) | `Back` — thay chỗ nút đóng | — (Dialog không xếp tầng) |
 | Nút phụ, hướng xếp | vào instance `Button group` | vào instance `Button group` |
 
-**Lớp scrim** giống Bottom sheet: fill `overlay` (đen 10%, alpha nằm trong token) + `BACKGROUND_BLUR 16`, panel thụt `gap-3` (12) mỗi bên → rộng 366 trên khung 390. Đừng nhân thêm opacity lên fill.
+**Lớp scrim** giống Bottom sheet: fill `overlay` (đen 10%, alpha nằm trong token) + `overlay-blur` (16), panel thụt `gap-3` (12) mỗi bên → rộng 366 trên khung 390. Đừng nhân thêm opacity lên fill.
 
 `Dialog` chứa `IOS Home indicator` nên cũng là template màn hình. Build code thì dựng theo `CardDialog` và tự làm scrim.
 
@@ -1797,7 +1823,7 @@ component nội bộ `.MenuItem`. Đây là **panel option bung ra của
 | Platform | Hình học |
 |---|---|
 | `Panel` | V · gap **4** · padding **12** · `FIXED × HUG` · radius **24** (`rounded-2xl`) · nền `background-surface` · **`elevation-low`** |
-| `Sheet` | dùng lại nguyên template `Sheet` (6.8): `CardSheet` `Header="Menu"`, `CTA=false`, `Navigation=Close`, scrim `overlay` + blur 16 |
+| `Sheet` | dùng lại nguyên template `Sheet` (6.8): `CardSheet` `Header="Menu"`, `CTA=false`, `Navigation=Close`, scrim `overlay` + `overlay-blur` |
 
 **Props `Menu`** (thêm): `Search` (BOOLEAN — ô `SearchInput` không nhãn ở đầu panel) · `Footer` (BOOLEAN — "Bỏ chọn" +
 "Áp dụng", dùng với `Type=Multiple`).

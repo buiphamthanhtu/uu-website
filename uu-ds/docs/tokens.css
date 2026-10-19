@@ -341,6 +341,17 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
+  /* ---- blur: primitive (px — độ nhoè không co theo cỡ chữ) ---- */
+  --blur-0: 0px;
+  --blur-sm: 4px;
+  --blur-base: 8px;
+  --blur-lg: 16px;
+
+  /* ---- effect: blur theo vai trò (spec 2.4) — component chỉ đọc nhóm này ---- */
+  --overlay-blur: var(--blur-lg);
+  --surface-blur-start: var(--blur-0);
+  --surface-blur-end: var(--blur-lg);
+
   /* ---- elevation ---- */
   --elevation-low: 0px 2px 8px rgba(0, 0, 0, 0.10);
   --elevation-medium: 0px 4px 12px rgba(0, 0, 0, 0.10);
@@ -817,3 +828,31 @@
                 border-radius: inherit; background: currentColor; }
 /* State layer: ô/vòng TRỐNG đi bậc nền sáng 5/10; ô ĐÃ CHỌN đi bậc nền đặc
    20/40 — Checkbox dùng object-on-interactive, Radio dùng object-interactive. */
+
+/* ---- thanh kính mờ — blur dần (progressive, spec 2.4) ----
+   Lớp tiện ích, sản phẩm tự gắn khi UI có thanh mờ; component Header / BottomBar không tự bật.
+   .uu-surface-blur--top: header — mạnh nhất ở mép trên (surface-blur-end), về 0 ở mép dưới.
+   .uu-surface-blur--bottom: bottom bar — ngược lại. Dựng bằng 4 lớp backdrop-filter, mỗi lớp một bậc,
+   giới hạn bằng mask gradient; giá trị lấy từ token nên đổi thang là đổi theo. */
+.uu-surface-blur--top, .uu-surface-blur--bottom { position: relative; isolation: isolate; }
+.uu-surface-blur--top::before, .uu-surface-blur--top::after,
+.uu-surface-blur--bottom::before, .uu-surface-blur--bottom::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+}
+.uu-surface-blur--top::before {
+  -webkit-backdrop-filter: blur(calc(var(--surface-blur-end) / 2)); backdrop-filter: blur(calc(var(--surface-blur-end) / 2));
+  -webkit-mask-image: linear-gradient(to top, transparent, var(--color-black) 60%); mask-image: linear-gradient(to top, transparent, var(--color-black) 60%);
+}
+.uu-surface-blur--top::after {
+  -webkit-backdrop-filter: blur(var(--surface-blur-end)); backdrop-filter: blur(var(--surface-blur-end));
+  -webkit-mask-image: linear-gradient(to top, transparent 40%, var(--color-black)); mask-image: linear-gradient(to top, transparent 40%, var(--color-black));
+}
+.uu-surface-blur--bottom::before {
+  -webkit-backdrop-filter: blur(calc(var(--surface-blur-end) / 2)); backdrop-filter: blur(calc(var(--surface-blur-end) / 2));
+  -webkit-mask-image: linear-gradient(to bottom, transparent, var(--color-black) 60%); mask-image: linear-gradient(to bottom, transparent, var(--color-black) 60%);
+}
+.uu-surface-blur--bottom::after {
+  -webkit-backdrop-filter: blur(var(--surface-blur-end)); backdrop-filter: blur(var(--surface-blur-end));
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, var(--color-black)); mask-image: linear-gradient(to bottom, transparent 40%, var(--color-black));
+}
+
