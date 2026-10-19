@@ -184,6 +184,7 @@ def write_llms(posts, uu_docs):
         lines.append(f"- [{p['headline']}]({BASE_URL}/{p['url']}): {p['meta_description']}")
     if uu_docs:
         lines += ["", "## UU Design System", "",
+                  f"- [Giới thiệu UU Design System]({BASE_URL}/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ",
                   f"- [Storybook UU DS]({BASE_URL}/uu-ds/): tài liệu cho người đọc (cần JavaScript)",
                   f"- [Mục lục UU DS cho AI]({BASE_URL}/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI"]
         for name in uu_docs:
@@ -201,6 +202,45 @@ def write_llms(posts, uu_docs):
         if p.get("next_note"):
             full += [p["next_note"], ""]
     (ROOT / "llms-full.txt").write_text("\n".join(full), encoding="utf-8")
+
+
+def write_ds_landing():
+    """Danh mục component + cây quyết định trên /design-system/, sinh từ uu-ds/index.json
+    để chỉ liệt kê đúng những trang Storybook đang có."""
+    page, index = ROOT / "design-system" / "index.html", ROOT / "uu-ds" / "index.json"
+    if not page.exists() or not index.exists():
+        return False
+    docs = [e for e in json.loads(index.read_text(encoding="utf-8"))["entries"].values() if e["type"] == "docs"]
+    link = lambda e: f'../uu-ds/?path=/docs/{e["id"]}'
+    groups = {}
+    for e in docs:
+        parts = e["title"].split("/")
+        if len(parts) == 3 and parts[0] == "Component":
+            groups.setdefault(parts[1], []).append(e)
+    cards = []
+    for name, items in groups.items():
+        lis = "\n".join(f'          <li><a href="{link(e)}">{e["title"].split("/")[-1]}</a></li>' for e in items)
+        cards.append(
+            f'        <article class="ds-card ds-group ds-reveal" data-delay="{len(cards) % 3 + 1}">\n'
+            f'          <div class="ds-group__head"><h3 class="text-heading-sm">{name}</h3>'
+            f'<span class="uu-badge uu-badge--neutral">{len(items)}</span></div>\n'
+            f'          <ul class="ds-links">\n{lis}\n          </ul>\n'
+            "        </article>")
+    trees = [e for e in docs if e["title"].startswith("Nền tảng/Cây quyết định/")]
+    tree_lis = [f'          <li><a href="{link(e)}"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg>'
+                f'{e["title"].split("/")[-1]}</a></li>' for e in trees]
+    # Dải tên chạy ngang: lặp 2 lần để trượt -50% là vòng lại liền mạch
+    names = [e["title"].split("/")[-1] for items in groups.values() for e in items]
+    marquee = "\n".join(f"        <span>{n}</span>" for n in names * 2)
+    html = page.read_text(encoding="utf-8")
+    for marker, block in (("ds-catalog", "\n".join(cards)), ("ds-trees", "\n".join(tree_lis)), ("ds-marquee", marquee)):
+        html, n = re.subn(rf"(<!-- build:{marker} -->).*?([ \t]*<!-- /build:{marker} -->)",
+                          lambda m: m.group(1) + "\n" + block + "\n" + m.group(2), html, flags=re.DOTALL)
+        if n == 0:
+            sys.exit(f"LỖI: design-system/index.html thiếu marker <!-- build:{marker} -->")
+    page.write_text(html, encoding="utf-8")
+    print(f"  ✓ design-system/index.html ({sum(len(v) for v in groups.values())} component · {len(groups)} nhóm · {len(trees)} cây quyết định)")
+    return True
 
 
 def main():
@@ -285,6 +325,7 @@ def main():
     uu_index = ROOT / "uu-ds" / "index.html"
     uu_indexable = uu_index.exists() and "noindex" not in uu_index.read_text(encoding="utf-8")
 
+    has_landing = write_ds_landing()
     write_llms(posts, uu_docs)
     print("  ✓ llms.txt, llms-full.txt")
 
@@ -293,6 +334,8 @@ def main():
     urls = [("", latest_date), ("blog.html", latest_date)] + [
         (p["url"], str(p["date"])) for p in posts
     ]
+    if has_landing:
+        urls.append(("design-system/", None))
     if uu_indexable:
         urls.append(("uu-ds/", None))
     urls += [(f"uu-ds/docs/{name}", None) for name in uu_docs if name.endswith(".md")]

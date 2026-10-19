@@ -10,6 +10,7 @@
 
 ## UU Design System
 
+- [Giới thiệu UU Design System](https://uucreative.co/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ
 - [Storybook UU DS](https://uucreative.co/uu-ds/): tài liệu cho người đọc (cần JavaScript)
 - [Mục lục UU DS cho AI](https://uucreative.co/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI
 - [design-system.md](https://uucreative.co/uu-ds/docs/design-system.md): spec đầy đủ: token, màu, typography, spacing, state layer và từng component đã chốt

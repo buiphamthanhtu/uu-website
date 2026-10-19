@@ -701,7 +701,7 @@
 /* =========================================================================
    STATE LAYER — cơ chế hover/pressed của UU DS.
    Hover/Pressed KHÔNG đổi background, color, hay font-weight. Chúng chỉ phủ
-   một lớp full-bleed màu = màu content của variant (currentColor).
+   một lớp full-bleed màu = màu object của variant (CSS: currentColor).
    ========================================================================= */
 
 .uu-interactive { position: relative; isolation: isolate; }
