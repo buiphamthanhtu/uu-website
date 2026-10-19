@@ -673,7 +673,7 @@ Hover và Pressed **không đổi màu nền hay màu chữ**. Hệ thống ph�
 
 - `RECTANGLE`, absolute-positioned, full-bleed đúng kích thước container, bo góc theo container
 - Nằm **trên cùng** z-stack, và **bị khoá** trong file thiết kế (cố ý, để designer không kéo nhầm)
-- `fill` = **màu content của chính variant đó** (text/icon color), không phải một màu cố định
+- `fill` = **màu object của chính variant đó** — token `object-*` mà variant đang dùng cho chữ / icon (CSS: `currentColor`), không phải một màu cố định
 - `opacity` bind vào token `opacity/opacity-*`
 
 Chọn bậc opacity theo độ tương phản của nền:
@@ -681,8 +681,8 @@ Chọn bậc opacity theo độ tương phản của nền:
 | Ngữ cảnh | Fill của state layer | Hover | Pressed |
 |---|---|---|---|
 | Nền đặc, tối/bão hoà — `Solid` Accent, `Solid` Neutral | màu on-content (`object-on-interactive`, `object-primary-inverted`) | `opacity-20` | `opacity-40` |
-| Nền sáng / trong suốt — `Outline`, `Ghost` (Inverted=False), và **mọi `Solid / Inverted=True`** (nền là `background-surface`) | màu content (`object-interactive`, `object-primary`) | `opacity-5` | `opacity-10` |
-| Trên nền tối — `Outline`/`Ghost` + `Inverted=True` | màu content inverted (`object-interactive-inverted`, `object-primary-inverted`) | `opacity-20` | `opacity-40` |
+| Nền sáng / trong suốt — `Outline`, `Ghost` (Inverted=False), và **mọi `Solid / Inverted=True`** (nền là `background-surface`) | màu object (`object-interactive`, `object-primary`) | `opacity-5` | `opacity-10` |
+| Trên nền tối — `Outline`/`Ghost` + `Inverted=True` | màu object inverted (`object-interactive-inverted`, `object-primary-inverted`) | `opacity-20` | `opacity-40` |
 | Text input `Hover` | `object-secondary` | `opacity-5` | — |
 
 Nguyên tắc rút gọn: **content sáng trên nền tối → 20/40; content tối trên nền sáng → 5/10.**
@@ -696,7 +696,7 @@ Nguyên tắc rút gọn: **content sáng trên nền tối → 20/40; content t
 .uu-interactive::after {
   content: ""; position: absolute; inset: 0;
   border-radius: inherit; pointer-events: none;
-  background: currentColor;      /* = màu content của variant, đúng spec */
+  background: currentColor;      /* = màu object của variant (token object-* của chữ / icon) */
   opacity: 0; transition: opacity 120ms ease;
 }
 /* nền đặc/tối */
@@ -707,7 +707,7 @@ Nguyên tắc rút gọn: **content sáng trên nền tối → 20/40; content t
 .uu-on-light:active::after { opacity: var(--opacity-10); }
 ```
 
-`background: currentColor` là cách map chính xác nhất — vì fill của state layer luôn trùng màu content. Với `Solid`, `currentColor` chính là `object-on-interactive`; với `Ghost`, chính là `object-interactive`. Một rule chạy cho cả 12 tổ hợp.
+**Màu object của variant** — trong CSS viết là `background: currentColor` (từ khoá chuẩn của CSS: lấy đúng giá trị `color` của phần tử). Fill của state layer luôn trùng màu object nên đây là cách map chính xác nhất: với `Solid` nó là `object-on-interactive`, với `Ghost` là `object-interactive`. Đừng tạo token kiểu `object-color` cho việc này — mỗi variant ra một màu khác, không phải một giá trị cố định. Một rule chạy cho cả 12 tổ hợp.
 
 State layer là **toàn bộ** hiệu ứng của hover và pressed. Không đổi nền, không đổi màu chữ, không đổi font-weight.
 
@@ -1564,7 +1564,7 @@ Ba điều dễ làm sai:
   set `explicitVariableModes typography=Active` ở cấp item, cùng cơ chế với Toggle button
   (mục 3, 6.7). Trong CSS gắn `.uu-is-active` lên item đang chọn.
 - State layer của item dùng fill **`object-primary`** ở cả hai giá trị `Active`, bậc 5/10
-  (nền sáng) — không phải `currentColor` như button, vì chữ item thường là `object-secondary`.
+  (nền sáng) — không phải màu object của item như button, vì chữ item thường là `object-secondary`.
 - Vỏ 48 = 40 + 4×2, item HUG nên thanh co theo chữ; đừng chia đều bề ngang trừ khi màn yêu
   cầu, và đừng hardcode 204.
 
@@ -1644,7 +1644,7 @@ nhận).
 | True | Disabled | **`background-disabled`** | — | tròn 28 `background-surface` + `check` 16 `object-disabled` | — |
 
 Đọc bảng theo luật 6.0: nửa TẮT là nền sáng nên 5/10, nửa BẬT là nền đặc nên 20/40 — fill
-luôn là màu content của variant, nên dựng bằng `currentColor` chạy đúng cả hai nửa. Riêng
+luôn là màu object của variant, nên dựng bằng `currentColor` (CSS) chạy đúng cả hai nửa. Riêng
 `Pressed` khi TẮT thì núm đổi từ `object-secondary` sang `object-primary` (đậm thêm một bậc);
 đây là ngoại lệ duy nhất của "state layer là toàn bộ hiệu ứng" trong component này và file vẽ
 đúng như vậy.
@@ -1661,7 +1661,7 @@ thái đã chọn** — khác button (bấm xong là xong) và khác Segment ite
 
 **Hình học chép nguyên `TextButtonNeutral` Small**, không có số riêng: cao **32**, padding **4/12**
 (`gap-1`/`gap-3`), gap **8** (`gap-2`), radius `rounded-circle`, viền **2px**, chữ `body` 16/24,
-`min-width` = `min-height` = 32 (`size-8`).
+`min-width` = `min-height` = 32 (`size-8`). Chữ dùng text style **`label`** (16/24, 600 · Compact 500) như nút.
 
 **Props**: `Type` (Select/Dropdown) · `Selected` (False/True) · `State` (Default/Hover/Pressed/Disabled)
 · `Label` (TEXT). **16 variant**.
@@ -1669,20 +1669,24 @@ thái đã chọn** — khác button (bấm xong là xong) và khác Segment ite
 | Selected | State | Nền | Viền 2px | Chữ | State layer |
 |---|---|---|---|---|---|
 | False | Default · Hover · Pressed | — | `border` | `object-primary` | `object-primary` `opacity-5` / `opacity-10` |
-| True | Default · Hover · Pressed | **`background-interactive-muted`** | **`border-interactive`** | `object-primary` | `object-primary` `opacity-5` / `opacity-10` |
+| True | Default · Hover · Pressed | **`background-interactive-muted`** | **`border-interactive`** | **`object-interactive`** | **`object-interactive`** `opacity-5` / `opacity-10` |
 | False | Disabled | — | `border-muted` | `object-disabled` | — |
 | True | Disabled | **`background-disabled`** | `border-muted` | `object-disabled` | — |
 
 Chip đã chọn dùng `interactive` nên đổi theo brand. Disabled theo đúng luật của button: chip chưa
 chọn bỏ nền (như `Outline` Disabled), chip đã chọn giữ nền (như `Solid` Disabled).
 
-> **Vì sao chữ KHÔNG sang `object-interactive` khi chọn.** Màu thương hiệu đã nằm ở viền và nền
-> chip; chữ giữ `object-primary` thì đọc được với **mọi** màu thương hiệu. `object-interactive` trên
-> `background-interactive-muted` phụ thuộc màu brand — với màu thương hiệu hiện tại đạt 5.62, nhưng
-> một màu thương hiệu sáng hơn có thể rơi dưới 4.5. Cũng **đừng** lấy `background-emphasized` làm
-> nền chip đã chọn: nó là `slate-20`, trùng y hệt `background-disabled` — chip đã chọn sẽ nhìn như chip tắt.
+**`Type=Select` đã chọn** thêm icon **`check` 16 kiểu `fill`** đứng **trước** chữ, cùng màu chữ
+(`object-interactive`; Disabled `object-disabled`) — chip chọn nhiều nhìn ra ngay mục nào đang bật, không
+chỉ dựa vào màu (§2.3).
 
-**`Type=Dropdown`** thêm `chevron-down` 16 `object-secondary` ở cuối; hiện giá trị đang chọn, bấm
+> **Chữ đã chọn là `object-interactive`** (theo file Figma UU DLS, chốt 2026-10-19). Contrast trên
+> `background-interactive-muted`: Default **5.62**, UU **4.88** — cả hai đạt 4.5. Thêm brand mới thì đo lại
+> cặp này (§2.3). **Đừng** lấy `background-emphasized` làm nền chip đã chọn: nó là `slate-20`, trùng y hệt
+> `background-disabled` — chip đã chọn sẽ nhìn như chip tắt.
+
+**`Type=Dropdown`** thêm `chevron-down` 16 ở cuối, **cùng màu chữ** (`object-primary` khi chưa chọn,
+`object-interactive` khi đã chọn, `object-disabled` khi tắt); không có icon `check`; hiện giá trị đang chọn, bấm
 vào mới bung danh sách.
 
 **Panel bung ra** là **`Menu`** (§6.21): mobile `Platform=Sheet`, desktop `Platform=Panel` neo dưới chip cách 4,

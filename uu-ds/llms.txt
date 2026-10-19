@@ -22,7 +22,7 @@
 
 1. Không hardcode màu; chỉ token semantic `--background-*` `--object-*` `--border-*`; cấm `--color-*` trong component.
 2. Brand là một lớp token (21 token, spec 2.5), đổi bằng `data-theme` (`default` · `uu`, đặt trên `<html>` hoặc một vùng); component không biết brand; `accent` ≠ `interactive`.
-3. Hover/Pressed = state layer `::after` currentColor, opacity 5/10 nền sáng · 20/40 nền tối; không đổi nền/chữ/weight; Disabled và Loading không có.
+3. Hover/Pressed = state layer `::after` tô bằng màu object của variant (CSS `currentColor`), opacity 5/10 nền sáng · 20/40 nền tối; không đổi nền/chữ/weight; Disabled và Loading không có.
 4. Chỉ thang có sẵn: gap bước 4px, radius-*, 11 bậc font size, line-height tuyệt đối (web: rem, app: px), density Touch / Compact (`data-density="compact"`, spec §4.1), font hệ thống (không nhúng SF Pro).
 5. Chỉ build component ở mục 5 của spec; thiếu → hỏi, làm tạm phải ghi rõ. Chưa chốt: Action group, tìm nhanh / chọn nhiều trong Menu, Hover/Pressed/Disabled của Tab.
 6. Icon chỉ UU icon qua Icon(name, variant, size); tên tra ở uu-icon-index.json.
