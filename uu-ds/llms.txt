@@ -15,6 +15,7 @@
 - [tailwind.js](docs/tailwind.js): theme Tailwind trỏ về CSS var — chỉ khi project dùng Tailwind.
 - [icons.md](docs/icons.md): luật UU icon (một component Icon(name, variant, size), SVG currentColor, fill = trạng thái bật, không có trong index → hỏi), cách thêm icon.
 - [uu-icon-index.json](docs/uu-icon-index.json): 100 tên icon công khai → category và kiểu có sẵn (outline / fill).
+- [ontology.json](docs/ontology.json): bản đồ hệ thống (ontology) — token, component, mode, vai trò màu, cây quyết định và quan hệ (usesToken, composedOf, confusedWith, chosenWhen…). Không có trong nodes = chưa chốt. Tóm tắt đọc nhanh: [ontology.md](docs/ontology.md).
 
 
 

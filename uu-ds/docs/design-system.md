@@ -1957,7 +1957,7 @@ bọc các ô, không thêm hình học.
 | `Secondary` | `caption` `object-secondary` — cột phụ (mã, ngày tạo, ghi chú) |
 | `Number` | `body` căn **phải**, `font-variant-numeric: tabular-nums` |
 | `Actions` | `TextButtonAccent` **Ghost Small** (`Action`, bật/tắt bằng `TextButton`) + `IconButtonNeutral` **Ghost Small** (`More`, mở `Menu`; bật/tắt bằng `IconButton`) |
-| `Checkbox` | `Checkbox` (§6.12) — chọn hàng · ô rộng 64 |
+| `Checkbox` | `Checkbox` (§6.3f) — chọn hàng · ô rộng 64 |
 | `Hover` | state layer `object-primary` · `opacity-5` phủ cả ô |
 | `Selected` | nền **`background-interactive-muted`** |
 
@@ -1973,7 +1973,7 @@ hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — mà
 
 ### 6.24 Phân trang bảng (`TablePagination` · `.PageItem`)
 
-Thanh dưới bảng: chọn số dòng mỗi trang và chuyển trang. Khác `Pagination` (§6.19, chấm chỉ báo
+Thanh dưới bảng: chọn số dòng mỗi trang và chuyển trang. Khác `Pagination` (§6.10b, gạch chỉ báo
 carousel trên app) — `TablePagination` có **số trang bấm được**.
 
 **Props `.PageItem`** (nội bộ): `Page` (TEXT) · `State` (`Default` · `Hover` · `Selected` · `Ellipsis`). **4 variant.**
