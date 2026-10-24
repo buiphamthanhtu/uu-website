@@ -73,10 +73,9 @@ html.ds-brand-anim, html.ds-brand-anim * { transition: background-color 450ms ea
 .ds-float .uu-chip { background: var(--background-surface); box-shadow: var(--elevation-medium), inset 0 0 0 var(--chip-border-width) var(--border-interactive); }
 .ds-float--1 { top: calc(-1 * var(--gap-6)); left: calc(-1 * var(--gap-8)); }
 .ds-float--2 { top: var(--gap-16); right: calc(-1 * var(--gap-6)); }
-.ds-float--2 .uu-badge, .ds-float--4 .uu-toast { box-shadow: var(--elevation-medium); }
+.ds-float--2 .uu-badge { box-shadow: var(--elevation-medium); }
 .ds-float--3 { bottom: var(--size-24); left: calc(-1 * var(--gap-10)); padding: var(--gap-2); border-radius: var(--rounded-circle);
                background: var(--background-surface); box-shadow: var(--elevation-medium); }
-.ds-float--4 { bottom: calc(-1 * var(--gap-8)); right: calc(-1 * var(--gap-4)); }
 
 /* ---------- 2. Dải tên component chạy chéo ---------- */
 .ds-band { position: relative; z-index: 3; margin: calc(-1 * var(--gap-12)) calc(-1 * var(--gap-16)) 0; padding: var(--gap-5) 0;
@@ -329,7 +328,6 @@ html.ds-brand-anim, html.ds-brand-anim * { transition: background-color 450ms ea
 .ds-motion .ds-float { animation: ds-bob 5s ease-in-out infinite alternate; }
 .ds-motion .ds-float--2 { animation-delay: -2.5s; }
 .ds-motion .ds-float--3 { animation-delay: -3.5s; }
-.ds-motion .ds-float--4 { animation-delay: -1s; }
 @keyframes ds-bob { to { transform: translateY(calc(-1 * var(--gap-3-5))); } }
 .ds-motion .ds-pill__dot { animation: ds-ping 2s ease-out infinite; }
 @keyframes ds-ping { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--background-positive) 60%, transparent); } to { box-shadow: 0 0 0 var(--gap-2-5) transparent; } }
@@ -367,7 +365,6 @@ html.ds-brand-anim, html.ds-brand-anim * { transition: background-color 450ms ea
   .ds-float--1 { top: calc(-1 * var(--gap-5)); left: var(--gap-2); }
   .ds-float--2 { top: var(--gap-12); right: var(--gap-2); }
   .ds-float--3 { display: none; }
-  .ds-float--4 { right: var(--gap-2); }
   .ds-band { margin-inline: calc(-1 * var(--gap-8)); padding: var(--gap-3) 0; }
   .ds-band .text-display-base { font-size: var(--font-size-2xl); line-height: var(--font-height-2xl); }
   .ds-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: var(--gap-16); }
