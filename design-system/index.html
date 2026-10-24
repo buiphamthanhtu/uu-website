@@ -43,76 +43,62 @@
     </button>
   </header>
 
-  <main class="page-body">
+  <main class="ds-page">
 
-    <!-- 1. Hero -->
+    <!-- 1. Hero: sân khấu tối, nút TextButton tách lớp 3D -->
     <section class="ds-hero">
-      <div class="card ds-hero__intro ds-reveal">
-        <div>
-          <p class="eyebrow text-title-base u-upper">Design system của ÚÙ Creative Studio</p>
-          <h1 class="text-display-lg u-upper">UU Design System</h1>
-          <p class="text-heading-sm">Một nguồn chuẩn cho designer, developer và AI. Token, component và icon dựng một lần, dùng được trên web, Flutter và Zalo Mini App.</p>
+      <div class="ds-wrap ds-hero__grid">
+        <div class="ds-hero__copy">
+          <p class="ds-pill"><span class="ds-pill__dot" aria-hidden="true"></span><span class="ds-eyebrow">v0.3.0 · Mới: brand mode UU</span></p>
+          <h1 class="ds-h1 u-upper">
+            <span class="ds-ln"><span class="ds-rise">Một hệ,</span></span>
+            <span class="ds-ln"><span class="ds-rise ds-rise--2 ds-h1__accent">hai brand,</span></span>
+            <span class="ds-ln"><span class="ds-rise ds-rise--3">mọi nền tảng.</span></span>
+          </h1>
+          <p class="ds-lede">UU Design System là bộ token, component và luật tương tác mà ÚÙ Creative Studio dùng cho mọi sản phẩm — viết đủ rõ để designer, developer lẫn AI dựng đúng ngay lần đầu, trên web, Flutter và Zalo Mini App.</p>
+          <div class="ds-actions">
+            <a class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" href="../uu-ds/">Xem tài liệu <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+            <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-outline-inv" href="../uu-ds/llms.txt"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#sparkle"/></svg>Dành cho AI</a>
+          </div>
+          <div class="ds-brandswitch">
+            <span class="ds-eyebrow">Thử đổi brand cả trang</span>
+            <div class="uu-segmented" role="tablist" aria-label="Brand mode">
+              <button class="uu-segment uu-is-active" role="tab" aria-selected="true" data-brand="uu">UU · cam</button>
+              <button class="uu-segment" role="tab" aria-selected="false" data-brand="default">Default · tím</button>
+            </div>
+          </div>
         </div>
-        <div class="ds-actions">
-          <a class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" href="../uu-ds/">Xem tài liệu <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-          <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-outline" href="../uu-ds/llms.txt"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#sparkle"/></svg>Dành cho AI</a>
-        </div>
-      </div>
 
-      <!-- Ô demo: component thật của UU DS. Hàng nhãn + Switch là phần màn tự dựng (spec §6.17 chưa có SwitchInput). -->
-      <div class="card ds-demo ds-reveal" data-delay="2" id="demo" data-theme="uu">
-        <div class="ds-demo__bar">
-          <span class="ds-demo__label text-title-sm u-upper">Thử đổi brand</span>
-          <div class="uu-segmented" role="tablist" aria-label="Brand mode">
-            <button class="uu-segment uu-is-active" role="tab" aria-selected="true" data-brand="uu">UU (cam)</button>
-            <button class="uu-segment" role="tab" aria-selected="false" data-brand="default">Default</button>
+        <div class="ds-hero__art" aria-hidden="true">
+          <div class="ds-explode">
+            <div class="ds-explode__head"><span class="ds-eyebrow">TextButtonAccent · tách lớp</span><code class="ds-tok">Base · 48</code></div>
+            <div class="ds-persp">
+              <div class="ds-iso">
+                <div class="ds-lyr" style="--i: 0"><span class="ds-lpin">1</span></div>
+                <div class="ds-lyr ds-lyr--sl" style="--i: 1"><span class="ds-lpin">2</span></div>
+                <div class="ds-lyr ds-lyr--content" style="--i: 2"><svg class="uu-icon"><use href="../assets/icons.svg#paper-plane"/></svg>Đăng bài<span class="ds-lpin">3</span></div>
+                <div class="ds-lyr ds-lyr--focus" style="--i: 3"><span class="ds-lpin">4</span></div>
+              </div>
+            </div>
+            <ol class="ds-explode__legend">
+              <li><span class="ds-num">1</span><span><strong>Vỏ</strong>background-interactive</span></li>
+              <li><span class="ds-num">2</span><span><strong>State layer</strong>currentColor 20 · 40%</span></li>
+              <li><span class="ds-num">3</span><span><strong>Nội dung</strong>icon 24 + text-label</span></li>
+              <li><span class="ds-num">4</span><span><strong>Focus</strong>2px border-interactive</span></li>
+            </ol>
           </div>
+          <div class="ds-float ds-float--1"><span class="uu-chip" aria-pressed="true">Product design</span></div>
+          <div class="ds-float ds-float--2"><span class="uu-badge uu-badge--success">Đạt AA</span></div>
+          <div class="ds-float ds-float--3"><span class="uu-switch" aria-checked="true"><span class="uu-switch__knob"><svg class="uu-icon"><use href="../assets/icons.svg#check-fill"/></svg></span></span></div>
+          <div class="ds-float ds-float--4"><div class="uu-toast uu-toast--neutral"><svg class="uu-icon"><use href="../assets/icons.svg#check-fill"/></svg><span class="text-body">Đã lưu nháp lúc 14:32</span></div></div>
         </div>
-        <div class="ds-demo__progress" id="demoProgress" aria-hidden="true"><span></span></div>
-        <div class="ds-demo__grid">
-          <div class="ds-demo__row">
-            <button class="uu-btn uu-btn--base uu-interactive tb-accent-solid"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#paper-plane"/></svg>Đăng bài</button>
-            <button class="uu-btn uu-btn--base uu-interactive tb-accent-outline">Lưu nháp</button>
-            <button class="uu-btn uu-btn--base uu-interactive tb-neutral-ghost">Huỷ</button>
-          </div>
-          <div class="ds-demo__row" role="group" aria-label="Chip">
-            <button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Product design</button>
-            <button class="uu-chip uu-interactive" aria-pressed="false" data-toggle="pressed">Research</button>
-            <button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Brand visual</button>
-          </div>
-          <div class="ds-demo__row">
-            <button class="uu-checkbox" role="checkbox" aria-checked="true" aria-label="Nhận bản tin" data-toggle="checked"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#check-fill"/></svg></button>
-            <span class="text-body">Nhận bản tin</span>
-            <span style="width: var(--gap-4)"></span>
-            <button class="uu-switch" role="switch" aria-checked="true" aria-label="Thông báo" data-toggle="checked"><span class="uu-switch__knob"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#check-fill"/></svg></span></button>
-            <span class="text-body">Thông báo</span>
-          </div>
-          <div class="ds-demo__row">
-            <span class="uu-badge uu-badge--success">Đã chốt</span>
-            <span class="uu-status uu-status--warning">Đang duyệt</span>
-            <span class="uu-status uu-status--success">Đã đăng</span>
-          </div>
-          <div class="uu-toast uu-toast--neutral" role="status">
-            <span class="uu-toast__content text-body">Đã lưu nháp lúc 14:32</span>
-            <button class="uu-btn uu-iconbtn uu-iconbtn--base uu-interactive tb-neutral-ghost-inv" aria-label="Đóng thông báo"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#xmark"/></svg></button>
-          </div>
-        </div>
-        <p class="ds-demo__note text-caption">Mọi thứ trong ô này là component thật của UU DS. Ô tự đổi brand mỗi vài giây — bấm vào là dừng. Đổi brand chỉ đổi một thuộc tính <code>data-theme</code>, component không sửa gì.</p>
       </div>
     </section>
 
-    <!-- 2. Số liệu -->
-    <section class="ds-stats" aria-label="UU DS bằng con số">
-      <div class="ds-stat ds-reveal" data-delay="1"><span class="ds-stat__value text-display-base" data-count="48">48</span><span class="text-caption">component và mẫu màn đã chốt</span></div>
-      <div class="ds-stat ds-reveal" data-delay="2"><span class="ds-stat__value text-display-base" data-count="57">57</span><span class="text-caption">token màu theo vai trò</span></div>
-      <div class="ds-stat ds-reveal" data-delay="3"><span class="ds-stat__value text-display-base" data-count="2">2</span><span class="text-caption">brand mode: Default · UU</span></div>
-      <div class="ds-stat ds-reveal" data-delay="4"><span class="ds-stat__value text-display-base" data-count="2">2</span><span class="text-caption">mật độ: Touch cho app · Compact cho desktop</span></div>
-      <div class="ds-stat ds-reveal" data-delay="5"><span class="ds-stat__value text-display-base" data-count="100">100</span><span class="text-caption">icon UU công khai, kiểu outline và fill</span></div>
-      <div class="ds-stat ds-reveal" data-delay="5"><span class="ds-stat__value text-display-base" data-count="3">3</span><span class="text-caption">nền tảng: Web React · Flutter · Zalo Mini App</span></div>
-    </section>
-
-    <div class="ds-marquee text-display-xs u-upper" aria-hidden="true">
-      <div class="ds-marquee__track">
+    <!-- 2. Dải tên component chạy chéo (build.py sinh hàng 1, js nhân bản thành hàng 2 chữ viền) -->
+    <div class="ds-band" aria-hidden="true">
+      <div class="ds-band__row text-display-base u-upper">
+        <div class="ds-marquee__track">
         <!-- build:ds-marquee -->
         <span>TextButton</span>
         <span>IconButton</span>
@@ -189,138 +175,176 @@
         <span>NotificationBadge</span>
         <span>Spinner</span>
         <!-- /build:ds-marquee -->
+        </div>
       </div>
     </div>
 
-    <!-- 3. Bốn điểm khác biệt -->
-    <section class="ds-section">
-      <div class="ds-head">
-        <h2 class="text-display-sm u-upper">Bốn điều làm UU DS khác</h2>
-      </div>
-      <div class="ds-grid ds-grid--2">
-        <article class="ds-card ds-reveal">
-          <div class="ds-illo"><div class="ds-term" data-observe>
-            <span class="ds-term__line">› đọc uucreative.co/uu-ds/llms.txt</span>
-            <span class="ds-term__line">› dựng màn Đăng nhập bằng UU DS</span>
-            <span class="ds-term__line">› chấm theo 6 ràng buộc…</span>
-            <span class="ds-term__line ds-term__ok"><svg class="uu-icon " aria-hidden="true"><use href="../assets/icons.svg#check-fill"/></svg>0 lỗi nghiêm trọng — đạt</span>
-          </div></div>
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#sparkle"/></svg>
-          <h3 class="text-heading-sm">Viết cho cả AI, không chỉ cho người</h3>
-          <p class="text-body">Mỗi trang tài liệu có bản Markdown nguyên gốc, mục lục <code>llms.txt</code> và skill cho Claude. Bộ chấm tự động đo AI dựng giao diện có đúng luật không — phải 0 lỗi nghiêm trọng mới được giao.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/bắt-đầu-dành-cho-ai--tài-liệu">Dành cho AI <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card ds-reveal">
-          <div class="ds-illo"><div class="ds-sl">
-            <button class="uu-btn uu-btn--base uu-interactive tb-accent-solid" id="slDemo" tabindex="-1" aria-hidden="true">Đăng bài</button>
-            <span class="ds-sl__caption text-caption" id="slCaption">Default · lớp phủ 0%</span>
-          </div></div>
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#pointer"/></svg>
-          <h3 class="text-heading-sm">Một cơ chế tương tác cho mọi thứ</h3>
-          <p class="text-body">Hover và nhấn chỉ phủ một lớp màu mỏng, không đổi nền hay chữ. 144 trạng thái hover và nhấn của 4 bộ nút đã soát khớp 100%.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/nền-tảng-state-layer--tài-liệu">State layer <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card ds-reveal">
-          <div class="ds-illo"><div class="ds-brand-pair">
-            <div data-theme="default"><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid" tabindex="-1" aria-hidden="true">Đăng bài</button><span class="text-caption">Default</span></div>
-            <div data-theme="uu"><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid" tabindex="-1" aria-hidden="true">Đăng bài</button><span class="text-caption">UU</span></div>
-          </div></div>
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#palette"/></svg>
-          <h3 class="text-heading-sm">Đổi thương hiệu bằng một lớp token</h3>
-          <p class="text-body">Màu thương hiệu gói trong 21 token. Component không biết mình đang ở brand nào — đổi brand là đổi một thuộc tính <code>data-theme</code>, như ô demo phía trên.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/nền-tảng-brand-mode--tài-liệu">Brand mode <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card ds-reveal">
-          <div class="ds-illo"><div class="ds-contrast" data-observe>
-            <span class="ds-contrast__sample text-display-sm">Aa</span>
-            <div class="ds-contrast__meter">
-              <strong class="text-heading-sm">7.49 : 1</strong>
-              <div class="ds-meter" aria-hidden="true"><span></span><i></i></div>
-              <span class="text-caption">Chữ đen trên nền cam · mốc AA là 4.5</span>
-              <span><span class="uu-badge uu-badge--success">Đạt AA</span></span>
+    <div class="ds-light">
+
+      <!-- 3. Số liệu -->
+      <section class="ds-wrap ds-stats" aria-label="UU DS bằng con số">
+        <div class="ds-stat ds-reveal" data-delay="1"><span class="ds-stat__value text-display-lg" data-count="48">48</span><span class="text-caption">component và mẫu màn đã chốt</span></div>
+        <div class="ds-stat ds-reveal" data-delay="2"><span class="ds-stat__value text-display-lg" data-count="57">57</span><span class="text-caption">token màu theo vai trò</span></div>
+        <div class="ds-stat ds-reveal" data-delay="3"><span class="ds-stat__value text-display-lg" data-count="2">2</span><span class="text-caption">brand mode: Default · UU</span></div>
+        <div class="ds-stat ds-reveal" data-delay="4"><span class="ds-stat__value text-display-lg" data-count="2">2</span><span class="text-caption">mật độ: Touch · Compact</span></div>
+        <div class="ds-stat ds-reveal" data-delay="5"><span class="ds-stat__value text-display-lg" data-count="100">100</span><span class="text-caption">icon UU công khai</span></div>
+        <div class="ds-stat ds-reveal" data-delay="5"><span class="ds-stat__value text-display-lg" data-count="3">3</span><span class="text-caption">nền tảng code: React · Flutter · Zalo</span></div>
+      </section>
+
+      <!-- 4. Bốn nguyên tắc (bento) -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-head">
+          <p class="ds-eyebrow ds-eyebrow--brand">Bốn nguyên tắc</p>
+          <h2 class="text-display-base u-upper">Luật ít, chạy đúng mọi nơi</h2>
+        </div>
+        <div class="ds-bento">
+          <article class="ds-tile ds-tile--muted ds-tile--wide ds-reveal">
+            <div class="ds-tile__head"><h3 class="text-heading-base">Viết cho cả AI, không chỉ cho người</h3><code class="ds-tok">llms.txt</code></div>
+            <p class="ds-tile__text">Mỗi trang tài liệu có bản Markdown gốc, mục lục <code>llms.txt</code> và skill cho Claude. Bộ chấm tự động đo AI dựng giao diện có đúng luật không — phải 0 lỗi nghiêm trọng mới được giao.</p>
+            <div class="ds-term" data-observe aria-hidden="true">
+              <span class="ds-term__dim">claude ~ uu-app</span>
+              <span class="ds-term__line" style="--n: 31">› dựng màn đăng ký bằng UU DS</span>
+              <span class="ds-term__line ds-term__line--2 ds-term__dim" style="--n: 34">đọc uu-ds/llms.txt · tokens.css…</span>
+              <span class="ds-term__line ds-term__line--3 ds-term__ok" style="--n: 38">0 lỗi nghiêm trọng · TextInput ×3 · đạt</span>
+              <span class="ds-caret"></span>
             </div>
-          </div></div>
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#eye"/></svg>
-          <h3 class="text-heading-sm">Tương phản đo thật, không ước chừng</h3>
-          <p class="text-body">Mọi cặp chữ và nền quan trọng được đo theo WCAG. Chỗ nào chấp nhận dưới chuẩn thì ghi rõ lý do và ngày chốt.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/nền-tảng-contrast-accessibility--tài-liệu">Contrast <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/bắt-đầu-dành-cho-ai--tài-liệu">Dành cho AI <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+
+          <article class="ds-tile ds-tile--brand ds-reveal" data-delay="1">
+            <h3 class="text-heading-base">Một cơ chế tương tác cho mọi thứ</h3>
+            <p class="ds-tile__text">Hover và nhấn chỉ phủ một lớp màu mỏng, không đổi nền hay chữ. 144 trạng thái của 4 bộ nút đã soát khớp 100%.</p>
+            <div class="ds-sl" aria-hidden="true">
+              <span class="uu-btn uu-btn--lg tb-accent-solid ds-sl__btn">Đăng bài<span class="ds-sl__ov"></span></span>
+              <svg class="uu-icon ds-sl__cursor"><use href="../assets/icons.svg#pointer"/></svg>
+            </div>
+            <div class="ds-caps" aria-hidden="true"><span class="ds-cap ds-cap--1">Default</span><span class="ds-cap ds-cap--2">Hover 20%</span><span class="ds-cap ds-cap--3">Pressed 40%</span></div>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/nền-tảng-state-layer--tài-liệu">State layer <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+
+          <article class="ds-tile ds-tile--muted ds-reveal">
+            <h3 class="text-heading-base">Tương phản đo thật</h3>
+            <p class="ds-tile__text">Chữ trên nút brand <strong data-brand-name>UU</strong>, đo theo WCAG:</p>
+            <div class="ds-ratio" data-observe>
+              <span class="uu-btn uu-btn--lg tb-accent-solid ds-ratio__sample" aria-hidden="true">Aa</span>
+              <span class="text-display-lg" data-ratio>7.49:1</span>
+            </div>
+            <div class="ds-meter" data-observe aria-hidden="true">
+              <div class="ds-meter__fill" data-meter></div>
+              <span class="ds-tick" style="left: 21.4%"><span>AA 4.5</span></span>
+              <span class="ds-tick ds-tick--below" style="left: 33.3%"><span>AAA 7</span></span>
+            </div>
+            <div class="ds-badges"><span class="uu-badge uu-badge--success">Đạt AA</span><span class="uu-badge uu-badge--success" data-aaa>Đạt AAA</span></div>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/nền-tảng-contrast-accessibility--tài-liệu">Contrast <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+
+          <article class="ds-tile ds-tile--dark ds-tile--wide ds-reveal" data-delay="1">
+            <div class="ds-tile__head"><h3 class="text-heading-base">Một component, hai brand</h3><span class="ds-eyebrow">Không có if (brand)</span></div>
+            <p class="ds-tile__text">Màu thương hiệu gói trong 21 token. Component không biết mình đang ở brand nào — đổi brand là đổi một thuộc tính <code>data-theme</code>.</p>
+            <div class="ds-wipe" aria-hidden="true">
+              <div class="ds-wipe__layer" data-theme="uu">
+                <span class="uu-chip" aria-pressed="true">Brand visual</span>
+                <span class="uu-switch" aria-checked="true"><span class="uu-switch__knob"><svg class="uu-icon"><use href="../assets/icons.svg#check-fill"/></svg></span></span>
+                <span class="uu-btn uu-btn--base tb-accent-solid">Đăng bài</span>
+                <span class="uu-btn uu-btn--base tb-accent-outline">Lưu nháp</span>
+                <span class="ds-wipe__tag ds-wipe__tag--r">UU</span>
+              </div>
+              <div class="ds-wipe__layer ds-wipe__top" data-theme="default">
+                <span class="uu-chip" aria-pressed="true">Brand visual</span>
+                <span class="uu-switch" aria-checked="true"><span class="uu-switch__knob"><svg class="uu-icon"><use href="../assets/icons.svg#check-fill"/></svg></span></span>
+                <span class="uu-btn uu-btn--base tb-accent-solid">Đăng bài</span>
+                <span class="uu-btn uu-btn--base tb-accent-outline">Lưu nháp</span>
+                <span class="ds-wipe__tag">Default</span>
+              </div>
+              <div class="ds-wipe__handle"><span><svg class="uu-icon uu-icon--16"><use href="../assets/icons.svg#arrow-right"/></svg></span></div>
+            </div>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost-inv ds-more" href="../uu-ds/?path=/docs/nền-tảng-brand-mode--tài-liệu">Brand mode <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- 5. Kiến trúc token (sân khấu tối, chấm sáng chạy giữa các tầng) -->
+    <section class="ds-dark">
+      <div class="ds-wrap ds-section">
+        <div class="ds-head">
+          <p class="ds-eyebrow ds-eyebrow--brand-inv">Kiến trúc token</p>
+          <h2 class="text-display-base u-upper">Màu gốc → vai trò → component</h2>
+          <p class="text-body">Component chỉ được gọi tên vai trò. Hex nằm ở tầng dưới cùng, không component nào chạm vào.</p>
+        </div>
+        <div class="ds-pipe ds-reveal">
+          <div class="ds-stg">
+            <span class="ds-eyebrow">Tầng 1 · primitive</span>
+            <span class="text-display-lg">211</span>
+            <span class="text-caption">màu gốc · 19 ramp × 11 bậc</span>
+            <div class="ds-ramp" data-observe aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span></div>
+          </div>
+          <div class="ds-conn" aria-hidden="true"><span class="ds-pdot"></span><span class="ds-pdot"></span><span class="ds-pdot"></span></div>
+          <div class="ds-stg">
+            <span class="ds-eyebrow">Tầng 2 · semantic</span>
+            <span class="text-display-lg">57</span>
+            <span class="text-caption">token gọi theo vai trò · brand chỉ đổi tầng này</span>
+            <div class="ds-roles" aria-hidden="true">
+              <span class="ds-role" style="--swatch: var(--background-interactive)">background-interactive</span>
+              <span class="ds-role" style="--swatch: var(--object-primary-inverted)">object-primary</span>
+              <span class="ds-role" style="--swatch: var(--background-positive)">background-positive</span>
+              <span class="ds-role" style="--swatch: var(--border-interactive)">border-interactive</span>
+            </div>
+          </div>
+          <div class="ds-conn" aria-hidden="true"><span class="ds-pdot"></span><span class="ds-pdot"></span><span class="ds-pdot"></span></div>
+          <div class="ds-stg">
+            <span class="ds-eyebrow">Tầng 3 · component</span>
+            <span class="text-display-lg">48</span>
+            <span class="text-caption">component chỉ đọc vai trò, chạy mọi brand</span>
+            <div class="ds-roles" aria-hidden="true">
+              <span class="uu-btn uu-btn--sm tb-accent-solid">Gửi</span>
+              <span class="uu-btn uu-btn--sm tb-accent-outline-inv">Huỷ</span>
+              <span class="uu-switch" aria-checked="true"><span class="uu-switch__knob"><svg class="uu-icon"><use href="../assets/icons.svg#check-fill"/></svg></span></span>
+              <span class="uu-badge uu-badge--success">Đã chốt</span>
+            </div>
+          </div>
+        </div>
+        <div class="ds-axes ds-reveal" data-delay="2">
+          <div class="ds-axis"><strong class="text-title-base">Brand mode</strong><span class="text-caption">Default · UU — đổi bằng <code>data-theme</code></span></div>
+          <div class="ds-axis"><strong class="text-title-base">Density</strong><span class="text-caption">Touch cho app · Compact cho desktop</span></div>
+          <div class="ds-axis"><strong class="text-title-base">Layout</strong><span class="text-caption">Mở rộng · thu gọn cho điều hướng bên</span></div>
+          <div class="ds-axis"><strong class="text-title-base">Đơn vị</strong><span class="text-caption">Web dùng rem để co theo cỡ chữ người dùng · app dùng px</span></div>
+        </div>
+        <a class="uu-btn uu-btn--base uu-interactive tb-neutral-outline-inv ds-start" href="../uu-ds/?path=/docs/nền-tảng-kiến-trúc-token--tài-liệu">Đọc kiến trúc token <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
       </div>
     </section>
 
-    <!-- 4. Kiến trúc token -->
-    <section class="ds-section">
-      <div class="ds-head">
-        <h2 class="text-display-sm u-upper">Kiến trúc token</h2>
-        <p class="text-body">Hai tầng rõ ràng: màu gốc ở dưới, vai trò ở trên. Component chỉ đọc tầng vai trò.</p>
-      </div>
-      <div class="ds-flow ds-reveal">
-        <div class="ds-card">
-          <span class="text-title-sm u-upper ds-flow__num">Primitive</span>
-          <span class="text-display-sm">211 màu</span>
-          <div class="ds-ramp" data-observe aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span></div>
-          <p class="text-body">19 ramp, mỗi ramp 11 bậc. Không component nào dùng trực tiếp.</p>
-        </div>
-        <span class="ds-flow__arrow" aria-hidden="true"><span class="ds-flow__line"></span><svg class="uu-icon"><use href="../assets/icons.svg#arrow-right"/></svg></span>
-        <div class="ds-card">
-          <span class="text-title-sm u-upper ds-flow__num">Semantic</span>
-          <span class="text-display-sm">57 token</span>
-          <div class="ds-roles" aria-hidden="true">
-            <span class="ds-role" style="--swatch: var(--background-interactive)">background</span>
-            <span class="ds-role" style="--swatch: var(--object-primary)">object</span>
-            <span class="ds-role" style="--swatch: var(--border-emphasized)">border</span>
-            <span class="ds-role" style="--swatch: var(--overlay-strong)">overlay</span>
-          </div>
-          <p class="text-body">Đặt theo vai trò: <code>background</code>, <code>object</code>, <code>border</code>, <code>overlay</code>. Brand chỉ đổi tầng này.</p>
-        </div>
-        <span class="ds-flow__arrow" aria-hidden="true"><span class="ds-flow__line"></span><svg class="uu-icon"><use href="../assets/icons.svg#arrow-right"/></svg></span>
-        <div class="ds-card">
-          <span class="text-title-sm u-upper ds-flow__num">Component</span>
-          <span class="text-display-sm">48 mục</span>
-          <div class="ds-roles" aria-hidden="true">
-            <button class="uu-btn uu-btn--sm uu-interactive tb-accent-solid" tabindex="-1">Đăng bài</button>
-            <span class="uu-badge uu-badge--success">Đã chốt</span>
-            <span class="uu-status uu-status--warning">Đang duyệt</span>
-          </div>
-          <p class="text-body">Chỉ đọc token semantic, nên dùng được cho mọi brand mà không sửa code.</p>
-        </div>
-      </div>
-      <div class="ds-axes ds-reveal" data-delay="2">
-        <div class="ds-axis"><strong class="text-title-base">Brand mode</strong><span class="text-caption">Default · UU — đổi bằng <code>data-theme</code></span></div>
-        <div class="ds-axis"><strong class="text-title-base">Density</strong><span class="text-caption">Touch cho app · Compact cho desktop</span></div>
-        <div class="ds-axis"><strong class="text-title-base">Layout</strong><span class="text-caption">Mở rộng · thu gọn cho điều hướng bên</span></div>
-        <div class="ds-axis"><strong class="text-title-base">Đơn vị</strong><span class="text-caption">Web dùng rem để co theo cỡ chữ người dùng · app dùng px</span></div>
-      </div>
-      <a class="uu-btn uu-btn--base uu-interactive tb-neutral-outline-inv" style="align-self:flex-start" href="../uu-ds/?path=/docs/nền-tảng-kiến-trúc-token--tài-liệu">Đọc kiến trúc token <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-    </section>
+    <div class="ds-light">
 
-    <!-- 4b. Giải phẫu component — số và đường đo do js/landing.js đo từ component thật -->
-    <section class="ds-section" id="anatomy">
-      <div class="ds-head">
-        <h2 class="text-display-sm u-upper">Giải phẫu component</h2>
-        <p class="text-body">Mỗi component được mổ xẻ tới từng lớp: khung, chữ, icon, khoảng cách và token. Các con số bên dưới được đo trực tiếp từ component đang hiển thị.</p>
-      </div>
-      <div class="ds-anatomy ds-reveal">
-        <div class="ds-anatomy__bar">
+      <!-- 6. Giải phẫu component — số và đường đo do js/landing.js đo từ component thật -->
+      <section class="ds-wrap ds-section" id="anatomy">
+        <div class="ds-head ds-head--row">
+          <div class="ds-head">
+            <p class="ds-eyebrow ds-eyebrow--brand">Giải phẫu component</p>
+            <h2 class="text-display-base u-upper">Mọi con số đều có tên</h2>
+            <p class="text-body">Mỗi khoảng cách, cỡ chữ, bo góc đều trỏ về một token. Đây là component thật, phóng to 2×, số đo lấy trực tiếp từ nó.</p>
+          </div>
           <div class="uu-segmented" role="tablist" aria-label="Chọn component">
             <button class="uu-segment uu-is-active" role="tab" aria-selected="true" data-anat="button">TextButton</button>
             <button class="uu-segment" role="tab" aria-selected="false" data-anat="input">TextInput</button>
             <button class="uu-segment" role="tab" aria-selected="false" data-anat="switch">Switch</button>
           </div>
-          <span class="text-caption" style="color: var(--object-secondary)">Phóng to 2× · đơn vị px ở mật độ Touch</span>
         </div>
 
-        <div class="ds-anatomy__body" data-anat-panel="button">
+        <div class="ds-anatomy__body ds-reveal" data-anat-panel="button">
           <div class="ds-stage">
             <div class="ds-stage__zoom"><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid ds-pulse a-root" tabindex="-1" aria-hidden="true"><span class="a-label">Đăng bài</span><svg class="uu-icon a-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></button></div>
             <svg class="ds-stage__svg" aria-hidden="true"></svg>
           </div>
-          <ol class="ds-legend">
-            <li><div><strong class="text-title-base">Khung</strong><span class="text-caption">cao <code>control-height-base</code> · bo <code>rounded-circle</code> · nền <code>background-interactive</code></span></div></li>
-            <li><div><strong class="text-title-base">Nhãn</strong><span class="text-caption">style <code>label</code> 16/24 · chữ <code>object-on-interactive</code></span></div></li>
-            <li><div><strong class="text-title-base">Icon suffix</strong><span class="text-caption">hộp 24 · tô bằng <code>currentColor</code> · cách nhãn <code>gap-2</code></span></div></li>
-            <li><div><strong class="text-title-base">State layer</strong><span class="text-caption">lớp <code>::after</code> màu chữ, 20% khi hover · 40% khi nhấn — đang nhấp nháy để bạn thấy</span></div></li>
-          </ol>
+          <div class="ds-spec">
+            <h3 class="text-heading-sm">TextButtonAccent · Base</h3>
+            <ol class="ds-legend">
+              <li><div><strong class="text-title-base">Khung</strong><span class="text-caption">cao 48, bo tròn hết</span><span class="ds-toks"><code>control-height-base</code><code>rounded-circle</code><code>background-interactive</code></span></div></li>
+              <li><div><strong class="text-title-base">Nhãn</strong><span class="text-caption">style label 16/24, cách lề 16</span><span class="ds-toks"><code>text-label</code><code>object-on-interactive</code><code>control-padding-x-base</code></span></div></li>
+              <li><div><strong class="text-title-base">Icon suffix</strong><span class="text-caption">hộp 24, cách nhãn 8</span><span class="ds-toks"><code>control-icon-base</code><code>currentColor</code><code>gap-2</code></span></div></li>
+              <li><div><strong class="text-title-base">State layer</strong><span class="text-caption">lớp ::after màu chữ — đang nhấp nháy để bạn thấy</span><span class="ds-toks"><code>opacity-20 hover</code><code>opacity-40 pressed</code></span></div></li>
+            </ol>
+          </div>
         </div>
 
         <div class="ds-anatomy__body" data-anat-panel="input" hidden>
@@ -334,13 +358,16 @@
             </div>
             <svg class="ds-stage__svg" aria-hidden="true"></svg>
           </div>
-          <ol class="ds-legend">
-            <li><div><strong class="text-title-base">Nhãn</strong><span class="text-caption">style <code>body</code> · khi lỗi đổi sang <code>object-negative</code></span></div></li>
-            <li><div><strong class="text-title-base">Hậu tố</strong><span class="text-caption"><code>Bắt buộc</code> / <code>Không bắt buộc</code> · style <code>caption</code></span></div></li>
-            <li><div><strong class="text-title-base">Ô nhập</strong><span class="text-caption">cao <code>field-height</code> · bo <code>field-radius</code> · viền 1px, lỗi là <code>border-negative</code></span></div></li>
-            <li><div><strong class="text-title-base">Icon tiền tố</strong><span class="text-caption">hộp 24 · <code>object-secondary</code></span></div></li>
-            <li><div><strong class="text-title-base">Dòng lỗi</strong><span class="text-caption">chữ, không icon · <code>caption</code> <code>object-negative</code> · chiếm chỗ thật, không đè</span></div></li>
-          </ol>
+          <div class="ds-spec">
+            <h3 class="text-heading-sm">TextInput · Error</h3>
+            <ol class="ds-legend">
+              <li><div><strong class="text-title-base">Nhãn</strong><span class="text-caption">style body, khi lỗi đổi màu</span><span class="ds-toks"><code>text-body</code><code>object-negative</code></span></div></li>
+              <li><div><strong class="text-title-base">Hậu tố</strong><span class="text-caption">Bắt buộc / Không bắt buộc</span><span class="ds-toks"><code>text-caption</code><code>object-secondary</code></span></div></li>
+              <li><div><strong class="text-title-base">Ô nhập</strong><span class="text-caption">cao 48, bo 16, viền 1px</span><span class="ds-toks"><code>field-height</code><code>field-radius</code><code>border-negative</code></span></div></li>
+              <li><div><strong class="text-title-base">Icon tiền tố</strong><span class="text-caption">hộp 24</span><span class="ds-toks"><code>field-icon</code><code>object-secondary</code></span></div></li>
+              <li><div><strong class="text-title-base">Dòng lỗi</strong><span class="text-caption">chữ, không icon, chiếm chỗ thật</span><span class="ds-toks"><code>text-caption</code><code>object-negative</code></span></div></li>
+            </ol>
+          </div>
         </div>
 
         <div class="ds-anatomy__body" data-anat-panel="switch" hidden>
@@ -348,22 +375,60 @@
             <div class="ds-stage__zoom"><button class="uu-switch a-root" role="switch" aria-checked="true" tabindex="-1" aria-hidden="true"><span class="uu-switch__knob a-knob"><svg class="uu-icon a-icon" aria-hidden="true"><use href="../assets/icons.svg#check-fill"/></svg></span></button></div>
             <svg class="ds-stage__svg" aria-hidden="true"></svg>
           </div>
-          <ol class="ds-legend">
-            <li><div><strong class="text-title-base">Rãnh</strong><span class="text-caption"><code>switch-width</code> × <code>switch-height</code> · bo <code>radius-lg</code> · bật là <code>background-interactive</code></span></div></li>
-            <li><div><strong class="text-title-base">Núm</strong><span class="text-caption">tắt tròn 16 · bật nở thành 28 nền <code>background-surface</code> — đổi cả vị trí lẫn cỡ</span></div></li>
-            <li><div><strong class="text-title-base">Dấu check</strong><span class="text-caption">icon <code>check</code> kiểu fill · <code>object-interactive</code></span></div></li>
-          </ol>
+          <div class="ds-spec">
+            <h3 class="text-heading-sm">Switch · Bật</h3>
+            <ol class="ds-legend">
+              <li><div><strong class="text-title-base">Rãnh</strong><span class="text-caption">56 × 32, bo 16, bật là nền brand</span><span class="ds-toks"><code>switch-width</code><code>switch-height</code><code>background-interactive</code></span></div></li>
+              <li><div><strong class="text-title-base">Núm</strong><span class="text-caption">tắt tròn 16 · bật nở thành 28</span><span class="ds-toks"><code>switch-handle-on</code><code>background-surface</code></span></div></li>
+              <li><div><strong class="text-title-base">Dấu check</strong><span class="text-caption">icon check kiểu fill, 16</span><span class="ds-toks"><code>switch-handle-icon</code><code>object-interactive</code></span></div></li>
+            </ol>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 5. Component (build.py sinh từ uu-ds/index.json) -->
-    <section class="ds-section" id="component">
-      <div class="ds-head">
-        <h2 class="text-display-sm u-upper">Component</h2>
-        <p class="text-body">Mỗi component có trang tài liệu riêng: cách dùng, mọi biến thể, và phần nào chưa chốt.</p>
-      </div>
-      <div class="ds-catalog">
+      <!-- 7. Brand × density: cùng một form, bốn bối cảnh (component thật) -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-head">
+          <p class="ds-eyebrow ds-eyebrow--brand">Brand × density</p>
+          <h2 class="text-display-base u-upper">Cùng một form, bốn bối cảnh</h2>
+          <p class="text-body">Touch cho màn chạm, Compact cho desktop. Hai trục độc lập — component tự co theo token, không sửa một dòng code.</p>
+        </div>
+        <div class="ds-matrix">
+          <div class="ds-cell ds-reveal" data-theme="uu">
+            <div class="ds-cell__head"><span class="uu-badge uu-badge--neutral">Touch · UU</span><code class="ds-tok">nút 48 · ô 48</code></div>
+            <div class="uu-fieldset"><label class="uu-label" for="mx1">Tên dự án</label><div class="uu-field"><input id="mx1" placeholder="Ví dụ: App đặt lịch"></div></div>
+            <div class="ds-cell__row"><button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Mobile</button><button class="uu-chip uu-interactive" aria-pressed="false" data-toggle="pressed">Web</button></div>
+            <div class="uu-btngroup"><button class="uu-btn uu-btn--base uu-interactive tb-neutral-outline">Huỷ</button><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid">Tạo dự án</button></div>
+          </div>
+          <div class="ds-cell ds-reveal" data-delay="1" data-theme="uu" data-density="compact">
+            <div class="ds-cell__head"><span class="uu-badge uu-badge--neutral">Compact · UU</span><code class="ds-tok">nút 32 · ô 32</code></div>
+            <div class="uu-fieldset"><label class="uu-label" for="mx2">Tên dự án</label><div class="uu-field"><input id="mx2" placeholder="Ví dụ: App đặt lịch"></div></div>
+            <div class="ds-cell__row"><button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Mobile</button><button class="uu-chip uu-interactive" aria-pressed="false" data-toggle="pressed">Web</button></div>
+            <div class="uu-btngroup"><button class="uu-btn uu-btn--base uu-interactive tb-neutral-outline">Huỷ</button><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid">Tạo dự án</button></div>
+          </div>
+          <div class="ds-cell ds-reveal" data-theme="default">
+            <div class="ds-cell__head"><span class="uu-badge uu-badge--neutral">Touch · Default</span><code class="ds-tok">nút 48 · ô 48</code></div>
+            <div class="uu-fieldset"><label class="uu-label" for="mx3">Tên dự án</label><div class="uu-field"><input id="mx3" placeholder="Ví dụ: App đặt lịch"></div></div>
+            <div class="ds-cell__row"><button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Mobile</button><button class="uu-chip uu-interactive" aria-pressed="false" data-toggle="pressed">Web</button></div>
+            <div class="uu-btngroup"><button class="uu-btn uu-btn--base uu-interactive tb-neutral-outline">Huỷ</button><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid">Tạo dự án</button></div>
+          </div>
+          <div class="ds-cell ds-reveal" data-delay="1" data-theme="default" data-density="compact">
+            <div class="ds-cell__head"><span class="uu-badge uu-badge--neutral">Compact · Default</span><code class="ds-tok">nút 32 · ô 32</code></div>
+            <div class="uu-fieldset"><label class="uu-label" for="mx4">Tên dự án</label><div class="uu-field"><input id="mx4" placeholder="Ví dụ: App đặt lịch"></div></div>
+            <div class="ds-cell__row"><button class="uu-chip uu-interactive" aria-pressed="true" data-toggle="pressed">Mobile</button><button class="uu-chip uu-interactive" aria-pressed="false" data-toggle="pressed">Web</button></div>
+            <div class="uu-btngroup"><button class="uu-btn uu-btn--base uu-interactive tb-neutral-outline">Huỷ</button><button class="uu-btn uu-btn--base uu-interactive tb-accent-solid">Tạo dự án</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Component (build.py sinh từ uu-ds/index.json) -->
+      <section class="ds-wrap ds-section" id="component">
+        <div class="ds-head">
+          <p class="ds-eyebrow ds-eyebrow--brand">Danh mục</p>
+          <h2 class="text-display-base u-upper">Component</h2>
+          <p class="text-body">Mỗi component có trang tài liệu riêng: cách dùng, mọi biến thể, và phần nào chưa chốt.</p>
+        </div>
+        <div class="ds-catalog">
         <!-- build:ds-catalog -->
         <article class="ds-card ds-group ds-reveal" data-delay="1">
           <div class="ds-group__head"><h3 class="text-heading-sm">Hành động</h3><span class="uu-badge uu-badge--neutral">4</span></div>
@@ -438,17 +503,17 @@
           </ul>
         </article>
         <!-- /build:ds-catalog -->
-      </div>
-    </section>
-
-    <!-- 6. Cây quyết định -->
-    <section class="ds-section">
-      <div class="ds-trees ds-reveal">
-        <div class="ds-head">
-          <h2 class="text-display-sm u-upper">Không chỉ component — còn chỉ cách chọn</h2>
-          <p class="text-body">Bộ cây quyết định: trả lời từng câu hỏi là ra component nên dùng cho tình huống của bạn.</p>
         </div>
-        <ul class="ds-links">
+      </section>
+
+      <!-- 9. Cây quyết định -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-trees ds-reveal">
+          <div class="ds-head">
+            <h2 class="text-display-sm u-upper">Không chỉ component — còn chỉ cách chọn</h2>
+            <p class="text-body">Bộ cây quyết định: trả lời từng câu hỏi là ra component nên dùng cho tình huống của bạn.</p>
+          </div>
+          <ul class="ds-links">
           <!-- build:ds-trees -->
           <li><a href="../uu-ds/?path=/docs/nền-tảng-cây-quyết-định-tổng-quan--tài-liệu"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg>Tổng quan</a></li>
           <li><a href="../uu-ds/?path=/docs/nền-tảng-cây-quyết-định-chọn-một--tài-liệu"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg>Chọn một</a></li>
@@ -459,82 +524,90 @@
           <li><a href="../uu-ds/?path=/docs/nền-tảng-cây-quyết-định-trường-bắt-buộc--tài-liệu"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg>Trường bắt buộc</a></li>
           <li><a href="../uu-ds/?path=/docs/nền-tảng-cây-quyết-định-xác-thực-dữ-liệu--tài-liệu"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chevron-right"/></svg>Xác thực dữ liệu</a></li>
           <!-- /build:ds-trees -->
-        </ul>
-      </div>
-    </section>
+          </ul>
+        </div>
+      </section>
 
-    <!-- 7. Nền tảng -->
-    <section class="ds-section">
-      <div class="ds-head">
-        <h2 class="text-display-sm u-upper">Chạy trên đâu</h2>
-      </div>
-      <div class="ds-grid ds-grid--4">
-        <article class="ds-card">
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#laptop"/></svg>
-          <h3 class="text-heading-sm">Web (React)</h3>
-          <p class="text-body">Component React và CSS thuần, tên trùng spec, token CSS và icon dùng chung.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-web-react--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card">
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#mobile"/></svg>
-          <h3 class="text-heading-sm">Flutter</h3>
-          <p class="text-body">Widget cùng tên và cùng prop với bản web, token sinh từ cùng một file.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-flutter--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card">
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chat-bubble"/></svg>
-          <h3 class="text-heading-sm">Zalo Mini App</h3>
-          <p class="text-body">Dùng thẳng bản React, kèm hướng dẫn riêng cho môi trường mini app.</p>
-          <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-zalo-mini-app--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
-        </article>
-        <article class="ds-card">
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#layers-2"/></svg>
-          <h3 class="text-heading-sm">Figma</h3>
-          <p class="text-body">Thư viện UU DLS dùng cùng tên biến và cùng giá trị token với code.</p>
-        </article>
-      </div>
-    </section>
+      <!-- 10. Nền tảng -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-head">
+          <p class="ds-eyebrow ds-eyebrow--brand">Nền tảng</p>
+          <h2 class="text-display-base u-upper">Một nguồn, bốn đầu ra</h2>
+        </div>
+        <div class="ds-grid ds-grid--4">
+          <article class="ds-plat ds-reveal">
+            <span class="ds-ibox"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#laptop"/></svg></span>
+            <h3 class="text-heading-sm">Web (React)</h3>
+            <p class="text-body">Component React và CSS thuần, tên trùng spec, token CSS và icon dùng chung.</p>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-web-react--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+          <article class="ds-plat ds-reveal" data-delay="1">
+            <span class="ds-ibox"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#mobile"/></svg></span>
+            <h3 class="text-heading-sm">Flutter</h3>
+            <p class="text-body">Widget cùng tên và cùng prop với bản web, token sinh từ cùng một file.</p>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-flutter--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+          <article class="ds-plat ds-reveal" data-delay="2">
+            <span class="ds-ibox"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#chat-bubble"/></svg></span>
+            <h3 class="text-heading-sm">Zalo Mini App</h3>
+            <p class="text-body">Dùng thẳng bản React, kèm hướng dẫn riêng cho môi trường mini app.</p>
+            <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../uu-ds/?path=/docs/phát-triển-zalo-mini-app--tài-liệu">Hướng dẫn <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          </article>
+          <article class="ds-plat ds-reveal" data-delay="3">
+            <span class="ds-ibox"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#palette"/></svg></span>
+            <h3 class="text-heading-sm">Figma</h3>
+            <p class="text-body">Thư viện UU DLS dùng cùng tên biến và cùng giá trị token với code.</p>
+          </article>
+        </div>
+      </section>
 
-    <!-- 8. Developer & AI -->
-    <section class="ds-section">
-      <div class="ds-grid ds-grid--2">
-        <article class="ds-card">
-          <h2 class="text-display-xs u-upper">Dành cho developer</h2>
-          <p class="text-body">Bật brand và mật độ ngay trên thẻ <code>html</code>, còn lại là class có sẵn:</p>
+      <!-- 11. Developer & AI -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-grid ds-grid--2">
+          <article class="ds-card">
+            <h2 class="text-display-xs u-upper">Dành cho developer</h2>
+            <p class="text-body">Bật brand và mật độ ngay trên thẻ <code>html</code>, còn lại là class có sẵn:</p>
 <pre class="ds-code"><code>&lt;html data-theme="uu" data-density="compact"&gt;
 
 &lt;button class="uu-btn uu-btn--base uu-interactive tb-accent-solid"&gt;
   Đăng bài
 &lt;/button&gt;</code></pre>
-        </article>
-        <article class="ds-card">
-          <h2 class="text-display-xs u-upper">Dành cho AI</h2>
-          <p class="text-body">Tài liệu ở dạng máy đọc, cùng nội dung với Storybook. AI coding agent đọc theo thứ tự trong <code>llms.txt</code>.</p>
-          <ul class="ds-links">
-            <li><a href="../uu-ds/llms.txt"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>llms.txt — mục lục và sáu ràng buộc</a></li>
-            <li><a href="../uu-ds/docs/design-system.md"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>design-system.md — spec đầy đủ</a></li>
-            <li><a href="../uu-ds/docs/tokens.css"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>tokens.css — CSS custom properties</a></li>
-            <li><a href="../uu-ds/docs/tokens.json"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>tokens.json — token cho iOS, Android, Flutter</a></li>
-            <li><a href="../uu-ds/docs/icons.md"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>icons.md — luật dùng UU icon</a></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- 9. Liên hệ -->
-    <section class="ds-section">
-      <div class="ds-cta ds-reveal">
-        <div>
-          <h2 class="text-display-sm u-upper">Cần design system cho sản phẩm của bạn?</h2>
-          <p class="text-body">ÚÙ Creative Studio dựng và vận hành design system cho startup và doanh nghiệp: từ token, thư viện Figma đến component code và tài liệu cho AI.</p>
+          </article>
+          <article class="ds-card">
+            <h2 class="text-display-xs u-upper">Dành cho AI</h2>
+            <p class="text-body">Tài liệu ở dạng máy đọc, cùng nội dung với Storybook. AI coding agent đọc theo thứ tự trong <code>llms.txt</code>.</p>
+            <ul class="ds-links">
+              <li><a href="../uu-ds/llms.txt"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>llms.txt — mục lục và sáu ràng buộc</a></li>
+              <li><a href="../uu-ds/docs/design-system.md"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>design-system.md — spec đầy đủ</a></li>
+              <li><a href="../uu-ds/docs/tokens.css"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>tokens.css — CSS custom properties</a></li>
+              <li><a href="../uu-ds/docs/tokens.json"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>tokens.json — token cho iOS, Android, Flutter</a></li>
+              <li><a href="../uu-ds/docs/icons.md"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#file"/></svg>icons.md — luật dùng UU icon</a></li>
+            </ul>
+          </article>
         </div>
-        <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-solid" href="mailto:tu@uucreative.co?subject=Design%20system">
-          <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#envelope"/></svg>Liên hệ studio
-        </a>
-      </div>
-    </section>
+      </section>
 
-    <p class="ds-meta text-caption">UU DS phiên bản 0.3.0 · cập nhật 18/10/2026 · <a href="../uu-ds/?path=/docs/bắt-đầu-nhật-ký--tài-liệu">Nhật ký thay đổi</a></p>
+      <!-- 12. Liên hệ -->
+      <section class="ds-wrap ds-section">
+        <div class="ds-cta ds-reveal">
+          <div class="ds-cta__copy">
+            <h2 class="text-display-lg u-upper">Làm sản phẩm cùng ÚÙ</h2>
+            <p class="ds-cta__text">ÚÙ Creative Studio dựng và vận hành design system cho startup và doanh nghiệp: từ token, thư viện Figma đến component code và tài liệu cho AI.</p>
+            <div class="ds-actions">
+              <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-solid" href="mailto:tu@uucreative.co?subject=Design%20system"><svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#envelope"/></svg>Liên hệ studio</a>
+              <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-solid-inv" href="../uu-ds/">Xem Storybook <svg class="uu-icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+            </div>
+          </div>
+          <svg class="ds-cta__badge" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="dsCirc" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+            <text><textPath href="#dsCirc" textLength="496" lengthAdjust="spacing">UU DESIGN SYSTEM · 0.3.0 · ÚÙ STUDIO ·</textPath></text>
+            <use href="../assets/icons.svg#sparkle" x="64" y="64" width="72" height="72"/>
+          </svg>
+        </div>
+      </section>
+
+      <p class="ds-meta text-caption">UU DS phiên bản 0.3.0 · cập nhật 18/10/2026 · <a href="../uu-ds/?path=/docs/bắt-đầu-nhật-ký--tài-liệu">Nhật ký thay đổi</a></p>
+    </div>
   </main>
 
   <footer class="site-footer">

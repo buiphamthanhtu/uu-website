@@ -1,4 +1,4 @@
-// Landing UU Design System: chuyển động, ô demo, minh hoạ state layer, giải phẫu component.
+// Landing UU Design System: chuyển động, đổi brand cả trang, dải tên chạy chéo, giải phẫu component.
 // Người dùng bật "giảm chuyển động" thì không thêm .ds-motion, mọi thứ hiện tĩnh.
 (function () {
   var motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,41 +28,36 @@
     watch.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  // ---------- Ô demo: đổi brand (tự chạy tới khi người dùng bấm), chip / checkbox / switch bấm được ----------
-  var demo = document.getElementById('demo');
-  if (demo) {
-    var progress = document.getElementById('demoProgress'), CYCLE = 3600, timer = null;
-    var setBrand = function (brand) {
-      demo.dataset.theme = brand;
-      demo.querySelectorAll('[data-brand]').forEach(function (b) {
-        var on = b.dataset.brand === brand;
-        b.setAttribute('aria-selected', on); b.classList.toggle('uu-is-active', on);
-      });
-    };
-    var stopAuto = function () { clearInterval(timer); timer = null; progress.classList.remove('is-running'); progress.hidden = true; };
-    if (motion) {
-      progress.style.setProperty('--ds-cycle', CYCLE + 'ms');
-      progress.classList.add('is-running');
-      timer = setInterval(function () { setBrand(demo.dataset.theme === 'uu' ? 'default' : 'uu'); }, CYCLE);
-    } else {
-      progress.hidden = true;
-    }
-    demo.addEventListener('click', function (e) {
-      if (timer) stopAuto();
-      var seg = e.target.closest('[data-brand]');
-      if (seg) { setBrand(seg.dataset.brand); return; }
-      var t = e.target.closest('[data-toggle]');
-      if (t) { var attr = 'aria-' + t.dataset.toggle; t.setAttribute(attr, t.getAttribute(attr) !== 'true'); }
-    });
+  // ---------- Dải tên chạy chéo: nhân bản hàng do build.py sinh thành hàng chữ viền chạy ngược ----------
+  var row = document.querySelector('.ds-band__row');
+  if (row) {
+    var row2 = row.cloneNode(true);
+    row2.classList.add('ds-band__row--outline');
+    row.parentNode.appendChild(row2);
   }
 
-  // ---------- Minh hoạ state layer: Default → Hover → Pressed ----------
-  var sl = document.getElementById('slDemo'), cap = document.getElementById('slCaption');
-  if (sl && cap) {
-    var states = [['', 'Default · lớp phủ 0%'], ['is-hover', 'Hover · lớp phủ 20%'], ['is-pressed', 'Pressed · lớp phủ 40%']];
-    var show = function (i) { sl.classList.remove('is-hover', 'is-pressed'); if (states[i][0]) sl.classList.add(states[i][0]); cap.textContent = states[i][1]; };
-    if (motion) { var k = 0; setInterval(function () { k = (k + 1) % states.length; show(k); }, 1300); } else show(1);
-  }
+  // ---------- Đổi brand cả trang: chỉ đổi data-theme trên <html>, component không sửa gì ----------
+  var root = document.documentElement;
+  var CONTRAST = { uu: { name: 'UU', ratio: '7.49:1', pct: '35.7%', aaa: true }, default: { name: 'Default', ratio: '6.29:1', pct: '30%', aaa: false } };
+  var setBrand = function (brand) {
+    var c = CONTRAST[brand];
+    if (motion) { root.classList.add('ds-brand-anim'); setTimeout(function () { root.classList.remove('ds-brand-anim'); }, 500); }
+    root.dataset.theme = brand;
+    document.querySelectorAll('[data-brand]').forEach(function (b) {
+      var on = b.dataset.brand === brand;
+      b.setAttribute('aria-selected', on); b.classList.toggle('uu-is-active', on);
+    });
+    document.querySelectorAll('[data-brand-name]').forEach(function (n) { n.textContent = c.name; });
+    document.querySelectorAll('[data-ratio]').forEach(function (n) { n.textContent = c.ratio; });
+    document.querySelectorAll('[data-meter]').forEach(function (n) { n.style.width = c.pct; });
+    document.querySelectorAll('[data-aaa]').forEach(function (n) { n.hidden = !c.aaa; });
+  };
+  document.addEventListener('click', function (e) {
+    var seg = e.target.closest('[data-brand]');
+    if (seg) { setBrand(seg.dataset.brand); return; }
+    var t = e.target.closest('[data-toggle]');
+    if (t) { var attr = 'aria-' + t.dataset.toggle; t.setAttribute(attr, t.getAttribute(attr) !== 'true'); }
+  });
 
   // ---------- Giải phẫu component: đo component thật rồi vẽ số + đường đo ----------
   var SVG = 'http://www.w3.org/2000/svg';

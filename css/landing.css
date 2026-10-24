@@ -1,103 +1,340 @@
-/* Landing UU Design System (/design-system/) — bố cục ghép từ token UU DS, cùng ngôn ngữ với site.css.
-   Không định nghĩa màu mới: chỉ token semantic; nền trang đen, thẻ trắng bo rounded-2xl như web ÚÙ. */
+/* Landing UU Design System (/design-system/) — phương án "Sân khấu": hero tối nhiều chấm, chữ Bungee lớn, cam làm điểm nhấn,
+   xen kẽ khối sáng và khối tối. Chỉ token semantic, không hex, không --color-*.
+   Tự chế (đã được chủ DS duyệt 2026-10-24): tiêu đề hero = display-lg × 1.5 (72), ngoài thang 11 bậc. */
 
-.ds-section { display: flex; flex-direction: column; gap: var(--gap-6); padding: var(--gap-10) var(--gap-6); }
-.ds-head { display: flex; flex-direction: column; gap: var(--gap-3); max-width: 50rem; }
-.ds-head p { color: var(--object-primary-inverted); }
+.ds-page { overflow-x: clip; }
+.ds-wrap { width: 100%; max-width: 75rem; margin: 0 auto; padding-inline: var(--gap-6); }
+.ds-light { background: var(--background-surface); color: var(--object-primary); }
+.ds-dark { background-color: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-hero, .ds-dark {
+  background-image: radial-gradient(color-mix(in srgb, var(--object-primary-inverted) 16%, transparent) 1px, transparent 1px);
+  background-size: var(--gap-6) var(--gap-6);
+}
+.ds-page code { padding: 0 var(--gap-1); border-radius: var(--radius-sm); background: var(--background-emphasized); color: var(--object-primary);
+                font: var(--font-weight-normal) 0.9em/inherit ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-dark code, .ds-tile--dark code { background: color-mix(in srgb, var(--object-primary-inverted) 14%, transparent); color: var(--object-primary-inverted); }
+.ds-page span.uu-switch { display: inline-block; vertical-align: middle; }
+.ds-tok { white-space: nowrap; font-size: var(--font-size-xs) !important; line-height: var(--font-height-xs); }
 
-/* ---------- Hero ---------- */
-.ds-hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--gap-6); padding: var(--gap-10) var(--gap-6); }
-.ds-hero__intro { justify-content: space-between; gap: var(--gap-10); background: var(--background-surface); color: var(--object-primary); }
-.ds-hero__intro .eyebrow { margin-bottom: var(--gap-4); color: var(--object-interactive); }
-.ds-hero__intro h1 { margin-bottom: var(--gap-4); }
-.ds-hero__intro p { max-width: 36rem; }
+.ds-section { display: flex; flex-direction: column; gap: var(--gap-8); padding-block: var(--gap-16); }
+.ds-head { display: flex; flex-direction: column; gap: var(--gap-3); max-width: 46rem; }
+.ds-head p { color: var(--object-secondary); }
+.ds-dark .ds-head p { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-head--row { flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--gap-6); max-width: none; }
+.ds-eyebrow { font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); letter-spacing: .12em; text-transform: uppercase; }
+.ds-eyebrow--brand { color: var(--object-interactive); }
+.ds-eyebrow--brand-inv { color: var(--object-interactive-inverted); }
 .ds-actions { display: flex; flex-wrap: wrap; gap: var(--gap-3); }
+.ds-start { align-self: flex-start; }
 
-/* Ô demo: chứa component THẬT; data-theme của ô đổi giữa default và uu */
-.ds-demo { gap: var(--gap-6); background: var(--background-surface); color: var(--object-primary); }
-.ds-demo__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap-3); }
-.ds-demo__label { color: var(--object-secondary); }
-.ds-demo__grid { display: flex; flex-direction: column; gap: var(--gap-5); }
-.ds-demo__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-3); }
-.ds-demo__note { color: var(--object-secondary); }
+/* ---------- 1. Hero ---------- */
+.ds-hero { padding: var(--gap-16) 0 calc(var(--gap-16) * 2); color: var(--object-primary-inverted); }
+.ds-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gap-12); align-items: center; }
+.ds-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-6); min-width: 0; }
+.ds-pill { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) var(--gap-3); border-radius: var(--rounded-circle);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-pill__dot { width: var(--size-2); height: var(--size-2); border-radius: var(--rounded-circle); background: var(--background-positive); }
+.ds-h1 { font-family: var(--font-family-display); font-synthesis: none; font-weight: var(--font-weight-normal); letter-spacing: 0;
+         font-size: calc(var(--font-size-5xl) * 1.5); line-height: calc(var(--font-height-5xl) * 1.5); }
+.ds-ln { display: block; overflow: hidden; padding-bottom: .04em; }
+.ds-rise { display: inline-block; }
+.ds-h1__accent { color: var(--object-interactive-inverted); }
+.ds-lede { max-width: 34rem; font-size: var(--font-size-lg); line-height: var(--font-height-lg);
+           color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-brandswitch { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-3); }
+.ds-brandswitch .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+html.ds-brand-anim, html.ds-brand-anim * { transition: background-color 450ms ease, color 450ms ease, box-shadow 450ms ease; }
 
-/* ---------- Số liệu ---------- */
-.ds-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--gap-4); padding: 0 var(--gap-6) var(--gap-10); }
-.ds-stat { display: flex; flex-direction: column; gap: var(--gap-1); padding: var(--gap-6); border-radius: var(--rounded-2xl);
-           background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: inset 0 0 0 1px var(--border-inverted); }
-.ds-stat__value { font-variant-numeric: tabular-nums; }
+/* Nút tách lớp 3D */
+.ds-hero__art { position: relative; min-width: 0; }
+.ds-explode { position: relative; display: flex; flex-direction: column; gap: var(--gap-2); padding: var(--gap-6); border-radius: var(--rounded-4xl);
+              background-color: var(--background-surface); color: var(--object-primary); box-shadow: var(--elevation-high);
+              background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                                linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+              background-size: var(--gap-6) var(--gap-6); }
+.ds-explode__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-3); color: var(--object-secondary); }
+.ds-persp { display: flex; align-items: center; justify-content: center; height: 18.75rem; perspective: 75rem; }
+.ds-iso { position: relative; width: 16.25rem; height: var(--size-16); transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-32deg); }
+.ds-lyr { position: absolute; inset: 0; border-radius: var(--rounded-circle); transform-style: preserve-3d; background: var(--background-interactive);
+          transform: translateZ(calc(var(--i) * 2.75rem)); }
+.ds-lyr--sl { background: color-mix(in srgb, var(--object-on-interactive) 20%, transparent); }
+.ds-lyr--content { display: flex; align-items: center; justify-content: center; gap: var(--gap-2); background: transparent; color: var(--object-primary);
+                   box-shadow: inset 0 0 0 1px var(--border-emphasized); font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
+.ds-lyr--focus { inset: calc(-1 * var(--gap-1)); background: transparent; box-shadow: inset 0 0 0 2px var(--border-interactive); }
+.ds-lpin, .ds-num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--size-7); height: var(--size-7);
+                    border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted);
+                    font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); }
+.ds-lpin { position: absolute; left: calc(-1 * var(--gap-3)); top: 50%; transform: translateY(-50%); }
+.ds-explode__legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-3); list-style: none; }
+.ds-explode__legend li { display: flex; align-items: flex-start; gap: var(--gap-3); font-size: var(--font-size-sm); line-height: var(--font-height-sm);
+                         color: var(--object-secondary); }
+.ds-explode__legend strong { display: block; color: var(--object-primary); }
+.ds-float { position: absolute; z-index: 2; }
+.ds-float .uu-chip { background: var(--background-surface); box-shadow: var(--elevation-medium), inset 0 0 0 var(--chip-border-width) var(--border-interactive); }
+.ds-float--1 { top: calc(-1 * var(--gap-6)); left: calc(-1 * var(--gap-8)); }
+.ds-float--2 { top: var(--gap-16); right: calc(-1 * var(--gap-6)); }
+.ds-float--2 .uu-badge, .ds-float--4 .uu-toast { box-shadow: var(--elevation-medium); }
+.ds-float--3 { bottom: var(--size-24); left: calc(-1 * var(--gap-10)); padding: var(--gap-2); border-radius: var(--rounded-circle);
+               background: var(--background-surface); box-shadow: var(--elevation-medium); }
+.ds-float--4 { bottom: calc(-1 * var(--gap-8)); right: calc(-1 * var(--gap-4)); }
 
-/* ---------- Thẻ nội dung chung ---------- */
-.ds-grid { display: grid; gap: var(--gap-6); }
-/* minmax(0, 1fr): cột chia đều thật, nội dung dài (khối code) cuộn trong khung thay vì nong cột */
-.ds-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ds-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ds-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.ds-card { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-8); border-radius: var(--rounded-2xl);
-           background: var(--background-surface); color: var(--object-primary); }
-.ds-card > .uu-icon { color: var(--object-interactive); }
-.ds-card p { color: var(--object-primary); }
-.ds-card .ds-more { margin-top: auto; align-self: flex-start; }
+/* ---------- 2. Dải tên component chạy chéo ---------- */
+.ds-band { position: relative; z-index: 3; margin: calc(-1 * var(--gap-12)) calc(-1 * var(--gap-16)) 0; padding: var(--gap-5) 0;
+           transform: rotate(-2deg); overflow: hidden; background: var(--background-interactive); color: var(--object-on-interactive); }
+.ds-band__row { overflow: hidden; }
+.ds-band__row + .ds-band__row { margin-top: var(--gap-2); }
+.ds-marquee__track { display: flex; align-items: center; gap: var(--gap-6); width: max-content; white-space: nowrap; }
+.ds-marquee__track span { display: inline-flex; align-items: center; gap: var(--gap-6); }
+.ds-marquee__track span::after { content: ""; width: var(--size-4); height: var(--size-4); background: currentColor; transform: rotate(45deg); }
+.ds-band__row--outline span { color: transparent; -webkit-text-stroke: 1.5px var(--object-on-interactive); }
+.ds-band__row--outline span::after { background: var(--object-on-interactive); border-radius: var(--rounded-circle); transform: none; }
+.ds-motion .ds-marquee__track { animation: ds-marquee 48s linear infinite; }
+.ds-motion .ds-band__row--outline .ds-marquee__track { animation-direction: reverse; }
+.ds-band:hover .ds-marquee__track { animation-play-state: paused; }
 
-/* ---------- Kiến trúc token ---------- */
-.ds-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: var(--gap-4); }
-.ds-flow__arrow { display: flex; align-items: center; color: var(--object-primary-inverted); }
-.ds-flow .ds-card { gap: var(--gap-2); }
-.ds-flow__num { color: var(--object-interactive); }
+/* ---------- 3. Số liệu ---------- */
+.ds-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap-4); padding-top: calc(var(--gap-16) + var(--gap-8)); }
+.ds-stat { display: flex; flex-direction: column; gap: var(--gap-1); padding-top: var(--gap-4); border-top: 2px solid var(--object-primary); }
+.ds-stat .text-caption { color: var(--object-secondary); }
+.ds-stat__value { display: inline-block; min-width: 3ch; font-variant-numeric: tabular-nums; }
+
+/* ---------- 4. Bento bốn nguyên tắc ---------- */
+.ds-bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap-4); }
+.ds-tile { position: relative; display: flex; flex-direction: column; gap: var(--gap-4); grid-column: span 2; min-height: var(--size-80);
+           padding: var(--gap-6); border-radius: var(--rounded-3xl); overflow: hidden; }
+.ds-tile--wide { grid-column: span 4; }
+.ds-tile--muted { background: var(--background-muted); }
+.ds-tile--brand { background: var(--background-interactive-muted); }
+.ds-tile--dark { background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-tile__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--gap-3); }
+.ds-tile__text { max-width: 36rem; color: var(--object-secondary); }
+.ds-tile--dark .ds-tile__text, .ds-tile--dark .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-more { margin-top: auto; align-self: flex-start; }
+
+/* AI: dòng lệnh tự gõ */
+.ds-term { display: flex; flex-direction: column; gap: var(--gap-2); padding: var(--gap-5); border-radius: var(--rounded-2xl);
+           background: var(--background-inverted); color: var(--object-primary-inverted);
+           font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-term__line { display: block; max-width: 100%; overflow: hidden; white-space: nowrap; }
+.ds-term__dim { color: color-mix(in srgb, var(--object-primary-inverted) 60%, transparent); }
+.ds-term__ok { color: var(--object-interactive-inverted); }
+.ds-caret { display: inline-block; width: .6em; height: 1.1em; background: var(--object-interactive-inverted); }
+.ds-motion .ds-term.is-in .ds-term__line { width: 0; animation: ds-type1 9s steps(32) infinite; }
+.ds-motion .ds-term.is-in .ds-term__line--2 { animation-name: ds-type2; }
+.ds-motion .ds-term.is-in .ds-term__line--3 { animation-name: ds-type3; animation-timing-function: steps(40); }
+.ds-motion .ds-caret { animation: ds-blink 1s steps(1) infinite; }
+@keyframes ds-type1 { 0% { width: 0; } 18%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type2 { 0%, 24% { width: 0; } 42%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type3 { 0%, 48% { width: 0; } 66%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-blink { 50% { opacity: 0; } }
+
+/* State layer: con trỏ bay vào, lớp phủ 0 → 20 → 40% */
+.ds-sl { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; min-height: var(--size-28); }
+.ds-sl__btn { position: relative; isolation: isolate; }
+.ds-sl__ov { position: absolute; inset: 0; border-radius: inherit; background: currentColor; opacity: var(--opacity-20); pointer-events: none; }
+.ds-sl__cursor { position: absolute; right: 22%; bottom: var(--gap-3); color: var(--object-primary); }
+.ds-caps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap-2); }
+.ds-cap { padding: var(--gap-1) var(--gap-3); border-radius: var(--rounded-circle); box-shadow: inset 0 0 0 1px var(--border-muted);
+          font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-semibold); color: var(--object-secondary); }
+.ds-cap--2 { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+.ds-motion .ds-sl__ov { animation: ds-sl 3.9s steps(1) infinite; }
+.ds-motion .ds-sl__cursor { animation: ds-cursor 3.9s ease-in-out infinite; }
+.ds-motion .ds-cap--1 { animation: ds-cap1 3.9s steps(1) infinite; }
+.ds-motion .ds-cap--2 { animation: ds-cap2 3.9s steps(1) infinite; }
+.ds-motion .ds-cap--3 { animation: ds-cap3 3.9s steps(1) infinite; }
+@keyframes ds-sl { 0% { opacity: 0; } 33.3% { opacity: var(--opacity-20); } 66.6% { opacity: var(--opacity-40); } }
+@keyframes ds-cursor { 0% { transform: translate(3.75rem, 2.5rem); opacity: 0; } 20%, 30% { transform: none; opacity: 1; }
+                       66%, 90% { transform: scale(.85); opacity: 1; } 100% { transform: translate(3.75rem, 2.5rem); opacity: 0; } }
+@keyframes ds-cap1 { 0% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+                     33.3% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); } }
+@keyframes ds-cap2 { 0% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); }
+                     33.3% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+                     66.6% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); } }
+@keyframes ds-cap3 { 0% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); }
+                     66.6% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; } }
+
+/* Tương phản */
+.ds-ratio { display: flex; align-items: center; gap: var(--gap-4); }
+.ds-ratio__sample { pointer-events: none; }
+.ds-meter { position: relative; height: var(--size-3); margin-top: var(--gap-6); border-radius: var(--rounded-circle); background: var(--background-emphasized); }
+.ds-meter__fill { width: 35.7%; height: 100%; border-radius: inherit; background: var(--background-interactive); transform-origin: left;
+                  transition: width 450ms ease, transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.ds-motion .ds-meter:not(.is-in) .ds-meter__fill { transform: scaleX(0); }
+.ds-tick { position: absolute; top: calc(-1 * var(--gap-1)); bottom: calc(-1 * var(--gap-1)); width: 2px; background: var(--object-primary); }
+.ds-tick span { position: absolute; bottom: calc(100% + var(--gap-1)); left: 50%; transform: translateX(-50%); white-space: nowrap;
+                font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); }
+.ds-tick--below span { bottom: auto; top: calc(100% + var(--gap-1)); }
+.ds-badges { display: flex; margin-top: var(--gap-4); flex-wrap: wrap; gap: var(--gap-2); }
+
+/* Một component, hai brand: thanh gạt quét qua lại */
+.ds-wipe { position: relative; height: var(--size-44); border-radius: var(--rounded-2xl); overflow: hidden; }
+.ds-wipe__layer { position: absolute; inset: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; align-content: center;
+                  gap: var(--gap-3); padding: var(--gap-4) var(--gap-6); background: var(--background-surface); color: var(--object-primary); }
+.ds-wipe__top { clip-path: inset(0 50% 0 0); }
+.ds-wipe__tag { position: absolute; left: var(--gap-4); bottom: var(--gap-3); color: var(--object-interactive);
+                font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); letter-spacing: .12em; text-transform: uppercase; }
+.ds-wipe__tag--r { left: auto; right: var(--gap-4); }
+.ds-wipe__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--background-inverted); }
+.ds-wipe__handle span { position: absolute; top: 50%; left: 50%; display: flex; align-items: center; justify-content: center; width: var(--size-8); height: var(--size-8);
+                        border-radius: var(--rounded-circle); transform: translate(-50%, -50%); background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-motion .ds-wipe__top { animation: ds-wipe 6s ease-in-out infinite; }
+.ds-motion .ds-wipe__handle { animation: ds-handle 6s ease-in-out infinite; }
+@keyframes ds-wipe { 0%, 100% { clip-path: inset(0 85% 0 0); } 45%, 55% { clip-path: inset(0 15% 0 0); } }
+@keyframes ds-handle { 0%, 100% { left: 15%; } 45%, 55% { left: 85%; } }
+
+/* ---------- 5. Kiến trúc token ---------- */
+.ds-pipe { display: flex; align-items: stretch; }
+.ds-stg { display: flex; flex: 1 1 0; flex-direction: column; gap: var(--gap-3); min-width: 0; padding: var(--gap-6); border-radius: var(--rounded-3xl);
+          box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-stg .text-caption { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-stg .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-conn { position: relative; flex: 0 0 var(--size-16); align-self: center; height: 2px;
+           background: repeating-linear-gradient(90deg, var(--border-inverted) 0 6px, transparent 6px 12px); }
+.ds-pdot { position: absolute; top: 50%; left: 0; width: var(--size-2); height: var(--size-2); margin-top: calc(-1 * var(--size-1));
+           border-radius: var(--rounded-circle); background: var(--object-interactive-inverted); opacity: 0; }
+.ds-motion .ds-pdot { animation: ds-dot 2.4s linear infinite; }
+.ds-pdot:nth-child(2) { animation-delay: -.8s; }
+.ds-pdot:nth-child(3) { animation-delay: -1.6s; }
+@keyframes ds-dot { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.ds-ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: var(--gap-0-5); height: var(--size-10); margin-top: auto; }
+.ds-ramp span { border-radius: var(--radius-sm); }
+.ds-ramp span:nth-child(1)  { background: color-mix(in srgb, var(--background-interactive) 8%,  var(--background-surface)); }
+.ds-ramp span:nth-child(2)  { background: color-mix(in srgb, var(--background-interactive) 18%, var(--background-surface)); }
+.ds-ramp span:nth-child(3)  { background: color-mix(in srgb, var(--background-interactive) 34%, var(--background-surface)); }
+.ds-ramp span:nth-child(4)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-surface)); }
+.ds-ramp span:nth-child(5)  { background: color-mix(in srgb, var(--background-interactive) 74%, var(--background-surface)); }
+.ds-ramp span:nth-child(6)  { background: var(--background-interactive); box-shadow: 0 0 0 2px var(--object-primary-inverted); }
+.ds-ramp span:nth-child(7)  { background: color-mix(in srgb, var(--background-interactive) 84%, var(--background-inverted)); }
+.ds-ramp span:nth-child(8)  { background: color-mix(in srgb, var(--background-interactive) 68%, var(--background-inverted)); }
+.ds-ramp span:nth-child(9)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-inverted)); }
+.ds-ramp span:nth-child(10) { background: color-mix(in srgb, var(--background-interactive) 36%, var(--background-inverted)); }
+.ds-ramp span:nth-child(11) { background: color-mix(in srgb, var(--background-interactive) 20%, var(--background-inverted)); box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-motion .ds-ramp.is-in span { animation: ds-pop 500ms cubic-bezier(.2,.7,.2,1) backwards; animation-delay: calc(var(--i, 0) * 45ms); }
+@keyframes ds-pop { from { opacity: 0; transform: translateY(var(--gap-2)) scaleY(.4); } }
+.ds-roles { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-2); margin-top: auto; }
+.ds-role { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) var(--gap-3) var(--gap-1) var(--gap-1); border-radius: var(--rounded-circle);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); font: var(--font-weight-normal) var(--font-size-xs)/var(--font-height-xs) ui-monospace, Menlo, monospace; }
+.ds-role::before { content: ""; width: var(--size-5); height: var(--size-5); border-radius: var(--rounded-circle); background: var(--swatch);
+                   box-shadow: inset 0 0 0 1px var(--border-muted-inverted); }
 .ds-axes { display: flex; flex-wrap: wrap; gap: var(--gap-3); }
-.ds-axis { display: flex; flex-direction: column; gap: var(--gap-1); flex: 1 1 12rem; padding: var(--gap-5) var(--gap-6); border-radius: var(--radius-lg);
-           box-shadow: inset 0 0 0 1px var(--border-inverted); color: var(--object-primary-inverted); }
+.ds-axis { display: flex; flex: 1 1 12rem; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5) var(--gap-6); border-radius: var(--radius-lg);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-axis .text-caption { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
 
-/* ---------- Danh mục component (build.py sinh từ uu-ds/index.json) ---------- */
-.ds-catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--gap-6); }
+/* ---------- 6. Giải phẫu component ---------- */
+.ds-anatomy__body { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--gap-4); align-items: stretch; }
+.ds-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: var(--size-96);
+            padding: var(--gap-16) var(--gap-12); border-radius: var(--rounded-3xl); overflow: hidden;
+            background-color: var(--background-surface); box-shadow: inset 0 0 0 1px var(--border-muted);
+            background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                              linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+            background-size: var(--gap-6) var(--gap-6); }
+.ds-stage__zoom { zoom: 2; position: relative; z-index: 1; }
+.ds-stage__zoom .uu-fieldset { width: 11rem; }
+.ds-stage__svg { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.ds-stage__svg .box { fill: none; stroke: var(--object-interactive); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.ds-stage__svg .lead { stroke: var(--object-primary); stroke-width: 1; }
+.ds-stage__svg .dot { fill: var(--object-primary); }
+.ds-stage__svg .pin circle { fill: var(--background-inverted); stroke: var(--background-surface); stroke-width: 3; }
+.ds-stage__svg .pin circle.dot { fill: var(--object-primary); stroke: none; }
+.ds-stage__svg .pin text { fill: var(--object-primary-inverted); font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
+.ds-stage__svg .dim { stroke: var(--object-interactive); stroke-width: 1; }
+.ds-stage__svg .dim-text { fill: var(--background-surface); font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
+.ds-stage__svg .dim-bg { fill: var(--object-interactive); }
+.ds-motion .ds-stage__svg > * { opacity: 0; animation: ds-fade 450ms cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--d, 0) * 70ms); }
+@keyframes ds-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.ds-pulse::after { animation: ds-pulse-layer 2.4s ease-in-out infinite; }
+@keyframes ds-pulse-layer { 0%, 100% { opacity: 0; } 50% { opacity: var(--opacity-20); } }
+.ds-spec { display: flex; flex-direction: column; gap: var(--gap-5); padding: var(--gap-6); border-radius: var(--rounded-3xl); background: var(--background-muted); }
+.ds-legend { display: flex; flex-direction: column; gap: var(--gap-4); list-style: none; counter-reset: ds; }
+.ds-legend li { display: grid; grid-template-columns: var(--size-7) minmax(0, 1fr); gap: var(--gap-3); align-items: start; }
+.ds-legend li::before { counter-increment: ds; content: counter(ds); display: flex; align-items: center; justify-content: center; width: var(--size-7); height: var(--size-7);
+                        border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted);
+                        font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); }
+.ds-legend strong { display: block; }
+.ds-legend .text-caption { display: block; color: var(--object-secondary); }
+.ds-toks { display: flex; flex-wrap: wrap; gap: var(--gap-1); margin-top: var(--gap-1-5); }
+.ds-toks code { font-size: var(--font-size-xs); line-height: var(--font-height-xs); }
+[data-anat-panel][hidden] { display: none !important; }
+
+/* ---------- 7. Brand × density ---------- */
+.ds-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-4); }
+.ds-cell { display: flex; flex-direction: column; gap: var(--gap-4); padding: var(--gap-6); border-radius: var(--rounded-3xl);
+           background: var(--background-muted); color: var(--object-primary); }
+.ds-cell__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-3); }
+.ds-cell__row { display: flex; flex-wrap: wrap; gap: var(--gap-2); }
+.ds-cell .uu-field { background: var(--background-surface); }
+.ds-cell .uu-btngroup > .uu-btn { flex: 1; }
+
+/* ---------- Thẻ chung, danh mục, cây quyết định ---------- */
+.ds-grid { display: grid; gap: var(--gap-4); }
+.ds-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ds-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ds-card { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-8); border-radius: var(--rounded-3xl);
+           background: var(--background-muted); color: var(--object-primary); }
+.ds-catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--gap-4); }
 .ds-group__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-2); }
 .ds-links { display: flex; flex-direction: column; gap: var(--gap-1); list-style: none; }
 .ds-links a { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) 0; color: var(--object-primary); text-decoration: none; }
 .ds-links a:hover { color: var(--object-interactive); text-decoration: underline; text-underline-offset: 3px; }
 .ds-links a .uu-icon { width: var(--size-4); height: var(--size-4); color: var(--object-secondary); }
-
-/* Cây quyết định: thẻ nền đen viền mảnh như thẻ Services trên trang chủ */
-.ds-trees { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--gap-8); padding: var(--gap-10); border-radius: var(--rounded-2xl);
-            background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-trees { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--gap-8); padding: var(--gap-10); border-radius: var(--rounded-3xl);
+            background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-trees .ds-head p { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
 .ds-trees .ds-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-1) var(--gap-6); }
 .ds-trees .ds-links a { color: var(--object-primary-inverted); }
 .ds-trees .ds-links a:hover { color: var(--object-interactive-inverted); }
 .ds-trees .ds-links a .uu-icon { color: var(--object-interactive-inverted); }
 
-/* ---------- Developer & AI ---------- */
+/* ---------- 10. Nền tảng ---------- */
+.ds-plat { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-6); border-radius: var(--rounded-3xl);
+           box-shadow: inset 0 0 0 1px var(--border-muted); }
+.ds-plat p { color: var(--object-secondary); }
+.ds-ibox { display: flex; align-items: center; justify-content: center; width: var(--size-12); height: var(--size-12); border-radius: var(--rounded-circle);
+           background: var(--background-interactive-muted); color: var(--object-interactive); }
+
+/* ---------- 11. Developer & AI ---------- */
 .ds-code { margin: 0; padding: var(--gap-5) var(--gap-6); overflow-x: auto; border-radius: var(--radius-lg);
            background: var(--background-inverted); color: var(--object-primary-inverted);
            font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-code code { padding: 0; background: none; color: inherit; font: inherit; }
 
-/* ---------- Kêu gọi liên hệ: thẻ nền cam như thẻ CEO ---------- */
-.ds-cta { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--gap-6); padding: var(--gap-10);
-          border-radius: var(--rounded-2xl); background: var(--background-interactive); color: var(--object-on-interactive); }
-.ds-cta > div { display: flex; flex-direction: column; gap: var(--gap-3); max-width: 44rem; }
-.ds-meta { padding: 0 var(--gap-6) var(--gap-4); color: var(--object-primary-inverted); text-align: center; }
-.ds-meta a { color: var(--object-interactive-inverted); }
+/* ---------- 12. Kêu gọi liên hệ ---------- */
+.ds-cta { position: relative; overflow: hidden; padding: var(--gap-16) var(--gap-12); border-radius: var(--rounded-4xl);
+          background: var(--background-interactive); color: var(--object-on-interactive); }
+.ds-cta__copy { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--gap-5); max-width: 40rem; }
+.ds-cta__text { font-size: var(--font-size-lg); line-height: var(--font-height-lg); }
+.ds-cta__badge { position: absolute; top: 50%; right: var(--gap-12); width: var(--size-44); height: var(--size-44); margin-top: calc(var(--size-44) / -2); fill: currentColor; }
+.ds-cta__badge text { font-family: var(--font-family-display); font-synthesis: none; font-size: var(--font-size-sm); letter-spacing: .2em; }
+.ds-motion .ds-cta__badge { animation: ds-spin 18s linear infinite; }
+@keyframes ds-spin { to { transform: rotate(360deg); } }
+.ds-meta { padding: 0 var(--gap-6) var(--gap-10); color: var(--object-secondary); text-align: center; }
+.ds-meta a { color: var(--object-interactive); }
 
-/* ---------- Mobile / tablet ---------- */
-@media (max-width: 1100px) {
-  .ds-stats { grid-template-columns: repeat(3, 1fr); }
-  .ds-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* ---------- Chuyển động chung — chỉ chạy khi JS gắn .ds-motion (không bật giảm chuyển động) ---------- */
+.ds-motion .ds-rise { animation: ds-rise 900ms cubic-bezier(.2,.7,.2,1) backwards; }
+.ds-motion .ds-rise--2 { animation-delay: 130ms; }
+.ds-motion .ds-rise--3 { animation-delay: 260ms; }
+@keyframes ds-rise { from { transform: translateY(105%); } }
+.ds-motion .ds-iso { animation: ds-tilt 9s ease-in-out infinite; }
+.ds-motion .ds-lyr { animation: ds-explode 7s cubic-bezier(.6,0,.2,1) infinite; }
+.ds-motion .ds-lyr--content { animation-name: ds-explode-content; }
+@keyframes ds-tilt { 0%, 100% { transform: rotateX(56deg) rotateZ(-32deg); } 50% { transform: rotateX(50deg) rotateZ(-24deg); } }
+@keyframes ds-explode { 0%, 12%, 100% { transform: translateZ(0); } 40%, 82% { transform: translateZ(calc(var(--i) * 2.75rem)); } }
+/* lớp nội dung: lúc xếp chồng mang màu chữ trên nút, lúc bung ra nằm trên nền trắng nên đổi sang chữ thường */
+@keyframes ds-explode-content {
+  0%, 12%, 100% { transform: translateZ(0); color: var(--object-on-interactive); box-shadow: inset 0 0 0 1px transparent; }
+  40%, 82% { transform: translateZ(calc(var(--i) * 2.75rem)); color: var(--object-primary); box-shadow: inset 0 0 0 1px var(--border-emphasized); }
 }
-@media (max-width: 899px) {
-  .ds-hero, .ds-grid--2, .ds-grid--3, .ds-grid--4, .ds-trees { grid-template-columns: minmax(0, 1fr); }
-  .ds-stats { grid-template-columns: repeat(2, 1fr); }
-  .ds-flow { grid-template-columns: 1fr; }
-  .ds-flow__arrow { justify-content: center; transform: rotate(90deg); }
-  .ds-hero__intro h1 { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
-  .ds-card, .ds-trees, .ds-cta { padding: var(--gap-6); }
-  .ds-trees .ds-links { grid-template-columns: 1fr; }
-}
+.ds-motion .ds-float { animation: ds-bob 5s ease-in-out infinite alternate; }
+.ds-motion .ds-float--2 { animation-delay: -2.5s; }
+.ds-motion .ds-float--3 { animation-delay: -3.5s; }
+.ds-motion .ds-float--4 { animation-delay: -1s; }
+@keyframes ds-bob { to { transform: translateY(calc(-1 * var(--gap-3-5))); } }
+.ds-motion .ds-pill__dot { animation: ds-ping 2s ease-out infinite; }
+@keyframes ds-ping { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--background-positive) 60%, transparent); } to { box-shadow: 0 0 0 var(--gap-2-5) transparent; } }
+@keyframes ds-marquee { to { transform: translateX(-50%); } }
 
-/* =====================================================================
-   Chuyển động + minh hoạ + giải phẫu component
-   Mọi chuyển động chỉ chạy khi người dùng KHÔNG bật giảm chuyển động; JS gắn class
-   .ds-motion lên <html> nên tắt JS thì nội dung vẫn hiện đủ.
-   ===================================================================== */
-
-/* ---------- Hiện dần khi cuộn tới ---------- */
 .ds-motion .ds-reveal { opacity: 0; transform: translateY(var(--gap-6)); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); }
 .ds-motion .ds-reveal.is-in { opacity: 1; transform: none; }
 .ds-motion .ds-reveal[data-delay="1"] { transition-delay: 90ms; }
@@ -106,135 +343,46 @@
 .ds-motion .ds-reveal[data-delay="4"] { transition-delay: 360ms; }
 .ds-motion .ds-reveal[data-delay="5"] { transition-delay: 450ms; }
 
-/* Gạch chân tiêu đề hero chạy ra khi tải trang */
-.ds-hero__intro h1 { position: relative; display: inline-block; }
-.ds-hero__intro h1::after { content: ""; position: absolute; left: 0; bottom: calc(-1 * var(--gap-1)); width: 100%; height: var(--size-2);
-                            border-radius: var(--rounded-circle); background: var(--background-interactive); transform-origin: left; }
-.ds-motion .ds-hero__intro h1::after { transform: scaleX(0); animation: ds-grow 900ms 400ms cubic-bezier(.2,.7,.2,1) forwards; }
-@keyframes ds-grow { to { transform: scaleX(1); } }
-
-/* Ô demo đổi brand mượt */
-.ds-demo, .ds-demo * { transition: background-color 450ms ease, color 450ms ease, box-shadow 450ms ease, border-color 450ms ease; }
-.ds-demo__progress { height: var(--size-1); border-radius: var(--rounded-circle); background: var(--background-emphasized); overflow: hidden; }
-.ds-demo__progress span { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--background-interactive); }
-.ds-demo__progress.is-running span { animation: ds-progress var(--ds-cycle, 3600ms) linear infinite; }
-@keyframes ds-progress { from { width: 0; } to { width: 100%; } }
-
-/* ---------- Dải tên component chạy ngang ---------- */
-.ds-marquee { overflow: hidden; padding: var(--gap-4) 0; border-block: 1px solid var(--border-inverted); color: var(--object-primary-inverted);
-              -webkit-mask-image: linear-gradient(90deg, transparent, var(--background-inverted) 8%, var(--background-inverted) 92%, transparent);
-              mask-image: linear-gradient(90deg, transparent, var(--background-inverted) 8%, var(--background-inverted) 92%, transparent); }
-.ds-marquee__track { display: flex; gap: var(--gap-8); width: max-content; white-space: nowrap; }
-.ds-marquee__track span:nth-child(3n+2) { color: var(--object-interactive-inverted); }
-.ds-motion .ds-marquee__track { animation: ds-marquee 60s linear infinite; }
-.ds-marquee:hover .ds-marquee__track { animation-play-state: paused; }
-@keyframes ds-marquee { to { transform: translateX(-50%); } }
-
-/* ---------- Minh hoạ trong thẻ "Bốn điều" ---------- */
-.ds-illo { display: flex; align-items: center; justify-content: center; gap: var(--gap-3); min-height: var(--size-32); margin-bottom: var(--gap-2);
-           padding: var(--gap-5); border-radius: var(--radius-lg); background: var(--background-subtle); overflow: hidden; }
-/* AI: dòng lệnh hiện dần */
-.ds-term { display: flex; flex-direction: column; gap: var(--gap-1-5); width: 100%; padding: var(--gap-4); border-radius: var(--radius-base);
-           background: var(--background-inverted); color: var(--object-primary-inverted);
-           font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
-.ds-term__line { display: flex; align-items: center; gap: var(--gap-2); }
-.ds-term__line .uu-icon { width: var(--size-4); height: var(--size-4); color: var(--object-interactive-inverted); }
-.ds-term__ok { color: var(--object-interactive-inverted); }
-.ds-motion .ds-term.is-in .ds-term__line { opacity: 0; animation: ds-type 8s infinite; }
-.ds-motion .ds-term.is-in .ds-term__line:nth-child(2) { animation-delay: .7s; }
-.ds-motion .ds-term.is-in .ds-term__line:nth-child(3) { animation-delay: 1.4s; }
-.ds-motion .ds-term.is-in .ds-term__line:nth-child(4) { animation-delay: 2.1s; }
-@keyframes ds-type { 0% { opacity: 0; transform: translateX(calc(-1 * var(--gap-2))); } 6%, 85% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; } }
-/* State layer: nút tự chạy Default → Hover → Pressed */
-.ds-sl { display: flex; flex-direction: column; align-items: center; gap: var(--gap-2); }
-.ds-sl__caption { color: var(--object-secondary); font-variant-numeric: tabular-nums; }
-.uu-btn.is-hover::after { opacity: var(--opacity-20); }
-.uu-btn.is-pressed::after { opacity: var(--opacity-40); }
-/* Brand: một component, hai brand */
-.ds-brand-pair { display: flex; gap: var(--gap-3); }
-.ds-brand-pair > div { display: flex; flex-direction: column; align-items: center; gap: var(--gap-2); }
-/* Tương phản */
-.ds-contrast { display: flex; align-items: center; gap: var(--gap-4); }
-.ds-contrast__sample { display: flex; align-items: center; justify-content: center; width: var(--size-20); height: var(--size-20); border-radius: var(--radius-lg);
-                       background: var(--background-interactive); color: var(--object-on-interactive); }
-.ds-contrast__meter { display: flex; flex-direction: column; gap: var(--gap-1-5); min-width: var(--size-36); }
-.ds-meter { position: relative; height: var(--size-2); border-radius: var(--rounded-circle); background: var(--background-emphasized); overflow: hidden; }
-.ds-meter span { position: absolute; inset: 0 auto 0 0; width: 100%; border-radius: inherit; background: var(--background-positive); transform-origin: left; }
-.ds-meter i { position: absolute; top: 0; bottom: 0; left: 21.4%; width: 2px; background: var(--object-primary); } /* 4.5 / 21 = mốc AA */
-.ds-motion .ds-contrast.is-in .ds-meter span { transform: scaleX(0); animation: ds-meter 1.4s 300ms cubic-bezier(.2,.7,.2,1) forwards; }
-@keyframes ds-meter { to { transform: scaleX(.357); } } /* 7.49 / 21 */
-
-/* ---------- Kiến trúc token: minh hoạ trong từng thẻ ---------- */
-.ds-ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: var(--gap-0-5); height: var(--size-10); margin: var(--gap-1) 0; }
-.ds-ramp span { border-radius: var(--radius-sm); }
-.ds-ramp span:nth-child(1)  { background: color-mix(in srgb, var(--background-interactive) 8%,  var(--background-surface)); }
-.ds-ramp span:nth-child(2)  { background: color-mix(in srgb, var(--background-interactive) 18%, var(--background-surface)); }
-.ds-ramp span:nth-child(3)  { background: color-mix(in srgb, var(--background-interactive) 34%, var(--background-surface)); }
-.ds-ramp span:nth-child(4)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-surface)); }
-.ds-ramp span:nth-child(5)  { background: color-mix(in srgb, var(--background-interactive) 74%, var(--background-surface)); }
-.ds-ramp span:nth-child(6)  { background: var(--background-interactive); }
-.ds-ramp span:nth-child(7)  { background: color-mix(in srgb, var(--background-interactive) 84%, var(--background-inverted)); }
-.ds-ramp span:nth-child(8)  { background: color-mix(in srgb, var(--background-interactive) 68%, var(--background-inverted)); }
-.ds-ramp span:nth-child(9)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-inverted)); }
-.ds-ramp span:nth-child(10) { background: color-mix(in srgb, var(--background-interactive) 36%, var(--background-inverted)); }
-.ds-ramp span:nth-child(11) { background: color-mix(in srgb, var(--background-interactive) 20%, var(--background-inverted)); }
-.ds-motion .ds-ramp.is-in span { animation: ds-pop 500ms cubic-bezier(.2,.7,.2,1) backwards; }
-.ds-motion .ds-ramp.is-in span:nth-child(n) { animation-delay: calc(var(--i, 0) * 45ms); }
-@keyframes ds-pop { from { opacity: 0; transform: translateY(var(--gap-2)) scaleY(.4); } }
-.ds-roles { display: flex; flex-wrap: wrap; gap: var(--gap-2); margin: var(--gap-1) 0; }
-.ds-role { display: inline-flex; align-items: center; gap: var(--gap-1-5); padding: var(--gap-1) var(--gap-2-5); border-radius: var(--rounded-circle);
-           box-shadow: inset 0 0 0 1px var(--border-muted); font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, Menlo, monospace; }
-.ds-role::before { content: ""; width: var(--size-3); height: var(--size-3); border-radius: var(--rounded-circle); background: var(--swatch); box-shadow: inset 0 0 0 1px var(--border-muted); }
-.ds-flow__arrow { position: relative; }
-.ds-flow__line { width: var(--size-8); height: 2px; margin-right: calc(-1 * var(--gap-1));
-                 background: repeating-linear-gradient(90deg, var(--object-interactive-inverted) 0 6px, transparent 6px 12px); background-size: 12px 2px; }
-.ds-motion .ds-flow__line { animation: ds-flow 700ms linear infinite; }
-@keyframes ds-flow { to { background-position: 12px 0; } }
-.ds-flow__arrow .uu-icon { color: var(--object-interactive-inverted); }
-
-/* ---------- Đếm số ---------- */
-.ds-stat__value { display: inline-block; min-width: 3ch; }
-
-/* ---------- Giải phẫu component ---------- */
-.ds-anatomy { display: flex; flex-direction: column; gap: var(--gap-6); padding: var(--gap-8); border-radius: var(--rounded-2xl);
-              background: var(--background-surface); color: var(--object-primary); }
-.ds-anatomy__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--gap-3); }
-.ds-anatomy__body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--gap-8); align-items: center; }
-.ds-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: var(--size-96);
-            padding: var(--gap-16) var(--gap-12); border-radius: var(--radius-lg);
-            background-color: var(--background-muted);
-            background-image: linear-gradient(var(--border-muted) 1px, transparent 1px), linear-gradient(90deg, var(--border-muted) 1px, transparent 1px);
-            background-size: var(--size-6) var(--size-6); overflow: hidden; }
-.ds-stage__zoom { zoom: 2; position: relative; z-index: 1; }
-.ds-stage__zoom .uu-fieldset { width: 11rem; }
-.ds-stage__svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
-.ds-stage__svg .box { fill: none; stroke: var(--object-interactive); stroke-width: 1.5; stroke-dasharray: 5 4; }
-.ds-stage__svg .lead { stroke: var(--object-primary); stroke-width: 1; }
-.ds-stage__svg .dot { fill: var(--object-primary); }
-.ds-stage__svg .pin circle { fill: var(--background-inverted); }
-.ds-stage__svg .pin text { fill: var(--object-primary-inverted); font: var(--font-weight-semibold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
-.ds-stage__svg .dim { stroke: var(--object-secondary); stroke-width: 1; }
-.ds-stage__svg .dim-text { fill: var(--object-secondary); font: var(--font-weight-semibold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
-.ds-stage__svg .dim-bg { fill: var(--background-muted); }
-.ds-motion .ds-stage__svg > * { opacity: 0; animation: ds-fade 450ms cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--d, 0) * 70ms); }
-@keyframes ds-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-.ds-pulse::after { animation: ds-pulse-layer 2.4s ease-in-out infinite; }
-@keyframes ds-pulse-layer { 0%, 100% { opacity: 0; } 50% { opacity: var(--opacity-20); } }
-.ds-legend { display: flex; flex-direction: column; gap: var(--gap-4); list-style: none; counter-reset: ds; }
-.ds-legend li { display: grid; grid-template-columns: var(--size-7) 1fr; gap: var(--gap-3); align-items: start; }
-.ds-legend li::before { counter-increment: ds; content: counter(ds); display: flex; align-items: center; justify-content: center; width: var(--size-7); height: var(--size-7);
-                        border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted);
-                        font: var(--font-weight-semibold) var(--font-size-sm)/1 var(--font-family-body); }
-.ds-legend strong { display: block; }
-.ds-legend span { color: var(--object-secondary); }
-[data-anat-panel][hidden] { display: none !important; }
-
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 1199px) {
+  .ds-h1 { font-size: var(--font-size-5xl); line-height: var(--font-height-5xl); }
+  .ds-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ds-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ds-float--1 { left: calc(-1 * var(--gap-3)); }
+  .ds-float--3 { left: calc(-1 * var(--gap-4)); }
+  .ds-float--2 { right: calc(-1 * var(--gap-2)); }
+}
 @media (max-width: 899px) {
-  .ds-anatomy { padding: var(--gap-5); }
-  .ds-anatomy__body { grid-template-columns: minmax(0, 1fr); }
+  .ds-wrap { padding-inline: var(--gap-4); }
+  .ds-section { padding-block: var(--gap-12); }
+  .ds-hero { padding: var(--gap-10) 0 calc(var(--gap-16) + var(--gap-8)); }
+  .ds-hero__grid, .ds-anatomy__body, .ds-grid--2, .ds-trees { grid-template-columns: minmax(0, 1fr); }
+  .ds-h1 { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
+  .ds-lede { font-size: var(--font-size-base); line-height: var(--font-height-base); }
+  .ds-hero__art { margin-top: var(--gap-6); }
+  .ds-explode { padding: var(--gap-5); }
+  .ds-persp { height: 15rem; }
+  .ds-iso { width: 13.75rem; height: var(--size-14); }
+  .ds-explode__legend { grid-template-columns: minmax(0, 1fr); }
+  .ds-float--1 { top: calc(-1 * var(--gap-5)); left: var(--gap-2); }
+  .ds-float--2 { top: var(--gap-12); right: var(--gap-2); }
+  .ds-float--3 { display: none; }
+  .ds-float--4 { right: var(--gap-2); }
+  .ds-band { margin-inline: calc(-1 * var(--gap-8)); padding: var(--gap-3) 0; }
+  .ds-band .text-display-base { font-size: var(--font-size-2xl); line-height: var(--font-height-2xl); }
+  .ds-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: var(--gap-16); }
+  .ds-bento, .ds-matrix { grid-template-columns: minmax(0, 1fr); }
+  .ds-tile, .ds-tile--wide { grid-column: auto; min-height: 0; }
+  .ds-wipe__layer { gap: var(--gap-2); padding: var(--gap-4); }
+  .ds-pipe { flex-direction: column; gap: var(--gap-4); }
+  .ds-conn { display: none; }
   .ds-stage { min-height: var(--size-72); padding: var(--gap-12) var(--gap-4); }
   .ds-stage__zoom { zoom: 1.15; }
-  .ds-flow__line { display: none; }
+  .ds-card, .ds-trees { padding: var(--gap-6); }
+  .ds-trees .ds-links { grid-template-columns: 1fr; }
+  .ds-cta { padding: var(--gap-10) var(--gap-6); }
+  .ds-cta .text-display-lg { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
+  .ds-cta__badge { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ds-pulse::after { animation: none; opacity: var(--opacity-20); }
