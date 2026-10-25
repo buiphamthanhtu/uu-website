@@ -385,12 +385,6 @@
    "fill": true,
    "public": true
   },
-  "microphone": {
-   "category": "sound-music",
-   "outline": true,
-   "fill": true,
-   "public": true
-  },
   "minus": {
    "category": "ui-layout",
    "outline": true,
@@ -477,6 +471,12 @@
   },
   "shield-check": {
    "category": "security",
+   "outline": true,
+   "fill": true,
+   "public": true
+  },
+  "sidebar-left": {
+   "category": "ui-layout",
    "outline": true,
    "fill": true,
    "public": true

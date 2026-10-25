@@ -636,7 +636,7 @@ prop `collapsed` của `SideNav` là cách viết tắt cho đúng vùng thanh b
 | `IconButtonAccent` | 90 | 6.2 |
 | `IconButtonNeutral` | 90 | 6.2 |
 | `ToggleButton` | 48 | 6.7 |
-| `ButtonGroup` | 2 | 6.9 |
+| `ButtonGroup` | 4 | 6.9 |
 | `TextInput` | 9 | 6.3 |
 | `TextArea` | 9 | 6.3e |
 | `OTPInput` | 14 | 6.3b |
@@ -649,12 +649,12 @@ prop `collapsed` của `SideNav` là cách viết tắt cho đúng vùng thanh b
 | `Radio` | 10 | 6.3d |
 | `RadioInput` | 1 | 6.3d |
 | `Switch` | 10 | 6.17 |
-| `Chip` | 16 | 6.18 |
+| `Chip` | 20 | 6.18 |
 | `SegmentedControl` | 1 (+ `.Segment item` 8) | 6.13 |
 | `NavigationBar` | 1 | 6.5 |
 | `BottomBar` | 10 (+ `base/FooterItem` 2 · `base/FooterItemSpecial` 4) | 6.22 |
 | `TablePagination` | 1 (+ `.PageItem` 4) | 6.24 |
-| `Breadcrumb` | 1 (+ `.BreadcrumbItem` 3) | 6.25 |
+| `Breadcrumb` | 1 (+ `.BreadcrumbItem` 5) | 6.25 |
 | `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | 6.27 |
 | `Tab` | 5 | 6.20 |
 | `TabBar` | 2 | 6.20 |
@@ -666,18 +666,18 @@ prop `collapsed` của `SideNav` là cách viết tắt cho đúng vùng thanh b
 | `[Screen]PushNotification` (template màn) | 1 | 6.31 |
 | `NotificationBadge` | 2 | 6.16 |
 | `Tooltip` | 4 | 6.30 |
-| `TableHeaderCell` | 20 | 6.23 |
-| `TableCell` | 15 | 6.23 |
-| `KPICard` | 3 | 6.26 |
-| `CardSheet` (tấm bottom sheet) | 2 | 6.8 |
+| `TableHeaderCell` | 21 | 6.23 |
+| `TableCell` | 18 | 6.23 |
+| `KPICard` | 5 | 6.26 |
+| `CardSheet` (tấm bottom sheet) | 4 | 6.8 |
 | Bottom sheet (`Sheet` — template màn hình) | 1 | 6.8 |
 | `CardDialog` (tấm dialog) | 2 | 6.10 |
 | Dialog (`Dialog` — template màn hình) | 1 | 6.10 |
-| `SideSheet` | 2 | 6.28 |
+| `SideSheet` | 4 | 6.28 |
 | `Popover` | 1 | 6.29 |
-| `ResultScreen` (template màn) | 1 | 6.19 |
-| `ErrorScreen` (template màn) | 1 | 6.19 |
-| `EmptyScreen` (template màn) | 1 | 6.19 |
+| `ResultScreen` (template màn, có component code) | 1 | 6.19 |
+| `ErrorScreen` (template màn, có component code) | 1 | 6.19 |
+| `EmptyScreen` (template màn, có component code) | 1 | 6.19 |
 | `EmptySection` (khối nhúng) | 1 | 6.19 |
 | `ErrorSection` (khối nhúng) | 1 | 6.19 |
 
@@ -820,7 +820,7 @@ padding, density, state layer, Loading và Disabled **y hệt `TextButtonAccent`
 | `Ghost` | — | — | `object-negative` | `object-negative` · 5 / 10 |
 | *mọi Type* · Disabled | như `TextButtonAccent` Disabled (`background-disabled` / `border-muted` / `object-disabled`) | | | — |
 
-**Không có `Inverted=True`** — chưa có nút phá huỷ trên nền tối; cần thì dừng và hỏi.
+**Không có `Inverted=True`** — nút phá huỷ luôn đặt trên nền sáng; màn tối cần hành động phá huỷ thì mở `Dialog` xác nhận (nền sáng).
 
 Chọn giữa ba bộ: hành động chính của màn → `Accent`; hành động phụ, trung tính → `Neutral`; hành động
 **không lấy lại được** → `Danger`. Đừng dùng `Danger` chỉ vì nút "trông nguy hiểm" (đăng xuất, bỏ qua)
@@ -861,6 +861,8 @@ Tên prop khớp hoàn toàn với Text button — dùng chung một API compone
 
 Toàn bộ 144 variant hover/pressed của 4 bộ button đã được audit và khớp 100% quy tắc mục 6.0. Không có ngoại lệ nào cần xử lý riêng trong code.
 - Disabled Solid → `background-disabled`; Outline → `border-muted` / `border-muted-inverted`.
+
+**Không có `IconButton` kiểu Danger.** Xoá theo dòng (icon thùng rác) nằm trong menu "⋯" (`IconButtonNeutral` Ghost Small mở `Menu`) và xác nhận bằng `Dialog` có `TextButtonDanger` Solid (§6.1).
 
 ### 6.3 Text input
 
@@ -1209,7 +1211,9 @@ placeholder mới xuống `object-disabled`.
 - Ô rỗng + focus → chỉ lịch sử; đang gõ → gợi ý (và `State=Loading` trong lúc chờ). Không có gì → không mở panel.
 - Mobile toàn màn: panel thành danh sách phủ dưới ô (không bo, không bóng), không phải `Sheet`.
 
-Chưa có: cỡ nhỏ; xoá từng mục lịch sử.
+**Xoá từng mục lịch sử**: hàng *Tìm gần đây* thêm `IconButtonNeutral` **Ghost Small** icon **`xmark`** ở cuối hàng (nhãn "Xoá “{từ khoá}”"). Bấm xoá đúng mục đó, panel vẫn mở, focus về ô; xoá hết thì nhóm *Tìm gần đây* biến mất. Nút có state layer riêng, không kích hoạt hàng.
+
+**Không có cỡ nhỏ** — density `Compact` đã thu ô (`field-height` 32).
 
 ### 6.4 Dropdown
 
@@ -1363,7 +1367,9 @@ Hai component tách vai rõ ràng: `CardSheet` là bản thân tấm sheet, `She
 | `Header` | TEXT | `"Header"` |
 | `Slot` | SLOT | trống, không stretch child |
 | `CTA` | BOOLEAN | `true` — hiện/ẩn **toàn bộ** nhóm nút |
-| `Navigation` | VARIANT | **`Close`** · `Back` — **2 variant** |
+| `Navigation` | VARIANT | **`Close`** · `Back` |
+| `Height` | VARIANT | **`Fit`** · `Full` — cùng `Navigation` ra **4 variant** |
+| `Handle` | BOOLEAN | `false` — thanh kéo ở đỉnh |
 
 **Back và Close loại trừ nhau.** Sheet gốc có nút đóng bên phải, không có back. Sheet **con**
 (mở ra từ một sheet trước đó — chọn tỉnh rồi tới chọn huyện, xem điều khoản rồi tới xác
@@ -1394,6 +1400,14 @@ Nhóm nút **dùng chung component set `ButtonGroup`** (mục 6.9), giống Dial
 
 Bo cả bốn góc chứ không riêng hai góc trên, vì sheet nổi cách hai mép 12px chứ không dính sát cạnh màn hình.
 
+**Sheet kéo được** (`Handle=true`): thanh kéo **32 × 4** (`size-8` × `size-1`) `rounded-circle` nền `border` căn giữa
+đỉnh sheet: từ đỉnh xuống là 8 · thanh 4 · 8 · Header (Header bỏ padding trên 16, nên sheet chỉ cao thêm 4). Hai nấc:
+- **`Height=Fit`** — cao theo nội dung (như sheet thường).
+- **`Height=Full`** — kéo lên: sheet cao tới **cách đỉnh safe area 12**, vẫn bo 4 góc; Body cuộn, Header và nhóm nút
+  đứng yên.
+Kéo xuống ở `Fit` quá 1/3 chiều cao → đóng (như nút đóng); ở `Full` → về `Fit`. Thả giữa chừng thì về nấc gần nhất.
+Không có thanh kéo thì sheet không kéo được. Web / Flutter: thanh là `role="button"` nhãn "Kéo để đổi cỡ", Enter đổi nấc.
+
 Khi bật `Secondary button` trên instance, hai nút chia đôi hàng, mỗi bên `(rộng − 12) / 2`.
 
 > **Khi code:** dùng `flex: 1 1 0` cho cả hai nút, **không** dùng `flex: 1 1 auto`. Với basis `auto`, trình duyệt chia phần dư đều lên trên bề rộng nội dung vốn khác nhau, nên hai nút có nhãn dài ngắn khác nhau sẽ ra lệch vài px thay vì đúng một nửa.
@@ -1421,7 +1435,7 @@ Khi bật `Secondary button` trên instance, hai nút chia đôi hàng, mỗi b�
 
 Component set dùng chung cho cặp nút chính/phụ. Cả Dialog và Bottom sheet đều dùng.
 
-**Props**: `Layout` (VARIANT: `Horizontal` · `Vertical`) · `Secondary button` (BOOLEAN, mặc định `true`)
+**Props**: `Layout` (VARIANT: `Horizontal` · `Vertical`) × `Tone` (VARIANT: `Default` · `Danger`) · `Secondary button` (BOOLEAN, mặc định `true`). **4 variant.**
 
 | Layout | Cấu trúc | Thứ tự | Kích thước |
 |---|---|---|---|
@@ -1429,6 +1443,8 @@ Component set dùng chung cho cặp nút chính/phụ. Cả Dialog và Bottom sh
 | `Vertical` | V · gap 12 · FIXED × HUG | **chính (Solid) trên, phụ (Outline) dưới** | cả hai `FILL` chiều ngang |
 
 Nút dùng `Text button - Accent` size `Large` (56). `min-width` 56.
+
+**`Tone=Danger`** — nhóm nút của dialog / sheet **xác nhận hành động phá huỷ** (xoá, huỷ đơn): nút chính đổi sang **`TextButtonDanger` Solid** Large; nút phụ giữ nguyên (`TextButtonAccent` Outline, thường là "Huỷ" / "Giữ lại"). Thứ tự và hình học không đổi. Web: `<ButtonGroup tone="danger">`; Flutter: `UuButtonGroup(tone: UuButtonGroupTone.danger)`. Dùng thay cho việc tự xếp hai nút.
 
 Chú ý thứ tự đảo giữa hai layout: nằm ngang thì nút chính ở **bên phải**, xếp dọc thì nút chính ở **trên**. Cả hai đều đặt nút chính ở vị trí ngón tay tới dễ nhất.
 
@@ -1677,8 +1693,9 @@ luôn là màu object của variant, nên dựng bằng `currentColor` (CSS) ch�
 
 `Switch` **BẬT dùng `interactive`** nên đổi màu theo brand.
 
-Chưa có: nhãn đi kèm (hàng `SwitchInput` như `CheckboxInput`), cỡ nhỏ, switch có
-chữ On/Off trong rãnh. Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế.
+**Không có** cỡ nhỏ riêng (density `Compact` đã thu nhỏ) và **không có** chữ On/Off trong rãnh (chữ trong rãnh khó đọc).
+
+Chưa có: nhãn đi kèm (hàng switch + nhãn). Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế.
 
 ### 6.18 Chip (`Chip`)
 
@@ -1689,8 +1706,8 @@ thái đã chọn** — khác button (bấm xong là xong) và khác Segment ite
 (`gap-1`/`gap-3`), gap **8** (`gap-2`), radius `rounded-circle`, viền **2px**, chữ `body` 16/24,
 `min-width` = `min-height` = 32 (`size-8`). Chữ dùng text style **`label`** (16/24, 600 · Compact 500) như nút.
 
-**Props**: `Type` (Select/Dropdown) · `Selected` (False/True) · `State` (Default/Hover/Pressed/Disabled)
-· `Label` (TEXT). **16 variant**.
+**Props**: `Type` (Select/Dropdown/**Input**) · `Selected` (False/True — chỉ Select/Dropdown) · `State` (Default/Hover/Pressed/Disabled)
+· `Label` (TEXT) · **`Prefix icon`** (BOOLEAN + INSTANCE_SWAP icon 16). **20 variant** (16 + 4 `Type=Input`).
 
 | Selected | State | Nền | Viền 2px | Chữ | State layer |
 |---|---|---|---|---|---|
@@ -1721,12 +1738,20 @@ rộng tối thiểu 240. Trong lúc mở: chip ở `Selected=True`, chevron đ�
 - Lọc **nhiều** → `Type=Multiple` + footer "Bỏ chọn" / "Áp dụng"; nhãn chip "{Tên} · n" (vd. "Khu vực · 2").
 - Chưa chọn gì: nhãn là tên bộ lọc, chip `Selected=False`.
 
-Chưa có: icon đứng trước chữ, cỡ khác 32, chip có nút xoá (input chip).
+**Icon trước chữ** (`Prefix icon`, mọi `Type`): icon **16** đứng trước chữ, gap 8, **cùng màu chữ** (`object-primary` / `object-interactive` khi đã chọn / `object-disabled`). `Type=Select` khi đã chọn: icon `check` **thay chỗ** icon trước chữ — một chip chỉ có một icon đầu.
+
+**`Type=Input`** — chip đại diện **một giá trị đã nhập hoặc đã áp dụng** (từ khoá, người nhận, bộ lọc đang bật) và gỡ được:
+- Màu như `Selected=False` (không có trạng thái chọn); padding phải **4** thay vì 12.
+- Cuối chip là nút gỡ: icon **`xmark` 16** cùng màu chữ, trong ô tròn **24** (`size-6`); state layer `object-primary` 5 / 10 **chỉ phủ ô tròn đó**. Thân chip không bấm được.
+- Bấm `xmark` (hoặc Backspace / Delete khi nút có focus) → gỡ chip, focus sang chip kế tiếp (hết chip thì về ô nhập).
+- `Disabled`: chữ, icon `object-disabled`, viền `border-muted`, không gỡ được.
+- Web: `<Chip type="input" onRemove={…}>`; nút gỡ có `aria-label="Gỡ {nhãn}"`. Flutter: `UuChip(type: UuChipType.input, onRemove: …)`.
+
+**Không có cỡ khác 32** — density `Compact` dùng 24.
 
 ### 6.19 Template màn (`ResultScreen` · `ErrorScreen` · `EmptyScreen` · `EmptySection` · `ErrorSection`)
 
-Hai template màn. Cùng họ với `Sheet` (6.8) và
-`Dialog` (6.10) — là **bố cục màn để tham chiếu**, không phải component để import: khung **390 × 844**,
+Ba template màn. Trên bản vẽ chúng cùng họ với `Sheet` (6.8) và `Dialog` (6.10): khung **390 × 844**,
 `NavigationBar` trên cùng, `Body` FILL căn giữa cả hai chiều padding ngang 16, `Footer` HUG padding 16,
 `IOS Home indicator` dưới cùng.
 
@@ -1735,6 +1760,11 @@ Hai template màn. Cùng họ với `Sheet` (6.8) và
 | `ResultScreen` | Việc đã xong, người dùng phải sang chỗ khác | `ButtonGroup` dọc — nút chính trên, lối đi phụ dưới |
 | `ErrorScreen` | Lỗi chặn cả chức năng cốt lõi, không tự khắc phục được | **Một** nút duy nhất: thử lại |
 | `EmptyScreen` | Cả màn chưa có dữ liệu | **Một** nút hành động (tạo mới, khám phá), ẩn được bằng `Action` |
+
+Cả ba **có component code** để dựng màn nhanh — web `ResultScreen` · `ErrorScreen` · `EmptyScreen`, Flutter
+`UuResultScreen` · `UuErrorScreen` · `UuEmptyScreen`. `ResultScreen` / `ErrorScreen` chỉ dựng phần `Body` + `Footer` (ảnh, tiêu đề, mô tả,
+nút) — `NavigationBar` và safe area do màn đặt; `EmptyScreen` dựng sẵn cả `NavigationBar` có nút back. `ResultScreen` nhận nút chính + lối đi phụ (tuỳ chọn); `ErrorScreen`
+nhận đúng một nút thử lại.
 
 **Khối nhúng** (không phải cả màn — đặt trong một vùng của màn, kể cả thân bảng):
 
@@ -1769,7 +1799,7 @@ chỗ để quay lại. `EmptyScreen` **có** nút back (`Back action=true`) —
 Mục chuyển
 giữa các **vùng nội dung khác nhau**, không phải để lọc một danh sách.
 
-**Props**: `State` (VARIANT: `Default` · `Active` · `Hover` · `Pressed` · `Disabled`) · `Tab` (TEXT, nhãn). **5 variant.**
+**Props**: `State` (VARIANT: `Default` · `Active` · `Hover` · `Pressed` · `Disabled`) · `Tab` (TEXT, nhãn) · **`Icon`** (BOOLEAN + INSTANCE_SWAP icon 16) · **`Badge`** (BOOLEAN). **5 variant.**
 
 **Hình học**: auto-layout **VERTICAL**, padding **12** cả bốn phía, gap 12, `HUG × HUG` →
 cao **48**, rộng theo chữ. Không vỏ, không nền, không viền, không vạch nền chạy suốt.
@@ -1800,7 +1830,9 @@ Hover / Pressed chỉ có ở tab **không Active** — tab đang chọn bấm l
 Cả hai: HORIZONTAL · gap 0 · không nền · **viền dưới 1px `border-muted` chạy suốt**; gạch Active (4px) đè lên
 viền. Web: `role="tablist"`, mũi tên trái/phải chuyển tab.
 
-**Chưa có**: tab có icon / badge; `TabBar` trên nền tối.
+**Icon và badge** (tuỳ chọn): nội dung tab là hàng HORIZONTAL căn giữa — icon **16** trước chữ (gap **8**), **cùng màu chữ** theo state (`object-secondary` / `object-interactive` khi Active / `object-disabled`; Active dùng kiểu `fill`, còn lại `outline`); `NotificationBadge` **Dot** sau chữ (gap **4**) báo mục có nội dung mới chưa xem. Cao tab vẫn 48. Badge là thông tin phụ — nhãn tab vẫn phải tự đủ nghĩa; web thêm chữ ẩn "có mới" cho screen reader.
+
+**Không có `TabBar` trên nền tối.**
 
 > **Chữ và gạch cùng họ `interactive`.** Chữ `Active` dùng `object-interactive`, gạch dùng
 > `border-interactive` — hai phần cùng đổi theo brand và giữ quan hệ chữ đậm hơn gạch một bậc
@@ -1848,10 +1880,14 @@ component nội bộ `.MenuItem`. Đây là **panel option bung ra của
 Nền hàng đã chọn là **tint nhạt** chứ không phải màu đặc, nên state layer vẫn đi bậc nền sáng
 **5 / 10** — chỉ đổi fill sang `background-interactive` cho cùng họ màu với nền hàng. Đúng luật 6.0.
 
-**Neo panel chưa chốt.** Bản vẽ chỉ có tấm panel, không có quy định neo dưới ô, lật
-lên khi thiếu chỗ, chiều cao tối đa, hay đóng khi bấm ra ngoài. Bản web để `Menu` là một khối
-thường, `width: 100%` của khung chứa (nên bằng bề ngang ô `Dropdown`); màn tự đặt chỗ. Master
-vẽ 214 chỉ là khổ mẫu.
+**Neo panel** (`Platform=Panel`):
+- Neo **dưới** phần tử mở nó (ô `Dropdown`, `SearchInput`, chip, nút "⋯"), cách **4** (`gap-1`). Rộng bằng ô
+  (`Dropdown`, `SearchInput`); mở từ chip hay nút thì rộng tối thiểu **240** (`size-60`), canh mép trái với phần tử.
+- Phía dưới không đủ chỗ mà phía trên đủ → **lật lên trên**, cùng khoảng 4. Sát mép phải → canh mép phải với phần tử.
+- Cao tối đa **320** (`size-80`); dài hơn thì **cuộn trong panel** — ô tìm nhanh dính trên, footer dính dưới.
+- Đóng khi: chọn xong (`Type=Single`), bấm ra ngoài, Esc, hoặc phần tử mở nó mất focus bằng Tab. `Type=Multiple`
+  chỉ đóng bằng "Áp dụng", bấm ra ngoài hoặc Esc (bấm ra ngoài / Esc **không** áp dụng lựa chọn dở).
+Master vẽ 214 chỉ là khổ mẫu.
 
 Bảng trên là **`Type=Single`**. **`Type=Multiple`** (chọn nhiều):
 
@@ -1872,7 +1908,14 @@ khoá. Không còn option nào → một dòng `body` `object-secondary` "Không
 **`.MenuSection`** — tiêu đề nhóm: padding 8/8/4/8, `title-xs` `object-secondary` IN HOA, prop `Title`.
 **`.MenuDivider`** — vạch ngăn giữa cụm: 1px `border-muted`, margin dọc 4. Nhóm đầu không cần vạch phía trên.
 
-**Chưa có**: option có mô tả hai dòng; chọn nhiều kiểu "chọn tất cả".
+**Mô tả hai dòng** (`.MenuItem` thêm `Description` — TEXT + BOOLEAN, mọi `Type`): dòng thứ hai dưới tên option,
+style `caption` **`object-secondary`** (Disabled: `object-disabled`; đã chọn ở `Type=Single` vẫn `object-secondary`).
+Hàng thành `HUG` (cao theo nội dung), icon / checkbox **căn trên** thẳng dòng tên. Mô tả tối đa 2 dòng, cắt "…".
+
+**Chọn tất cả** (`Type=Multiple`, từ 4 option): hàng đầu là `.MenuItem` `Type=Multiple` nhãn "Chọn tất cả", ngay dưới là
+`.MenuDivider`. Checkbox của hàng: `Checked` khi mọi option đã chọn, **`Indeterminate`** khi chọn một phần, trống khi chưa
+chọn gì. Bấm khi đang trống hoặc một phần → chọn hết; khi đã chọn hết → bỏ hết. Đang lọc bằng tìm nhanh thì chỉ tác
+động lên **các option đang hiện**. Option `Disabled` không bị đổi.
 
 ### 6.22 Bottom bar (`BottomBar` · `base/FooterItem`)
 
@@ -1937,7 +1980,7 @@ component `Table` riêng trong bản vẽ — bên code `Table` / `TableRow` ch�
 bọc các ô, không thêm hình học.
 
 **Props `TableHeaderCell`**: `Label` (TEXT) · `Sort` (`Off` · `Unsorted` · `Ascending` · `Descending`) ×
-`Align` (`Left` · `Right`) × `State` (`Default` · `Hover` · `Pressed` — chỉ cột sắp được, `Sort≠Off`). **20 variant.**
+`Align` (`Left` · `Right`) × `State` (`Default` · `Hover` · `Pressed` — chỉ cột sắp được, `Sort≠Off`) + **`Type=Checkbox`** (1). **21 variant.**
 
 | Phần | Giá trị |
 |---|---|
@@ -1946,9 +1989,10 @@ bọc các ô, không thêm hình học.
 | Icon sắp xếp | 16 · `Ascending` `arrow-up` · `Descending` `arrow-down` (`object-primary`) · `Unsorted` `sort-vertical` `object-secondary` (cột sắp được, chưa sắp) · `Off` không icon (cột không sắp được) |
 | `Align=Right` | icon đứng **trước** nhãn, cả hai dồn phải — dùng cho cột **số** |
 | `Hover` / `Pressed` | state layer `object-primary` · `opacity-5` / `opacity-10` phủ cả ô — cột sắp được là thứ bấm được (§6.0). `Sort=Off` không có state |
+| `Type=Checkbox` | ô "chọn tất cả" của cột chọn hàng · rộng **64** như ô `TableCell` `Checkbox` · `Checkbox` (§6.3f) `Checked` khi mọi hàng **của trang đang xem** đã chọn, **`Indeterminate`** khi chọn một phần · không nhãn, không sắp xếp, không state layer riêng (state nằm ở checkbox) · `aria-label="Chọn tất cả hàng"` |
 
 **Props `TableCell`**: `Content` (TEXT) · `TextButton` · `IconButton` (BOOLEAN, ô `Actions`) · `Type`
-(`Text` · `Number` · `Secondary` · `Actions` · `Checkbox`) × `State` (`Default` · `Hover` · `Selected`). **15 variant.**
+(`Text` · `Number` · `Secondary` · `Actions` · `Checkbox` · **`Status`**) × `State` (`Default` · `Hover` · `Selected`). **18 variant.**
 
 | Phần | Giá trị |
 |---|---|
@@ -1958,6 +2002,7 @@ bọc các ô, không thêm hình học.
 | `Number` | `body` căn **phải**, `font-variant-numeric: tabular-nums` |
 | `Actions` | `TextButtonAccent` **Ghost Small** (`Action`, bật/tắt bằng `TextButton`) + `IconButtonNeutral` **Ghost Small** (`More`, mở `Menu`; bật/tắt bằng `IconButton`) |
 | `Checkbox` | `Checkbox` (§6.3f) — chọn hàng · ô rộng 64 |
+| `Status` | `StatusIndicator` (§6.15) căn trái — cột trạng thái (đơn, phiếu, tài khoản); chữ trạng thái nằm trong indicator, ô không thêm chữ |
 | `Hover` | state layer `object-primary` · `opacity-5` phủ cả ô |
 | `Selected` | nền **`background-interactive-muted`** |
 
@@ -1969,7 +2014,7 @@ bọc các ô, không thêm hình học.
 - Bảng **không** có viền ngoài và không kẻ dọc; chỉ kẻ ngang (viền dưới mỗi ô).
 
 **Chưa có**: cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột,
-hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba.
+hàng rỗng / đang tải, mật độ thứ ba. Cột cố định, hàng mở rộng, sửa trong ô, kéo đổi cột **để sau** — chỉ làm khi có màn quản trị cần.
 
 ### 6.24 Phân trang bảng (`TablePagination` · `.PageItem`)
 
@@ -1997,12 +2042,14 @@ trống giữa chúng thành **một** ô `Ellipsis`. Khoảng trống chỉ có
 (không bao giờ "…" thay cho đúng một số). Ví dụ 20 trang, đang ở 10: `1 … 9 10 11 … 20`; đang ở 2:
 `1 2 3 … 20`.
 
-**Chưa có**: ô nhập số trang để nhảy; phân trang không biết tổng số dòng.
+**Không có ô nhập số trang** — rút gọn "…" là đủ.
+
+**Chưa có**: phân trang không biết tổng số dòng.
 
 ### 6.25 Breadcrumb (`Breadcrumb` · `.BreadcrumbItem`)
 
 Đường dẫn vị trí trong cây trang (desktop). **Props `.BreadcrumbItem`**: `Label` (TEXT) · `Current` (`False` · `True`)
-× `State` (`Default` · `Hover`) — mục `Current=True` không có `Hover`. **3 variant.** `Breadcrumb`: 1 variant.
+× `State` (`Default` · `Hover`) — mục `Current=True` không có `Hover` — + **`Type=Overflow`** × `State` (2). **5 variant.** `Breadcrumb`: 1 variant.
 
 | Phần | Giá trị |
 |---|---|
@@ -2014,11 +2061,16 @@ trống giữa chúng thành **một** ô `Ellipsis`. Khoảng trống chỉ có
 
 Mục cuối luôn là trang hiện tại. Không dùng Breadcrumb thay `NavigationBar` trên app.
 
-**Chưa có**: rút gọn khi đường dẫn dài (mục "…" mở menu); icon trước mục đầu.
+**Rút gọn** khi đường dẫn **quá 4 mục**: giữ mục đầu và **2 mục cuối**, các mục giữa gom vào **một** mục
+`Type=Overflow` — chữ "…" `body` `object-secondary`, có `Hover` như mục thường, `aria-label="Hiện đường dẫn ẩn"`,
+`aria-haspopup="menu"`. Bấm mở `Menu` `Platform=Panel` (§6.21) liệt kê các mục bị ẩn theo thứ tự từ trên xuống; chọn
+một mục là đi tới trang đó. Ví dụ 6 mục: `Trang chủ / … / Đơn hàng / DH-1024`.
+
+**Không có icon trước mục đầu** — mục đầu là chữ như mọi mục.
 
 ### 6.26 Thẻ chỉ số (`KPICard`)
 
-Thẻ một con số chính trên dashboard. **Props**: `Label` · `Value` (TEXT) · `Trend` (`Up` · `Down` · `[No trend]`). **3 variant.**
+Thẻ một con số chính trên dashboard. **Props**: `Label` · `Value` (TEXT) · `Trend` (`Up` · `Down` · `[No trend]`) × **`Polarity`** (`Normal` · `Inverse`; bỏ qua khi `[No trend]`) · **`Interactive`** (BOOLEAN). **5 variant.**
 
 | Phần | Giá trị |
 |---|---|
@@ -2030,10 +2082,16 @@ Thẻ một con số chính trên dashboard. **Props**: `Label` · `Value` (TEXT
 | `Trend=Down` | `arrow-trend-down` + chữ **`object-negative`** |
 | `Trend=[No trend]` | không có `Delta` |
 
-Màu `Delta` theo **chiều số**, không theo tốt / xấu: chi phí tăng vẫn là `Up` xanh. Nếu cần "tăng là
-xấu" → dừng và hỏi, chưa có variant.
+Mặc định (`Polarity=Normal`) màu `Delta` theo **chiều số**: tăng xanh, giảm đỏ. Chỉ số mà **tăng là xấu** (chi phí,
+tỉ lệ huỷ, thời gian chờ) dùng **`Polarity=Inverse`**: `Up` tô **`object-negative`**, `Down` tô **`object-positive`**;
+icon vẫn theo chiều số (`arrow-trend-up` / `arrow-trend-down`). Chọn `Polarity` theo **ý nghĩa của chỉ số**, không theo
+con số đang hiện.
 
-**Chưa có**: biểu đồ nhỏ (sparkline) trong thẻ; thẻ bấm được.
+**Thẻ bấm được** (`Interactive=true`, mở trang chi tiết): `chevron-right` 16 `object-secondary` cuối hàng `Label`; state
+layer `object-primary` · `opacity-5` / `opacity-10` phủ cả thẻ (§6.0), radius theo thẻ. Cả thẻ là **một** link / nút —
+không đặt nút khác bên trong. Focus: vòng 2px `border-emphasized` quanh thẻ.
+
+**Chưa có**: biểu đồ nhỏ (sparkline) trong thẻ — để sau.
 
 ### 6.27 Điều hướng bên (`SideNav` · `.SideNavItem` · `.SideNavSection`)
 
@@ -2051,7 +2109,8 @@ khiển bằng collection **`layout`** (§4.2): nhãn ← `layout/show-label`, t
 | `Collapsed=True` | rộng **73** · mục vuông 48 · ẩn nhãn, chevron và tiêu đề nhóm · nhãn chuyển thành `Tooltip` (§6.30) · mục `Level=2` ẩn |
 | Mục | HORIZONTAL · padding ngang `control/padding-x-small` · gap **8** · min-height `control/height-base` · radius `radius-sm` · icon `control/icon-base` · nhãn `body` |
 | `Level=2` | mục con: không icon, thay bằng khoảng thụt 24 (bằng icon) → nhãn thẳng hàng nhãn cấp 1 |
-| `Chevron` | `chevron-down` 16 `object-secondary` cuối mục cấp 1 có mục con |
+| `Chevron` | `chevron-down` 16 `object-secondary` cuối mục cấp 1 có mục con · **xoay 180°** khi nhóm đang mở (`transform`, 120 ms), không đổi sang icon khác · mục có `aria-expanded` |
+| `Badge` | `NotificationBadge` **`Count`** (§6.16) cuối mục, trước chevron · `Collapsed=True`: thành **`Dot`** ở góc trên phải icon |
 | `State=Default` | icon `outline` `object-secondary` · nhãn `object-primary` |
 | `State=Hover` | state layer `object-primary` · `opacity-5` (pressed `opacity-10`) |
 | `State=Active` | nền **`background-interactive-muted`** · icon **`fill`** `object-interactive` · nhãn `object-primary` · `aria-current="page"` |
@@ -2059,16 +2118,23 @@ khiển bằng collection **`layout`** (§4.2): nhãn ← `layout/show-label`, t
 
 Mục đang chọn thuộc họ `interactive` như `BottomBar` / `Tab`. Một mục `Active` mỗi lúc.
 
-**Chưa có**: chevron xoay khi mở nhóm (bản vẽ chỉ có `chevron-down`), cấp 3, badge trên mục, khu tài khoản cuối thanh, nút thu/mở trong thanh.
+**Nút thu / mở** (`SideNav` thêm `Toggle` — BOOLEAN): `IconButtonNeutral` **Ghost Small** icon **`sidebar-left`** ở đầu
+thanh, trên mục đầu tiên — dồn phải khi mở rộng, căn giữa khi thu gọn. Nhãn "Thu gọn thanh điều hướng" / "Mở rộng
+thanh điều hướng", `aria-expanded`. Bấm đổi `Collapsed` (web: `onCollapsedChange`; Flutter: `onCollapsedChanged`). Nút
+thu gọn có `Tooltip` như mục thu gọn.
+
+**Không có mục cấp 3** — quá 2 cấp thì tách thành trang riêng có `Tab` hoặc `Breadcrumb`.
+
+**Chưa có**: khu tài khoản cuối thanh.
 
 ### 6.28 Side sheet (`SideSheet`)
 
 Tấm trượt từ mép phải màn desktop để xem / sửa chi tiết mà không rời trang. **Props**: `Type`
-(`Standard` · `Modal`) · `Title` (TEXT) · `Footer` (BOOLEAN). **2 variant.**
+(`Standard` · `Modal`) × **`Width`** (`Base` · `Wide`) · `Title` (TEXT) · `Footer` (BOOLEAN). **4 variant.**
 
 | Phần | Giá trị |
 |---|---|
-| Tấm | VERTICAL · rộng **384** (`size-96`) · cao FILL màn · nền `background-surface` |
+| Tấm | VERTICAL · rộng **384** (`size-96`) — `Width=Wide` **480** (`size-120`) cho form dài / nhiều cột · cao FILL màn · nền `background-surface` |
 | `Standard` | viền **trái** 1px `border-muted` · nằm cạnh nội dung, không scrim |
 | `Modal` | `elevation-high` · radius `radius-lg` ở **hai góc trái** · có scrim như `Sheet` |
 | Header | padding `card/padding` · `Title` `heading-sm` + `IconButtonNeutral` Ghost Small `xmark` |
@@ -2077,7 +2143,7 @@ Tấm trượt từ mép phải màn desktop để xem / sửa chi tiết mà kh
 
 Trên app dùng `Sheet` (§6.8), không dùng `SideSheet`.
 
-**Chưa có**: rộng khác 384, side sheet bên trái, kéo đổi bề rộng.
+**Không có** side sheet bên trái và kéo đổi bề rộng — tấm luôn từ mép phải, rộng 384 hoặc 480.
 
 ### 6.29 Popover (`Popover`)
 
@@ -2093,7 +2159,10 @@ Khung nổi neo vào một phần tử, chứa nội dung có thể tương tác
 Khác `Tooltip`: Popover mở bằng **bấm**, có nút, đóng bằng nút đóng / Esc / bấm ra ngoài; Tooltip
 mở bằng hover / focus, chỉ có chữ. Khác `Menu`: Menu là danh sách lựa chọn.
 
-**Chưa có**: mũi tên chỉ vào phần tử neo; tự lật hướng khi sát mép (code tự xử lý, bản vẽ chưa vẽ).
+**Vị trí**: neo **dưới** phần tử, canh mép trái. Phía dưới không đủ chỗ → **lật lên trên**; sát mép phải → canh mép
+phải với phần tử. Code tự đo và lật; bản vẽ chỉ vẽ tư thế mặc định.
+
+**Không có mũi tên** chỉ vào phần tử neo — Popover tách lớp bằng `elevation-medium`, khác `Tooltip` (có mũi tên).
 
 ### 6.30 Tooltip (`Tooltip`)
 
@@ -2115,7 +2184,11 @@ phần tử đã có tên → gắn `aria-describedby`. Khi phần tử **chỉ 
 một lần. Web: prop `relation: 'description' | 'label'`; Flutter: `UuTooltip(isLabel: true)`. `IconButton`
 đã có `label` thì tooltip vẫn là `description`.
 
-**Chưa có**: độ trễ hiện / ẩn chuẩn; tooltip nhiều dòng có tiêu đề.
+**Thời gian**: hover → hiện sau **500 ms** (lướt chuột qua không bật tooltip); focus bàn phím → hiện **ngay**. Rời chuột,
+mất focus hoặc Esc → ẩn **ngay**, không mờ dần. Đang có một tooltip mở mà chuyển sang phần tử kế bên → tooltip mới hiện
+ngay, không chờ lại.
+
+**Không có tooltip nhiều dòng có tiêu đề** — cần tiêu đề hay nhiều ý thì dùng `Popover` (§6.29).
 
 ### 6.31 Thông báo đẩy trong app (`CardPushNotification`)
 
@@ -2138,7 +2211,10 @@ chạm / hover). Một thẻ mỗi lúc — thẻ mới thay thẻ cũ. Template
 **Khác `Toast` (§6.6)**: Toast báo **kết quả việc người dùng vừa làm**, ở đáy, có `Type`. Push báo chuyện từ
 bên ngoài, ở đỉnh, không type.
 
-**Chưa có**: nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop.
+**Desktop**: thẻ ở **góc trên phải**, cách mép trên và mép phải **16** (`gap-4`), rộng **360** (`size-90`). Tự ẩn sau 5 giây,
+dừng đếm khi hover; không vuốt — rời chuột thì đếm lại.
+
+**Không có** nút đóng (vuốt lên để đóng), thời gian nhận, và xếp chồng nhiều thẻ (một thẻ mỗi lúc, thẻ mới thay thẻ cũ).
 
 ## 7. Device elements — không thuộc design system
 

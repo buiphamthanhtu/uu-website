@@ -254,7 +254,9 @@
   --size-64: 16rem;
   --size-72: 18rem;
   --size-80: 20rem;
+  --size-90: 22.5rem;
   --size-96: 24rem;
+  --size-120: 30rem;
 
   /* ---- spacing ---- */
   --gap-0: 0rem;

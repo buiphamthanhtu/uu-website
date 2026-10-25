@@ -1,6 +1,6 @@
 # UU DS — bản đồ hệ thống (ontology, tóm tắt)
 
-Bản đầy đủ: `ontology.json` (799 node · 1804 quan hệ). Sinh tự động — 2026-10-23.
+Bản đầy đủ: `ontology.json` (837 node · 1893 quan hệ). Sinh tự động — 2026-10-24.
 
 ## Quan hệ
 
@@ -30,49 +30,49 @@ Bản đầy đủ: `ontology.json` (799 node · 1804 quan hệ). Sinh tự đ�
 | `IconButtonAccent` | 90 | §6.2 | — | gap-2, rounded-circle, text-label-font-weight, text-label-font-size, text-label-line-height, control-height-large, control-padding-y-large, control-padding-x-large +30 | IconButtonAccent · UuIconButton · Figma ✓ |
 | `IconButtonNeutral` | 90 | §6.2 | — | gap-2, rounded-circle, text-label-font-weight, text-label-font-size, text-label-line-height, control-height-large, control-padding-y-large, control-padding-x-large +30 | IconButtonNeutral · UuIconButton · Figma ✓ |
 | `ToggleButton` | 48 | §6.7 | — | background-surface, object-primary, background-interactive, object-on-interactive, object-disabled, background-disabled | ToggleButton · UuToggleButton · Figma ✓ |
-| `ButtonGroup` | 2 | §6.9 | TextButtonAccent | gap-3 | ButtonGroup · UuButtonGroup · Figma ✓ |
+| `ButtonGroup` | 4 | §6.9 | TextButtonAccent, TextButtonDanger | gap-3 | ButtonGroup · UuButtonGroup · Figma ✓ |
 | `TextInput` | 9 | §6.3 | TextButtonNeutral | — | TextInput · UuTextInput · Figma ✓ |
 | `TextArea` | 9 | §6.3e | — | — | TextArea · UuTextArea · Figma ✓ |
 | `OTPInput` | 14 | §6.3b | — | gap-1, gap-2, field-otp-min-width, field-height, field-radius, background-surface, border-muted, text-body-font-size +10 | OTPInput · UuOTPInput · Figma ✓ |
-| `SearchInput` | 8 | §6.3g | TextButtonNeutral | object-disabled, gap-2, rounded-circle, object-secondary, border-emphasized | SearchInput · UuSearchInput · Figma ✓ |
+| `SearchInput` | 8 | §6.3g | TextButtonNeutral, IconButtonNeutral, Menu | object-disabled, gap-2, rounded-circle, object-secondary, border-emphasized | SearchInput · UuSearchInput · Figma ✓ |
 | `DateInput` | 8 | §6.3c | — | — | DateInput · UuDateInput · Figma ✓ |
 | `Dropdown` | 8 | §6.4 | — | — | Dropdown · UuDropdown · Figma ✓ |
-| `Menu` | 2 (+ `.MenuItem` 16 · `.MenuSection` · `.MenuDivider`) | §6.21 | Checkbox, SearchInput, TextButtonAccent, TextButtonNeutral | gap-1, gap-3, rounded-2xl, background-surface, gap-2, text-body-font-size, text-body-line-height, object-secondary +11 | Menu · UuMenu · Figma ✓ |
+| `Menu` | 2 (+ `.MenuItem` 16 · `.MenuSection` · `.MenuDivider`) | §6.21 | Checkbox, SearchInput, TextButtonAccent, TextButtonNeutral | gap-1, gap-3, rounded-2xl, background-surface, gap-2, text-body-font-size, text-body-line-height, object-secondary +15 | Menu · UuMenu · Figma ✓ |
 | `Checkbox` | 15 | §6.3f | — | selection-size, selection-radius, background-surface, border-muted, object-on-interactive, object-secondary, border-emphasized, object-primary +12 | Checkbox · UuCheckbox · Figma ✓ |
 | `CheckboxInput` | 1 | §6.3f | — | selection-size, selection-radius, background-surface, border-muted, object-on-interactive, object-secondary, border-emphasized, object-primary +12 | CheckboxInput · UuCheckboxInput · Figma ✓ |
 | `Radio` | 10 | §6.3d | — | selection-size, rounded-circle, background-surface, border, object-secondary, border-emphasized, object-primary, border-interactive +7 | Radio · UuRadio · Figma ✓ |
 | `RadioInput` | 1 | §6.3d | — | selection-size, rounded-circle, background-surface, border, object-secondary, border-emphasized, object-primary, border-interactive +7 | RadioInput · UuRadioInput · Figma ✓ |
 | `Switch` | 10 | §6.17 | — | switch-width, switch-height, rounded-circle, background-surface, border, object-secondary, switch-padding, switch-handle-off +9 | Switch · UuSwitch · Figma ✓ |
-| `Chip` | 16 | §6.18 | — | gap-2, control-height-small, control-padding-y-small, control-padding-x-small, rounded-circle, object-primary, chip-border-width, border +10 | Chip · UuChip · Figma ✓ |
+| `Chip` | 20 | §6.18 | — | gap-2, control-height-small, control-padding-y-small, control-padding-x-small, rounded-circle, object-primary, chip-border-width, border +11 | Chip · UuChip · Figma ✓ |
 | `SegmentedControl` | 1 (+ `.Segment item` 8) | §6.13 | — | gap-0-5, gap-1, radius-lg, background-emphasized, gap-2, gap-3, radius-base, object-secondary +8 | SegmentedControl · UuSegmentedControl · Figma ✓ |
 | `NavigationBar` | 1 | §6.5 | IconButtonAccent, IconButtonNeutral | gap-3, text-heading-base-font-size, text-heading-base-line-height, object-primary | NavigationBar · UuNavigationBar · Figma ✓ |
 | `BottomBar` | 10 (+ `base/FooterItem` 2 · `base/FooterItemSpecial` 4) | §6.22 | NotificationBadge | gap-1, rounded-circle, background-surface, gap-1-5, gap-3, object-secondary, background-interactive-muted, object-interactive +7 | BottomBar · UuBottomBar · Figma ✓ |
 | `TablePagination` | 1 (+ `.PageItem` 4) | §6.24 | IconButtonNeutral, Dropdown | gap-4, gap-2, object-secondary, text-caption-font-size, text-caption-line-height, gap-1, control-height-small, control-padding-x-small +6 | TablePagination · UuTablePagination · Figma ✓ |
-| `Breadcrumb` | 1 (+ `.BreadcrumbItem` 3) | §6.25 | — | gap-1, text-body-font-size, text-body-line-height, object-disabled, radius-sm, object-secondary, object-primary, border-emphasized | Breadcrumb · UuBreadcrumb · Figma ✓ |
-| `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | §6.27 | Tooltip | gap-1, sidenav-width, gap-3, border-muted, background-surface, control-height-base, gap-4, object-secondary +12 | SideNav · UuSideNav · Figma ✓ |
-| `Tab` | 5 | §6.20 | — | gap-3, tab-padding, object-secondary, text-title-base-font-size, text-title-base-line-height, object-interactive, radius-sm, object-primary +7 | Tab · UuTab · Figma ✓ |
-| `TabBar` | 2 | §6.20 | — | gap-3, tab-padding, object-secondary, text-title-base-font-size, text-title-base-line-height, object-interactive, radius-sm, object-primary +7 | TabBar · UuTabBar · Figma ✓ |
+| `Breadcrumb` | 1 (+ `.BreadcrumbItem` 5) | §6.25 | Menu | gap-1, text-body-font-size, text-body-line-height, object-disabled, radius-sm, object-secondary, object-primary, border-emphasized | Breadcrumb · UuBreadcrumb · Figma ✓ |
+| `SideNav` | 2 (+ `.SideNavItem` 9 · `.SideNavSection` 1) | §6.27 | Tooltip, IconButtonNeutral, NotificationBadge | gap-1, sidenav-width, gap-3, border-muted, background-surface, control-height-base, gap-4, object-secondary +12 | SideNav · UuSideNav · Figma ✓ |
+| `Tab` | 5 | §6.20 | NotificationBadge | gap-3, tab-padding, object-secondary, text-title-base-font-size, text-title-base-line-height, object-interactive, radius-sm, object-primary +9 | Tab · UuTab · Figma ✓ |
+| `TabBar` | 2 | §6.20 | NotificationBadge | gap-3, tab-padding, object-secondary, text-title-base-font-size, text-title-base-line-height, object-interactive, radius-sm, object-primary +9 | TabBar · UuTabBar · Figma ✓ |
 | `Pagination` | 3 | §6.10b | — | gap-1, rounded-circle, overlay, background-accent | Pagination · UuPagination · Figma ✓ |
 | `Toast` | 4 | §6.6 | TextButtonNeutral, IconButtonNeutral | gap-3, gap-2, gap-4, radius-base, text-body-font-size, text-body-line-height, background-inverted, object-primary-inverted +6 | Toast · UuToast · Figma ✓ |
 | `Badge` | 4 | §6.14 | — | gap-1, rounded-circle, text-title-sm-font-size, text-title-sm-line-height, background-inverted, object-primary-inverted, background-positive, object-on-positive +4 | Badge · UuBadge · Figma ✓ |
 | `StatusIndicator` | 10 | §6.15 | — | gap-1-5, text-title-sm-font-size, text-title-sm-line-height, object-primary, rounded-circle, object-secondary, object-positive, object-warning +14 | StatusIndicator · UuStatusIndicator · Figma ✓ |
-| `CardPushNotification` | 1 | §6.31 | — | gap-2, gap-4, radius-lg, background-surface, object-primary, border-emphasized, radius-sm, gap-0-5 +2 | CardPushNotification · UuCardPushNotification · Figma ✓ |
+| `CardPushNotification` | 1 | §6.31 | — | gap-2, gap-4, radius-lg, background-surface, object-primary, border-emphasized, radius-sm, gap-0-5 +3 | CardPushNotification · UuCardPushNotification · Figma ✓ |
 | `NotificationBadge` | 2 | §6.16 | — | background-attention, object-on-attention, rounded-circle, gap-1, text-title-xs-font-size, text-title-xs-line-height | NotificationBadge · UuNotificationBadge · Figma ✓ |
 | `Tooltip` | 4 | §6.30 | — | gap-1, gap-2, radius-sm, background-inverted, object-primary-inverted, text-caption-font-size, text-caption-line-height | Tooltip · UuTooltip · Figma ✓ |
-| `TableHeaderCell` | 20 | §6.23 | Checkbox, TextButtonAccent, IconButtonNeutral | table-header-height, table-cell-padding-x, border-muted, object-secondary, text-title-sm-font-size, text-title-sm-line-height, object-primary, gap-1 +9 | TableHeaderCell · UuTableHeaderCell · Figma ✓ |
-| `TableCell` | 15 | §6.23 | Checkbox, TextButtonAccent, IconButtonNeutral | table-header-height, table-cell-padding-x, border-muted, object-secondary, text-title-sm-font-size, text-title-sm-line-height, object-primary, gap-1 +9 | TableCell · UuTableCell · Figma ✓ |
-| `KPICard` | 3 | §6.26 | — | gap-1, card-padding, radius-lg, background-surface, border-muted, object-secondary, text-caption-font-size, text-caption-line-height +5 | KPICard · UuKPICard · Figma ✓ |
-| `CardSheet` | 2 | §6.8 | IconButtonNeutral, ButtonGroup | rounded-2xl, background-surface, gap-4, text-heading-base-font-size, text-heading-base-line-height, object-primary, gap-3, overlay +1 | CardSheet · UuCardSheet · Figma ✓ |
+| `TableHeaderCell` | 21 | §6.23 | Checkbox, StatusIndicator, TextButtonAccent, IconButtonNeutral | table-header-height, table-cell-padding-x, border-muted, object-secondary, text-title-sm-font-size, text-title-sm-line-height, object-primary, gap-1 +9 | TableHeaderCell · UuTableHeaderCell · Figma ✓ |
+| `TableCell` | 18 | §6.23 | Checkbox, StatusIndicator, TextButtonAccent, IconButtonNeutral | table-header-height, table-cell-padding-x, border-muted, object-secondary, text-title-sm-font-size, text-title-sm-line-height, object-primary, gap-1 +9 | TableCell · UuTableCell · Figma ✓ |
+| `KPICard` | 5 | §6.26 | — | gap-1, card-padding, radius-lg, background-surface, border-muted, object-primary, object-secondary, text-caption-font-size +6 | KPICard · UuKPICard · Figma ✓ |
+| `CardSheet` | 4 | §6.8 | IconButtonNeutral, ButtonGroup | rounded-2xl, background-surface, gap-4, text-heading-base-font-size, text-heading-base-line-height, object-primary, gap-3, gap-2 +5 | CardSheet · UuCardSheet · Figma ✓ |
 | `CardDialog` | 2 | §6.10 | IconButtonNeutral, ButtonGroup | rounded-2xl, background-surface, gap-4, gap-3 | CardDialog · UuCardDialog · Figma ✓ |
-| `SideSheet` | 2 | §6.28 | IconButtonNeutral, TextButtonAccent, TextButtonNeutral | background-surface, object-primary, border-muted, radius-lg, gap-3, card-padding, text-heading-sm-font-size, text-heading-sm-line-height | SideSheet · UuSideSheet · Figma ✓ |
+| `SideSheet` | 4 | §6.28 | IconButtonNeutral, TextButtonAccent, TextButtonNeutral | background-surface, object-primary, border-muted, radius-lg, gap-3, card-padding, text-heading-sm-font-size, text-heading-sm-line-height | SideSheet · UuSideSheet · Figma ✓ |
 | `Popover` | 1 | §6.29 | IconButtonNeutral, TextButtonAccent, TextButtonNeutral | gap-3, card-padding, radius-lg, background-surface, object-primary, gap-2, text-title-base-font-size, text-title-base-line-height | Popover · UuPopover · Figma ✓ |
 | `EmptySection` | 1 | §6.19 | ButtonGroup, NavigationBar | gap-3, rounded-circle, background-accent-muted, object-primary, text-heading-sm-font-size, text-heading-sm-line-height, text-heading-base-font-size, text-heading-base-line-height +3 | EmptySection · UuEmptySection · Figma ✓ |
 | `ErrorSection` | 1 | §6.19 | ButtonGroup, NavigationBar | gap-3, rounded-circle, background-accent-muted, object-primary, text-heading-sm-font-size, text-heading-sm-line-height, text-heading-base-font-size, text-heading-base-line-height +3 | ErrorSection · UuErrorSection · Figma ✓ |
 | `[Screen]PushNotification` | 1 | §6.31 | — | — | Figma ✓ |
 | `Sheet` | 1 | §6.8 | — | — | Figma ✓ |
 | `Dialog` | 1 | §6.10 | IconButtonNeutral, ButtonGroup | rounded-2xl, background-surface, gap-4, gap-3 | Dialog · Figma ✓ |
-| `ResultScreen` | 1 | §6.19 | — | — | Figma ✓ |
-| `ErrorScreen` | 1 | §6.19 | — | — | Figma ✓ |
+| `ResultScreen` | 1 | §6.19 | ButtonGroup, NavigationBar | gap-3, rounded-circle, background-accent-muted, object-primary, text-heading-sm-font-size, text-heading-sm-line-height, text-heading-base-font-size, text-heading-base-line-height +3 | ResultScreen · UuResultScreen · Figma ✓ |
+| `ErrorScreen` | 1 | §6.19 | ButtonGroup, NavigationBar | gap-3, rounded-circle, background-accent-muted, object-primary, text-heading-sm-font-size, text-heading-sm-line-height, text-heading-base-font-size, text-heading-base-line-height +3 | ErrorScreen · UuErrorScreen · Figma ✓ |
 | `EmptyScreen` | 1 | §6.19 | ButtonGroup, NavigationBar | gap-3, rounded-circle, background-accent-muted, object-primary, text-heading-sm-font-size, text-heading-sm-line-height, text-heading-base-font-size, text-heading-base-line-height +3 | EmptyScreen · UuEmptyScreen · Figma ✓ |
 
 ## Quy tắc chung
@@ -107,7 +107,6 @@ Prop: `Type` (Solid · Outline · Ghost), `Size` (Large · Base · Small), `Stat
 - **must** — Viền Outline không cộng vào chiều cao: dựng bằng box-shadow inset 2px, không dùng border. (§6.1)
 - **must** — Loading: spinner .loading đứng trước label, label vẫn hiện, không có state layer. (§6.1)
 - **dont** — Pressed giữ nguyên weight 600 — không dùng mode chữ Active. (§3)
-- **chưa có** — TextButtonDanger Inverted=True; IconButton Danger
 
 ### TextButtonNeutral
 
@@ -119,7 +118,6 @@ Prop: `Type` (Solid · Outline · Ghost), `Size` (Large · Base · Small), `Stat
 - **must** — Viền Outline không cộng vào chiều cao: dựng bằng box-shadow inset 2px. (§6.1)
 - **must** — Disabled: Solid nền background-disabled, Outline viền border-muted, chữ object-disabled, không state layer. (§6.1)
 - **do** — Ghost Small là dạng nút Action trong suffix của TextInput và nút Huỷ của SearchInput. (§6.3)
-- **chưa có** — TextButtonDanger Inverted=True; IconButton Danger
 
 ### TextButtonDanger
 
@@ -127,11 +125,10 @@ Prop: `Type` (Solid · Outline · Ghost), `Size` (Large · Base · Small), `Stat
 
 - **do** — Chỉ cho hành động phá huỷ, không hoàn tác được (xoá tài khoản, huỷ đơn, gỡ thiết bị). (§6.1)
 - **dont** — Đừng dùng Danger chỉ vì nút “trông nguy hiểm” — việc làm lại được là Neutral. (§6.1)
-- **dont** — Không có Inverted=True — cần nút phá huỷ trên nền tối thì dừng và hỏi. (§6.1)
+- **dont** — Không có Inverted=True — nút phá huỷ luôn trên nền sáng; màn tối thì mở Dialog xác nhận. (§6.1)
 - **do** — Hành động phá huỷ theo dòng nằm trong menu “⋯” và xác nhận bằng Dialog có TextButtonDanger Solid. (§6.1)
 - **do** — Một nút Solid (Accent hoặc Danger) mỗi màn. (§6.1)
 - **must** — Hình học, density, state layer, Loading, Disabled y hệt TextButtonAccent; chỉ đổi họ màu sang negative. (§6.1)
-- **chưa có** — TextButtonDanger Inverted=True; IconButton Danger
 
 ### IconButtonAccent
 
@@ -153,6 +150,7 @@ Prop: `Type` (Solid · Outline · Ghost), `Size` (Large · Base · Small), `Stat
 - **do** — Ghost Small mở Menu “⋯” cho hành động theo dòng / theo thẻ. (§6.1)
 - **do** — Nút đóng (xmark) của Toast, SideSheet, Popover là IconButtonNeutral Ghost; của CardSheet/CardDialog là Outline Small. (§6.6)
 - **do** — Nút đóng đè lên ảnh banner của CardDialog dùng Solid để đọc được trên mọi ảnh. (§6.10)
+- **dont** — Không có IconButton kiểu Danger — xoá theo dòng nằm trong menu “⋯”, xác nhận bằng Dialog có TextButtonDanger Solid. (§6.2)
 
 ### ToggleButton
 
@@ -168,13 +166,14 @@ Prop: `Size` (Large · Base · Small), `State` (Default · Hover · Pressed · D
 
 ### ButtonGroup
 
-Prop: `Layout` (Horizontal · Vertical)
+Prop: `Layout` (Horizontal · Vertical), `Tone` (Default · Danger)
 
 - **must** — Horizontal: nút phụ (Outline) bên trái, nút chính (Solid) bên phải, hai nút chia đều. (§6.9)
 - **must** — Vertical: nút chính (Solid) trên, nút phụ (Outline) dưới. (§6.9)
 - **must** — Nút dùng TextButtonAccent size Large (56), gap 12. (§6.9)
 - **must** — Khi code hai nút chia đôi dùng flex: 1 1 0, không dùng flex: 1 1 auto. (§6.8)
 - **do** — Là nhóm nút dùng chung của CardSheet và CardDialog — không tự dựng frame nút riêng. (§6.8)
+- **must** — Tone=Danger (dialog / sheet xác nhận xoá): nút chính là TextButtonDanger Solid Large, nút phụ giữ nguyên; không tự xếp hai nút. (§6.9)
 
 ### TextInput
 
@@ -221,7 +220,8 @@ Prop: `Value` (Empty · Filled), `State` (Default · Hover · Focus · Typing ·
 - **must** — Loading: .loading 16 thay chỗ nút xoá, viền như Typing. (§6.3g)
 - **do** — Cancel=true (nút Huỷ TextButtonNeutral Ghost Small) chỉ dùng ở màn tìm kiếm riêng trên mobile; bấm Huỷ xoá chữ, bỏ focus, đóng panel. (§6.3g)
 - **do** — Panel gợi ý / lịch sử là Menu Platform=Panel neo dưới ô cách 4; rỗng + focus → lịch sử, đang gõ → gợi ý, không có gì → không mở panel. (§6.3g)
-- **chưa có** — cỡ nhỏ; xoá từng mục lịch sử
+- **do** — Hàng “Tìm gần đây” có IconButtonNeutral Ghost Small xmark cuối hàng để xoá từng mục; panel vẫn mở, focus về ô. (§6.3g)
+- **dont** — Không có cỡ nhỏ riêng — density Compact đã thu ô. (§6.3g)
 
 ### DateInput
 
@@ -252,9 +252,11 @@ Prop: `Platform` (Panel · Sheet)
 - **must** — Type=Multiple: Checkbox đầu hàng, không tint nền, chữ object-primary; không đóng khi chọn, bật Footer “Bỏ chọn” + “Áp dụng”. (§6.21)
 - **do** — Bật Search (SearchInput không nhãn, dính trên) khi > 8 option; không còn option → “Không tìm thấy “{từ khoá}””. (§6.21)
 - **do** — .MenuSection: title-xs object-secondary IN HOA; .MenuDivider 1px border-muted, nhóm đầu không cần vạch phía trên. (§6.21)
-- **do** — Neo panel chưa chốt: Menu là khối thường width 100% khung chứa, màn tự đặt chỗ. (§6.21)
+- **must** — Panel neo dưới phần tử cách 4; thiếu chỗ thì lật lên; cao tối đa 320 rồi cuộn trong panel (tìm nhanh dính trên, footer dính dưới). (§6.21)
 - **must** — Prefix icon chỉ có ở Type=Single. (§6.21)
-- **chưa có** — option có mô tả hai dòng; chọn nhiều kiểu "chọn tất cả"; Neo, lật, cuộn — chiều cao tối đa của panel, lật lên khi thiếu chỗ, đóng khi bấm ra ngoài: màn tự xử
+- **do** — Đóng khi chọn xong (Single), bấm ra ngoài, Esc; Multiple chỉ áp dụng khi bấm “Áp dụng”. (§6.21)
+- **do** — Option cần giải thích thêm → Description caption object-secondary dưới tên, tối đa 2 dòng; icon / checkbox căn trên. (§6.21)
+- **must** — “Chọn tất cả” (Multiple, từ 4 option): hàng đầu + MenuDivider; Checked khi chọn hết, Indeterminate khi một phần; đang tìm nhanh chỉ tác động option đang hiện. (§6.21)
 
 ### Checkbox
 
@@ -296,11 +298,12 @@ Prop: `Selected` (False · True), `State` (Default · Hover · Focus · Pressed 
 - **must** — Núm đổi cả vị trí lẫn kích thước (16 → 28 có check fill) — đừng chỉ trượt một núm cùng cỡ. (§6.17)
 - **must** — Nửa tắt state layer 5/10, nửa bật 20/40; dựng bằng currentColor. (§6.17)
 - **do** — Cần nhãn thì màn tự dựng hàng và ghi rõ là phần tự chế. (§6.17)
-- **chưa có** — nhãn đi kèm (hàng `SwitchInput` như `CheckboxInput`), cỡ nhỏ, switch có chữ On/Off trong rãnh. Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế
+- **dont** — Không có cỡ nhỏ riêng (dùng Compact) và không có chữ On/Off trong rãnh. (§6.17)
+- **chưa có** — nhãn đi kèm (hàng switch + nhãn). Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế
 
 ### Chip
 
-Prop: `Type` (Select · Dropdown), `Selected` (False · True), `State` (Default · Hover · Pressed · Disabled)
+Prop: `Type` (Select · Dropdown · Input), `Selected` (False · True), `State` (Default · Hover · Pressed · Disabled)
 
 - **do** — Nhãn bấm được giữ trạng thái chọn; dùng để lọc (thẻ y hệt chỉ ít đi). (§6.18)
 - **must** — Hình học chép TextButtonNeutral Small; chữ style label. (§6.18)
@@ -309,7 +312,10 @@ Prop: `Type` (Select · Dropdown), `Selected` (False · True), `State` (Default 
 - **must** — Type=Select đã chọn có icon check fill 16 trước chữ — không chỉ dựa vào màu. (§6.18)
 - **must** — Type=Dropdown có chevron-down 16 cùng màu chữ, không icon check; khi mở chip Selected=True và chevron-up. (§6.18)
 - **do** — Panel bung ra là Menu: lọc một giá trị → Single, chọn xong đóng; lọc nhiều → Multiple + footer, nhãn “{Tên} · n”. (§6.18)
-- **chưa có** — icon đứng trước chữ, cỡ khác 32, chip có nút xoá (input chip)
+- **must** — Prefix icon 16 cùng màu chữ, gap 8; Type=Select đã chọn thì check thay chỗ icon — chip chỉ có một icon đầu. (§6.18)
+- **must** — Type=Input: màu như chưa chọn, xmark 16 trong ô tròn 24 cuối chip là nút gỡ duy nhất (aria-label “Gỡ {nhãn}”); thân chip không bấm được. (§6.18)
+- **do** — Type=Input cho giá trị đã nhập / bộ lọc đang áp dụng; gỡ xong focus sang chip kế tiếp. (§6.18)
+- **dont** — Không có cỡ khác 32 — Compact dùng 24. (§6.18)
 
 ### SegmentedControl
 
@@ -338,7 +344,7 @@ Prop: `Active` (1 · 2 · 3 · 4 · 5), `Compact` (False · True)
 - **do** — Nút hành động riêng (FooterItemSpecial) cho một hành động chính, không phải đích điều hướng; mặc định Emphasized, Subtle khi màn đã có nút Solid. (§6.22)
 - **must** — Có nút hành động thì Compact=True tối đa 4 mục. (§6.22)
 - **dont** — Thanh kính mờ không phải thuộc tính của BottomBar — component không tự bật. (§2.4)
-- **chưa có** — `Hover` / `Pressed` / `Disabled` của mục; vị trí thanh trên màn (cách đáy, lề ngang, safe area); bóng hay viền cho vỏ khi nền màn cũng là `background-surface`; nhãn dài quá bề rộng mục; quá 5 mục; Vị trí trên màn: khoảng cách tới đáy, lề ngang, safe area. Màn tự đặt; Vỏ trên nền trắng: vỏ không có viền hay bóng, nên khi nền màn cũng là background-surface thì không thấy vỏ
+- **chưa có** — `Hover` / `Pressed` / `Disabled` của mục; vị trí thanh trên màn (cách đáy, lề ngang, safe area); bóng hay viền cho vỏ khi nền màn cũng là `background-surface`; nhãn dài quá bề rộng mục; quá 5 mục
 
 ### TablePagination
 
@@ -348,7 +354,8 @@ Prop: `Active` (1 · 2 · 3 · 4 · 5), `Compact` (False · True)
 - **must** — ≤ 7 trang hiện đủ; quá 7 giữ trang đầu, cuối, trang đang chọn ± 1, khoảng trống thành một ô “…”. (§6.24)
 - **dont** — Không bao giờ “…” thay cho đúng một số trang. (§6.24)
 - **must** — Ô Ellipsis không bấm được, không state layer, aria-hidden. (§6.24)
-- **chưa có** — ô nhập số trang để nhảy; phân trang không biết tổng số dòng
+- **dont** — Không có ô nhập số trang để nhảy — rút gọn “…” là đủ. (§6.24)
+- **chưa có** — phân trang không biết tổng số dòng
 
 ### Breadcrumb
 
@@ -356,7 +363,8 @@ Prop: `Active` (1 · 2 · 3 · 4 · 5), `Compact` (False · True)
 - **must** — Mục cuối luôn là trang hiện tại: object-primary, không phải link, aria-current="page", không Hover. (§6.25)
 - **must** — Ngăn cách “/” object-disabled, aria-hidden. (§6.25)
 - **dont** — Không dùng Breadcrumb thay NavigationBar trên app. (§6.25)
-- **chưa có** — rút gọn khi đường dẫn dài (mục "…" mở menu); icon trước mục đầu
+- **must** — Quá 4 mục: giữ mục đầu và 2 mục cuối, các mục giữa gom vào một mục Type=Overflow “…” mở Menu. (§6.25)
+- **dont** — Không có icon trước mục đầu. (§6.25)
 
 ### SideNav
 
@@ -367,7 +375,11 @@ Prop: `Collapsed` (False · True)
 - **must** — Collapsed: rộng 73, ẩn nhãn / chevron / tiêu đề nhóm / mục cấp 2; nhãn chuyển thành Tooltip. (§6.27)
 - **do** — Ẩn/hiện nhãn qua collection layout (data-layout="collapsed" hoặc prop collapsed), không tạo collection mới. (§4.2)
 - **must** — Mục Level=2 không icon, thụt 24 để nhãn thẳng hàng nhãn cấp 1. (§6.27)
-- **chưa có** — chevron xoay khi mở nhóm (bản vẽ chỉ có `chevron-down`), cấp 3, badge trên mục, khu tài khoản cuối thanh, nút thu/mở trong thanh; Nút thu / mở trong thanh: chưa có. Màn tự đặt nút đổi collapsed
+- **must** — Chevron-down xoay 180° khi nhóm mở (không đổi icon); mục có aria-expanded. (§6.27)
+- **do** — Badge trên mục: NotificationBadge Count cuối mục; khi thu gọn thành Dot ở góc trên phải icon. (§6.27)
+- **do** — Nút thu / mở: IconButtonNeutral Ghost Small sidebar-left đầu thanh, aria-expanded, nhãn “Thu gọn / Mở rộng thanh điều hướng”. (§6.27)
+- **dont** — Không có mục cấp 3 — quá 2 cấp thì tách trang. (§6.27)
+- **chưa có** — khu tài khoản cuối thanh
 
 ### Tab
 
@@ -378,7 +390,8 @@ Prop: `State` (Default · Active · Hover · Pressed · Disabled)
 - **dont** — Đừng lấy object-accent cho chữ tab — tab thuộc họ interactive. (§6.20)
 - **must** — Hover/Pressed chỉ có ở tab không Active; Disabled không có state layer. (§6.20)
 - **dont** — Không vỏ, không nền, không viền riêng trên Tab. (§6.20)
-- **chưa có** — tab có icon / badge; `TabBar` trên nền tối
+- **do** — Icon 16 trước chữ (gap 8) cùng màu chữ, Active dùng fill; NotificationBadge Dot sau chữ (gap 4) báo có mới. (§6.20)
+- **must** — Badge chỉ là thông tin phụ — nhãn tab vẫn tự đủ nghĩa; web thêm chữ ẩn “có mới”. (§6.20)
 
 ### TabBar
 
@@ -388,7 +401,7 @@ Prop: `Layout` (Fixed · Scrollable)
 - **must** — Viền dưới 1px border-muted chạy suốt, gạch Active đè lên viền. (§6.20)
 - **must** — Web: role="tablist", mũi tên trái/phải chuyển tab. (§6.20)
 - **must** — Scrollable: tab Active tự cuộn vào tầm nhìn. (§6.20)
-- **chưa có** — tab có icon / badge; `TabBar` trên nền tối
+- **dont** — Không có TabBar trên nền tối. (§6.20)
 
 ### Pagination
 
@@ -435,7 +448,8 @@ Prop: `Tone` (Neutral · Success · Warning · Error · Highlight), `Container` 
 - **must** — Một thẻ mỗi lúc — thẻ mới thay thẻ cũ. (§6.31)
 - **must** — Web: role="status", aria-live="polite". (§6.31)
 - **do** — Title và Content tối đa 2 dòng; ảnh nguồn 48 ẩn được. (§6.31)
-- **chưa có** — nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop; Nút đóng trên thẻ: chưa có
+- **must** — Desktop: góc trên phải, cách mép trên và phải 16, rộng 360 (size-90); dừng đếm khi hover. (§6.31)
+- **dont** — Không có nút đóng, thời gian nhận hay xếp chồng thẻ. (§6.31)
 
 ### NotificationBadge
 
@@ -455,21 +469,23 @@ Prop: `Placement` (Bottom · Left · Right · Top)
 - **must** — Hiện khi hover và cả focus bàn phím. (§6.30)
 - **dont** — Không dùng trên màn chạm — không có hover. (§6.30)
 - **must** — Mặc định aria-describedby; khi tooltip là tên của phần tử chỉ có icon → aria-labelledby (relation='label'). (§6.30)
-- **chưa có** — độ trễ hiện / ẩn chuẩn; tooltip nhiều dòng có tiêu đề
+- **must** — Hover hiện sau 500 ms, focus bàn phím hiện ngay; rời / mất focus / Esc ẩn ngay, không mờ dần. (§6.30)
+- **dont** — Không có tooltip nhiều dòng có tiêu đề — dùng Popover. (§6.30)
 
 ### TableHeaderCell
 
-Prop: `Align` (Left · Right), `Sort` (Off · Unsorted · Ascending · Descending), `State` (Default · Hover · Pressed)
+Prop: `Align` (Left · Right), `Sort` (Off · Unsorted · Ascending · Descending), `State` (Default · Hover · Pressed), `Type` (Default · Checkbox)
 
 - **must** — Cột số Align=Right: icon sắp xếp đứng trước nhãn, dồn phải. (§6.23)
 - **must** — Hover/Pressed chỉ ở cột sắp được (Sort≠Off); Sort=Off không icon, không state. (§6.23)
 - **must** — Nhãn object-secondary; object-primary khi Ascending / Descending. (§6.23)
 - **must** — Chiều cao và padding qua biến density (table/header-height, table/cell-padding-x). (§6.23)
-- **chưa có** — cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba; Hàng rỗng / đang tải; Ô "chọn tất cả" ở hàng tiêu đề: bản vẽ chưa có. Bản web để trống ô tiêu đề cột chọn
+- **must** — Cột chọn hàng: TableHeaderCell Type=Checkbox rộng 64 — Checked khi chọn hết trang đang xem, Indeterminate khi một phần. (§6.23)
+- **chưa có** — cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, mật độ thứ ba. Cột cố định, hàng mở rộng, sửa trong ô, kéo đổi cột để sau — chỉ làm khi có màn quản trị cần
 
 ### TableCell
 
-Prop: `Type` (Text · Number · Secondary · Actions · Checkbox), `State` (Default · Hover · Selected)
+Prop: `Type` (Text · Number · Secondary · Actions · Checkbox · Status), `State` (Default · Hover · Selected)
 
 - **must** — Hover / Selected là trạng thái của cả hàng — mọi ô trong hàng cùng State. (§6.23)
 - **must** — Cột số căn phải cả tiêu đề lẫn ô, tabular-nums. (§6.23)
@@ -477,28 +493,31 @@ Prop: `Type` (Text · Number · Secondary · Actions · Checkbox), `State` (Defa
 - **dont** — Bảng không viền ngoài, không kẻ dọc — chỉ viền dưới mỗi ô. (§6.23)
 - **do** — Bảng dùng cho desktop / dashboard (density Compact); Selected nền background-interactive-muted. (§6.23)
 - **do** — Bảng rỗng dùng EmptySection đặt trong thân bảng. (§6.19)
-- **chưa có** — cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba; Hàng rỗng / đang tải; Ô "chọn tất cả" ở hàng tiêu đề: bản vẽ chưa có. Bản web để trống ô tiêu đề cột chọn
+- **do** — Cột trạng thái dùng TableCell Type=Status chứa StatusIndicator, không tự đặt indicator vào ô Text. (§6.23)
+- **chưa có** — cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, mật độ thứ ba. Cột cố định, hàng mở rộng, sửa trong ô, kéo đổi cột để sau — chỉ làm khi có màn quản trị cần
 
 ### KPICard
 
-Prop: `Trend` (Up · Down · [No trend])
+Prop: `Trend` (Up · Down · [No trend]), `Polarity` (Normal · Inverse)
 
 - **do** — Thẻ một con số chính trên dashboard. (§6.26)
-- **must** — Màu Delta theo chiều số, không theo tốt/xấu: Up object-positive, Down object-negative. (§6.26)
-- **dont** — Cần “tăng là xấu” thì dừng và hỏi — chưa có variant. (§6.26)
+- **must** — Polarity=Normal: Up object-positive, Down object-negative (màu theo chiều số). (§6.26)
+- **do** — Chỉ số tăng là xấu (chi phí, tỉ lệ huỷ) → Polarity=Inverse: Up tô negative, Down tô positive; icon vẫn theo chiều số. (§6.26)
 - **must** — Value heading-base tabular-nums; Trend=[No trend] không có Delta. (§6.26)
-- **chưa có** — biểu đồ nhỏ (sparkline) trong thẻ; thẻ bấm được; "Tăng là xấu": màu Delta chỉ theo chiều số
+- **must** — Thẻ bấm được (Interactive): chevron-right 16 cuối hàng Label, state layer 5/10 phủ cả thẻ; cả thẻ là một link, không nút khác bên trong. (§6.26)
+- **chưa có** — biểu đồ nhỏ (sparkline) trong thẻ — để sau
 
 ### CardSheet
 
-Prop: `Navigation` (Close · Back)
+Prop: `Navigation` (Close · Back), `Height` (Fit · Full)
 
 - **must** — Back và Close loại trừ nhau: sheet gốc Navigation=Close, sheet con Navigation=Back (không có nút đóng). (§6.8)
 - **do** — Code: truyền onBack là Navigation=Back; không truyền là Close. (§6.8)
 - **must** — Nhóm nút là ButtonGroup (§6.9), không frame tự dựng; nút phụ và hướng xếp chỉnh trên instance ButtonGroup. (§6.8)
 - **must** — Bo cả bốn góc radius 24 — sheet nổi cách mép 12. (§6.8)
 - **do** — Có tiêu đề qua prop Header; CTA ẩn/hiện toàn bộ nhóm nút. (§6.10)
-- **chưa có** — Sheet kéo được (drag handle, nhiều nấc chiều cao); sheet toàn màn
+- **do** — Sheet kéo được: Handle 32×4 rounded-circle nền border ở đỉnh; hai nấc Height=Fit / Full. (§6.8)
+- **must** — Kéo xuống ở Fit quá 1/3 → đóng; ở Full → về Fit; không có Handle thì không kéo được. (§6.8)
 
 ### CardDialog
 
@@ -512,13 +531,14 @@ Prop: `Banner` (False · True)
 
 ### SideSheet
 
-Prop: `Type` (Standard · Modal)
+Prop: `Type` (Standard · Modal), `Width` (Base · Wide)
 
 - **do** — Tấm trượt từ mép phải màn desktop để xem / sửa chi tiết mà không rời trang. (§6.28)
 - **do** — Standard nằm cạnh nội dung, viền trái, không scrim; Modal có elevation-high, bo hai góc trái, scrim như Sheet. (§6.28)
 - **must** — Footer: TextButtonNeutral Outline Base + TextButtonAccent Solid Base, dồn phải, gap 12. (§6.28)
 - **dont** — Không dùng SideSheet trên app — dùng Sheet. (§6.28)
-- **chưa có** — rộng khác 384, side sheet bên trái, kéo đổi bề rộng; Bề rộng khác 384: chưa có; Khoảng cách giữa tiêu đề và nút đóng: bản vẽ không ghi, code để 12
+- **do** — Width=Wide (480) cho form dài / nhiều cột; mặc định Base 384. (§6.28)
+- **dont** — Không có side sheet bên trái, không kéo đổi bề rộng. (§6.28)
 
 ### Popover
 
@@ -526,25 +546,20 @@ Prop: `Type` (Standard · Modal)
 - **must** — Mở bằng bấm; đóng bằng nút đóng / Esc / bấm ra ngoài. (§6.29)
 - **must** — Footer dồn phải gap 8: TextButtonNeutral Ghost Small + TextButtonAccent Solid Small. (§6.29)
 - **dont** — Không dùng Popover cho danh sách lựa chọn (đó là Menu) hay chữ giải thích khi hover (đó là Tooltip). (§6.29)
-- **chưa có** — mũi tên chỉ vào phần tử neo; tự lật hướng khi sát mép (code tự xử lý, bản vẽ chưa vẽ); Khoảng cách giữa tiêu đề và nút đóng: bản vẽ không ghi, code để 8
+- **must** — Neo dưới phần tử, canh trái; thiếu chỗ thì lật lên, sát mép phải thì canh phải. (§6.29)
+- **dont** — Không có mũi tên — Popover tách lớp bằng elevation. (§6.29)
 
 ### EmptySection
 
 - **do** — Một khối trong màn chưa có dữ liệu (danh sách rỗng, bảng rỗng), kể cả trong thân bảng. (§6.19)
 - **must** — Một nút, ẩn được bằng Action. (§6.19)
 - **must** — Title heading-sm (nhỏ hơn màn), căn giữa; ảnh tròn 128 nền background-accent-muted, cần alt. (§6.19)
-- **chưa có** — Spec 6.19 không liệt kê phần nào chưa có cho ba component này; ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19
 
 ### ErrorSection
 
 - **do** — Lỗi chỉ ở một khối, phần còn lại của màn vẫn dùng được. (§6.19)
 - **must** — Một nút thử lại. (§6.19)
 - **must** — Title heading-sm căn giữa; ảnh tròn 128 nền background-accent-muted, cần alt. (§6.19)
-- **chưa có** — Spec 6.19 không liệt kê phần nào chưa có cho ba component này; ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19
-
-### [Screen]PushNotification
-
-- **chưa có** — nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop
 
 ### Sheet
 
@@ -565,7 +580,7 @@ Prop: `Type` (Standard · Modal)
 - **do** — Việc đã xong, người dùng phải sang chỗ khác. (§6.19)
 - **must** — Footer là ButtonGroup dọc — nút chính trên, lối đi phụ dưới. (§6.19)
 - **must** — NavigationBar Back action=false. (§6.19)
-- **do** — Là bố cục màn để tham chiếu, không phải component import; ảnh ô vuông không nền, do màn quyết, cần alt. (§6.19)
+- **do** — Có component code ResultScreen / UuResultScreen (Body + Footer; NavigationBar do màn đặt); ảnh ô vuông không nền, cần alt. (§6.19)
 
 ### ErrorScreen
 
@@ -573,6 +588,7 @@ Prop: `Type` (Standard · Modal)
 - **must** — Đúng một nút: thử lại. (§6.19)
 - **must** — NavigationBar Back action=false. (§6.19)
 - **must** — Ảnh minh hoạ ô tròn 128 nền background-accent-muted, cần alt. (§6.19)
+- **do** — Có component code ErrorScreen / UuErrorScreen nhận đúng một nút thử lại. (§6.19)
 
 ### EmptyScreen
 
@@ -580,7 +596,6 @@ Prop: `Type` (Standard · Modal)
 - **must** — Một nút hành động (tạo mới, khám phá), ẩn được bằng Action. (§6.19)
 - **must** — Có nút back (Back action=true) — màn rỗng vẫn là màn bình thường. (§6.19)
 - **must** — Ảnh minh hoạ ô tròn 128 nền background-accent-muted, cần alt. (§6.19)
-- **chưa có** — Spec 6.19 không liệt kê phần nào chưa có cho ba component này; ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19
 
 ## Dễ nhầm
 

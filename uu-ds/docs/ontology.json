@@ -6,7 +6,7 @@
  },
  "name": "UU Design System — bản đồ hệ thống (ontology)",
  "description": "Bản đồ tri thức cho AI: khái niệm, token, component, mode và quan hệ giữa chúng. Sinh tự động từ tokens.json, spec §5, CSS / TSX thật và các cây quyết định; cặp dễ nhầm viết tay.",
- "generatedAt": "2026-10-23",
+ "generatedAt": "2026-10-24",
  "howToUse": [
   "Tìm component: nodes có type Component; xem edges usesToken / composedOf / confusedWith / chosenWhen của nó.",
   "Tìm token cho một vai: lọc Token layer=semantic theo role (background/object/border/overlay) và family.",
@@ -35,7 +35,7 @@
  "stats": {
   "Concept": 15,
   "Mode": 6,
-  "Token": 415,
+  "Token": 417,
   "RoleFamily": 9,
   "TextStyle": 13,
   "Component": 44,
@@ -43,7 +43,7 @@
   "InternalComponent": 20,
   "DecisionTree": 7,
   "Answer": 5,
-  "Rule": 259
+  "Rule": 295
  },
  "nodes": [
   {
@@ -2115,12 +2115,28 @@
    "value": "320px"
   },
   {
+   "id": "token:size-90",
+   "type": "Token",
+   "layer": "primitive",
+   "group": "size",
+   "css": "--size-90",
+   "value": "360px"
+  },
+  {
    "id": "token:size-96",
    "type": "Token",
    "layer": "primitive",
    "group": "size",
    "css": "--size-96",
    "value": "384px"
+  },
+  {
+   "id": "token:size-120",
+   "type": "Token",
+   "layer": "primitive",
+   "group": "size",
+   "css": "--size-120",
+   "value": "480px"
   },
   {
    "id": "token:opacity-0",
@@ -3718,13 +3734,7 @@
      "True"
     ]
    },
-   "figmaVariants": 90,
-   "notYet": [
-    {
-     "text": "TextButtonDanger Inverted=True; IconButton Danger",
-     "source": "src/components/Button/TextButton.mdx"
-    }
-   ]
+   "figmaVariants": 90
   },
   {
    "id": "component:TextButtonNeutral",
@@ -3763,13 +3773,7 @@
      "True"
     ]
    },
-   "figmaVariants": 90,
-   "notYet": [
-    {
-     "text": "TextButtonDanger Inverted=True; IconButton Danger",
-     "source": "src/components/Button/TextButton.mdx"
-    }
-   ]
+   "figmaVariants": 90
   },
   {
    "id": "component:TextButtonDanger",
@@ -3807,13 +3811,7 @@
      "False"
     ]
    },
-   "figmaVariants": 45,
-   "notYet": [
-    {
-     "text": "TextButtonDanger Inverted=True; IconButton Danger",
-     "source": "src/components/Button/TextButton.mdx"
-    }
-   ]
+   "figmaVariants": 45
   },
   {
    "id": "component:IconButtonAccent",
@@ -3934,7 +3932,7 @@
    "id": "component:ButtonGroup",
    "type": "Component",
    "name": "ButtonGroup",
-   "variants": "2",
+   "variants": "4",
    "spec": "§6.9",
    "platforms": {
     "web": {
@@ -3948,9 +3946,13 @@
     "Layout": [
      "Horizontal",
      "Vertical"
+    ],
+    "Tone": [
+     "Default",
+     "Danger"
     ]
    },
-   "figmaVariants": 2
+   "figmaVariants": 4
   },
   {
    "id": "component:TextInput",
@@ -4098,17 +4100,7 @@
      "True"
     ]
    },
-   "figmaVariants": 8,
-   "notYet": [
-    {
-     "text": "cỡ nhỏ",
-     "source": "§6.3g"
-    },
-    {
-     "text": "xoá từng mục lịch sử",
-     "source": "§6.3g"
-    }
-   ]
+   "figmaVariants": 8
   },
   {
    "id": "component:DateInput",
@@ -4200,21 +4192,7 @@
      "Sheet"
     ]
    },
-   "figmaVariants": 2,
-   "notYet": [
-    {
-     "text": "option có mô tả hai dòng",
-     "source": "§6.21"
-    },
-    {
-     "text": "chọn nhiều kiểu \"chọn tất cả\"",
-     "source": "§6.21"
-    },
-    {
-     "text": "Neo, lật, cuộn — chiều cao tối đa của panel, lật lên khi thiếu chỗ, đóng khi bấm ra ngoài: màn tự xử",
-     "source": "src/components/Menu/Menu.mdx"
-    }
-   ]
+   "figmaVariants": 2
   },
   {
    "id": "component:Checkbox",
@@ -4347,7 +4325,7 @@
    "figmaVariants": 10,
    "notYet": [
     {
-     "text": "nhãn đi kèm (hàng `SwitchInput` như `CheckboxInput`), cỡ nhỏ, switch có chữ On/Off trong rãnh. Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế",
+     "text": "nhãn đi kèm (hàng switch + nhãn). Cần nhãn thì màn tự dựng hàng và nói rõ đó là phần tự chế",
      "source": "§6.17"
     }
    ]
@@ -4356,7 +4334,7 @@
    "id": "component:Chip",
    "type": "Component",
    "name": "Chip",
-   "variants": "16",
+   "variants": "20",
    "spec": "§6.18",
    "platforms": {
     "web": {
@@ -4369,7 +4347,8 @@
    "props": {
     "Type": [
      "Select",
-     "Dropdown"
+     "Dropdown",
+     "Input"
     ],
     "Selected": [
      "False",
@@ -4382,13 +4361,7 @@
      "Disabled"
     ]
    },
-   "figmaVariants": 16,
-   "notYet": [
-    {
-     "text": "icon đứng trước chữ, cỡ khác 32, chip có nút xoá (input chip)",
-     "source": "§6.18"
-    }
-   ]
+   "figmaVariants": 20
   },
   {
    "id": "component:SegmentedControl",
@@ -4469,14 +4442,6 @@
     {
      "text": "quá 5 mục",
      "source": "§6.22"
-    },
-    {
-     "text": "Vị trí trên màn: khoảng cách tới đáy, lề ngang, safe area. Màn tự đặt",
-     "source": "src/components/BottomBar/BottomBar.mdx"
-    },
-    {
-     "text": "Vỏ trên nền trắng: vỏ không có viền hay bóng, nên khi nền màn cũng là background-surface thì không thấy vỏ",
-     "source": "src/components/BottomBar/BottomBar.mdx"
     }
    ]
   },
@@ -4497,10 +4462,6 @@
    },
    "notYet": [
     {
-     "text": "ô nhập số trang để nhảy",
-     "source": "§6.24"
-    },
-    {
      "text": "phân trang không biết tổng số dòng",
      "source": "§6.24"
     }
@@ -4510,7 +4471,7 @@
    "id": "component:Breadcrumb",
    "type": "Component",
    "name": "Breadcrumb",
-   "variants": "1 (+ `.BreadcrumbItem` 3)",
+   "variants": "1 (+ `.BreadcrumbItem` 5)",
    "spec": "§6.25",
    "platforms": {
     "web": {
@@ -4519,17 +4480,7 @@
     },
     "flutter": "UuBreadcrumb",
     "figma": "Breadcrumb"
-   },
-   "notYet": [
-    {
-     "text": "rút gọn khi đường dẫn dài (mục \"…\" mở menu)",
-     "source": "§6.25"
-    },
-    {
-     "text": "icon trước mục đầu",
-     "source": "§6.25"
-    }
-   ]
+   }
   },
   {
    "id": "component:SideNav",
@@ -4554,12 +4505,8 @@
    "figmaVariants": 2,
    "notYet": [
     {
-     "text": "chevron xoay khi mở nhóm (bản vẽ chỉ có `chevron-down`), cấp 3, badge trên mục, khu tài khoản cuối thanh, nút thu/mở trong thanh",
+     "text": "khu tài khoản cuối thanh",
      "source": "§6.27"
-    },
-    {
-     "text": "Nút thu / mở trong thanh: chưa có. Màn tự đặt nút đổi collapsed",
-     "source": "src/components/SideNav/SideNav.mdx"
     }
    ]
   },
@@ -4586,17 +4533,7 @@
      "Disabled"
     ]
    },
-   "figmaVariants": 5,
-   "notYet": [
-    {
-     "text": "tab có icon / badge",
-     "source": "§6.20"
-    },
-    {
-     "text": "`TabBar` trên nền tối",
-     "source": "§6.20"
-    }
-   ]
+   "figmaVariants": 5
   },
   {
    "id": "component:TabBar",
@@ -4618,17 +4555,7 @@
      "Scrollable"
     ]
    },
-   "figmaVariants": 2,
-   "notYet": [
-    {
-     "text": "tab có icon / badge",
-     "source": "§6.20"
-    },
-    {
-     "text": "`TabBar` trên nền tối",
-     "source": "§6.20"
-    }
-   ]
+   "figmaVariants": 2
   },
   {
    "id": "component:Pagination",
@@ -4743,17 +4670,7 @@
     },
     "flutter": "UuCardPushNotification",
     "figma": "CardPushNotification"
-   },
-   "notYet": [
-    {
-     "text": "nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop",
-     "source": "§6.31"
-    },
-    {
-     "text": "Nút đóng trên thẻ: chưa có",
-     "source": "src/components/PushNotification/PushNotification.mdx"
-    }
-   ]
+   }
   },
   {
    "id": "component:[Screen]PushNotification",
@@ -4763,13 +4680,7 @@
    "spec": "§6.31",
    "platforms": {
     "figma": "[Screen]PushNotification"
-   },
-   "notYet": [
-    {
-     "text": "nút đóng, thời gian nhận, xếp chồng nhiều thẻ, bản trên desktop",
-     "source": "§6.31"
-    }
-   ]
+   }
   },
   {
    "id": "component:NotificationBadge",
@@ -4815,23 +4726,13 @@
      "Top"
     ]
    },
-   "figmaVariants": 4,
-   "notYet": [
-    {
-     "text": "độ trễ hiện / ẩn chuẩn",
-     "source": "§6.30"
-    },
-    {
-     "text": "tooltip nhiều dòng có tiêu đề",
-     "source": "§6.30"
-    }
-   ]
+   "figmaVariants": 4
   },
   {
    "id": "component:TableHeaderCell",
    "type": "Component",
    "name": "TableHeaderCell",
-   "variants": "20",
+   "variants": "21",
    "spec": "§6.23",
    "platforms": {
     "web": {
@@ -4856,21 +4757,17 @@
      "Default",
      "Hover",
      "Pressed"
+    ],
+    "Type": [
+     "Default",
+     "Checkbox"
     ]
    },
-   "figmaVariants": 20,
+   "figmaVariants": 21,
    "notYet": [
     {
-     "text": "cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba",
+     "text": "cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, mật độ thứ ba. Cột cố định, hàng mở rộng, sửa trong ô, kéo đổi cột để sau — chỉ làm khi có màn quản trị cần",
      "source": "§6.23"
-    },
-    {
-     "text": "Hàng rỗng / đang tải",
-     "source": "src/components/Table/Table.mdx"
-    },
-    {
-     "text": "Ô \"chọn tất cả\" ở hàng tiêu đề: bản vẽ chưa có. Bản web để trống ô tiêu đề cột chọn",
-     "source": "src/components/Table/Table.mdx"
     }
    ]
   },
@@ -4878,7 +4775,7 @@
    "id": "component:TableCell",
    "type": "Component",
    "name": "TableCell",
-   "variants": "15",
+   "variants": "18",
    "spec": "§6.23",
    "platforms": {
     "web": {
@@ -4894,7 +4791,8 @@
      "Number",
      "Secondary",
      "Actions",
-     "Checkbox"
+     "Checkbox",
+     "Status"
     ],
     "State": [
      "Default",
@@ -4902,19 +4800,11 @@
      "Selected"
     ]
    },
-   "figmaVariants": 15,
+   "figmaVariants": 18,
    "notYet": [
     {
-     "text": "cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, ô trạng thái (`StatusIndicator` trong ô — màn tự đặt vào ô `Text` thì được, chưa có variant), mật độ thứ ba",
+     "text": "cột cố định khi cuộn ngang, hàng mở rộng, sửa trực tiếp trong ô, kéo đổi thứ tự cột, hàng rỗng / đang tải, mật độ thứ ba. Cột cố định, hàng mở rộng, sửa trong ô, kéo đổi cột để sau — chỉ làm khi có màn quản trị cần",
      "source": "§6.23"
-    },
-    {
-     "text": "Hàng rỗng / đang tải",
-     "source": "src/components/Table/Table.mdx"
-    },
-    {
-     "text": "Ô \"chọn tất cả\" ở hàng tiêu đề: bản vẽ chưa có. Bản web để trống ô tiêu đề cột chọn",
-     "source": "src/components/Table/Table.mdx"
     }
    ]
   },
@@ -4922,7 +4812,7 @@
    "id": "component:KPICard",
    "type": "Component",
    "name": "KPICard",
-   "variants": "3",
+   "variants": "5",
    "spec": "§6.26",
    "platforms": {
     "web": {
@@ -4937,21 +4827,17 @@
      "Up",
      "Down",
      "[No trend]"
+    ],
+    "Polarity": [
+     "Normal",
+     "Inverse"
     ]
    },
-   "figmaVariants": 3,
+   "figmaVariants": 5,
    "notYet": [
     {
-     "text": "biểu đồ nhỏ (sparkline) trong thẻ",
+     "text": "biểu đồ nhỏ (sparkline) trong thẻ — để sau",
      "source": "§6.26"
-    },
-    {
-     "text": "thẻ bấm được",
-     "source": "§6.26"
-    },
-    {
-     "text": "\"Tăng là xấu\": màu Delta chỉ theo chiều số",
-     "source": "src/components/KPICard/KPICard.mdx"
     }
    ]
   },
@@ -4959,7 +4845,7 @@
    "id": "component:CardSheet",
    "type": "Component",
    "name": "CardSheet",
-   "variants": "2",
+   "variants": "4",
    "spec": "§6.8",
    "platforms": {
     "web": {
@@ -4973,15 +4859,13 @@
     "Navigation": [
      "Close",
      "Back"
+    ],
+    "Height": [
+     "Fit",
+     "Full"
     ]
    },
-   "figmaVariants": 2,
-   "notYet": [
-    {
-     "text": "Sheet kéo được (drag handle, nhiều nấc chiều cao); sheet toàn màn",
-     "source": "src/components/BottomSheet/BottomSheet.mdx"
-    }
-   ]
+   "figmaVariants": 4
   },
   {
    "id": "component:Sheet",
@@ -5033,7 +4917,7 @@
    "id": "component:SideSheet",
    "type": "Component",
    "name": "SideSheet",
-   "variants": "2",
+   "variants": "4",
    "spec": "§6.28",
    "platforms": {
     "web": {
@@ -5047,23 +4931,13 @@
     "Type": [
      "Standard",
      "Modal"
+    ],
+    "Width": [
+     "Base",
+     "Wide"
     ]
    },
-   "figmaVariants": 2,
-   "notYet": [
-    {
-     "text": "rộng khác 384, side sheet bên trái, kéo đổi bề rộng",
-     "source": "§6.28"
-    },
-    {
-     "text": "Bề rộng khác 384: chưa có",
-     "source": "src/components/SideSheet/SideSheet.mdx"
-    },
-    {
-     "text": "Khoảng cách giữa tiêu đề và nút đóng: bản vẽ không ghi, code để 12",
-     "source": "src/components/SideSheet/SideSheet.mdx"
-    }
-   ]
+   "figmaVariants": 4
   },
   {
    "id": "component:Popover",
@@ -5078,21 +4952,7 @@
     },
     "flutter": "UuPopover",
     "figma": "Popover"
-   },
-   "notYet": [
-    {
-     "text": "mũi tên chỉ vào phần tử neo",
-     "source": "§6.29"
-    },
-    {
-     "text": "tự lật hướng khi sát mép (code tự xử lý, bản vẽ chưa vẽ)",
-     "source": "§6.29"
-    },
-    {
-     "text": "Khoảng cách giữa tiêu đề và nút đóng: bản vẽ không ghi, code để 8",
-     "source": "src/components/Popover/Popover.mdx"
-    }
-   ]
+   }
   },
   {
    "id": "component:ResultScreen",
@@ -5101,6 +4961,11 @@
    "variants": "1",
    "spec": "§6.19",
    "platforms": {
+    "web": {
+     "export": "ResultScreen",
+     "file": "src/components/Screens/Screens.tsx"
+    },
+    "flutter": "UuResultScreen",
     "figma": "ResultScreen"
    }
   },
@@ -5111,6 +4976,11 @@
    "variants": "1",
    "spec": "§6.19",
    "platforms": {
+    "web": {
+     "export": "ErrorScreen",
+     "file": "src/components/Screens/Screens.tsx"
+    },
+    "flutter": "UuErrorScreen",
     "figma": "ErrorScreen"
    }
   },
@@ -5127,17 +4997,7 @@
     },
     "flutter": "UuEmptyScreen",
     "figma": "EmptyScreen"
-   },
-   "notYet": [
-    {
-     "text": "Spec 6.19 không liệt kê phần nào chưa có cho ba component này",
-     "source": "src/components/Screens/Screens.mdx"
-    },
-    {
-     "text": "ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19",
-     "source": "src/components/Screens/Screens.mdx"
-    }
-   ]
+   }
   },
   {
    "id": "component:EmptySection",
@@ -5152,17 +5012,7 @@
     },
     "flutter": "UuEmptySection",
     "figma": "EmptySection"
-   },
-   "notYet": [
-    {
-     "text": "Spec 6.19 không liệt kê phần nào chưa có cho ba component này",
-     "source": "src/components/Screens/Screens.mdx"
-    },
-    {
-     "text": "ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19",
-     "source": "src/components/Screens/Screens.mdx"
-    }
-   ]
+   }
   },
   {
    "id": "component:ErrorSection",
@@ -5177,17 +5027,7 @@
     },
     "flutter": "UuErrorSection",
     "figma": "ErrorSection"
-   },
-   "notYet": [
-    {
-     "text": "Spec 6.19 không liệt kê phần nào chưa có cho ba component này",
-     "source": "src/components/Screens/Screens.mdx"
-    },
-    {
-     "text": "ResultScreen và ErrorScreen không có component web: là bố cục màn để tham chiếu, màn của app dựng theo spec 6.19",
-     "source": "src/components/Screens/Screens.mdx"
-    }
-   ]
+   }
   },
   {
    "id": "component:.label",
@@ -5409,9 +5249,13 @@
     "State": [
      "Default",
      "Hover"
+    ],
+    "Type": [
+     "Default",
+     "Overflow"
     ]
    },
-   "figmaVariants": 3
+   "figmaVariants": 5
   },
   {
    "id": "component:.SideNavItem",
@@ -5935,7 +5779,7 @@
    "id": "rule:TextButtonDanger/3",
    "type": "Rule",
    "kind": "dont",
-   "text": "Không có Inverted=True — cần nút phá huỷ trên nền tối thì dừng và hỏi.",
+   "text": "Không có Inverted=True — nút phá huỷ luôn trên nền sáng; màn tối thì mở Dialog xác nhận.",
    "source": "§6.1",
    "scope": "TextButtonDanger"
   },
@@ -6052,6 +5896,14 @@
    "scope": "IconButtonNeutral"
   },
   {
+   "id": "rule:IconButtonNeutral/7",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có IconButton kiểu Danger — xoá theo dòng nằm trong menu “⋯”, xác nhận bằng Dialog có TextButtonDanger Solid.",
+   "source": "§6.2",
+   "scope": "IconButtonNeutral"
+  },
+  {
    "id": "rule:ToggleButton/1",
    "type": "Rule",
    "kind": "do",
@@ -6145,6 +5997,14 @@
    "kind": "do",
    "text": "Là nhóm nút dùng chung của CardSheet và CardDialog — không tự dựng frame nút riêng.",
    "source": "§6.8",
+   "scope": "ButtonGroup"
+  },
+  {
+   "id": "rule:ButtonGroup/6",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Tone=Danger (dialog / sheet xác nhận xoá): nút chính là TextButtonDanger Solid Large, nút phụ giữ nguyên; không tự xếp hai nút.",
+   "source": "§6.9",
    "scope": "ButtonGroup"
   },
   {
@@ -6356,6 +6216,22 @@
    "scope": "SearchInput"
   },
   {
+   "id": "rule:SearchInput/7",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Hàng “Tìm gần đây” có IconButtonNeutral Ghost Small xmark cuối hàng để xoá từng mục; panel vẫn mở, focus về ô.",
+   "source": "§6.3g",
+   "scope": "SearchInput"
+  },
+  {
+   "id": "rule:SearchInput/8",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có cỡ nhỏ riêng — density Compact đã thu ô.",
+   "source": "§6.3g",
+   "scope": "SearchInput"
+  },
+  {
    "id": "rule:DateInput/1",
    "type": "Rule",
    "kind": "dont",
@@ -6478,8 +6354,8 @@
   {
    "id": "rule:Menu/6",
    "type": "Rule",
-   "kind": "do",
-   "text": "Neo panel chưa chốt: Menu là khối thường width 100% khung chứa, màn tự đặt chỗ.",
+   "kind": "must",
+   "text": "Panel neo dưới phần tử cách 4; thiếu chỗ thì lật lên; cao tối đa 320 rồi cuộn trong panel (tìm nhanh dính trên, footer dính dưới).",
    "source": "§6.21",
    "scope": "Menu"
   },
@@ -6488,6 +6364,30 @@
    "type": "Rule",
    "kind": "must",
    "text": "Prefix icon chỉ có ở Type=Single.",
+   "source": "§6.21",
+   "scope": "Menu"
+  },
+  {
+   "id": "rule:Menu/8",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Đóng khi chọn xong (Single), bấm ra ngoài, Esc; Multiple chỉ áp dụng khi bấm “Áp dụng”.",
+   "source": "§6.21",
+   "scope": "Menu"
+  },
+  {
+   "id": "rule:Menu/9",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Option cần giải thích thêm → Description caption object-secondary dưới tên, tối đa 2 dòng; icon / checkbox căn trên.",
+   "source": "§6.21",
+   "scope": "Menu"
+  },
+  {
+   "id": "rule:Menu/10",
+   "type": "Rule",
+   "kind": "must",
+   "text": "“Chọn tất cả” (Multiple, từ 4 option): hàng đầu + MenuDivider; Checked khi chọn hết, Indeterminate khi một phần; đang tìm nhanh chỉ tác động option đang hiện.",
    "source": "§6.21",
    "scope": "Menu"
   },
@@ -6652,6 +6552,14 @@
    "scope": "Switch"
   },
   {
+   "id": "rule:Switch/5",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có cỡ nhỏ riêng (dùng Compact) và không có chữ On/Off trong rãnh.",
+   "source": "§6.17",
+   "scope": "Switch"
+  },
+  {
    "id": "rule:Chip/1",
    "type": "Rule",
    "kind": "do",
@@ -6704,6 +6612,38 @@
    "type": "Rule",
    "kind": "do",
    "text": "Panel bung ra là Menu: lọc một giá trị → Single, chọn xong đóng; lọc nhiều → Multiple + footer, nhãn “{Tên} · n”.",
+   "source": "§6.18",
+   "scope": "Chip"
+  },
+  {
+   "id": "rule:Chip/8",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Prefix icon 16 cùng màu chữ, gap 8; Type=Select đã chọn thì check thay chỗ icon — chip chỉ có một icon đầu.",
+   "source": "§6.18",
+   "scope": "Chip"
+  },
+  {
+   "id": "rule:Chip/9",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Type=Input: màu như chưa chọn, xmark 16 trong ô tròn 24 cuối chip là nút gỡ duy nhất (aria-label “Gỡ {nhãn}”); thân chip không bấm được.",
+   "source": "§6.18",
+   "scope": "Chip"
+  },
+  {
+   "id": "rule:Chip/10",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Type=Input cho giá trị đã nhập / bộ lọc đang áp dụng; gỡ xong focus sang chip kế tiếp.",
+   "source": "§6.18",
+   "scope": "Chip"
+  },
+  {
+   "id": "rule:Chip/11",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có cỡ khác 32 — Compact dùng 24.",
    "source": "§6.18",
    "scope": "Chip"
   },
@@ -6892,6 +6832,14 @@
    "scope": "TablePagination"
   },
   {
+   "id": "rule:TablePagination/7",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có ô nhập số trang để nhảy — rút gọn “…” là đủ.",
+   "source": "§6.24",
+   "scope": "TablePagination"
+  },
+  {
    "id": "rule:Breadcrumb/1",
    "type": "Rule",
    "kind": "do",
@@ -6920,6 +6868,22 @@
    "type": "Rule",
    "kind": "dont",
    "text": "Không dùng Breadcrumb thay NavigationBar trên app.",
+   "source": "§6.25",
+   "scope": "Breadcrumb"
+  },
+  {
+   "id": "rule:Breadcrumb/5",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Quá 4 mục: giữ mục đầu và 2 mục cuối, các mục giữa gom vào một mục Type=Overflow “…” mở Menu.",
+   "source": "§6.25",
+   "scope": "Breadcrumb"
+  },
+  {
+   "id": "rule:Breadcrumb/6",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có icon trước mục đầu.",
    "source": "§6.25",
    "scope": "Breadcrumb"
   },
@@ -6964,6 +6928,38 @@
    "scope": "SideNav"
   },
   {
+   "id": "rule:SideNav/6",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Chevron-down xoay 180° khi nhóm mở (không đổi icon); mục có aria-expanded.",
+   "source": "§6.27",
+   "scope": "SideNav"
+  },
+  {
+   "id": "rule:SideNav/7",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Badge trên mục: NotificationBadge Count cuối mục; khi thu gọn thành Dot ở góc trên phải icon.",
+   "source": "§6.27",
+   "scope": "SideNav"
+  },
+  {
+   "id": "rule:SideNav/8",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Nút thu / mở: IconButtonNeutral Ghost Small sidebar-left đầu thanh, aria-expanded, nhãn “Thu gọn / Mở rộng thanh điều hướng”.",
+   "source": "§6.27",
+   "scope": "SideNav"
+  },
+  {
+   "id": "rule:SideNav/9",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có mục cấp 3 — quá 2 cấp thì tách trang.",
+   "source": "§6.27",
+   "scope": "SideNav"
+  },
+  {
    "id": "rule:Tab/1",
    "type": "Rule",
    "kind": "do",
@@ -7004,6 +7000,22 @@
    "scope": "Tab"
   },
   {
+   "id": "rule:Tab/6",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Icon 16 trước chữ (gap 8) cùng màu chữ, Active dùng fill; NotificationBadge Dot sau chữ (gap 4) báo có mới.",
+   "source": "§6.20",
+   "scope": "Tab"
+  },
+  {
+   "id": "rule:Tab/7",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Badge chỉ là thông tin phụ — nhãn tab vẫn tự đủ nghĩa; web thêm chữ ẩn “có mới”.",
+   "source": "§6.20",
+   "scope": "Tab"
+  },
+  {
    "id": "rule:TabBar/1",
    "type": "Rule",
    "kind": "do",
@@ -7032,6 +7044,14 @@
    "type": "Rule",
    "kind": "must",
    "text": "Scrollable: tab Active tự cuộn vào tầm nhìn.",
+   "source": "§6.20",
+   "scope": "TabBar"
+  },
+  {
+   "id": "rule:TabBar/5",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có TabBar trên nền tối.",
    "source": "§6.20",
    "scope": "TabBar"
   },
@@ -7220,6 +7240,22 @@
    "scope": "CardPushNotification"
   },
   {
+   "id": "rule:CardPushNotification/7",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Desktop: góc trên phải, cách mép trên và phải 16, rộng 360 (size-90); dừng đếm khi hover.",
+   "source": "§6.31",
+   "scope": "CardPushNotification"
+  },
+  {
+   "id": "rule:CardPushNotification/8",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có nút đóng, thời gian nhận hay xếp chồng thẻ.",
+   "source": "§6.31",
+   "scope": "CardPushNotification"
+  },
+  {
    "id": "rule:NotificationBadge/1",
    "type": "Rule",
    "kind": "do",
@@ -7292,6 +7328,22 @@
    "scope": "Tooltip"
   },
   {
+   "id": "rule:Tooltip/6",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Hover hiện sau 500 ms, focus bàn phím hiện ngay; rời / mất focus / Esc ẩn ngay, không mờ dần.",
+   "source": "§6.30",
+   "scope": "Tooltip"
+  },
+  {
+   "id": "rule:Tooltip/7",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có tooltip nhiều dòng có tiêu đề — dùng Popover.",
+   "source": "§6.30",
+   "scope": "Tooltip"
+  },
+  {
    "id": "rule:TableHeaderCell/1",
    "type": "Rule",
    "kind": "must",
@@ -7320,6 +7372,14 @@
    "type": "Rule",
    "kind": "must",
    "text": "Chiều cao và padding qua biến density (table/header-height, table/cell-padding-x).",
+   "source": "§6.23",
+   "scope": "TableHeaderCell"
+  },
+  {
+   "id": "rule:TableHeaderCell/5",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Cột chọn hàng: TableHeaderCell Type=Checkbox rộng 64 — Checked khi chọn hết trang đang xem, Indeterminate khi một phần.",
    "source": "§6.23",
    "scope": "TableHeaderCell"
   },
@@ -7372,6 +7432,14 @@
    "scope": "TableCell"
   },
   {
+   "id": "rule:TableCell/7",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Cột trạng thái dùng TableCell Type=Status chứa StatusIndicator, không tự đặt indicator vào ô Text.",
+   "source": "§6.23",
+   "scope": "TableCell"
+  },
+  {
    "id": "rule:KPICard/1",
    "type": "Rule",
    "kind": "do",
@@ -7383,15 +7451,15 @@
    "id": "rule:KPICard/2",
    "type": "Rule",
    "kind": "must",
-   "text": "Màu Delta theo chiều số, không theo tốt/xấu: Up object-positive, Down object-negative.",
+   "text": "Polarity=Normal: Up object-positive, Down object-negative (màu theo chiều số).",
    "source": "§6.26",
    "scope": "KPICard"
   },
   {
    "id": "rule:KPICard/3",
    "type": "Rule",
-   "kind": "dont",
-   "text": "Cần “tăng là xấu” thì dừng và hỏi — chưa có variant.",
+   "kind": "do",
+   "text": "Chỉ số tăng là xấu (chi phí, tỉ lệ huỷ) → Polarity=Inverse: Up tô negative, Down tô positive; icon vẫn theo chiều số.",
    "source": "§6.26",
    "scope": "KPICard"
   },
@@ -7400,6 +7468,14 @@
    "type": "Rule",
    "kind": "must",
    "text": "Value heading-base tabular-nums; Trend=[No trend] không có Delta.",
+   "source": "§6.26",
+   "scope": "KPICard"
+  },
+  {
+   "id": "rule:KPICard/5",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Thẻ bấm được (Interactive): chevron-right 16 cuối hàng Label, state layer 5/10 phủ cả thẻ; cả thẻ là một link, không nút khác bên trong.",
    "source": "§6.26",
    "scope": "KPICard"
   },
@@ -7441,6 +7517,22 @@
    "kind": "do",
    "text": "Có tiêu đề qua prop Header; CTA ẩn/hiện toàn bộ nhóm nút.",
    "source": "§6.10",
+   "scope": "CardSheet"
+  },
+  {
+   "id": "rule:CardSheet/6",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Sheet kéo được: Handle 32×4 rounded-circle nền border ở đỉnh; hai nấc Height=Fit / Full.",
+   "source": "§6.8",
+   "scope": "CardSheet"
+  },
+  {
+   "id": "rule:CardSheet/7",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Kéo xuống ở Fit quá 1/3 → đóng; ở Full → về Fit; không có Handle thì không kéo được.",
+   "source": "§6.8",
    "scope": "CardSheet"
   },
   {
@@ -7580,6 +7672,22 @@
    "scope": "SideSheet"
   },
   {
+   "id": "rule:SideSheet/5",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Width=Wide (480) cho form dài / nhiều cột; mặc định Base 384.",
+   "source": "§6.28",
+   "scope": "SideSheet"
+  },
+  {
+   "id": "rule:SideSheet/6",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có side sheet bên trái, không kéo đổi bề rộng.",
+   "source": "§6.28",
+   "scope": "SideSheet"
+  },
+  {
    "id": "rule:Popover/1",
    "type": "Rule",
    "kind": "do",
@@ -7612,6 +7720,22 @@
    "scope": "Popover"
   },
   {
+   "id": "rule:Popover/5",
+   "type": "Rule",
+   "kind": "must",
+   "text": "Neo dưới phần tử, canh trái; thiếu chỗ thì lật lên, sát mép phải thì canh phải.",
+   "source": "§6.29",
+   "scope": "Popover"
+  },
+  {
+   "id": "rule:Popover/6",
+   "type": "Rule",
+   "kind": "dont",
+   "text": "Không có mũi tên — Popover tách lớp bằng elevation.",
+   "source": "§6.29",
+   "scope": "Popover"
+  },
+  {
    "id": "rule:ResultScreen/1",
    "type": "Rule",
    "kind": "do",
@@ -7639,7 +7763,7 @@
    "id": "rule:ResultScreen/4",
    "type": "Rule",
    "kind": "do",
-   "text": "Là bố cục màn để tham chiếu, không phải component import; ảnh ô vuông không nền, do màn quyết, cần alt.",
+   "text": "Có component code ResultScreen / UuResultScreen (Body + Footer; NavigationBar do màn đặt); ảnh ô vuông không nền, cần alt.",
    "source": "§6.19",
    "scope": "ResultScreen"
   },
@@ -7672,6 +7796,14 @@
    "type": "Rule",
    "kind": "must",
    "text": "Ảnh minh hoạ ô tròn 128 nền background-accent-muted, cần alt.",
+   "source": "§6.19",
+   "scope": "ErrorScreen"
+  },
+  {
+   "id": "rule:ErrorScreen/5",
+   "type": "Rule",
+   "kind": "do",
+   "text": "Có component code ErrorScreen / UuErrorScreen nhận đúng một nút thử lại.",
    "source": "§6.19",
    "scope": "ErrorScreen"
   },
@@ -11778,6 +11910,11 @@
    "component:TextButtonAccent"
   ],
   [
+   "component:ButtonGroup",
+   "composedOf",
+   "component:TextButtonDanger"
+  ],
+  [
    "component:TextInput",
    "hasProps",
    "concept:variant-prop"
@@ -11934,6 +12071,16 @@
   ],
   [
    "component:SearchInput",
+   "composedOf",
+   "component:IconButtonNeutral"
+  ],
+  [
+   "component:SearchInput",
+   "composedOf",
+   "component:Menu"
+  ],
+  [
+   "component:SearchInput",
    "uses",
    "concept:icon"
   ],
@@ -12030,6 +12177,31 @@
   [
    "component:Menu",
    "usesToken",
+   "token:text-caption-font-size"
+  ],
+  [
+   "component:Menu",
+   "usesToken",
+   "token:text-caption-line-height"
+  ],
+  [
+   "component:Menu",
+   "usesToken",
+   "token:selection-label-offset"
+  ],
+  [
+   "component:Menu",
+   "usesToken",
+   "token:object-disabled"
+  ],
+  [
+   "component:Menu",
+   "usesToken",
+   "token:control-height-small"
+  ],
+  [
+   "component:Menu",
+   "usesToken",
    "token:object-interactive"
   ],
   [
@@ -12046,11 +12218,6 @@
    "component:Menu",
    "usesToken",
    "token:background-interactive"
-  ],
-  [
-   "component:Menu",
-   "usesToken",
-   "token:object-disabled"
   ],
   [
    "component:Menu",
@@ -12674,6 +12841,11 @@
   ],
   [
    "component:Chip",
+   "usesToken",
+   "token:gap-1"
+  ],
+  [
+   "component:Chip",
    "uses",
    "concept:state-layer"
   ],
@@ -13023,6 +13195,11 @@
    "concept:state-layer"
   ],
   [
+   "component:Breadcrumb",
+   "composedOf",
+   "component:Menu"
+  ],
+  [
    "component:SideNav",
    "hasProps",
    "concept:variant-prop"
@@ -13139,6 +13316,16 @@
   ],
   [
    "component:SideNav",
+   "composedOf",
+   "component:IconButtonNeutral"
+  ],
+  [
+   "component:SideNav",
+   "composedOf",
+   "component:NotificationBadge"
+  ],
+  [
+   "component:SideNav",
    "uses",
    "concept:icon"
   ],
@@ -13205,6 +13392,16 @@
   [
    "component:Tab",
    "usesToken",
+   "token:gap-2"
+  ],
+  [
+   "component:Tab",
+   "usesToken",
+   "token:gap-1"
+  ],
+  [
+   "component:Tab",
+   "usesToken",
    "token:border-emphasized"
   ],
   [
@@ -13226,6 +13423,16 @@
    "component:Tab",
    "uses",
    "concept:state-layer"
+  ],
+  [
+   "component:Tab",
+   "composedOf",
+   "component:NotificationBadge"
+  ],
+  [
+   "component:Tab",
+   "uses",
+   "concept:icon"
   ],
   [
    "component:TabBar",
@@ -13290,6 +13497,16 @@
   [
    "component:TabBar",
    "usesToken",
+   "token:gap-2"
+  ],
+  [
+   "component:TabBar",
+   "usesToken",
+   "token:gap-1"
+  ],
+  [
+   "component:TabBar",
+   "usesToken",
    "token:border-emphasized"
   ],
   [
@@ -13311,6 +13528,16 @@
    "component:TabBar",
    "uses",
    "concept:state-layer"
+  ],
+  [
+   "component:TabBar",
+   "composedOf",
+   "component:NotificationBadge"
+  ],
+  [
+   "component:TabBar",
+   "uses",
+   "concept:icon"
   ],
   [
    "component:Pagination",
@@ -13653,6 +13880,11 @@
    "token:text-body-line-height"
   ],
   [
+   "component:CardPushNotification",
+   "usesToken",
+   "token:gap-3"
+  ],
+  [
    "component:NotificationBadge",
    "hasProps",
    "concept:variant-prop"
@@ -13830,6 +14062,11 @@
   [
    "component:TableHeaderCell",
    "composedOf",
+   "component:StatusIndicator"
+  ],
+  [
+   "component:TableHeaderCell",
+   "composedOf",
    "component:TextButtonAccent"
   ],
   [
@@ -13945,6 +14182,11 @@
   [
    "component:TableCell",
    "composedOf",
+   "component:StatusIndicator"
+  ],
+  [
+   "component:TableCell",
+   "composedOf",
    "component:TextButtonAccent"
   ],
   [
@@ -13990,6 +14232,11 @@
   [
    "component:KPICard",
    "usesToken",
+   "token:object-primary"
+  ],
+  [
+   "component:KPICard",
+   "usesToken",
    "token:object-secondary"
   ],
   [
@@ -14001,11 +14248,6 @@
    "component:KPICard",
    "usesToken",
    "token:text-caption-line-height"
-  ],
-  [
-   "component:KPICard",
-   "usesToken",
-   "token:object-primary"
   ],
   [
    "component:KPICard",
@@ -14026,6 +14268,16 @@
    "component:KPICard",
    "usesToken",
    "token:object-negative"
+  ],
+  [
+   "component:KPICard",
+   "usesToken",
+   "token:border-emphasized"
+  ],
+  [
+   "component:KPICard",
+   "uses",
+   "concept:state-layer"
   ],
   [
    "component:KPICard",
@@ -14071,6 +14323,26 @@
    "component:CardSheet",
    "usesToken",
    "token:gap-3"
+  ],
+  [
+   "component:CardSheet",
+   "usesToken",
+   "token:gap-2"
+  ],
+  [
+   "component:CardSheet",
+   "usesToken",
+   "token:border-emphasized"
+  ],
+  [
+   "component:CardSheet",
+   "usesToken",
+   "token:rounded-circle"
+  ],
+  [
+   "component:CardSheet",
+   "usesToken",
+   "token:border"
   ],
   [
    "component:CardSheet",
@@ -14271,6 +14543,136 @@
    "component:Popover",
    "composedOf",
    "component:TextButtonNeutral"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:gap-3"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:rounded-circle"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:background-accent-muted"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:object-primary"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-heading-sm-font-size"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-heading-sm-line-height"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-heading-base-font-size"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-heading-base-line-height"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-body-font-size"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:text-body-line-height"
+  ],
+  [
+   "component:ResultScreen",
+   "usesToken",
+   "token:gap-4"
+  ],
+  [
+   "component:ResultScreen",
+   "composedOf",
+   "component:ButtonGroup"
+  ],
+  [
+   "component:ResultScreen",
+   "composedOf",
+   "component:NavigationBar"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:gap-3"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:rounded-circle"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:background-accent-muted"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:object-primary"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-heading-sm-font-size"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-heading-sm-line-height"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-heading-base-font-size"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-heading-base-line-height"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-body-font-size"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:text-body-line-height"
+  ],
+  [
+   "component:ErrorScreen",
+   "usesToken",
+   "token:gap-4"
+  ],
+  [
+   "component:ErrorScreen",
+   "composedOf",
+   "component:ButtonGroup"
+  ],
+  [
+   "component:ErrorScreen",
+   "composedOf",
+   "component:NavigationBar"
   ],
   [
    "component:EmptyScreen",
@@ -14560,6 +14962,31 @@
   [
    "component:.MenuItem",
    "usesToken",
+   "token:text-caption-font-size"
+  ],
+  [
+   "component:.MenuItem",
+   "usesToken",
+   "token:text-caption-line-height"
+  ],
+  [
+   "component:.MenuItem",
+   "usesToken",
+   "token:selection-label-offset"
+  ],
+  [
+   "component:.MenuItem",
+   "usesToken",
+   "token:object-disabled"
+  ],
+  [
+   "component:.MenuItem",
+   "usesToken",
+   "token:control-height-small"
+  ],
+  [
+   "component:.MenuItem",
+   "usesToken",
    "token:object-interactive"
   ],
   [
@@ -14576,11 +15003,6 @@
    "component:.MenuItem",
    "usesToken",
    "token:background-interactive"
-  ],
-  [
-   "component:.MenuItem",
-   "usesToken",
-   "token:object-disabled"
   ],
   [
    "component:.MenuItem",
@@ -14685,6 +15107,31 @@
   [
    "component:.MenuSection",
    "usesToken",
+   "token:text-caption-font-size"
+  ],
+  [
+   "component:.MenuSection",
+   "usesToken",
+   "token:text-caption-line-height"
+  ],
+  [
+   "component:.MenuSection",
+   "usesToken",
+   "token:selection-label-offset"
+  ],
+  [
+   "component:.MenuSection",
+   "usesToken",
+   "token:object-disabled"
+  ],
+  [
+   "component:.MenuSection",
+   "usesToken",
+   "token:control-height-small"
+  ],
+  [
+   "component:.MenuSection",
+   "usesToken",
    "token:object-interactive"
   ],
   [
@@ -14701,11 +15148,6 @@
    "component:.MenuSection",
    "usesToken",
    "token:background-interactive"
-  ],
-  [
-   "component:.MenuSection",
-   "usesToken",
-   "token:object-disabled"
   ],
   [
    "component:.MenuSection",
@@ -14810,6 +15252,31 @@
   [
    "component:.MenuDivider",
    "usesToken",
+   "token:text-caption-font-size"
+  ],
+  [
+   "component:.MenuDivider",
+   "usesToken",
+   "token:text-caption-line-height"
+  ],
+  [
+   "component:.MenuDivider",
+   "usesToken",
+   "token:selection-label-offset"
+  ],
+  [
+   "component:.MenuDivider",
+   "usesToken",
+   "token:object-disabled"
+  ],
+  [
+   "component:.MenuDivider",
+   "usesToken",
+   "token:control-height-small"
+  ],
+  [
+   "component:.MenuDivider",
+   "usesToken",
    "token:object-interactive"
   ],
   [
@@ -14826,11 +15293,6 @@
    "component:.MenuDivider",
    "usesToken",
    "token:background-interactive"
-  ],
-  [
-   "component:.MenuDivider",
-   "usesToken",
-   "token:object-disabled"
   ],
   [
    "component:.MenuDivider",
@@ -15018,6 +15480,11 @@
    "concept:state-layer"
   ],
   [
+   "component:.BreadcrumbItem",
+   "composedOf",
+   "component:Menu"
+  ],
+  [
    "component:.SideNavItem",
    "hasProps",
    "concept:variant-prop"
@@ -15134,6 +15601,16 @@
   ],
   [
    "component:.SideNavItem",
+   "composedOf",
+   "component:IconButtonNeutral"
+  ],
+  [
+   "component:.SideNavItem",
+   "composedOf",
+   "component:NotificationBadge"
+  ],
+  [
+   "component:.SideNavItem",
    "uses",
    "concept:icon"
   ],
@@ -15246,6 +15723,16 @@
    "component:.SideNavSection",
    "composedOf",
    "component:Tooltip"
+  ],
+  [
+   "component:.SideNavSection",
+   "composedOf",
+   "component:IconButtonNeutral"
+  ],
+  [
+   "component:.SideNavSection",
+   "composedOf",
+   "component:NotificationBadge"
   ],
   [
    "component:.SideNavSection",
@@ -15441,37 +15928,7 @@
    "Kiểm được ngay trên máy, không cần gọi máy chủ? — Không ⇒ Trùng tài khoản, mã giảm giá còn hiệu lực, số dư đủ hay không — phải hỏi máy chủ."
   ],
   [
-   "component:TextButtonAccent",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:TextButtonNeutral",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:TextButtonDanger",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:SearchInput",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:Menu",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
    "component:Switch",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:Chip",
    "hasNotYet",
    "concept:not-yet"
   ],
@@ -15486,37 +15943,7 @@
    "concept:not-yet"
   ],
   [
-   "component:Breadcrumb",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
    "component:SideNav",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:Tab",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:TabBar",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:CardPushNotification",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:[Screen]PushNotification",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:Tooltip",
    "hasNotYet",
    "concept:not-yet"
   ],
@@ -15532,36 +15959,6 @@
   ],
   [
    "component:KPICard",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:CardSheet",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:SideSheet",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:Popover",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:EmptyScreen",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:EmptySection",
-   "hasNotYet",
-   "concept:not-yet"
-  ],
-  [
-   "component:ErrorSection",
    "hasNotYet",
    "concept:not-yet"
   ],
@@ -15871,6 +16268,11 @@
    "rule:IconButtonNeutral/6"
   ],
   [
+   "component:IconButtonNeutral",
+   "hasRule",
+   "rule:IconButtonNeutral/7"
+  ],
+  [
    "component:ToggleButton",
    "hasRule",
    "rule:ToggleButton/1"
@@ -15929,6 +16331,11 @@
    "component:ButtonGroup",
    "hasRule",
    "rule:ButtonGroup/5"
+  ],
+  [
+   "component:ButtonGroup",
+   "hasRule",
+   "rule:ButtonGroup/6"
   ],
   [
    "component:TextInput",
@@ -16061,6 +16468,16 @@
    "rule:SearchInput/6"
   ],
   [
+   "component:SearchInput",
+   "hasRule",
+   "rule:SearchInput/7"
+  ],
+  [
+   "component:SearchInput",
+   "hasRule",
+   "rule:SearchInput/8"
+  ],
+  [
    "component:DateInput",
    "hasRule",
    "rule:DateInput/1"
@@ -16144,6 +16561,21 @@
    "component:Menu",
    "hasRule",
    "rule:Menu/7"
+  ],
+  [
+   "component:Menu",
+   "hasRule",
+   "rule:Menu/8"
+  ],
+  [
+   "component:Menu",
+   "hasRule",
+   "rule:Menu/9"
+  ],
+  [
+   "component:Menu",
+   "hasRule",
+   "rule:Menu/10"
   ],
   [
    "component:Checkbox",
@@ -16246,6 +16678,11 @@
    "rule:Switch/4"
   ],
   [
+   "component:Switch",
+   "hasRule",
+   "rule:Switch/5"
+  ],
+  [
    "component:Chip",
    "hasRule",
    "rule:Chip/1"
@@ -16279,6 +16716,26 @@
    "component:Chip",
    "hasRule",
    "rule:Chip/7"
+  ],
+  [
+   "component:Chip",
+   "hasRule",
+   "rule:Chip/8"
+  ],
+  [
+   "component:Chip",
+   "hasRule",
+   "rule:Chip/9"
+  ],
+  [
+   "component:Chip",
+   "hasRule",
+   "rule:Chip/10"
+  ],
+  [
+   "component:Chip",
+   "hasRule",
+   "rule:Chip/11"
   ],
   [
    "component:SegmentedControl",
@@ -16396,6 +16853,11 @@
    "rule:TablePagination/6"
   ],
   [
+   "component:TablePagination",
+   "hasRule",
+   "rule:TablePagination/7"
+  ],
+  [
    "component:Breadcrumb",
    "hasRule",
    "rule:Breadcrumb/1"
@@ -16414,6 +16876,16 @@
    "component:Breadcrumb",
    "hasRule",
    "rule:Breadcrumb/4"
+  ],
+  [
+   "component:Breadcrumb",
+   "hasRule",
+   "rule:Breadcrumb/5"
+  ],
+  [
+   "component:Breadcrumb",
+   "hasRule",
+   "rule:Breadcrumb/6"
   ],
   [
    "component:SideNav",
@@ -16441,6 +16913,26 @@
    "rule:SideNav/5"
   ],
   [
+   "component:SideNav",
+   "hasRule",
+   "rule:SideNav/6"
+  ],
+  [
+   "component:SideNav",
+   "hasRule",
+   "rule:SideNav/7"
+  ],
+  [
+   "component:SideNav",
+   "hasRule",
+   "rule:SideNav/8"
+  ],
+  [
+   "component:SideNav",
+   "hasRule",
+   "rule:SideNav/9"
+  ],
+  [
    "component:Tab",
    "hasRule",
    "rule:Tab/1"
@@ -16466,6 +16958,16 @@
    "rule:Tab/5"
   ],
   [
+   "component:Tab",
+   "hasRule",
+   "rule:Tab/6"
+  ],
+  [
+   "component:Tab",
+   "hasRule",
+   "rule:Tab/7"
+  ],
+  [
    "component:TabBar",
    "hasRule",
    "rule:TabBar/1"
@@ -16484,6 +16986,11 @@
    "component:TabBar",
    "hasRule",
    "rule:TabBar/4"
+  ],
+  [
+   "component:TabBar",
+   "hasRule",
+   "rule:TabBar/5"
   ],
   [
    "component:Pagination",
@@ -16601,6 +17108,16 @@
    "rule:CardPushNotification/6"
   ],
   [
+   "component:CardPushNotification",
+   "hasRule",
+   "rule:CardPushNotification/7"
+  ],
+  [
+   "component:CardPushNotification",
+   "hasRule",
+   "rule:CardPushNotification/8"
+  ],
+  [
    "component:NotificationBadge",
    "hasRule",
    "rule:NotificationBadge/1"
@@ -16646,6 +17163,16 @@
    "rule:Tooltip/5"
   ],
   [
+   "component:Tooltip",
+   "hasRule",
+   "rule:Tooltip/6"
+  ],
+  [
+   "component:Tooltip",
+   "hasRule",
+   "rule:Tooltip/7"
+  ],
+  [
    "component:TableHeaderCell",
    "hasRule",
    "rule:TableHeaderCell/1"
@@ -16664,6 +17191,11 @@
    "component:TableHeaderCell",
    "hasRule",
    "rule:TableHeaderCell/4"
+  ],
+  [
+   "component:TableHeaderCell",
+   "hasRule",
+   "rule:TableHeaderCell/5"
   ],
   [
    "component:TableCell",
@@ -16696,6 +17228,11 @@
    "rule:TableCell/6"
   ],
   [
+   "component:TableCell",
+   "hasRule",
+   "rule:TableCell/7"
+  ],
+  [
    "component:KPICard",
    "hasRule",
    "rule:KPICard/1"
@@ -16714,6 +17251,11 @@
    "component:KPICard",
    "hasRule",
    "rule:KPICard/4"
+  ],
+  [
+   "component:KPICard",
+   "hasRule",
+   "rule:KPICard/5"
   ],
   [
    "component:CardSheet",
@@ -16739,6 +17281,16 @@
    "component:CardSheet",
    "hasRule",
    "rule:CardSheet/5"
+  ],
+  [
+   "component:CardSheet",
+   "hasRule",
+   "rule:CardSheet/6"
+  ],
+  [
+   "component:CardSheet",
+   "hasRule",
+   "rule:CardSheet/7"
   ],
   [
    "component:Sheet",
@@ -16826,6 +17378,16 @@
    "rule:SideSheet/4"
   ],
   [
+   "component:SideSheet",
+   "hasRule",
+   "rule:SideSheet/5"
+  ],
+  [
+   "component:SideSheet",
+   "hasRule",
+   "rule:SideSheet/6"
+  ],
+  [
    "component:Popover",
    "hasRule",
    "rule:Popover/1"
@@ -16844,6 +17406,16 @@
    "component:Popover",
    "hasRule",
    "rule:Popover/4"
+  ],
+  [
+   "component:Popover",
+   "hasRule",
+   "rule:Popover/5"
+  ],
+  [
+   "component:Popover",
+   "hasRule",
+   "rule:Popover/6"
   ],
   [
    "component:ResultScreen",
@@ -16884,6 +17456,11 @@
    "component:ErrorScreen",
    "hasRule",
    "rule:ErrorScreen/4"
+  ],
+  [
+   "component:ErrorScreen",
+   "hasRule",
+   "rule:ErrorScreen/5"
   ],
   [
    "component:EmptyScreen",
