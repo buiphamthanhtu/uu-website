@@ -1,0 +1,49 @@
+# ÚÙ Design System (UU DS)
+
+> Design system UU DS. Token 2 tầng (primitive → semantic), hai brand mode — Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 46 component và 6 mẫu màn đã chốt, bộ UU icon công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+
+Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
+
+## Bắt buộc đọc trước khi viết code
+
+- [Spec đầy đủ](docs/design-system.md): mục 0 (luật), 1–3 (token, màu, typography), 4 (spacing/radius/elevation), 5 (danh sách component — ngoài danh sách là chưa chốt), 6.0 (state layer), 6.x (từng component).
+- [tokens.css](docs/tokens.css): CSS custom properties, brand mode, recipe state layer `.uu-interactive .uu-on-dark .uu-on-light`, text style `.text-*`.
+
+## DNA của sản phẩm: làm trước màn đầu tiên
+
+UU DS là bộ xương, DNA là chất riêng của từng sản phẩm. Tìm `DNA.md` theo thứ tự: đường dẫn người dùng đưa, gốc project, `docs/DNA.md`. Không thấy thì hỏi một lần: có DNA hoặc style anchor không (ảnh chụp, website). Có style anchor thì trích thành `DNA.md`. Không có thì build Basic và báo một dòng khi bàn giao.
+
+- [Product DNA](docs/product-dna.md): tìm file, phần khoá và phần được đổi, cách áp bằng `[data-theme]`, cách trích, kiểm trước khi giao.
+- [Khuôn DNA](docs/dna-template.md): chép thành `DNA.md` khi trích.
+
+## Khi cần
+
+- [tokens.json](docs/tokens.json): DTCG-style, có `$resolved` — sinh sang iOS/Android/Style Dictionary.
+- [tailwind.js](docs/tailwind.js): theme Tailwind trỏ về CSS var — chỉ khi project dùng Tailwind.
+- [icons.md](docs/icons.md): luật UU icon (một component Icon(name, variant, size), SVG currentColor, fill = trạng thái bật, không có trong index → hỏi), cách thêm icon.
+- [uu-icon-index.json](docs/uu-icon-index.json): tên icon công khai → category và kiểu có sẵn (outline / fill).
+- [ontology.json](docs/ontology.json): bản đồ hệ thống (ontology) — token, component, mode, vai trò màu, cây quyết định và quan hệ (usesToken, composedOf, confusedWith, chosenWhen…). Không có trong nodes = chưa chốt. Tóm tắt đọc nhanh: [ontology.md](docs/ontology.md).
+
+
+
+## Sáu ràng buộc
+
+1. Không hardcode màu; chỉ token semantic `--background-*` `--object-*` `--border-*`; cấm `--color-*` trong component.
+2. Brand là một lớp token (23 token, spec 2.5), đổi bằng `data-theme` (`default` · `uu`, đặt trên `<html>` hoặc một vùng); component không biết brand; `accent` ≠ `interactive`.
+3. Hover/Pressed = state layer `::after` tô bằng màu object của variant (CSS `currentColor`), opacity 5/10 nền sáng · 20/40 nền tối; không đổi nền/chữ/weight; Disabled và Loading không có.
+4. Chỉ thang có sẵn: gap bước 4px, radius-*, 11 bậc font size, line-height tuyệt đối (web: rem, app: px), density Touch / Compact (`data-density="compact"`, spec §4.1), font hệ thống (không nhúng SF Pro).
+5. Chỉ build component ở mục 5 của spec; thiếu → hỏi, làm tạm phải ghi rõ. Chưa chốt: Hover/Pressed và vị trí mục `BottomBar`, hàng rỗng / đang tải của bảng.
+6. Icon chỉ UU icon qua Icon(name, variant, size); tên tra ở uu-icon-index.json.
+
+## Code tham chiếu (repo công khai github.com/buiphamthanhtu/uu-ds)
+
+Gói **chưa phát hành trên npm registry / pub.dev**: cài từ GitHub như dưới đây. Đừng chạy `npm install uu-ds`: tên đó trên npm không thuộc UU DS.
+
+- Web (React + CSS thuần), nhánh `web`: `npm i "github:buiphamthanhtu/uu-ds#web-v1.0.0"`. Exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`. Zalo Mini App (ZMP, React) dùng thẳng gói này.
+  - `src/components/*`, tên trùng spec: TextButtonAccent, TextButtonNeutral, TextButtonDanger, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, Tooltip, CardSheet, BottomSheet, BaseDialog, Dialog, CardDialog, CardPushNotification, SideSheet, Popover, Table, TableRow, TableHeaderCell, TableCell, TablePagination, KPICard, Breadcrumb, SideNav, SideNavItem, SideNavSection, ListItem, ListGroup, EmptyScreen, EmptySection, ErrorSection, ErrorScreen, ResultScreen, Spinner.
+  - `src/icons/Icon.tsx` + `src/icons/svg/<name>[-fill].svg` (icon công khai × outline/fill, viewBox 0 0 18 18, currentColor).
+  - `AGENTS.md` ở gốc nhánh `web`: hướng dẫn cho AI coding agent.
+- React Native / Expo, nhánh `native`: `npm i "github:buiphamthanhtu/uu-ds#native-v1.0.0"`. `tokens.g.ts` sinh từ tokens.json, cùng phạm vi bản Flutter.
+- Flutter, nhánh `main`, thư mục `packages/flutter/uu_ds_flutter` (khai `git:` trong pubspec với `path` đó, `ref: flutter-v1.0.0`). `tokens.g.dart` sinh từ tokens.json, widget `UuTextButton`, `UuTextInput`, `UuIcon`… cùng prop với bản web.
+- Widgetbook (widget Flutter thật, xem trên web): [widgetbook/](widgetbook/).
+- File Figma UU DLS (Figma Community, component và variable theo spec; lệch thì spec thắng): https://www.figma.com/community/file/1701990688423474087/uu-design-system

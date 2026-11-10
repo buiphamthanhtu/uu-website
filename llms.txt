@@ -1,0 +1,30 @@
+# ÚÙ Creative Studio
+
+> Design studio ở Việt Nam (uucreative.co): product design, research, brand visual. Website có blog tiếng Việt về nghề Product Designer và ÚÙ Design System — design system của studio.
+
+## Blog (tiếng Việt)
+
+- [Product Designer giao tiếp với sếp: vòng tròn giao tiếp, PPP và 5W1H](https://uucreative.co/blog-giao-tiep-3.html): Product designer cần giao tiếp với ai và như thế nào? Hồi 3 vẽ ba vòng tròn giao tiếp, cách làm việc với sếp qua PPP report, 5W1H và mẹo họp 1:1 hằng tháng.
+- [Designer giao tiếp chi tiết thế nào: handoff và Master flow trên Figma](https://uucreative.co/blog-giao-tiep-2.html): Độ hiểu giảm theo không gian, thời gian và con người. Hồi 2 chỉ cách tăng độ chi tiết khi giao tiếp: Sandbox, file handoff cho Engineer, Master flow trên Figma.
+- [Giao tiếp là gì với Product Designer: mã hoá, giải mã và truyền tải](https://uucreative.co/blog-giao-tiep-1.html): Giao tiếp không chỉ là nói chuyện. Hồi 1 giải thích giao tiếp là mã hoá và giải mã thông tin, cùng 4 yếu tố truyền tải: phương tiện, tính chất, kênh và tổ chức.
+
+## ÚÙ Design System
+
+- [Giới thiệu ÚÙ Design System](https://uucreative.co/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ
+- [Storybook UU DS](https://uucreative.co/uu-ds/): tài liệu cho người đọc (cần JavaScript)
+- [Mục lục UU DS cho AI](https://uucreative.co/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI
+- [File Figma ÚÙ Design System](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng
+- [design-system.md](https://uucreative.co/uu-ds/docs/design-system.md): spec đầy đủ: token, màu, typography, spacing, state layer và từng component đã chốt
+- [dna-template.md](https://uucreative.co/uu-ds/docs/dna-template.md): tài liệu UU DS
+- [icons.md](https://uucreative.co/uu-ds/docs/icons.md): luật dùng bộ UU icon
+- [ontology.json](https://uucreative.co/uu-ds/docs/ontology.json): tài liệu UU DS
+- [ontology.md](https://uucreative.co/uu-ds/docs/ontology.md): tài liệu UU DS
+- [product-dna.md](https://uucreative.co/uu-ds/docs/product-dna.md): tài liệu UU DS
+- [tailwind.js](https://uucreative.co/uu-ds/docs/tailwind.js): theme Tailwind trỏ về CSS var
+- [tokens.css](https://uucreative.co/uu-ds/docs/tokens.css): CSS custom properties, brand mode, recipe state layer, text style
+- [tokens.json](https://uucreative.co/uu-ds/docs/tokens.json): toàn bộ token dạng máy đọc (DTCG), dùng sinh sang iOS/Android
+- [uu-icon-index.json](https://uucreative.co/uu-ds/docs/uu-icon-index.json): tên icon công khai và kiểu có sẵn
+
+## Optional
+
+- [Toàn văn blog](https://uucreative.co/llms-full.txt): mọi bài đã đăng, dạng Markdown

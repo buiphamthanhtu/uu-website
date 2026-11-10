@@ -1,0 +1,468 @@
+/* Landing ÚÙ Design System (/design-system/) — phương án "Sân khấu": hero tối nhiều chấm, chữ Bungee lớn, cam làm điểm nhấn,
+   xen kẽ khối sáng và khối tối. Chỉ token semantic, không hex, không --color-*.
+   Tự chế (đã được chủ DS duyệt 2026-10-24): tiêu đề hero = display-lg × 1.5 (72), ngoài thang 11 bậc. */
+
+.ds-page { --ds-sec: var(--size-32); --ds-sec-in: var(--gap-12); overflow-x: clip; }
+.ds-wrap { width: 100%; max-width: 75rem; margin: 0 auto; padding-inline: var(--gap-6); }
+.ds-light { background: var(--background-surface); color: var(--object-primary); }
+.ds-dark { background-color: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-hero, .ds-dark {
+  background-image: radial-gradient(color-mix(in srgb, var(--object-primary-inverted) 16%, transparent) 1px, transparent 1px);
+  background-size: var(--gap-6) var(--gap-6);
+}
+.ds-page code { padding: 0 var(--gap-1); border-radius: var(--radius-sm); background: var(--background-emphasized); color: var(--object-primary);
+                font: var(--font-weight-normal) 0.9em/inherit ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-dark code, .ds-tile--dark code { background: color-mix(in srgb, var(--object-primary-inverted) 14%, transparent); color: var(--object-primary-inverted); }
+.ds-page span.uu-switch { display: inline-block; vertical-align: middle; }
+.ds-tok { white-space: nowrap; font-size: var(--font-size-xs) !important; line-height: var(--font-height-xs); }
+
+.ds-section { display: flex; flex-direction: column; gap: var(--ds-sec-in); padding-block: var(--ds-sec) 0; }
+.ds-light > .ds-section:last-child, .ds-dark > .ds-section, .ds-use > .ds-section { padding-bottom: var(--ds-sec); }
+.ds-head { display: flex; flex-direction: column; gap: var(--gap-3); max-width: 46rem; }
+.ds-head p { color: var(--object-secondary); }
+.ds-dark .ds-head p { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-head--row { flex-direction: row; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--gap-6); max-width: none; }
+.ds-eyebrow { font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); letter-spacing: .12em; text-transform: uppercase; }
+.ds-eyebrow--brand { color: var(--object-interactive); }
+.ds-eyebrow--brand-inv { color: var(--object-interactive-inverted); }
+.ds-actions { display: flex; flex-wrap: wrap; gap: var(--gap-3); }
+.ds-start { align-self: flex-start; }
+
+/* ---------- 1. Hero ---------- */
+.ds-hero { padding: var(--gap-16) 0 calc(var(--gap-16) * 2); color: var(--object-primary-inverted); }
+.ds-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gap-12); align-items: center; }
+.ds-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-6); min-width: 0; }
+.ds-pill { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) var(--gap-3); border-radius: var(--rounded-circle);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-pill__dot { width: var(--size-2); height: var(--size-2); border-radius: var(--rounded-circle); background: var(--background-positive); }
+.ds-h1 { font-family: var(--font-family-display); font-synthesis: none; font-weight: var(--font-weight-normal); letter-spacing: 0;
+         font-size: calc(var(--font-size-5xl) * 1.5); line-height: calc(var(--font-height-5xl) * 1.5); }
+.ds-ln { display: block; overflow: hidden; padding-bottom: .04em; }
+.ds-rise { display: inline-block; }
+.ds-h1__accent { color: var(--object-interactive-inverted); }
+/* bản tiếng Anh chữ dài hơn ("every platform."): lùi về 60 để giữ 3 dòng như bản tiếng Việt (tự chế, cùng họ với 72) */
+@media (min-width: 1200px) { :lang(en) > body .ds-h1 { font-size: calc(var(--font-size-5xl) * 1.25); line-height: calc(var(--font-height-5xl) * 1.25); } }
+.ds-lede { max-width: 34rem; font-size: var(--font-size-lg); line-height: var(--font-height-lg);
+           color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-brandswitch { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-3); }
+.ds-brandswitch .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+html.ds-brand-anim, html.ds-brand-anim * { transition: background-color 450ms ease, color 450ms ease, box-shadow 450ms ease; }
+
+/* Nút tách lớp 3D */
+.ds-hero__art { position: relative; min-width: 0; }
+.ds-explode { position: relative; display: flex; flex-direction: column; gap: var(--gap-2); padding: var(--gap-6); border-radius: var(--rounded-4xl);
+              background-color: var(--background-surface); color: var(--object-primary); box-shadow: var(--elevation-high);
+              background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                                linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+              background-size: var(--gap-6) var(--gap-6); }
+.ds-explode__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-3); color: var(--object-secondary); }
+.ds-persp { display: flex; align-items: center; justify-content: center; height: 18.75rem; perspective: 75rem; }
+.ds-iso { position: relative; width: 16.25rem; height: var(--size-16); transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-32deg); }
+.ds-lyr { position: absolute; inset: 0; border-radius: var(--rounded-circle); transform-style: preserve-3d; background: var(--background-interactive);
+          transform: translateZ(calc(var(--i) * 2.75rem)); }
+.ds-lyr--sl { background: color-mix(in srgb, var(--object-on-interactive) 20%, transparent); }
+.ds-lyr--content { display: flex; align-items: center; justify-content: center; gap: var(--gap-2); background: transparent; color: var(--object-primary);
+                   box-shadow: inset 0 0 0 1px var(--border-emphasized); font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); }
+.ds-lyr--focus { inset: calc(-1 * var(--gap-1)); background: transparent; box-shadow: inset 0 0 0 2px var(--border-interactive); }
+.ds-lpin, .ds-num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--size-7); height: var(--size-7);
+                    border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted);
+                    font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); }
+.ds-lpin { position: absolute; left: calc(-1 * var(--gap-3)); top: 50%; transform: translateY(-50%); }
+.ds-explode__legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-3); list-style: none; }
+.ds-explode__legend li { display: flex; align-items: flex-start; gap: var(--gap-3); font-size: var(--font-size-sm); line-height: var(--font-height-sm);
+                         color: var(--object-secondary); }
+.ds-explode__legend strong { display: block; color: var(--object-primary); }
+.ds-float { position: absolute; z-index: 2; }
+.ds-float .uu-chip { background: var(--background-surface); box-shadow: var(--elevation-medium), inset 0 0 0 var(--chip-border-width) var(--border-interactive); }
+.ds-float--1 { top: calc(-1 * var(--gap-6)); left: calc(-1 * var(--gap-8)); }
+.ds-float--2 { top: var(--gap-16); right: calc(-1 * var(--gap-6)); }
+.ds-float--2 .uu-badge { box-shadow: var(--elevation-medium); }
+.ds-float--3 { bottom: var(--size-24); left: calc(-1 * var(--gap-10)); padding: var(--gap-2); border-radius: var(--rounded-circle);
+               background: var(--background-surface); box-shadow: var(--elevation-medium); }
+
+/* ---------- 2. Flat lay kiểu bento, trôi liên tục ---------- */
+.ds-parade { --ds-fade: var(--size-24); padding: var(--gap-8) 0 var(--gap-16); color: var(--object-primary); background-color: var(--background-muted);
+             background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                               linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+             background-size: var(--gap-6) var(--gap-6); background-position: center top; }
+/* mép mờ: mask chỉ dùng độ trong của màu, nên màu nào cũng được */
+/* padding trong khung cắt để món lệch lên/xuống và bóng đổ không bị xén */
+.ds-parade__view { padding-block: var(--gap-4); overflow: hidden;
+             -webkit-mask-image: linear-gradient(90deg, transparent, var(--object-primary) var(--ds-fade), var(--object-primary) calc(100% - var(--ds-fade)), transparent);
+             mask-image: linear-gradient(90deg, transparent, var(--object-primary) var(--ds-fade), var(--object-primary) calc(100% - var(--ds-fade)), transparent); }
+.ds-fl__track { display: flex; width: max-content; }
+/* mỗi cột là lưới 3 hàng: món cao chiếm 2 hàng, món nhỏ gom chung một ô và giãn đều cho kín bề ngang.
+   Khoảng cách giữa cột bằng margin (không dùng gap) để trượt -50% là vòng khớp từng px */
+.ds-fl__col { display: grid; grid-template-rows: repeat(3, var(--size-16)); row-gap: var(--gap-4); margin-right: var(--gap-8); }
+.ds-fl__cell { display: flex; align-items: center; gap: var(--gap-3); min-width: 0; }
+.ds-fl__cell--group { justify-content: space-between; }
+.ds-fl__cell--tall { grid-row: span 2; }
+.ds-fl__cell--tall > .uu-kpi { align-self: stretch; justify-content: center; }
+.ds-fl__cell > .ds-fl__field, .ds-fl__cell > .uu-toast, .ds-fl__cell > .uu-kpi, .ds-fl__cell > .uu-menu, .ds-fl__cell > .ds-fl__tabs { flex: 1; }
+.ds-fl__field { min-width: var(--size-56); box-sizing: border-box; }
+.ds-fl__tabs { display: flex; box-shadow: inset 0 -1px 0 var(--border-muted); }
+.ds-parade .uu-kpi { min-width: var(--size-48); box-sizing: border-box; }
+.ds-parade .uu-menuitem { position: relative; }
+.ds-motion .ds-fl__track { animation: ds-marquee 80s linear infinite; }
+.ds-parade:hover .ds-fl__track { animation-play-state: paused; }
+html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
+
+/* ---------- 3. Số liệu ---------- */
+.ds-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-6); padding-top: var(--gap-12); }
+.ds-stat { display: flex; flex-direction: column; gap: var(--gap-1); padding-top: var(--gap-4); border-top: 2px solid var(--object-primary); }
+.ds-stat .text-caption { color: var(--object-secondary); }
+.ds-stat__value { display: inline-block; min-width: 3ch; font-variant-numeric: tabular-nums; }
+
+/* ---------- 4. Bento bốn nguyên tắc ---------- */
+.ds-bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap-6); }
+.ds-tile { position: relative; display: flex; flex-direction: column; gap: var(--gap-4); grid-column: span 2; min-height: var(--size-80);
+           padding: var(--gap-6); border-radius: var(--rounded-3xl); overflow: hidden; }
+.ds-tile--wide { grid-column: span 4; }
+.ds-tile--muted { background: var(--background-muted); }
+.ds-tile--brand { background: var(--background-interactive-muted); }
+.ds-tile--dark { background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-tile__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--gap-3); }
+.ds-tile__text { max-width: 36rem; color: var(--object-secondary); }
+.ds-tile--dark .ds-tile__text, .ds-tile--dark .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-more { margin-top: auto; align-self: flex-start; }
+
+/* AI: dòng lệnh tự gõ */
+.ds-term { display: flex; flex-direction: column; gap: var(--gap-2); padding: var(--gap-5); border-radius: var(--rounded-2xl);
+           background: var(--background-inverted); color: var(--object-primary-inverted);
+           font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-term__line { display: block; max-width: 100%; overflow: hidden; white-space: nowrap; }
+.ds-term__dim { color: color-mix(in srgb, var(--object-primary-inverted) 60%, transparent); }
+.ds-term__ok { color: var(--object-interactive-inverted); }
+.ds-caret { display: inline-block; width: .6em; height: 1.1em; background: var(--object-interactive-inverted); }
+.ds-motion .ds-term.is-in .ds-term__line { width: 0; animation: ds-type1 9s steps(32) infinite; }
+.ds-motion .ds-term.is-in .ds-term__line--2 { animation-name: ds-type2; }
+.ds-motion .ds-term.is-in .ds-term__line--3 { animation-name: ds-type3; animation-timing-function: steps(40); }
+.ds-motion .ds-caret { animation: ds-blink 1s steps(1) infinite; }
+@keyframes ds-type1 { 0% { width: 0; } 18%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type2 { 0%, 24% { width: 0; } 42%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type3 { 0%, 48% { width: 0; } 66%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-blink { 50% { opacity: 0; } }
+
+/* State layer: con trỏ bay vào, lớp phủ 0 → 20 → 40% */
+.ds-sl { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; min-height: var(--size-28); }
+.ds-sl__btn { position: relative; isolation: isolate; }
+.ds-sl__ov { position: absolute; inset: 0; border-radius: inherit; background: currentColor; opacity: var(--opacity-20); pointer-events: none; }
+.ds-sl__cursor { position: absolute; right: 22%; bottom: var(--gap-3); color: var(--object-primary); }
+.ds-caps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap-2); }
+.ds-cap { padding: var(--gap-1) var(--gap-3); border-radius: var(--rounded-circle); box-shadow: inset 0 0 0 1px var(--border-muted);
+          font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-semibold); color: var(--object-secondary); }
+.ds-cap--2 { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+.ds-motion .ds-sl__ov { animation: ds-sl 3.9s steps(1) infinite; }
+.ds-motion .ds-sl__cursor { animation: ds-cursor 3.9s ease-in-out infinite; }
+.ds-motion .ds-cap--1 { animation: ds-cap1 3.9s steps(1) infinite; }
+.ds-motion .ds-cap--2 { animation: ds-cap2 3.9s steps(1) infinite; }
+.ds-motion .ds-cap--3 { animation: ds-cap3 3.9s steps(1) infinite; }
+@keyframes ds-sl { 0% { opacity: 0; } 33.3% { opacity: var(--opacity-20); } 66.6% { opacity: var(--opacity-40); } }
+@keyframes ds-cursor { 0% { transform: translate(3.75rem, 2.5rem); opacity: 0; } 20%, 30% { transform: none; opacity: 1; }
+                       66%, 90% { transform: scale(.85); opacity: 1; } 100% { transform: translate(3.75rem, 2.5rem); opacity: 0; } }
+@keyframes ds-cap1 { 0% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+                     33.3% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); } }
+@keyframes ds-cap2 { 0% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); }
+                     33.3% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; }
+                     66.6% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); } }
+@keyframes ds-cap3 { 0% { background: transparent; color: var(--object-secondary); box-shadow: inset 0 0 0 1px var(--border-muted); }
+                     66.6% { background: var(--background-inverted); color: var(--object-primary-inverted); box-shadow: none; } }
+
+/* Tương phản */
+.ds-ratio { display: flex; align-items: center; gap: var(--gap-4); }
+.ds-ratio__sample { pointer-events: none; }
+.ds-meter { position: relative; height: var(--size-3); margin-top: var(--gap-6); border-radius: var(--rounded-circle); background: var(--background-emphasized); }
+.ds-meter__fill { width: 35.7%; height: 100%; border-radius: inherit; background: var(--background-interactive); transform-origin: left;
+                  transition: width 450ms ease, transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.ds-motion .ds-meter:not(.is-in) .ds-meter__fill { transform: scaleX(0); }
+.ds-tick { position: absolute; top: calc(-1 * var(--gap-1)); bottom: calc(-1 * var(--gap-1)); width: 2px; background: var(--object-primary); }
+.ds-tick span { position: absolute; bottom: calc(100% + var(--gap-1)); left: 50%; transform: translateX(-50%); white-space: nowrap;
+                font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); }
+.ds-tick--below span { bottom: auto; top: calc(100% + var(--gap-1)); }
+.ds-badges { display: flex; margin-top: var(--gap-4); flex-wrap: wrap; gap: var(--gap-2); }
+
+/* Một component, mọi brand: thanh gạt quét qua lại */
+.ds-wipe { position: relative; height: var(--size-44); border-radius: var(--rounded-2xl); overflow: hidden; }
+.ds-wipe__layer { position: absolute; inset: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; align-content: center;
+                  gap: var(--gap-3); padding: var(--gap-4) var(--gap-6); background: var(--background-surface); color: var(--object-primary); }
+.ds-wipe__top { clip-path: inset(0 50% 0 0); }
+.ds-wipe__tag { position: absolute; left: var(--gap-4); bottom: var(--gap-3); color: var(--object-interactive);
+                font-size: var(--font-size-xs); line-height: var(--font-height-xs); font-weight: var(--font-weight-bold); letter-spacing: .12em; text-transform: uppercase; }
+.ds-wipe__tag--r { left: auto; right: var(--gap-4); }
+.ds-wipe__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--background-inverted); }
+.ds-wipe__handle span { position: absolute; top: 50%; left: 50%; display: flex; align-items: center; justify-content: center; width: var(--size-8); height: var(--size-8);
+                        border-radius: var(--rounded-circle); transform: translate(-50%, -50%); background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-motion .ds-wipe__top { animation: ds-wipe 6s ease-in-out infinite; }
+.ds-motion .ds-wipe__handle { animation: ds-handle 6s ease-in-out infinite; }
+@keyframes ds-wipe { 0%, 100% { clip-path: inset(0 85% 0 0); } 45%, 55% { clip-path: inset(0 15% 0 0); } }
+@keyframes ds-handle { 0%, 100% { left: 15%; } 45%, 55% { left: 85%; } }
+
+/* ---------- 5. Kiến trúc token ---------- */
+.ds-pipe { display: flex; align-items: stretch; }
+.ds-stg { display: flex; flex: 1 1 0; flex-direction: column; gap: var(--gap-3); min-width: 0; padding: var(--gap-6); border-radius: var(--rounded-3xl);
+          box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-stg .text-caption { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-stg .ds-eyebrow { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-conn { position: relative; flex: 0 0 var(--size-16); align-self: center; height: 2px;
+           background: repeating-linear-gradient(90deg, var(--border-inverted) 0 6px, transparent 6px 12px); }
+.ds-pdot { position: absolute; top: 50%; left: 0; width: var(--size-2); height: var(--size-2); margin-top: calc(-1 * var(--size-1));
+           border-radius: var(--rounded-circle); background: var(--object-interactive-inverted); opacity: 0; }
+.ds-motion .ds-pdot { animation: ds-dot 2.4s linear infinite; }
+.ds-pdot:nth-child(2) { animation-delay: -.8s; }
+.ds-pdot:nth-child(3) { animation-delay: -1.6s; }
+@keyframes ds-dot { 0% { left: 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.ds-ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: var(--gap-0-5); height: var(--size-10); margin-top: auto; }
+.ds-ramp span { border-radius: var(--radius-sm); }
+.ds-ramp span:nth-child(1)  { background: color-mix(in srgb, var(--background-interactive) 8%,  var(--background-surface)); }
+.ds-ramp span:nth-child(2)  { background: color-mix(in srgb, var(--background-interactive) 18%, var(--background-surface)); }
+.ds-ramp span:nth-child(3)  { background: color-mix(in srgb, var(--background-interactive) 34%, var(--background-surface)); }
+.ds-ramp span:nth-child(4)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-surface)); }
+.ds-ramp span:nth-child(5)  { background: color-mix(in srgb, var(--background-interactive) 74%, var(--background-surface)); }
+.ds-ramp span:nth-child(6)  { background: var(--background-interactive); box-shadow: 0 0 0 2px var(--object-primary-inverted); }
+.ds-ramp span:nth-child(7)  { background: color-mix(in srgb, var(--background-interactive) 84%, var(--background-inverted)); }
+.ds-ramp span:nth-child(8)  { background: color-mix(in srgb, var(--background-interactive) 68%, var(--background-inverted)); }
+.ds-ramp span:nth-child(9)  { background: color-mix(in srgb, var(--background-interactive) 52%, var(--background-inverted)); }
+.ds-ramp span:nth-child(10) { background: color-mix(in srgb, var(--background-interactive) 36%, var(--background-inverted)); }
+.ds-ramp span:nth-child(11) { background: color-mix(in srgb, var(--background-interactive) 20%, var(--background-inverted)); box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-motion .ds-ramp.is-in span { animation: ds-pop 500ms cubic-bezier(.2,.7,.2,1) backwards; animation-delay: calc(var(--i, 0) * 45ms); }
+@keyframes ds-pop { from { opacity: 0; transform: translateY(var(--gap-2)) scaleY(.4); } }
+.ds-roles { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-2); margin-top: auto; }
+.ds-role { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) var(--gap-3) var(--gap-1) var(--gap-1); border-radius: var(--rounded-circle);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); font: var(--font-weight-normal) var(--font-size-xs)/var(--font-height-xs) ui-monospace, Menlo, monospace; }
+.ds-role::before { content: ""; width: var(--size-5); height: var(--size-5); border-radius: var(--rounded-circle); background: var(--swatch);
+                   box-shadow: inset 0 0 0 1px var(--border-muted-inverted); }
+.ds-axes { display: flex; flex-wrap: wrap; gap: var(--gap-3); }
+.ds-axis { display: flex; flex: 1 1 12rem; flex-direction: column; gap: var(--gap-1); padding: var(--gap-5) var(--gap-6); border-radius: var(--radius-lg);
+           box-shadow: inset 0 0 0 1px var(--border-inverted); }
+.ds-axis .text-caption { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+
+/* ---------- 6. Giải phẫu component ---------- */
+.ds-anatomy__body { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--gap-6); align-items: stretch; }
+.ds-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: var(--size-96);
+            padding: var(--gap-16) var(--gap-12); border-radius: var(--rounded-3xl); overflow: hidden;
+            background-color: var(--background-surface); box-shadow: inset 0 0 0 1px var(--border-muted);
+            background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                              linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+            background-size: var(--gap-6) var(--gap-6); }
+.ds-stage__zoom { zoom: 2; position: relative; z-index: 1; }
+.ds-stage__zoom .uu-fieldset { width: 11rem; }
+.ds-stage__svg { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.ds-stage__svg .box { fill: none; stroke: var(--object-interactive); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.ds-stage__svg .lead { stroke: var(--object-primary); stroke-width: 1; }
+.ds-stage__svg .dot { fill: var(--object-primary); }
+.ds-stage__svg .pin circle { fill: var(--background-inverted); stroke: var(--background-surface); stroke-width: 3; }
+.ds-stage__svg .pin circle.dot { fill: var(--object-primary); stroke: none; }
+.ds-stage__svg .pin text { fill: var(--object-primary-inverted); font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
+.ds-stage__svg .dim { stroke: var(--object-interactive); stroke-width: 1; }
+.ds-stage__svg .dim-text { fill: var(--background-surface); font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); text-anchor: middle; dominant-baseline: central; }
+.ds-stage__svg .dim-bg { fill: var(--object-interactive); }
+.ds-motion .ds-stage__svg > * { opacity: 0; animation: ds-fade 450ms cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--d, 0) * 70ms); }
+@keyframes ds-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.ds-pulse::after { animation: ds-pulse-layer 2.4s ease-in-out infinite; }
+@keyframes ds-pulse-layer { 0%, 100% { opacity: 0; } 50% { opacity: var(--opacity-20); } }
+.ds-spec { display: flex; flex-direction: column; gap: var(--gap-5); padding: var(--gap-6); border-radius: var(--rounded-3xl); background: var(--background-muted); }
+.ds-legend { display: flex; flex-direction: column; gap: var(--gap-4); list-style: none; counter-reset: ds; }
+.ds-legend li { display: grid; grid-template-columns: var(--size-7) minmax(0, 1fr); gap: var(--gap-3); align-items: start; }
+.ds-legend li::before { counter-increment: ds; content: counter(ds); display: flex; align-items: center; justify-content: center; width: var(--size-7); height: var(--size-7);
+                        border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted);
+                        font: var(--font-weight-bold) var(--font-size-xs)/1 var(--font-family-body); }
+.ds-legend strong { display: block; }
+.ds-legend .text-caption { display: block; color: var(--object-secondary); }
+.ds-toks { display: flex; flex-wrap: wrap; gap: var(--gap-1); margin-top: var(--gap-1-5); }
+.ds-toks code { font-size: var(--font-size-xs); line-height: var(--font-height-xs); }
+[data-anat-panel][hidden] { display: none !important; }
+
+/* ---------- 7. Brand × density ---------- */
+.ds-matrix { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-6); }
+.ds-cell { display: flex; flex-direction: column; gap: var(--gap-4); padding: var(--gap-6); border-radius: var(--rounded-3xl);
+           background: var(--background-muted); color: var(--object-primary); }
+.ds-cell__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-3); }
+.ds-cell__row { display: flex; flex-wrap: wrap; gap: var(--gap-2); }
+.ds-cell .uu-field { background: var(--background-surface); }
+.ds-cell .uu-btngroup > .uu-btn { flex: 1; }
+
+/* ---------- Thẻ chung, danh mục, cây quyết định ---------- */
+.ds-grid { display: grid; gap: var(--gap-6); }
+.ds-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ds-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ds-card { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-8); border-radius: var(--rounded-3xl);
+           background: var(--background-muted); color: var(--object-primary); }
+.ds-catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--gap-6); }
+.ds-group__head { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-2); }
+.ds-links { display: flex; flex-direction: column; gap: var(--gap-1); list-style: none; }
+.ds-links a { display: inline-flex; align-items: center; gap: var(--gap-2); padding: var(--gap-1) 0; color: var(--object-primary); text-decoration: none; }
+.ds-links a:hover { color: var(--object-interactive); text-decoration: underline; text-underline-offset: 3px; }
+.ds-links a .uu-icon { width: var(--size-4); height: var(--size-4); color: var(--object-secondary); }
+.ds-trees { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--gap-8); padding: var(--gap-10); border-radius: var(--rounded-3xl);
+            background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-trees .ds-head p { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-trees .ds-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-1) var(--gap-6); }
+.ds-trees .ds-links a { color: var(--object-primary-inverted); }
+.ds-trees .ds-links a:hover { color: var(--object-interactive-inverted); }
+.ds-trees .ds-links a .uu-icon { color: var(--object-interactive-inverted); }
+
+/* ---------- 10. Nền tảng ---------- */
+.ds-plat { display: flex; flex-direction: column; gap: var(--gap-3); padding: var(--gap-6); border-radius: var(--rounded-3xl);
+           box-shadow: inset 0 0 0 1px var(--border-muted); }
+.ds-plat p { color: var(--object-secondary); }
+.ds-ibox { display: flex; align-items: center; justify-content: center; width: var(--size-12); height: var(--size-12); border-radius: var(--rounded-circle);
+           background: var(--background-interactive-muted); color: var(--object-interactive); }
+
+/* ---------- 11. Developer & AI ---------- */
+.ds-code { margin: 0; padding: var(--gap-5) var(--gap-6); overflow-x: auto; border-radius: var(--radius-lg);
+           background: var(--background-inverted); color: var(--object-primary-inverted);
+           font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
+.ds-code code { padding: 0; background: none; color: inherit; font: inherit; }
+
+/* ---------- 12. Kêu gọi liên hệ ---------- */
+.ds-cta { position: relative; overflow: hidden; padding: var(--gap-16) var(--gap-12); border-radius: var(--rounded-4xl);
+          background: var(--background-interactive); color: var(--object-on-interactive); }
+.ds-cta__copy { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--gap-5); max-width: 40rem; }
+.ds-cta__text { font-size: var(--font-size-lg); line-height: var(--font-height-lg); }
+.ds-cta__badge { position: absolute; top: 50%; right: var(--gap-12); width: var(--size-44); height: var(--size-44); margin-top: calc(var(--size-44) / -2); fill: currentColor; }
+.ds-cta__badge text { font-family: var(--font-family-display); font-synthesis: none; font-size: var(--font-size-sm); letter-spacing: .2em; }
+.ds-motion .ds-cta__badge { animation: ds-spin 18s linear infinite; }
+@keyframes ds-spin { to { transform: rotate(360deg); } }
+.ds-meta { padding: var(--ds-sec-in) var(--gap-6) var(--gap-10); color: var(--object-secondary); text-align: center; }
+.ds-meta a { color: var(--object-interactive); }
+
+/* ---------- Cách dùng: ba hàng xếp dọc, chữ trái, luồng nguồn → DNA → kết quả phải ---------- */
+.ds-use { background: var(--background-interactive-muted); color: var(--object-primary); }
+.ds-use .ds-head p:not(.ds-eyebrow) { font-size: var(--font-size-lg); line-height: var(--font-height-lg); color: var(--object-primary); }
+.ds-ucards { display: flex; flex-direction: column; gap: var(--gap-8); }
+.ds-ucard { --dot: var(--object-interactive); --dash: var(--border-emphasized); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: var(--gap-12); align-items: center; padding: var(--gap-12); border-radius: var(--rounded-3xl); background: var(--background-surface); color: var(--object-primary); }
+.ds-ucard--dark { --dot: var(--object-interactive-inverted); --dash: var(--border-inverted); background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-ucard--brand { --dot: var(--object-on-interactive); --dash: var(--object-on-interactive); background: var(--background-interactive); color: var(--object-on-interactive); }
+.ds-ucard__copy { display: flex; flex-direction: column; gap: var(--gap-4); min-width: 0; }
+.ds-ucard__text { max-width: 30rem; font-size: var(--font-size-lg); line-height: var(--font-height-lg); color: var(--object-secondary); }
+.ds-ucard--dark .ds-ucard__text, .ds-ucard--dark .ds-ulab { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.ds-ucard--brand .ds-ucard__text, .ds-ucard--brand .ds-ulab { color: var(--object-on-interactive); }
+.ds-utags { display: flex; flex-wrap: wrap; gap: var(--gap-1); margin-top: var(--gap-2); }
+.ds-utag { padding: 0 var(--gap-1); border-radius: var(--radius-sm); background: var(--background-emphasized); font-size: var(--font-size-xs); line-height: var(--font-height-xs); white-space: nowrap; }
+.ds-ucard--dark .ds-utag { background: color-mix(in srgb, var(--object-primary-inverted) 14%, transparent); }
+.ds-ucard--brand .ds-utag { background: color-mix(in srgb, var(--object-on-interactive) 14%, transparent); }
+.ds-uflow { display: grid; grid-template-columns: minmax(0, 1fr) var(--size-8) var(--size-12) var(--size-8) minmax(0, 1fr); gap: var(--gap-2) 0; align-items: center;
+            justify-self: end; width: 100%; max-width: 36rem; }
+.ds-ulab { text-align: center; color: var(--object-secondary); }
+.ds-umini { position: relative; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--gap-2); min-height: var(--size-40); padding: var(--gap-3);
+            border-radius: var(--radius-lg); overflow: hidden; background: var(--background-surface); color: var(--object-primary); box-shadow: inset 0 0 0 1px var(--border-muted); }
+.ds-umini .uu-btn { width: 100%; box-sizing: border-box; margin-top: auto; justify-content: center; }
+.ds-umini .uu-field input { width: 100%; }
+.ds-uchips { display: flex; flex-wrap: wrap; gap: var(--gap-1); }
+.ds-uempty { align-items: center; justify-content: center; text-align: center; background: transparent; color: var(--object-on-interactive); box-shadow: none;
+             outline: 2px dashed var(--object-on-interactive); outline-offset: -2px; }
+.ds-uspark { display: flex; align-items: center; justify-content: center; justify-self: center; width: var(--size-12); height: var(--size-12);
+             border-radius: var(--rounded-circle); background: var(--background-inverted); color: var(--object-primary-inverted); }
+.ds-ustack { position: relative; }
+.ds-uover { position: absolute; inset: 0; clip-path: inset(0); }
+.ds-uconn { position: relative; height: 2px; background: repeating-linear-gradient(90deg, var(--dash) 0 4px, transparent 4px 8px); }
+.ds-udot { position: absolute; top: 50%; left: 0; width: var(--size-2); height: var(--size-2); margin-top: calc(-1 * var(--size-1));
+           border-radius: var(--rounded-circle); background: var(--dot); opacity: 0; }
+.ds-uart { position: relative; flex: none; height: var(--size-16); border-radius: var(--radius-base); overflow: hidden; background: var(--background-accent-subtle); }
+.ds-uart i { position: absolute; display: block; }
+.ds-uart i:first-child { left: calc(-1 * var(--gap-5)); top: var(--gap-3); width: var(--size-16); height: var(--size-16); border-radius: var(--rounded-circle); background: var(--background-interactive); }
+.ds-uart i:last-child { right: var(--gap-4); top: var(--gap-3); width: var(--size-8); height: var(--size-8); border-radius: var(--radius-sm); transform: rotate(18deg); background: var(--background-accent-emphasized); }
+.ds-dna { display: flex; flex-direction: column; align-items: center; gap: var(--gap-1); }
+.ds-rung { position: relative; display: block; width: var(--size-10); height: var(--size-2); }
+.ds-rung::before { content: ""; position: absolute; left: var(--gap-1); right: var(--gap-1); top: 50%; height: 1px; background: var(--dash); }
+.ds-rung i { position: absolute; top: 0; display: block; width: var(--size-2); height: var(--size-2); border-radius: var(--rounded-circle); background: var(--background-interactive); }
+.ds-rung i:first-child { left: 0; }
+.ds-rung i:last-child { right: 0; background: var(--background-accent-emphasized); }
+.ds-motion .ds-uspark { animation: ds-uspark 2.4s ease-in-out infinite; }
+.ds-motion .ds-ub { animation: ds-ubuild 8s ease-out infinite both; animation-delay: calc(var(--dl, 0s) + var(--b) * .18s); }
+.ds-motion .ds-udot { animation: ds-ud1 8s linear infinite both; animation-delay: calc(var(--dl, 0s) + var(--o, 0s)); }
+.ds-motion .ds-uconn--2 .ds-udot { animation-name: ds-ud2; }
+.ds-motion .ds-uover { animation: ds-uwipe 8s ease-in-out infinite both; animation-delay: var(--dl, 0s); }
+.ds-motion .ds-ustack { animation: ds-upop 8s ease-out infinite both; animation-delay: var(--dl, 0s); }
+.ds-motion .ds-rung { animation: ds-helix 2.8s ease-in-out infinite; animation-delay: calc(var(--r) * -.22s); }
+@keyframes ds-ud1 { 0% { left: 0; opacity: 0; } 4% { opacity: 1; } 26% { left: 100%; opacity: 1; } 30%, 100% { left: 100%; opacity: 0; } }
+@keyframes ds-ud2 { 0%, 30% { left: 0; opacity: 0; } 34% { opacity: 1; } 54% { left: 100%; opacity: 1; } 58%, 100% { left: 100%; opacity: 0; } }
+@keyframes ds-uwipe { 0%, 56% { clip-path: inset(100% 0 0 0); } 66%, 92% { clip-path: inset(0); } 100% { clip-path: inset(0 0 100% 0); } }
+@keyframes ds-upop { 0%, 56% { transform: none; } 62% { transform: scale(1.04); } 70%, 100% { transform: none; } }
+@keyframes ds-helix { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(-1); } }
+@keyframes ds-uspark { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes ds-ubuild { 0%, 54% { opacity: 0; transform: translateY(var(--gap-1-5)); } 60%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; transform: none; } }
+@media (max-width: 999px) {
+  .ds-ucard { grid-template-columns: minmax(0, 1fr); gap: var(--gap-6); padding: var(--gap-6); }
+  .ds-uflow { justify-self: center; }
+}
+@media (max-width: 599px) {
+  .ds-uflow { grid-template-columns: minmax(0, 1fr) var(--size-14) minmax(0, 1fr); column-gap: var(--gap-2); }
+  .ds-uflow > span:not(.ds-ulab), .ds-uconn { display: none; }
+}
+
+/* ---------- Chuyển động chung — chỉ chạy khi JS gắn .ds-motion (không bật giảm chuyển động) ---------- */
+.ds-motion .ds-rise { animation: ds-rise 900ms cubic-bezier(.2,.7,.2,1) backwards; }
+.ds-motion .ds-rise--2 { animation-delay: 130ms; }
+.ds-motion .ds-rise--3 { animation-delay: 260ms; }
+@keyframes ds-rise { from { transform: translateY(105%); } }
+.ds-motion .ds-iso { animation: ds-tilt 9s ease-in-out infinite; }
+.ds-motion .ds-lyr { animation: ds-explode 7s cubic-bezier(.6,0,.2,1) infinite; }
+.ds-motion .ds-lyr--content { animation-name: ds-explode-content; }
+@keyframes ds-tilt { 0%, 100% { transform: rotateX(56deg) rotateZ(-32deg); } 50% { transform: rotateX(50deg) rotateZ(-24deg); } }
+@keyframes ds-explode { 0%, 12%, 100% { transform: translateZ(0); } 40%, 82% { transform: translateZ(calc(var(--i) * 2.75rem)); } }
+/* lớp nội dung: lúc xếp chồng mang màu chữ trên nút, lúc bung ra nằm trên nền trắng nên đổi sang chữ thường */
+@keyframes ds-explode-content {
+  0%, 12%, 100% { transform: translateZ(0); color: var(--object-on-interactive); box-shadow: inset 0 0 0 1px transparent; }
+  40%, 82% { transform: translateZ(calc(var(--i) * 2.75rem)); color: var(--object-primary); box-shadow: inset 0 0 0 1px var(--border-emphasized); }
+}
+.ds-motion .ds-float { animation: ds-bob 5s ease-in-out infinite alternate; }
+.ds-motion .ds-float--2 { animation-delay: -2.5s; }
+.ds-motion .ds-float--3 { animation-delay: -3.5s; }
+@keyframes ds-bob { to { transform: translateY(calc(-1 * var(--gap-3-5))); } }
+.ds-motion .ds-pill__dot { animation: ds-ping 2s ease-out infinite; }
+@keyframes ds-ping { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--background-positive) 60%, transparent); } to { box-shadow: 0 0 0 var(--gap-2-5) transparent; } }
+@keyframes ds-marquee { to { transform: translateX(-50%); } }
+
+.ds-motion .ds-reveal { opacity: 0; transform: translateY(var(--gap-6)); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); }
+.ds-motion .ds-reveal.is-in { opacity: 1; transform: none; }
+.ds-motion .ds-reveal[data-delay="1"] { transition-delay: 90ms; }
+.ds-motion .ds-reveal[data-delay="2"] { transition-delay: 180ms; }
+.ds-motion .ds-reveal[data-delay="3"] { transition-delay: 270ms; }
+.ds-motion .ds-reveal[data-delay="4"] { transition-delay: 360ms; }
+.ds-motion .ds-reveal[data-delay="5"] { transition-delay: 450ms; }
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 1199px) {
+  .ds-h1 { font-size: var(--font-size-5xl); line-height: var(--font-height-5xl); }
+  .ds-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ds-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ds-float--1 { left: calc(-1 * var(--gap-3)); }
+  .ds-float--3 { left: calc(-1 * var(--gap-4)); }
+  .ds-float--2 { right: calc(-1 * var(--gap-2)); }
+}
+@media (max-width: 899px) {
+  .ds-wrap { padding-inline: var(--gap-4); }
+  .ds-page { --ds-sec: var(--size-20); --ds-sec-in: var(--gap-8); }
+  .ds-hero { padding: var(--gap-10) 0 calc(var(--gap-16) + var(--gap-8)); }
+  .ds-hero__grid, .ds-anatomy__body, .ds-grid--2, .ds-trees { grid-template-columns: minmax(0, 1fr); }
+  .ds-h1 { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
+  .ds-lede { font-size: var(--font-size-base); line-height: var(--font-height-base); }
+  .ds-hero__art { margin-top: var(--gap-6); }
+  .ds-explode { padding: var(--gap-5); }
+  .ds-persp { height: 15rem; }
+  .ds-iso { width: 13.75rem; height: var(--size-14); }
+  .ds-explode__legend { grid-template-columns: minmax(0, 1fr); }
+  .ds-float--1 { top: calc(-1 * var(--gap-5)); left: var(--gap-2); }
+  .ds-float--2 { top: var(--gap-12); right: var(--gap-2); }
+  .ds-float--3 { display: none; }
+  .ds-parade { --ds-fade: var(--size-8); padding: var(--gap-4) 0 var(--gap-12); }
+  .ds-fl__col { margin-right: var(--gap-8); }
+  .ds-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: var(--gap-8); }
+  .ds-bento, .ds-matrix { grid-template-columns: minmax(0, 1fr); }
+  .ds-tile, .ds-tile--wide { grid-column: auto; min-height: 0; }
+  .ds-wipe__layer { gap: var(--gap-2); padding: var(--gap-4); }
+  .ds-pipe { flex-direction: column; gap: var(--gap-4); }
+  .ds-conn { display: none; }
+  .ds-stage { min-height: var(--size-72); padding: var(--gap-12) var(--gap-4); }
+  .ds-stage__zoom { zoom: 1.15; }
+  .ds-card, .ds-trees { padding: var(--gap-6); }
+  .ds-trees .ds-links { grid-template-columns: 1fr; }
+  .ds-cta { padding: var(--gap-10) var(--gap-6); }
+  .ds-cta .text-display-lg { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
+  .ds-cta__badge { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-pulse::after { animation: none; opacity: var(--opacity-20); }
+}

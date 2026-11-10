@@ -1,0 +1,68 @@
+/* Trang chủ: chuyển động mượn ngôn ngữ landing UU DS + ô ÚÙ Design System.
+   Cần landing.css (dải component .ds-fl__*, .ds-pill, .ds-eyebrow). Chỉ token semantic.
+   .hm-motion do js/home.js bật trên <html>; người dùng chọn giảm chuyển động thì trang đứng yên. */
+
+/* 1. Hero: chữ trồi từng dòng */
+.hm-ln { display: block; overflow: hidden; padding-bottom: .04em; }
+.hm-rise { display: inline-block; }
+.hm-motion .hm-rise { animation: hm-rise 900ms cubic-bezier(.2,.7,.2,1) backwards; animation-delay: calc(var(--d, 0) * 130ms + 200ms); }
+@keyframes hm-rise { from { transform: translateY(105%); } }
+
+/* 2. Hiện dần khi cuộn tới, so le theo --d */
+.hm-motion .hm-reveal { opacity: 0; transform: translateY(var(--gap-6));
+                        transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
+                        transition-delay: calc(var(--d, 0) * 90ms); }
+.hm-motion .hm-reveal.is-in { opacity: 1; transform: none; }
+
+/* 3. Services: tag bật lên lần lượt */
+.hm-motion .card--services .tags > * { opacity: 0; }
+.hm-motion .card--services.is-in .tags > * { opacity: 1; animation: hm-pop 500ms cubic-bezier(.2,.7,.2,1) backwards;
+                                             animation-delay: calc(var(--i, 0) * 90ms + 400ms); }
+@keyframes hm-pop { from { opacity: 0; transform: translateY(var(--gap-2)) scale(.9); } }
+
+/* 4. Ô ÚÙ Design System */
+.hm-ds { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--gap-10); align-items: center;
+         padding: var(--gap-12) var(--gap-10); border-radius: var(--rounded-2xl);
+         color: var(--object-primary-inverted); box-shadow: inset 0 0 0 1px var(--border-inverted);
+         background-color: var(--background-inverted);
+         background-image: radial-gradient(color-mix(in srgb, var(--object-primary-inverted) 16%, transparent) 1px, transparent 1px);
+         background-size: var(--gap-6) var(--gap-6); }
+.hm-ds__copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-5); min-width: 0; }
+.hm-ds__title { font-family: var(--font-family-display); font-synthesis: none; font-weight: var(--font-weight-normal);
+                font-size: var(--font-size-5xl); line-height: var(--font-height-5xl); text-transform: uppercase; }
+.hm-ds__title em { font-style: normal; color: var(--object-interactive-inverted); }
+.hm-ds__lede { color: color-mix(in srgb, var(--object-primary-inverted) 72%, transparent); }
+.hm-motion .hm-ds .ds-pill__dot { animation: hm-blink 1.6s ease-in-out infinite; }
+@keyframes hm-blink { 50% { opacity: .25; } }
+/* khung component: nền caro sáng, chia đôi — trái brand UU, phải brand Default, hai lớp chạy cùng nhịp nên món qua vạch giữa là đổi màu */
+.hm-ds__stage { position: relative; min-width: 0; overflow: hidden; border-radius: var(--rounded-2xl);
+                min-height: calc(var(--size-16) * 3 + var(--gap-4) * 2 + var(--gap-8) * 2);
+                color: var(--object-primary); background-color: var(--background-muted);
+                background-image: linear-gradient(color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px),
+                                  linear-gradient(90deg, color-mix(in srgb, var(--object-primary) 6%, transparent) 1px, transparent 1px);
+                background-size: var(--gap-6) var(--gap-6); }
+.hm-ds__half { --ds-fade: var(--size-16); position: absolute; inset: var(--gap-4) 0; }
+.hm-ds__half--l { clip-path: inset(0 50% 0 0); }
+.hm-ds__half--r { clip-path: inset(0 0 0 50%); }
+.hm-ds__stage .ds-fl__track { animation-duration: 60s; }
+.hm-ds__stage .uu-kpi { min-width: var(--size-48); box-sizing: border-box; }
+.hm-ds__stage .uu-menuitem { position: relative; }
+.hm-ds__stage:hover .ds-fl__track { animation-play-state: paused; }
+.hm-ds__seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; border-left: 1px dashed var(--border-emphasized); }
+.hm-ds__lbl { position: absolute; z-index: 2; bottom: var(--gap-2); padding: 0 var(--gap-2); border-radius: var(--rounded-circle);
+              background: var(--background-surface); color: var(--object-secondary); }
+.hm-ds__lbl--l { right: calc(50% + var(--gap-2)); }
+.hm-ds__lbl--r { left: calc(50% + var(--gap-2)); }
+
+/* 5. About: chữ sáng dần theo từng từ */
+.hm-motion .hm-words span { opacity: .28; transition: opacity 500ms ease; transition-delay: calc(var(--i, 0) * 45ms + 300ms); }
+.hm-motion .is-in .hm-words span { opacity: 1; }
+
+/* 6. Blog: ảnh phóng nhẹ khi rê */
+.cover img { transition: transform 600ms cubic-bezier(.2,.7,.2,1); }
+.cover:hover img, .cover:focus-visible img { transform: scale(1.04); }
+
+@media (max-width: 899px) {
+  .hm-ds { grid-template-columns: minmax(0, 1fr); gap: var(--gap-8); padding: var(--gap-8) var(--gap-6); }
+  .hm-ds__title { font-size: var(--font-size-3xl); line-height: var(--font-height-3xl); }
+}
