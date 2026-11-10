@@ -4,6 +4,8 @@
 //   1. Nhận Google access token từ portal, hỏi Google xem token có đúng là của
 //      ứng dụng mình (aud = GOOGLE_CLIENT_ID) và email có nằm trong ALLOWED_EMAILS không.
 //   2. Chỉ cho đọc/ghi đúng hai chỗ: posts/<slug>.md và assets/uploads/<tên-ảnh>.
+//      Bài nháp (front matter `draft: true`) KHÔNG ghi vào GitHub (repo công khai) mà lưu trong
+//      bảng `drafts` của D1. Chỉ khi đăng bài mới ghi file vào repo; gỡ bài về nháp thì xoá file khỏi repo.
 //   3. Ghi bằng GITHUB_TOKEN (fine-grained, chỉ repo uu-website, quyền Contents) —
 //      token này chỉ nằm trong Worker, trình duyệt không bao giờ thấy.
 //
@@ -16,7 +18,7 @@
 //   GITHUB_TOKEN       (Secret) fine-grained token: chỉ repo uu-website, Contents = Read and write
 //
 // Binding (Settings → Bindings):
-//   STATS_DB           D1 database "uu-stats" — bộ đếm lượt xem. Bảng tự tạo ở lần đếm đầu.
+//   STATS_DB           D1 database "uu-stats" — bộ đếm lượt xem và bản nháp. Bảng tự tạo ở lần dùng đầu.
 //
 // Đếm lượt xem (POST /hit, không cần đăng nhập): trình duyệt gửi trang + nguồn, Worker chỉ cộng 1
 // vào ô (ngày, loại, khu vực, trang, nguồn). Không lưu IP, user-agent hay cookie.
@@ -26,6 +28,9 @@ const PATH_RULES = [
   /^assets\/uploads\/[a-z0-9-]+\.(png|jpe?g|webp|gif)$/,
 ];
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+// Commit qua Portal đứng tên chủ repo với email ẩn của GitHub, không lộ email người viết trong repo công khai.
+const COMMITTER = { name: "Tú Bùi", email: "76416816+buiphamthanhtu@users.noreply.github.com" };
+const D1_SHA = "d1:"; // sha giả cho bài nháp nằm trong D1
 const tokenCache = new Map(); // access token -> { email, exp }
 
 export default {
@@ -67,22 +72,34 @@ export default {
         const posts = entries
           .filter((e) => e.type === "blob" && e.name.endsWith(".md"))
           .map((e) => ({ path: `posts/${e.name}`, sha: e.oid, content: e.object?.text ?? "" }));
-        return json({ posts }, 200, cors);
+        const drafts = await listDrafts(env);
+        const draftPaths = new Set(drafts.map((d) => d.path));
+        return json({ posts: [...posts.filter((p) => !draftPaths.has(p.path)), ...drafts] }, 200, cors);
       }
 
       if (route === "PUT /file") {
         const body = await request.json();
         const path = checkPath(body.path);
         const isText = path.endsWith(".md");
+        const sha = body.sha && !String(body.sha).startsWith(D1_SHA) ? String(body.sha) : "";
+        if (isText && isDraft(body.content)) {
+          // Lưu nháp vào D1; nếu bài đang nằm trên repo (gỡ bài về nháp) thì xoá file khỏi repo
+          const saved = await saveDraft(env, path, String(body.content ?? ""), user.email);
+          if (sha) await github(env, `contents/${path}`, { method: "DELETE",
+            body: JSON.stringify({ message: `Gỡ ${path} về nháp (qua Portal)`, sha, branch: branch(env), committer: COMMITTER }) });
+          return json({ path, sha: saved }, 200, cors);
+        }
         const b64 = isText ? encodeBase64Utf8(String(body.content ?? "")) : String(body.base64 ?? "");
         if (!isText && b64.length * 0.75 > MAX_UPLOAD_BYTES) throw httpError(413, "Ảnh quá 4 MB");
         const payload = {
-          message: `${String(body.message || "Cập nhật " + path).slice(0, 200)} (qua Portal, ${user.email})`,
+          message: `${String(body.message || "Cập nhật " + path).slice(0, 200)} (qua Portal)`,
           content: b64,
           branch: branch(env),
-          ...(body.sha ? { sha: body.sha } : {}),
+          committer: COMMITTER,
+          ...(sha ? { sha } : {}),
         };
         const res = await github(env, `contents/${path}`, { method: "PUT", body: JSON.stringify(payload) });
+        if (isText) await deleteDraft(env, path); // đăng xong thì bỏ bản nháp
         return json({ path, sha: res.content.sha }, 200, cors);
       }
 
@@ -90,10 +107,13 @@ export default {
         const body = await request.json();
         const path = checkPath(body.path);
         if (!path.startsWith("posts/")) throw httpError(400, "Chỉ xoá được bài viết");
-        await github(env, `contents/${path}`, {
-          method: "DELETE",
-          body: JSON.stringify({ message: `Xoá ${path} (qua Portal, ${user.email})`, sha: body.sha, branch: branch(env) }),
-        });
+        await deleteDraft(env, path);
+        if (body.sha && !String(body.sha).startsWith(D1_SHA)) {
+          await github(env, `contents/${path}`, {
+            method: "DELETE",
+            body: JSON.stringify({ message: `Xoá ${path} (qua Portal)`, sha: body.sha, branch: branch(env), committer: COMMITTER }),
+          });
+        }
         return json({ ok: true }, 200, cors);
       }
 
@@ -179,6 +199,48 @@ function encodeBase64Utf8(text) {
   let bin = "";
   for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
   return btoa(bin);
+}
+
+// =====================================================================
+// Bản nháp — lưu trong D1, không bao giờ lên repo công khai
+// =====================================================================
+let draftsReady = false;
+
+function isDraft(content) {
+  const fm = /^---\r?\n([\s\S]*?)\r?\n---/.exec(String(content || ""));
+  return !!fm && /^draft:\s*true\s*$/m.test(fm[1]);
+}
+
+async function ensureDraftsTable(env) {
+  if (!env.STATS_DB) throw httpError(503, "Worker chưa nối kho D1 STATS_DB nên chưa lưu nháp được");
+  if (draftsReady) return;
+  await env.STATS_DB.prepare(`CREATE TABLE IF NOT EXISTS drafts (
+    path TEXT PRIMARY KEY, content TEXT NOT NULL, updated INTEGER NOT NULL, email TEXT NOT NULL DEFAULT '')`).run();
+  draftsReady = true;
+}
+
+async function listDrafts(env) {
+  if (!env.STATS_DB) return [];
+  await ensureDraftsTable(env);
+  const { results } = await env.STATS_DB.prepare("SELECT path, content, updated FROM drafts").all();
+  return results.map((r) => ({ path: r.path, sha: D1_SHA + r.updated, content: r.content }));
+}
+
+async function saveDraft(env, path, content, email) {
+  if (content.length > 500000) throw httpError(413, "Bài nháp quá dài");
+  await ensureDraftsTable(env);
+  const updated = Date.now();
+  await env.STATS_DB.prepare(
+    "INSERT INTO drafts (path, content, updated, email) VALUES (?, ?, ?, ?) " +
+    "ON CONFLICT (path) DO UPDATE SET content = excluded.content, updated = excluded.updated, email = excluded.email")
+    .bind(path, content, updated, email).run();
+  return D1_SHA + updated;
+}
+
+async function deleteDraft(env, path) {
+  if (!env.STATS_DB) return;
+  await ensureDraftsTable(env);
+  await env.STATS_DB.prepare("DELETE FROM drafts WHERE path = ?").bind(path).run();
 }
 
 // =====================================================================

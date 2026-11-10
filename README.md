@@ -28,6 +28,8 @@ Google → "Viết bài mới" → soạn theo khối → "Đăng bài". GitHub 
 đăng bài trong ~1 phút. Cài đặt một lần: `worker/HUONG-DAN.md`.
 Portal = `admin/` (trang tĩnh) + `worker/blog-api.js` (Cloudflare Worker giữ GitHub token,
 chỉ cho ghi `posts/*.md` và `assets/uploads/*`).
+Bản nháp lưu trong D1 của Worker, không lên repo (repo công khai); chỉ bài đã đăng mới thành
+`posts/*.md`. Ảnh tải lên lúc soạn nháp thì vẫn vào `assets/uploads/` ngay.
 
 **Cách 2 — tay:** tạo `posts/ten-bai.md` (copy front-matter từ bài cũ), push lên.
 

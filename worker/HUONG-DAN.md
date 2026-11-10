@@ -58,6 +58,9 @@ Claude điền vào `admin/config.js` là portal chạy thật.
    Variable name `STATS_DB`, chọn `uu-stats` → lưu (bỏ qua lời nhắc cập nhật Wrangler)
 3. **Edit code**, dán lại toàn bộ `worker/blog-api.js` → **Deploy**. Bảng `stats` tự tạo ở lần đếm đầu.
 
+Kho D1 này cũng giữ **bản nháp** của portal (bảng `drafts`, tự tạo): nháp không ghi vào repo công khai,
+chỉ khi bấm Đăng bài mới thành file `posts/*.md`. Gỡ bài về nháp thì file bị xoá khỏi repo.
+
 Website tự gửi lượt xem qua `js/track.js` (nạp từ `js/main.js`). Storybook `/uu-ds/` cần thêm
 `<script src="/js/track.js" defer></script>` vào `.storybook/manager-head.html` của repo UU DS.
 Máy nào đã mở portal thì lượt xem từ máy đó không được đếm.
