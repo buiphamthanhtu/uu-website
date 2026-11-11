@@ -1,4 +1,0 @@
-import{j as e}from"./iframe-ROCLD28a.js";import{useMDXComponents as c}from"./index-C7BqBkF2.js";import{M as r}from"./blocks-BuXxpxoH.js";import{M as o}from"./Markdown-_2YqG7b1.js";import"./preload-helper-Dp1pzeXC.js";function t(s){const n={a:"a",code:"code",h1:"h1",p:"p",...c(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Nền tảng/Spec gốc"}),`
-`,e.jsx(n.h1,{id:"spec-gốc-đầy-đủ",children:"Spec gốc (đầy đủ)"}),`
-`,e.jsxs(n.p,{children:["Trang này render nguyên văn ",e.jsx(n.a,{href:"docs/design-system.md",children:e.jsx(n.code,{children:"docs/design-system.md"})})," — cùng file mà AI đọc. Sửa ở skill ",e.jsx(n.code,{children:"uu-design-system"})," rồi chạy ",e.jsx(n.code,{children:"scripts/sync-from-skill.sh"}),"; đừng sửa tay ở đây."]}),`
-`,e.jsx(o,{src:"docs/design-system.md",readerView:!0})]})}function x(s={}){const{wrapper:n}={...c(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(t,{...s})}):t(s)}export{x as default};
