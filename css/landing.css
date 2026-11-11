@@ -350,6 +350,26 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
 .ds-umini .uu-btn { width: 100%; box-sizing: border-box; margin-top: auto; justify-content: center; }
 .ds-umini .uu-field input { width: 100%; }
 .ds-uchips { display: flex; flex-wrap: wrap; gap: var(--gap-1); }
+/* Cách 1 · nguồn: cửa sổ file Figma UU Design system (trình bày chung chung, không dùng nhận diện Figma) */
+.ds-ufile { padding: 0; gap: 0; }
+.ds-ufile__bar { display: flex; align-items: center; gap: var(--gap-2); padding: var(--gap-2) var(--gap-3); box-shadow: inset 0 -1px 0 var(--border-muted); }
+.ds-ufile__dots { display: flex; flex: none; gap: var(--gap-1); }
+.ds-ufile__dots i { display: block; width: var(--size-2); height: var(--size-2); border-radius: var(--rounded-circle); background: var(--background-emphasized); }
+.ds-ufile__name { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--object-secondary); }
+.ds-ufile__body { flex: 1; display: grid; grid-template-columns: var(--size-10) minmax(0, 1fr); }
+.ds-ufile__layers { display: flex; flex-direction: column; gap: var(--gap-1-5); padding: var(--gap-3) var(--gap-2); box-shadow: inset -1px 0 0 var(--border-muted); }
+.ds-ufile__layers i { display: block; height: var(--size-1); border-radius: var(--rounded-circle); background: var(--background-emphasized); }
+.ds-ufile__layers i:nth-child(2) { width: 70%; }
+.ds-ufile__layers i:nth-child(3) { background: var(--background-interactive); }
+.ds-ufile__layers i:nth-child(4) { width: 55%; }
+.ds-ufile__canvas { display: flex; align-items: center; justify-content: center; padding: var(--gap-3); background: var(--background-muted); }
+.ds-ufile__sel { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-2); padding: var(--gap-2);
+                 border-radius: var(--radius-sm); background: var(--background-surface); outline: 1px solid var(--border-interactive); }
+.ds-ufile__sel::before, .ds-ufile__sel::after { content: ""; position: absolute; width: var(--size-1-5); height: var(--size-1-5);
+                 background: var(--background-surface); outline: 1px solid var(--border-interactive); }
+.ds-ufile__sel::before { left: calc(-1 * var(--size-1)); top: calc(-1 * var(--size-1)); }
+.ds-ufile__sel::after { right: calc(-1 * var(--size-1)); bottom: calc(-1 * var(--size-1)); }
+.ds-umini .ds-ufile__sel .uu-btn { margin-top: 0; }
 .ds-uempty { align-items: center; justify-content: center; text-align: center; background: transparent; color: var(--object-on-interactive); box-shadow: none;
              outline: 2px dashed var(--object-on-interactive); outline-offset: -2px; }
 .ds-uspark { display: flex; align-items: center; justify-content: center; justify-self: center; width: var(--size-12); height: var(--size-12);
@@ -390,6 +410,9 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
 @media (max-width: 599px) {
   .ds-uflow { grid-template-columns: minmax(0, 1fr) var(--size-14) minmax(0, 1fr); column-gap: var(--gap-2); }
   .ds-uflow > span:not(.ds-ulab), .ds-uconn { display: none; }
+  .ds-ufile__body { grid-template-columns: minmax(0, 1fr); }
+  .ds-ufile__layers { display: none; }
+  .ds-ufile__canvas { padding: var(--gap-2); }
 }
 
 /* ---------- Chuyển động chung — chỉ chạy khi JS gắn .ds-motion (không bật giảm chuyển động) ---------- */
