@@ -1167,7 +1167,7 @@
   const ddmm = (day) => `${day.slice(8, 10)}/${day.slice(5, 7)}`;
   const fmtN = (n) => Number(n || 0).toLocaleString("vi-VN");
   const AREA = { site: "Trang chủ & blog", landing: "Landing UU DS", story: "Storybook" };
-  const CLICK_TO = { "Xem tài liệu": "Storybook — Giới thiệu", "Dành cho AI (hero)": "Storybook — Dành cho AI", "File Figma": "Figma Community", "File Figma (hero)": "Figma Community", "Dành cho AI (llms.txt)": "File llms.txt cho AI", "Dành cho AI (Storybook)": "Storybook — Dành cho AI",
+  const CLICK_TO = { "Xem tài liệu": "Storybook — Giới thiệu", "Dành cho AI (hero)": "Storybook — Dành cho AI", "File Figma": "Figma Community", "File Figma (hero)": "Figma Community", "Tải skill": "Tải skill (.zip)", "Tải skill (bento)": "Tải skill (.zip)", "Dành cho AI (llms.txt)": "File llms.txt cho AI", "Dành cho AI (Storybook)": "Storybook — Dành cho AI",
     "Xem cách dùng": "Storybook — Cách hoạt động", "Contact us": "Email studio", "Đổi brand UU / Default": "Tại chỗ", "Link trong danh mục component": "Storybook — từng component" };
   const SRC_HINT = { "Google": "Tìm kiếm", "Bing": "Tìm kiếm", "Cốc Cốc": "Tìm kiếm", "Không rõ nguồn": "Gõ thẳng, bookmark, app không báo nguồn",
     "Facebook": "Bài đăng, nhóm", "LinkedIn": "Bài đăng", "Threads": "Bài đăng", "Zalo": "Link có utm_source=zalo hoặc từ Zalo",
@@ -1191,8 +1191,8 @@
 
   function pageInfo(area, page) {
     if (area === "landing") return page.startsWith("/en/")
-      ? { title: "Landing ÚÙ Design System (EN)", path: "/en/design-system/" }
-      : { title: "Landing ÚÙ Design System", path: "/design-system/" };
+      ? { title: "Landing ÚÙ Design system (EN)", path: "/en/design-system/" }
+      : { title: "Landing ÚÙ Design system", path: "/design-system/" };
     if (area === "story") {
       const id = page.replace(/^(docs|story)\//, "");
       const full = state.stats.sbTitles?.[id];

@@ -1,4 +1,4 @@
-/* Landing ÚÙ Design System (/design-system/) — phương án "Sân khấu": hero tối nhiều chấm, chữ Bungee lớn, cam làm điểm nhấn,
+/* Landing ÚÙ Design system (/design-system/) — phương án "Sân khấu": hero tối nhiều chấm, chữ Bungee lớn, cam làm điểm nhấn,
    xen kẽ khối sáng và khối tối. Chỉ token semantic, không hex, không --color-*.
    Tự chế (đã được chủ DS duyệt 2026-10-24): tiêu đề hero = display-lg × 1.5 (72), ngoài thang 11 bậc. */
 
@@ -396,7 +396,9 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
 .ds-motion .ds-rise { animation: ds-rise 900ms cubic-bezier(.2,.7,.2,1) backwards; }
 .ds-motion .ds-rise--2 { animation-delay: 130ms; }
 .ds-motion .ds-rise--3 { animation-delay: 260ms; }
-@keyframes ds-rise { from { transform: translateY(105%); } }
+@keyframes ds-rise { from { transform: translateY(105%); opacity: 0; } 50% { opacity: 1; } }
+.ds-font-wait .ds-rise { visibility: hidden; animation: none; }
+.ds-tile__text code, .ds-card code, .ds-links a { overflow-wrap: anywhere; }
 .ds-motion .ds-iso { animation: ds-tilt 9s ease-in-out infinite; }
 .ds-motion .ds-lyr { animation: ds-explode 7s cubic-bezier(.6,0,.2,1) infinite; }
 .ds-motion .ds-lyr--content { animation-name: ds-explode-content; }

@@ -1,8 +1,15 @@
-// Landing ÚÙ Design System: chuyển động, đổi brand cả trang, dải tên chạy chéo, giải phẫu component.
+// Landing ÚÙ Design system: chuyển động, đổi brand cả trang, dải tên chạy chéo, giải phẫu component.
 // Người dùng bật "giảm chuyển động" thì không thêm .ds-motion, mọi thứ hiện tĩnh.
 (function () {
   var motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (motion) document.documentElement.classList.add('ds-motion');
+  // Tiêu đề hero chờ phông Bungee (tối đa 3 giây) rồi mới trồi lên: mạng chậm mà chạy bằng phông thay thế
+  // thì chữ cao hơn khung dòng, bị cắt thành nét vụn.
+  if (motion && document.fonts && document.fonts.load) {
+    var root = document.documentElement, ready = function () { root.classList.remove('ds-font-wait'); };
+    root.classList.add('ds-font-wait');
+    Promise.race([document.fonts.load('1em Bungee'), new Promise(function (r) { setTimeout(r, 3000); })]).then(ready, ready);
+  }
 
   // ---------- Hiện dần + đếm số khi cuộn tới ----------
   function countUp(el) {

@@ -16,7 +16,7 @@ blog.html                Danh sách bài viết (file sinh tự động — Đ�
 blog-*.html              Trang bài viết (file sinh tự động — ĐỪNG sửa tay)
 css/                     UU DS: uu-tokens (chép từ UU DS, brand `uu`) · uu-components · site
 js/main.js               Menu mobile (bottom sheet)
-uu-ds/                   Storybook ÚÙ Design System (deploy từ project UU DS, đừng sửa tay)
+uu-ds/                   Storybook UU Design system (deploy từ project UU DS, đừng sửa tay)
 assets/                  Hình ảnh
 download-assets.sh       Script tải hình từ trang Figma Sites cũ (đã chạy xong)
 ```
@@ -39,7 +39,7 @@ Markdown), JSON-LD `BlogPosting` trên từng bài. Trường `seo_title` + `des
 (ô "Tiêu đề / Mô tả trên Google" trong portal) quyết định bài hiện thế nào trên Google. Mỗi lần bot
 build ra trang mới, workflow báo IndexNow (Bing) bằng khoá trong file `<32 ký tự hex>.txt` ở gốc.
 
-Giao diện dùng ÚÙ Design System: `css/uu-tokens.css` (token gốc, chép từ UU DS),
+Giao diện dùng UU Design system: `css/uu-tokens.css` (token gốc, chép từ UU DS),
 brand mode `uu` chính thức của UU DS (cam + vàng, `<html data-theme="uu">`), `css/uu-components.css`, `css/site.css`.
 Icon lấy từ `assets/icons.svg` — chỉ gồm icon công khai của UU icon.
 

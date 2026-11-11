@@ -1,6 +1,6 @@
 # ÚÙ Creative Studio
 
-> Design studio ở Việt Nam (uucreative.co): product design, research, brand visual. Website có blog tiếng Việt về nghề Product Designer và ÚÙ Design System — design system của studio.
+> Design studio ở Việt Nam (uucreative.co): product design, research, brand visual. Website có blog tiếng Việt về nghề Product Designer và UU Design system — design system của studio.
 
 ## Blog (tiếng Việt)
 
@@ -8,12 +8,12 @@
 - [Designer giao tiếp chi tiết thế nào: handoff và Master flow trên Figma](https://uucreative.co/blog-giao-tiep-2.html): Độ hiểu giảm theo không gian, thời gian và con người. Hồi 2 chỉ cách tăng độ chi tiết khi giao tiếp: Sandbox, file handoff cho Engineer, Master flow trên Figma.
 - [Giao tiếp là gì với Product Designer: mã hoá, giải mã và truyền tải](https://uucreative.co/blog-giao-tiep-1.html): Giao tiếp không chỉ là nói chuyện. Hồi 1 giải thích giao tiếp là mã hoá và giải mã thông tin, cùng 4 yếu tố truyền tải: phương tiện, tính chất, kênh và tổ chức.
 
-## ÚÙ Design System
+## ÚÙ Design system
 
-- [Giới thiệu ÚÙ Design System](https://uucreative.co/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ
+- [Giới thiệu ÚÙ Design system](https://uucreative.co/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ
 - [Storybook UU DS](https://uucreative.co/uu-ds/): tài liệu cho người đọc (cần JavaScript)
 - [Mục lục UU DS cho AI](https://uucreative.co/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI
-- [File Figma ÚÙ Design System](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng
+- [File Figma UU Design system](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng
 - [design-system.md](https://uucreative.co/uu-ds/docs/design-system.md): spec đầy đủ: token, màu, typography, spacing, state layer và từng component đã chốt
 - [dna-template.md](https://uucreative.co/uu-ds/docs/dna-template.md): tài liệu UU DS
 - [icons.md](https://uucreative.co/uu-ds/docs/icons.md): luật dùng bộ UU icon

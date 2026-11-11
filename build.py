@@ -176,7 +176,7 @@ def write_llms(posts, uu_docs):
         "# ÚÙ Creative Studio",
         "",
         "> Design studio ở Việt Nam (uucreative.co): product design, research, brand visual. "
-        "Website có blog tiếng Việt về nghề Product Designer và ÚÙ Design System — design system của studio.",
+        "Website có blog tiếng Việt về nghề Product Designer và UU Design system — design system của studio.",
         "",
         "## Blog (tiếng Việt)",
         "",
@@ -184,11 +184,11 @@ def write_llms(posts, uu_docs):
     for p in posts:
         lines.append(f"- [{p['headline']}]({BASE_URL}/{p['url']}): {p['meta_description']}")
     if uu_docs:
-        lines += ["", "## ÚÙ Design System", "",
-                  f"- [Giới thiệu ÚÙ Design System]({BASE_URL}/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ",
+        lines += ["", "## ÚÙ Design system", "",
+                  f"- [Giới thiệu ÚÙ Design system]({BASE_URL}/design-system/): UU DS là gì, kiến trúc token, danh mục component, nền tảng hỗ trợ",
                   f"- [Storybook UU DS]({BASE_URL}/uu-ds/): tài liệu cho người đọc (cần JavaScript)",
                   f"- [Mục lục UU DS cho AI]({BASE_URL}/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI",
-                  "- [File Figma ÚÙ Design System](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng"]
+                  "- [File Figma UU Design system](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng"]
         for name in uu_docs:
             note = UU_DOC_NOTES.get(name, "tài liệu UU DS")
             lines.append(f"- [{name}]({BASE_URL}/uu-ds/docs/{name}): {note}")
