@@ -220,12 +220,15 @@ def write_ds_landing():
         if len(parts) == 3 and parts[0] == "Component":
             groups.setdefault(parts[1], []).append(e)
     cards = []
+    # "Screens" là mẫu màn, không tính vào số component của nhóm (tổng các nhóm = số component trên landing)
+    TEMPLATES = {"Screens": "Screens (mẫu màn)"}
     for name, items in groups.items():
-        lis = "\n".join(f'          <li><a href="{link(e)}">{e["title"].split("/")[-1]}</a></li>' for e in items)
+        lis = "\n".join(f'          <li><a href="{link(e)}">{TEMPLATES.get(e["title"].split("/")[-1], e["title"].split("/")[-1])}</a></li>' for e in items)
+        count = sum(1 for e in items if e["title"].split("/")[-1] not in TEMPLATES)
         cards.append(
             f'        <article class="ds-card ds-group ds-reveal" data-delay="{len(cards) % 3 + 1}">\n'
             f'          <div class="ds-group__head"><h3 class="text-heading-sm">{name}</h3>'
-            f'<span class="uu-badge uu-badge--neutral"><svg class="uu-icon uu-badge__icon" aria-hidden="true"><use href="../assets/icons.svg#circle-info-fill"/></svg>{len(items)}</span></div>\n'
+            f'<span class="uu-badge uu-badge--neutral"><svg class="uu-icon uu-badge__icon" aria-hidden="true"><use href="../assets/icons.svg#circle-info-fill"/></svg>{count}</span></div>\n'
             f'          <ul class="ds-links">\n{lis}\n          </ul>\n'
             "        </article>")
     trees = [e for e in docs if e["title"].startswith("Nền tảng/Cây quyết định/")]
