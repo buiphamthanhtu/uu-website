@@ -1,6 +1,6 @@
 # ÚÙ Design system (UU DS)
 
-> Design system UU DS. Token 2 tầng (primitive → semantic), hai brand mode — Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 37 component đã chốt, bộ UU icon công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+> Design system UU DS. Token 2 tầng (primitive → semantic), brand mode cho mọi brand — sẵn Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 37 component đã chốt, bộ UU icon công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
 
 Gốc của mọi đường dẫn dưới đây: https://uucreative.co/uu-ds/ (ví dụ https://uucreative.co/uu-ds/docs/design-system.md). Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
 
