@@ -5,6 +5,7 @@
 Gốc của mọi đường dẫn dưới đây: https://uucreative.co/uu-ds/ (ví dụ https://uucreative.co/uu-ds/docs/design-system.md). Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
 
 Skill cho Claude (cùng nội dung, kèm icon công khai): https://uucreative.co/uu-ds/uu-design-system.zip
+Cài skill cho AI chạy trên máy (Claude Code, Cursor, Codex…): `npx skills add buiphamthanhtu/uu-ds --skill uu-design-system`
 
 ## Bắt buộc đọc trước khi viết code
 
