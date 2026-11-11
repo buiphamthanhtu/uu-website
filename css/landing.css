@@ -130,17 +130,19 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
 .ds-term { display: flex; flex-direction: column; gap: var(--gap-2); padding: var(--gap-5); border-radius: var(--rounded-2xl);
            background: var(--background-inverted); color: var(--object-primary-inverted);
            font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
-.ds-term__line { display: block; max-width: 100%; overflow: hidden; white-space: nowrap; }
+.ds-term__line { display: block; max-width: 100%; overflow: hidden; white-space: pre; }
 .ds-term__dim { color: color-mix(in srgb, var(--object-primary-inverted) 60%, transparent); }
 .ds-term__ok { color: var(--object-interactive-inverted); }
 .ds-caret { display: inline-block; width: .6em; height: 1.1em; background: var(--object-interactive-inverted); }
 .ds-motion .ds-term.is-in .ds-term__line { width: 0; animation: ds-type1 9s steps(32) infinite; }
 .ds-motion .ds-term.is-in .ds-term__line--2 { animation-name: ds-type2; }
-.ds-motion .ds-term.is-in .ds-term__line--3 { animation-name: ds-type3; animation-timing-function: steps(40); }
+.ds-motion .ds-term.is-in .ds-term__line--3 { animation-name: ds-type3; }
+.ds-motion .ds-term.is-in .ds-term__line--4 { animation-name: ds-type4; animation-timing-function: steps(40); }
 .ds-motion .ds-caret { animation: ds-blink 1s steps(1) infinite; }
-@keyframes ds-type1 { 0% { width: 0; } 18%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
-@keyframes ds-type2 { 0%, 24% { width: 0; } 42%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
-@keyframes ds-type3 { 0%, 48% { width: 0; } 66%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type1 { 0% { width: 0; } 14%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type2 { 0%, 15% { width: 0; } 26%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type3 { 0%, 34% { width: 0; } 50%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
+@keyframes ds-type4 { 0%, 58% { width: 0; } 72%, 92% { width: calc(var(--n) * 1ch); } 100% { width: 0; } }
 @keyframes ds-blink { 50% { opacity: 0; } }
 
 /* State layer: con trỏ bay vào, lớp phủ 0 → 20 → 40% */
@@ -313,6 +315,10 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
            background: var(--background-inverted); color: var(--object-primary-inverted);
            font: var(--font-weight-normal) var(--font-size-sm)/var(--font-height-sm) ui-monospace, SFMono-Regular, Menlo, monospace; }
 .ds-code code { padding: 0; background: none; color: inherit; font: inherit; }
+.ds-cmd { padding: var(--gap-3) var(--gap-4); white-space: pre-wrap; overflow-wrap: anywhere; }
+.ds-cmds { display: flex; flex-direction: column; gap: var(--gap-2); }
+.ds-cmds .text-caption { color: var(--object-secondary); }
+.ds-cmds .ds-cmd + .text-caption { margin-top: var(--gap-2); }
 
 /* ---------- 12. Kêu gọi liên hệ ---------- */
 .ds-cta { position: relative; overflow: hidden; padding: var(--gap-16) var(--gap-12); border-radius: var(--rounded-4xl);
