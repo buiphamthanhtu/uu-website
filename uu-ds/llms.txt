@@ -43,7 +43,7 @@ UU DS là bộ xương, DNA là chất riêng của từng sản phẩm. Tìm `D
 
 Gói **chưa phát hành trên npm registry / pub.dev**: cài từ GitHub như dưới đây. Đừng chạy `npm install uu-ds`: tên đó trên npm không thuộc UU DS.
 
-- Web (React + CSS thuần), nhánh `web`: `npm i "github:buiphamthanhtu/uu-ds#web-v1.1.0"`. Exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`. Zalo Mini App (ZMP, React) dùng thẳng gói này.
+- Web (React + CSS thuần), nhánh `web`: `npm i "github:buiphamthanhtu/uu-ds#web-v1.0.0"`. Exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`. Zalo Mini App (ZMP, React) dùng thẳng gói này.
   - `src/components/*`, tên trùng spec: TextButtonAccent, TextButtonNeutral, TextButtonDanger, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, Tooltip, CardSheet, BottomSheet, BaseDialog, Dialog, CardDialog, CardPushNotification, SideSheet, Popover, Table, TableRow, TableHeaderCell, TableCell, TablePagination, KPICard, Breadcrumb, SideNav, SideNavItem, SideNavSection, ListItem, ListGroup, EmptyScreen, EmptySection, ErrorSection, ErrorScreen, ResultScreen, Spinner.
   - `src/icons/Icon.tsx` + `src/icons/svg/<name>[-fill].svg` (icon công khai × outline/fill, viewBox 0 0 18 18, currentColor).
   - `AGENTS.md` ở gốc nhánh `web`: hướng dẫn cho AI coding agent.
