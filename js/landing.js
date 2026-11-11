@@ -5,10 +5,15 @@
   if (motion) document.documentElement.classList.add('ds-motion');
   // Tiêu đề hero chờ phông Bungee (tối đa 3 giây) rồi mới trồi lên: mạng chậm mà chạy bằng phông thay thế
   // thì chữ cao hơn khung dòng, bị cắt thành nét vụn.
-  if (motion && document.fonts && document.fonts.load) {
-    var root = document.documentElement, ready = function () { root.classList.remove('ds-font-wait'); };
-    root.classList.add('ds-font-wait');
-    Promise.race([document.fonts.load('1em Bungee'), new Promise(function (r) { setTimeout(r, 3000); })]).then(ready, ready);
+  // Chốt an toàn: 1,3 giây sau khi bắt đầu trồi thì tắt hiệu ứng, để máy yếu hay tab chạy nền (hiệu ứng đứng hình)
+  // vẫn thấy đủ tiêu đề.
+  if (motion) {
+    var root = document.documentElement;
+    var ready = function () { root.classList.remove('ds-font-wait'); setTimeout(function () { root.classList.add('ds-rise-done'); }, 1300); };
+    if (document.fonts && document.fonts.load) {
+      root.classList.add('ds-font-wait');
+      Promise.race([document.fonts.load('1em Bungee'), new Promise(function (r) { setTimeout(r, 3000); })]).then(ready, ready);
+    } else ready();
   }
 
   // ---------- Hiện dần + đếm số khi cuộn tới ----------

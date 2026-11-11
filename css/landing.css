@@ -398,6 +398,7 @@ html:not(.ds-motion) .ds-parade__view { overflow-x: auto; }
 .ds-motion .ds-rise--3 { animation-delay: 260ms; }
 @keyframes ds-rise { from { transform: translateY(105%); opacity: 0; } 50% { opacity: 1; } }
 .ds-font-wait .ds-rise { visibility: hidden; animation: none; }
+.ds-rise-done .ds-rise { animation: none; }
 .ds-tile__text code, .ds-card code, .ds-links a { overflow-wrap: anywhere; }
 .ds-motion .ds-iso { animation: ds-tilt 9s ease-in-out infinite; }
 .ds-motion .ds-lyr { animation: ds-explode 7s cubic-bezier(.6,0,.2,1) infinite; }
