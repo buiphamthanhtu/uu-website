@@ -1,8 +1,10 @@
-# ÚÙ Design System (UU DS)
+# ÚÙ Design system (UU DS)
 
-> Design system UU DS. Token 2 tầng (primitive → semantic), hai brand mode — Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 46 component và 6 mẫu màn đã chốt, bộ UU icon công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
+> Design system UU DS. Token 2 tầng (primitive → semantic), hai brand mode — Default (`:root`: interactive indigo, accent blue, trung tính slate) và UU (`data-theme="uu"`: cam + vàng nhận diện Ú Ù), density Touch / Compact, trục layout Expanded / Collapsed, hover/pressed qua state layer, 46 component đã chốt, bộ UU icon công khai. Storybook này phục vụ người đọc; các file dưới đây là cùng nội dung ở dạng máy đọc.
 
-Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
+Gốc của mọi đường dẫn dưới đây: https://uucreative.co/uu-ds/ (ví dụ https://uucreative.co/uu-ds/docs/design-system.md). Đọc theo thứ tự. Mọi file là nguyên bản, không tóm tắt.
+
+Skill cho Claude (cùng nội dung, kèm icon công khai): https://uucreative.co/uu-ds/uu-design-system.zip
 
 ## Bắt buộc đọc trước khi viết code
 
@@ -46,4 +48,4 @@ Gói **chưa phát hành trên npm registry / pub.dev**: cài từ GitHub như d
 - React Native / Expo, nhánh `native`: `npm i "github:buiphamthanhtu/uu-ds#native-v1.0.0"`. `tokens.g.ts` sinh từ tokens.json, cùng phạm vi bản Flutter.
 - Flutter, nhánh `main`, thư mục `packages/flutter/uu_ds_flutter` (khai `git:` trong pubspec với `path` đó, `ref: flutter-v1.0.0`). `tokens.g.dart` sinh từ tokens.json, widget `UuTextButton`, `UuTextInput`, `UuIcon`… cùng prop với bản web.
 - Widgetbook (widget Flutter thật, xem trên web): [widgetbook/](widgetbook/).
-- File Figma UU DLS (Figma Community, component và variable theo spec; lệch thì spec thắng): https://www.figma.com/community/file/1701990688423474087/uu-design-system
+- File Figma UU Design system (Figma Community, component và variable theo spec; lệch thì spec thắng): https://www.figma.com/community/file/1701990688423474087/uu-design-system
