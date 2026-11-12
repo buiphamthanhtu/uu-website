@@ -1,4 +1,0 @@
-import{j as e,M as r}from"./iframe-DWmKd9vZ.js";import{useMDXComponents as t}from"./index-D3NieZES.js";import{M as o}from"./Markdown-VPHeB1Rb.js";import"./preload-helper-Dp1pzeXC.js";function c(s){const n={a:"a",code:"code",h1:"h1",p:"p",...t(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Nền tảng/Spec gốc"}),`
-`,e.jsx(n.h1,{id:"spec-gốc-đầy-đủ",children:"Spec gốc (đầy đủ)"}),`
-`,e.jsxs(n.p,{children:["Trang này render nguyên văn ",e.jsx(n.a,{href:"docs/design-system.md",children:e.jsx(n.code,{children:"docs/design-system.md"})})," — cùng file mà AI đọc. Sửa ở skill ",e.jsx(n.code,{children:"uu-design-system"})," rồi chạy ",e.jsx(n.code,{children:"scripts/sync-from-skill.sh"}),"; đừng sửa tay ở đây."]}),`
-`,e.jsx(o,{src:"docs/design-system.md",readerView:!0})]})}function l(s={}){const{wrapper:n}={...t(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(c,{...s})}):c(s)}export{l as default};
