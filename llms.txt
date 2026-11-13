@@ -14,6 +14,7 @@
 - [Storybook UU DS](https://uucreative.co/uu-ds/): tài liệu cho người đọc (cần JavaScript)
 - [Mục lục UU DS cho AI](https://uucreative.co/uu-ds/llms.txt): thứ tự đọc và sáu ràng buộc khi dựng UI
 - [File Figma UU Design system](https://www.figma.com/community/file/1701990688423474087/uu-design-system): thư viện Figma Community, component và variable theo spec; lệch thì spec thắng
+- [components](https://uucreative.co/uu-ds/docs/components): tài liệu UU DS
 - [design-system.md](https://uucreative.co/uu-ds/docs/design-system.md): spec đầy đủ: token, màu, typography, spacing, state layer và từng component đã chốt
 - [dna-template.md](https://uucreative.co/uu-ds/docs/dna-template.md): tài liệu UU DS
 - [icons.md](https://uucreative.co/uu-ds/docs/icons.md): luật dùng bộ UU icon
