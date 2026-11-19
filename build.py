@@ -220,8 +220,8 @@ def write_ds_landing():
         if len(parts) == 3 and parts[0] == "Component":
             groups.setdefault(parts[1], []).append(e)
     cards = []
-    # "Screens" là mẫu màn, không tính vào số component của nhóm (tổng các nhóm = số component trên landing)
-    TEMPLATES = {"Screens": "Screens (mẫu màn)"}
+    # "Screens" không tính vào số component của nhóm (tổng các nhóm = 37 component trên landing); nhãn ghi "Screens", không ghi "mẫu màn"
+    TEMPLATES = {"Screens": "Screens"}
     for name, items in groups.items():
         lis = "\n".join(f'          <li><a href="{link(e)}">{TEMPLATES.get(e["title"].split("/")[-1], e["title"].split("/")[-1])}</a></li>' for e in items)
         count = sum(1 for e in items if e["title"].split("/")[-1] not in TEMPLATES)
