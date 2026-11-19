@@ -65,7 +65,7 @@
             <span class="ds-ln"><span class="ds-rise ds-rise--2 ds-h1__accent">every brand,</span></span>
             <span class="ds-ln"><span class="ds-rise ds-rise--3">every platform.</span></span>
           </h1>
-          <p class="ds-lede">UU Design system is the set of interface rules — color, type, spacing, components and interaction — that ÚÙ Creative Studio uses for every product, written clearly enough for designers, developers and AI to build it right the first time, on web, React Native and Flutter.</p>
+          <p class="ds-lede">UU Design system is the set of interface rules that ÚÙ Creative Studio uses for every product: color, type, spacing, components and interaction. It is written clearly enough for designers, developers and AI to build it right the first time, on web, React Native and Flutter.</p>
           <div class="ds-actions">
             <a class="uu-btn uu-btn--lg uu-interactive tb-accent-solid" href="../../uu-ds/" data-track="Xem tài liệu">Read the docs <svg class="uu-icon" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a>
             <a class="uu-btn uu-btn--lg uu-interactive tb-neutral-outline-inv" href="../../uu-ds/?path=/docs/bắt-đầu-dành-cho-ai--tài-liệu" data-track="Dành cho AI (hero)"><svg class="uu-icon" aria-hidden="true"><use href="../../assets/icons.svg#sparkle"/></svg>For AI</a>
@@ -138,8 +138,8 @@
         </div>
         <div class="ds-bento">
           <article class="ds-tile ds-tile--muted ds-tile--wide ds-reveal">
-            <div class="ds-tile__head"><h3 class="text-heading-base">Written for AI, not just people</h3><code class="ds-tok">llms.txt</code></div>
-            <p class="ds-tile__text">Every docs page has a source Markdown version and an index at <a href="https://uucreative.co/uu-ds/llms.txt"><code>https://uucreative.co/uu-ds/llms.txt</code></a>. Install the AI skill with <code>npx skills add buiphamthanhtu/uu-ds --skill uu-design-system</code>, or <a href="https://uucreative.co/uu-ds/uu-design-system.zip" data-track="Tải skill (bento)">download the .zip</a>. The automated grader <code>npx uu-ds-check src</code> checks whether AI builds UI by the rules — zero critical errors before anything ships.</p>
+            <div class="ds-tile__head"><h3 class="text-heading-base">Written for people and AI</h3><code class="ds-tok">llms.txt</code></div>
+            <p class="ds-tile__text">Every docs page has a Markdown source, and the index is at <a href="https://uucreative.co/uu-ds/llms.txt"><code>https://uucreative.co/uu-ds/llms.txt</code></a>. Install the AI skill with <code>npx skills add buiphamthanhtu/uu-ds --skill uu-design-system</code>, or <a href="https://uucreative.co/uu-ds/uu-design-system.zip" data-track="Tải skill (bento)">download the .zip</a>. The automated grader <code>npx uu-ds-check src</code> checks whether the UI an AI builds follows the rules. Nothing ships until it reports zero critical errors.</p>
             <div class="ds-term" data-observe aria-hidden="true">
               <span class="ds-term__dim">claude ~ uu-app</span>
               <span class="ds-term__line" style="--n: 40">$ npx skills add buiphamthanhtu/uu-ds \</span>
@@ -153,7 +153,7 @@
 
           <article class="ds-tile ds-tile--brand ds-reveal" data-delay="1">
             <h3 class="text-heading-base">One interaction model for everything</h3>
-            <p class="ds-tile__text">Hover and press only add a thin color layer, never changing background or text.</p>
+            <p class="ds-tile__text">Hover and press only add a thin color layer. Background and text never change.</p>
             <div class="ds-sl" aria-hidden="true">
               <span class="uu-btn uu-btn--lg tb-accent-solid ds-sl__btn">Publish<span class="ds-sl__ov"></span></span>
               <svg class="uu-icon ds-sl__cursor"><use href="../../assets/icons.svg#pointer"/></svg>
@@ -163,7 +163,7 @@
           </article>
 
           <article class="ds-tile ds-tile--muted ds-reveal">
-            <h3 class="text-heading-base">Contrast, actually measured</h3>
+            <h3 class="text-heading-base">Measured contrast</h3>
             <p class="ds-tile__text">Text on the <strong data-brand-name>UU</strong>brand button, measured against WCAG:</p>
             <div class="ds-ratio" data-observe>
               <span class="uu-btn uu-btn--lg tb-accent-solid ds-ratio__sample" aria-hidden="true">Aa</span>
@@ -180,7 +180,7 @@
 
           <article class="ds-tile ds-tile--dark ds-tile--wide ds-reveal" data-delay="1">
             <div class="ds-tile__head"><h3 class="text-heading-base">One component, every brand</h3><span class="ds-eyebrow">No if (brand)</span></div>
-            <p class="ds-tile__text">Brand color lives in 22 tokens. Components never know which brand they're in — switching brands means changing one attribute, <code>data-theme</code>.</p>
+            <p class="ds-tile__text">Brand color lives in 22 tokens. Components never know which brand they're in, so switching brands means changing one attribute, <code>data-theme</code>.</p>
             <div class="ds-wipe" aria-hidden="true">
               <div class="ds-wipe__layer" data-theme="uu">
                 <span class="uu-chip" aria-pressed="true">Brand visual</span>
@@ -215,7 +215,7 @@
         <div class="ds-ucards">
           <article class="ds-ucard ds-reveal">
             <div class="ds-ucard__copy">
-              <p class="ds-eyebrow ds-eyebrow--brand">Way 1</p>
+              <p class="ds-eyebrow ds-eyebrow--brand">Option 1</p>
               <h3 class="text-display-sm u-upper">Design it yourself</h3>
               <p class="ds-ucard__text">Build screens with the UU Design system Figma file, have AI extract the DNA, then let AI build more screens, write the handoff or code.</p>
               <div class="ds-utags"><span class="ds-utag">More screens</span><span class="ds-utag">Handoff</span><span class="ds-utag">Code</span></div>
@@ -234,8 +234,8 @@
           </article>
           <article class="ds-ucard ds-ucard--dark ds-reveal" style="--dl: 1.6s">
             <div class="ds-ucard__copy">
-              <p class="ds-eyebrow ds-eyebrow--brand-inv">Way 2</p>
-              <h3 class="text-display-sm u-upper">All AI</h3>
+              <p class="ds-eyebrow ds-eyebrow--brand-inv">Option 2</p>
+              <h3 class="text-display-sm u-upper">AI only</h3>
               <p class="ds-ucard__text">Give a few existing screens, a screenshot or a website as a style anchor; AI extracts the DNA and builds the screens.</p>
               <div class="ds-utags"><span class="ds-utag">Build screens</span></div>
             </div>
@@ -253,7 +253,7 @@
           </article>
           <article class="ds-ucard ds-ucard--brand ds-reveal" style="--dl: 3.2s">
             <div class="ds-ucard__copy">
-              <p class="ds-eyebrow">Way 3</p>
+              <p class="ds-eyebrow">Option 3</p>
               <h3 class="text-display-sm u-upper">Basic</h3>
               <p class="ds-ucard__text">No style yet? AI builds a Basic version for a quick try.</p>
               <div class="ds-utags"><span class="ds-utag">Quick try</span></div>
@@ -278,7 +278,7 @@
         <div class="ds-head">
           <p class="ds-eyebrow ds-eyebrow--brand-inv">Token architecture</p>
           <h2 class="text-display-base u-upper">Base color → role → component</h2>
-          <p class="text-body">Components may only name roles. Hex values sit at the bottom layer, untouched by any component.</p>
+          <p class="text-body">Components refer to roles only. Hex values live in the bottom layer, and no component touches them.</p>
         </div>
         <div class="ds-pipe ds-reveal">
           <div class="ds-stg">
@@ -313,7 +313,7 @@
           </div>
         </div>
         <div class="ds-axes ds-reveal" data-delay="2">
-          <div class="ds-axis"><strong class="text-title-base">Brand mode</strong><span class="text-caption">Default · UU — switched with <code>data-theme</code></span></div>
+          <div class="ds-axis"><strong class="text-title-base">Brand mode</strong><span class="text-caption">Default · UU, switched with <code>data-theme</code></span></div>
           <div class="ds-axis"><strong class="text-title-base">Density</strong><span class="text-caption">Touch for apps · Compact for desktop</span></div>
           <div class="ds-axis"><strong class="text-title-base">Layout</strong><span class="text-caption">Expanded · collapsed for side navigation</span></div>
           <div class="ds-axis"><strong class="text-title-base">Units</strong><span class="text-caption">Web uses rem to scale with the user's font size · apps use px</span></div>
@@ -350,7 +350,7 @@
               <li><div><strong class="text-title-base">Frame</strong><span class="text-caption">48 tall, fully rounded</span><span class="ds-toks"><code>control-height-base</code><code>rounded-circle</code><code>background-interactive</code></span></div></li>
               <li><div><strong class="text-title-base">Label</strong><span class="text-caption">label style 16/24, 16 from the edge</span><span class="ds-toks"><code>text-label</code><code>object-on-interactive</code><code>control-padding-x-base</code></span></div></li>
               <li><div><strong class="text-title-base">Icon suffix</strong><span class="text-caption">24 box, 8 from the label</span><span class="ds-toks"><code>control-icon-base</code><code>currentColor</code><code>gap-2</code></span></div></li>
-              <li><div><strong class="text-title-base">State layer</strong><span class="text-caption">::after layer in the text color — pulsing so you can see it</span><span class="ds-toks"><code>opacity-20 hover</code><code>opacity-40 pressed</code></span></div></li>
+              <li><div><strong class="text-title-base">State layer</strong><span class="text-caption">::after layer in the text color, pulsing so you can see it</span><span class="ds-toks"><code>opacity-20 hover</code><code>opacity-40 pressed</code></span></div></li>
             </ol>
           </div>
         </div>
@@ -399,7 +399,7 @@
         <div class="ds-head">
           <p class="ds-eyebrow ds-eyebrow--brand">Brand × density</p>
           <h2 class="text-display-base u-upper">One form, four contexts</h2>
-          <p class="text-body">Touch for touch screens, Compact for desktop. Two independent axes — components adapt through tokens without changing a line of code.</p>
+          <p class="text-body">Touch for touch screens, Compact for desktop. Brand and density are independent axes: components adapt through tokens, with no code changes.</p>
         </div>
         <div class="ds-matrix">
           <div class="ds-cell ds-reveal" data-theme="uu">
@@ -520,7 +520,7 @@
         <div class="ds-trees ds-reveal">
           <div class="ds-head">
             <h2 class="text-display-sm u-upper">Component usage principles</h2>
-            <p class="text-body">Decision trees: answer each question to find the right component for your case.</p>
+            <p class="text-body">Answer each question in a decision tree to find the right component for your case.</p>
           </div>
           <ul class="ds-links">
           <!-- build:ds-trees -->
@@ -547,7 +547,7 @@
           <article class="ds-plat ds-reveal">
             <span class="ds-ibox"><svg class="uu-icon" aria-hidden="true"><use href="../../assets/icons.svg#laptop"/></svg></span>
             <h3 class="text-heading-sm">Web (React)</h3>
-            <p class="text-body">React components and plain CSS, named after the spec, with shared CSS tokens and icons. NavigationBar leaves room for the mini app platform's control, and it can be turned off when not needed.</p>
+            <p class="text-body">React components and plain CSS, named after the spec, with shared CSS tokens and icons. NavigationBar reserves space for the mini app platform's controls; turn it off when you don't need it.</p>
             <pre class="ds-code ds-cmd"><code>npm i &quot;github:buiphamthanhtu/uu-ds#web-v1.0.0&quot;</code></pre>
             <a class="uu-btn uu-btn--sm uu-interactive tb-accent-ghost ds-more" href="../../uu-ds/?path=/docs/phát-triển-web-react--tài-liệu">Guide <svg class="uu-icon" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a>
           </article>
@@ -578,7 +578,7 @@
         <div class="ds-grid ds-grid--2">
           <article class="ds-card">
             <h2 class="text-display-xs u-upper">For developers</h2>
-            <p class="text-body">Set brand and density right on the <code>html</code>tag; everything else is ready-made classes:</p>
+            <p class="text-body">Set brand and density right on the <code>html</code>tag. Everything else is ready-made classes:</p>
 <pre class="ds-code"><code>&lt;html data-theme="uu" data-density="compact"&gt;
 
 &lt;button class="uu-btn uu-btn--base uu-interactive tb-accent-solid"&gt;
