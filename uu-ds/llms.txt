@@ -44,11 +44,11 @@ UU DS is the skeleton; the DNA is each product's own character. Look for `DNA.md
 
 The packages are **not published on the npm registry / pub.dev**: install from GitHub as below. Don't run `npm install uu-ds`: that npm name does not belong to UU DS.
 
-- Web (React + plain CSS), branch `web`: `npm i "github:buiphamthanhtu/uu-ds#web-v1.0.0"`. Exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`. Zalo Mini App (ZMP, React) uses this package directly.
+- Web (React + plain CSS), branch `web`: `npm i "github:buiphamthanhtu/uu-ds#web-v1.0.1"`. Exports: `.`, `./tokens.css`, `./base.css`, `./icons`, `./icons/svg/*`. Zalo Mini App (ZMP, React) uses this package directly.
   - `src/components/*`, names match the spec: TextButtonAccent, TextButtonNeutral, TextButtonDanger, IconButtonAccent, IconButtonNeutral, ToggleButton, ButtonGroup, TextInput, TextArea, OTPInput, SearchInput, DateInput, Dropdown, Menu, Checkbox, CheckboxInput, Radio, RadioInput, RadioList, Switch, Chip, SegmentedControl, NavigationBar, BottomBar, Tab, TabBar, Pagination, Toast, Badge, StatusIndicator, NotificationBadge, Tooltip, CardSheet, BottomSheet, BaseDialog, Dialog, CardDialog, CardPushNotification, SideSheet, Popover, Table, TableRow, TableHeaderCell, TableCell, TablePagination, KPICard, Breadcrumb, SideNav, SideNavItem, SideNavSection, ListItem, ListGroup, EmptyScreen, EmptySection, ErrorSection, ErrorScreen, ResultScreen, Spinner.
   - `src/icons/Icon.tsx` + `src/icons/svg/<name>[-fill].svg` (public icons × outline/fill, viewBox 0 0 18 18, currentColor).
   - `AGENTS.md` at the root of the `web` branch: instructions for AI coding agents.
-- React Native / Expo, branch `native`: `npm i "github:buiphamthanhtu/uu-ds#native-v1.0.0"`. `tokens.g.ts` generated from tokens.json, same scope as Flutter.
-- Flutter, branch `main`, folder `packages/flutter/uu_ds_flutter` (declare `git:` in pubspec with that `path`, `ref: flutter-v1.0.0`). `tokens.g.dart` generated from tokens.json; widgets `UuTextButton`, `UuTextInput`, `UuIcon`… with the same props as web.
+- React Native / Expo, branch `native`: `npm i "github:buiphamthanhtu/uu-ds#native-v1.0.1"`. `tokens.g.ts` generated from tokens.json, same scope as Flutter.
+- Flutter, branch `main`, folder `packages/flutter/uu_ds_flutter` (declare `git:` in pubspec with that `path`, `ref: flutter-v1.0.1`). `tokens.g.dart` generated from tokens.json; widgets `UuTextButton`, `UuTextInput`, `UuIcon`… with the same props as web.
 - Widgetbook (real Flutter widgets, viewable on the web): [widgetbook/](widgetbook/).
 - UU Design system Figma file (Figma Community, components and variables per the spec; on conflict the spec wins): https://www.figma.com/community/file/1701990688423474087/uu-design-system
